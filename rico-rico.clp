@@ -1,9 +1,3 @@
-; Mon May 01 20:20:43 CEST 2017
-; 
-;+ (version "3.5")
-;+ (build "Build 663")
-
-
 (defclass %3ACLIPS_TOP_LEVEL_SLOT_CLASS "Fake class to save top-level slot information"
 	(is-a USER)
 	(role abstract)
@@ -11,12 +5,10 @@
 		(type SYMBOL)
 		(allowed-values Boda Bautizo)
 		(default Boda)
-;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot Caliente
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot Cantidad
 		(type SYMBOL)
@@ -323,3 +315,71 @@
 ;+		(allowed-classes Bebida)
 ;+		(cardinality 1 1)
 		(create-accessor read-write)))
+
+
+
+; Modulo de preguntas
+
+(deffunction pregunta-general "Funcion para formular preguntas generales" (?pregunta $?respuestas-validas)
+  (format t "%s: " ?pregunta)
+  (bind ?respuesta (read)) ; Lee de la entrada estandard y almacena el resultado en respuesta
+  (while (not (member (lowcase ?respuesta) ?respuestas-validas)) do
+      (format t "%s: " ?pregunta)
+      (bind ?respuesta (read)))
+  ?respuesta ; Es lo que devuelve la funcion
+)
+
+(deffunction pregunta-numerica "Funcion para formular preguntas numericas que esten comprendidas entre un intervalo" (?pregunta ?min ?max)
+  (format t "%s [%d, %d]: " ?pregunta ?min ?max)
+  (bind ?respuesta (read))
+  (while (not (and (>= ?respuesta ?min) (<= ?respuesta ?max))) do
+      (format t "%s [%d, %d]: " ?pregunta ?min ?max)
+      (bind ?respuesta (read)))
+  ?respuesta
+)
+
+(deffunction pregunta-binaria "Funcion para formular preguntas que su respuesta es binaria, si o no" (?pregunta)
+  (format t "%s (S)i/(N)o: " ?pregunta)
+  (bind ?respuesta (read))
+  (while (not (or (or (or (eq (lowcase ?respuesta) si)
+                          (eq (lowcase ?respuesta) no))
+                          (eq (lowcase ?respuesta) s))
+                          (eq (lowcase ?respuesta) n))) do
+      (format t "%s (S)i/(N)o: " ?pregunta)
+      (bind ?respuesta (read)))
+  ?respuesta
+)
+
+(defrule pregunta-familiar-congreso "Regla que pregunta al usuario si el evento es familiar o un congreso"
+  (initial-fact)
+  =>
+  (bind ?respuesta (pregunta-general "¿Que tipo de evento se va a celebrar? (F)amiliar/(C)ongreso" familiar congreso f c))
+  (format t "Debug: La respuesta selecionada es: %s" ?respuesta)
+  (printout t crlf)
+)
+
+(defrule pregunta-bebida-plato "Regla que pregunta al usuario si quiere una bebida por plato"
+  (initial-fact)
+  =>
+  (bind ?respuesta (pregunta-binaria "¿Incluir en cada plato una bebida?"))
+  (format t "Debug: La respuesta selecionada es: %s" ?respuesta)
+  (printout t crlf)
+)
+
+(defrule pregunta-estilo-comida "Regla que pergunta al usuario que estilo de comida quiere, ej: Tradicional, Sibarita..."
+  (initial-fact)
+  =>
+  (bind ?respuesta (pregunta-general "¿Que estilo de comida quiere en el menu? (S)ibarita/(M)oderno/(I)ndefinido" sibarita moderno indefinido s m i))
+  (format t "Debug: La respuesta selecionada es: %s" ?respuesta)
+  (printout t crlf)
+)
+
+;
+;(defrule regla-pruebas "Regla temporal para probar las funciones"
+;  (initial-fact)
+;  =>
+;  (bind ?respuestaGeneral (pregunta-general "¿Esta es una pregunta general? (F)amiliar/(C)ongreso" familiar congreso f c))
+;  (bind ?respuestaNumerica (pregunta-numerica "¿Esta es una pregunta numerica?" 1 12))
+;  (bind ?respuestaBinaria (pregunta-binaria "¿Esta es una pregunta binaria?"))
+;)
+;
