@@ -317,8 +317,36 @@
 		(create-accessor read-write)))
 
 
+;;;Declaracion de modulos ----------------------------
 
-; Modulo de preguntas
+;;; Modulo principal de utilidades, indicamos que exportamos todo
+(defmodule MAIN (export ?ALL))
+
+;;; Modulo de recopilacion de los datos del usuario
+(defmodule recopilacion
+	(import MAIN ?ALL)
+	(export ?ALL)
+)
+
+;;; Declaracion de templates --------------------------
+
+(deftemplate MAIN::DatosMenu
+	(slot epoca (type SYMBOL))
+	(slot NumComensales (type INTEGER))
+	(slot presupuestoMax (type INTEGER))
+	(slot tipoEvento (type SYMBOL) (allowed-values F C))
+	(slot bebidaPorPlato (type SYMBOL) (allowed-values FALSE TRUE))
+)
+
+(deftemplate MAIN::preferencias
+	(slot estilo (type SYMBOL) (allowed-values S M I))
+	(slot vegetariano (type SYMBOL) (allowed-values FALSE TRUE))
+	(slot gluten (type SYMBOL) (allowed-values FALSE TRUE))
+	(slot lactosa (type SYMBOL) (allowed-values FALSE TRUE))
+)
+
+;;; Declaracion de funciones --------------------------
+
 
 (deffunction pregunta-general "Funcion para formular preguntas generales" (?pregunta $?respuestas-validas)
   (format t "%s: " ?pregunta)
@@ -350,29 +378,87 @@
   ?respuesta
 )
 
-(defrule pregunta-familiar-congreso "Regla que pregunta al usuario si el evento es familiar o un congreso"
-  (initial-fact)
+;;; Declaracion de reglas --------------------------
+
+(defrule MAIN::inicio "Regla inicial"
+	(declare (salience 10))
+	=>
+	(printout t "====================================================================" crlf)
+  	(printout t "=    Sistema de elaboracion de menus personalizados Rico Rico     =" crlf)
+	(printout t "====================================================================" crlf)
+  	(printout t crlf)
+	(printout t "Bienvenido! A continuacion se le formularan una serie de preguntas para poder crear el menu que mas encaje con sus preferencias." crlf)
+	(printout t crlf)
+	(focus recopilacion)
+)
+
+;;; Modulo recopilacion
+;Preguntas Ruben
+(defrule recopilacion::pregunta-familiar-congreso "Regla que pregunta al usuario si el evento es familiar o un congreso"
+  (not (tipoEvento ?))
   =>
   (bind ?respuesta (pregunta-general "¿Que tipo de evento se va a celebrar? (F)amiliar/(C)ongreso" familiar congreso f c))
+  (assert (DatosMenu (tipoEvento ?respuesta)))
   (format t "Debug: La respuesta selecionada es: %s" ?respuesta)
   (printout t crlf)
 )
 
-(defrule pregunta-bebida-plato "Regla que pregunta al usuario si quiere una bebida por plato"
-  (initial-fact)
+(defrule recopilacion::pregunta-bebida-plato "Regla que pregunta al usuario si quiere una bebida por plato"
+  (not (bebidaPorPlato ?))
   =>
-  (bind ?respuesta (pregunta-binaria "¿Incluir en cada plato una bebida?"))
-  (format t "Debug: La respuesta selecionada es: %s" ?respuesta)
+  (if(pregunta-binaria "¿Incluir en cada plato una bebida?")
+    then (assert (DatosMenu (bebidaPorPlato TRUE)))
+    else (assert (DatosMenu (bebidaPorPlato FALSE))))
   (printout t crlf)
 )
 
-(defrule pregunta-estilo-comida "Regla que pergunta al usuario que estilo de comida quiere, ej: Tradicional, Sibarita..."
-  (initial-fact)
+(defrule recopilacion::pregunta-estilo-comida "Regla que pergunta al usuario que estilo de comida quiere, ej: Tradicional, Sibarita..."
+  (not (estilo ?))
   =>
   (bind ?respuesta (pregunta-general "¿Que estilo de comida quiere en el menu? (S)ibarita/(M)oderno/(I)ndefinido" sibarita moderno indefinido s m i))
+  (assert (preferencias (estilo ?respuesta)))
   (format t "Debug: La respuesta selecionada es: %s" ?respuesta)
   (printout t crlf)
 )
+
+;Preguntas Marta
+(defrule recopilacion::establecer-presupuesto-maximo "Establece el presupuesto maximo"
+  (not (presupuestoMax ?))
+  =>
+  (bind ?presupuesto (pregunta-numerica "¿Cual es vuestro presupuesto maximo ?" 12000 50000))
+  (assert (DatosMenu (presupuestoMax ?presupuesto)))
+  (format t "Debug: La respuesta introducida es: %d" ?presupuesto)
+  (printout t crlf)
+)
+
+(defrule recopilacion::HayVegetarianos "Pregunta si acude gente vegetariana"
+  (not (vegetariano ?))
+  =>
+  (if(pregunta-binaria "¿Acudira gente vegetariana?")
+    then (assert (preferencias(vegetariano TRUE)))
+    else (assert (preferencias(vegetariano FALSE))))
+)
+
+(defrule recopilacion::HayAlergicosGluten "Pregunta si hay gente alérgica al gluten"
+  (not (gluten ?))
+  =>
+  (if(pregunta-binaria "¿Se debe tener en cuenta alergias como el gluten?")
+    then (assert (preferencias(gluten TRUE)))
+    else (assert (preferencias(gluten FALSE))))
+)
+
+(defrule recopilacion::HayAlergicosLactosa "Pregunta si hay gente alérgica a la lactosa"
+  (not (lactosa ?))
+  =>
+  (if(pregunta-binaria "¿Se debe tener en cuenta alergias como la lactosa?")
+    then (assert (preferencias(lactosa TRUE)))
+    else (assert (preferencias(lactosa FALSE))))
+)
+
+
+
+
+
 
 ;
 ;(defrule regla-pruebas "Regla temporal para probar las funciones"
