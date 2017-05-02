@@ -1,11 +1,4 @@
-; Mon May 01 20:20:43 CEST 2017
+; Tue May 02 18:02:20 CEST 2017
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
-
-([practica2_Class20011] of  Congreso
-
-	(Fecha_Celebracion 2)
-	(Nombre "Reunion de IA")
-	(Numero_Comensales 2)
-	(Tipo_Evento_Congreso Comida))
