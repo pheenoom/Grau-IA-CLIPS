@@ -332,10 +332,11 @@
 
 (deftemplate MAIN::DatosMenu
 	(slot epoca (type SYMBOL))
-	(slot NumComensales (type INTEGER))
+	(slot numComensales (type INTEGER))
 	(slot presupuestoMax (type INTEGER))
-	(slot tipoEvento (type SYMBOL) (allowed-values F C))
+	(slot tipoEvento (type SYMBOL) (allowed-values Boda Comunion Bautizo Congreso))
 	(slot bebidaPorPlato (type SYMBOL) (allowed-values FALSE TRUE))
+	(slot mesEvento (type INTEGER))
 )
 
 (deftemplate MAIN::preferencias
@@ -397,7 +398,8 @@
 (defrule recopilacion::pregunta-familiar-congreso "Regla que pregunta al usuario si el evento es familiar o un congreso"
   (not (tipoEvento ?))
   =>
-  (bind ?respuesta (pregunta-general "¿Que tipo de evento se va a celebrar? (F)amiliar/(C)ongreso" familiar congreso f c))
+  ;Ahora mismo no se como hacerlo para separarlo en dos preguntas
+  (bind ?respuesta (pregunta-general "¿Que tipo de evento se va a celebrar? (B)oda/Co(m)union/B(a)utizo/(C)ongreso" b m a c))
   (assert (DatosMenu (tipoEvento ?respuesta)))
   (format t "Debug: La respuesta selecionada es: %s" ?respuesta)
   (printout t crlf)
@@ -409,15 +411,6 @@
   (if(pregunta-binaria "¿Incluir en cada plato una bebida?")
     then (assert (DatosMenu (bebidaPorPlato TRUE)))
     else (assert (DatosMenu (bebidaPorPlato FALSE))))
-  (printout t crlf)
-)
-
-(defrule recopilacion::pregunta-estilo-comida "Regla que pergunta al usuario que estilo de comida quiere, ej: Tradicional, Sibarita..."
-  (not (estilo ?))
-  =>
-  (bind ?respuesta (pregunta-general "¿Que estilo de comida quiere en el menu? (S)ibarita/(M)oderno/(I)ndefinido" sibarita moderno indefinido s m i))
-  (assert (preferencias (estilo ?respuesta)))
-  (format t "Debug: La respuesta selecionada es: %s" ?respuesta)
   (printout t crlf)
 )
 
@@ -455,10 +448,33 @@
     else (assert (preferencias(lactosa FALSE))))
 )
 
+;Preguntas Gerard
+(defrule recopilacion::numero-comensales "Pregunta numero de comensales"
+  (not (numComensales ?))
+  =>
+  (bind ?respuesta (pregunta-numerica "¿Cuantos comensales sereis ?" 10 1000))
+  (assert (DatosMenu (numComensales ?respuesta)))
+  (format t "Debug: La respuesta introducida es: %d" ?respuesta)
+  (printout t crlf)
+)
 
+(defrule recopilacion::mes-evento "Pregunta en que mes se realiza el evento"
+  (not (mesEvento ?))
+  =>
+  (bind ?respuesta (pregunta-numerica "¿En que mes se celebrara el evento ?" 1 12))
+  (assert (DatosMenu (mesEvento ?respuesta)))
+  (format t "Debug: La respuesta introducida es: %d" ?respuesta)
+  (printout t crlf)
+)
 
-
-
+(defrule recopilacion::pregunta-estilo-comida "Pregunta el estilo de la comida"
+  (not (estilo ?))
+  =>
+  (bind ?respuesta (pregunta-general "¿Que estilo de comida quiere en el menu? (S)ibarita/(M)oderno/(I)ndefinido" sibarita moderno indefinido s m i))
+  (assert (preferencias (estilo ?respuesta)))
+  (format t "Debug: La respuesta selecionada es: %s" ?respuesta)
+  (printout t crlf)
+)
 
 ;
 ;(defrule regla-pruebas "Regla temporal para probar las funciones"
