@@ -1,4 +1,4 @@
-; Tue May 02 18:02:20 CEST 2017
+; Wed May 03 13:07:09 CEST 2017
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -295,6 +295,10 @@
 	(is-a Ingrediente)
 	(role concrete))
 
+(defclass Misc
+	(is-a Ingrediente)
+	(role concrete))
+
 (defclass Menu
 	(is-a USER)
 	(role concrete)
@@ -327,3 +331,11 @@
 ;+		(allowed-classes Bebida)
 ;+		(cardinality 1 1)
 		(create-accessor read-write)))
+
+(defclass %3AUNDEFINED
+	(is-a USER)
+	(role concrete))
+
+(defclass Salsa
+	(is-a %3AUNDEFINED)
+	(role concrete))

@@ -317,7 +317,10 @@
 		(create-accessor read-write)))
 
 
-;;; Declaracion de modulos ----------------------------
+
+;                   ======================================================================  
+;                   ======================  Declaracion de modulos =======================  
+;                   ======================================================================  
 
 ;;; Modulo principal de utilidades, indicamos que exportamos todo
 (defmodule MAIN (export ?ALL))
@@ -328,7 +331,15 @@
 	(export ?ALL)
 )
 
-;;; Declaracion de templates --------------------------
+(defmodule abstraccion
+    (import MAIN ?ALL)
+    (import recopilacion deftemplate ?ALL)
+    (export ?ALL)
+)
+
+;                   ======================================================================  
+;                   =====================  Declaracion de templates ======================  
+;                   ======================================================================  
 
 (deftemplate MAIN::Entrada
 	(slot numComensales (type INTEGER) (default -1))
@@ -343,15 +354,29 @@
 	(slot lactosa (type SYMBOL) (allowed-values FALSE TRUE UNDEF) (default UNDEF))
 )
 
-;;; Declaracion de funciones --------------------------
+
+(deftemplate MAIN::ProblemaAbstracto
+    ; Presupuesto(bajo, medio, alto, muy alto) => ([10,20),[20,40),[40,80),>80)
+    ; NumComensales(bajo, medio, alto, muy alto) => ([20,30),[30,50),[50,100),[100, 500))
+    ; Complejidad(facil, normal, alto) => ([tradicional,sibarita], clasico, moderno)
+    ; Temporada(invierno, primavera, verano, otoño) => [12-3] [4-5] [6-9] [10-11]
+    (slot presupuesto (type SYMBOL) (allowed-values Bajo Medio Alto MuyAlto))
+    (slot numComensales (type SYMBOL) (allowed-values Bajo Medio Alto MuyAlto))
+    (slot complejidad (type SYMBOL) (allowed-values Facil Normal Alto))
+    (slot temporada (type SYMBOL) (allowed-values Invierno Primavera Verano Otono))
+)
+
+;                   ======================================================================  
+;                   =====================  Declaracion de funciones ======================  
+;                   ======================================================================  
 
 (deffunction pregunta-general "Funcion para formular preguntas generales" (?pregunta $?respuestas-validas)
   (format t "%s: " ?pregunta)
-  (bind ?respuesta (read)) ; Lee de la entrada estandard y almacena el resultado en respuesta
+  (bind ?respuesta (read))
   (while (not (member (lowcase ?respuesta) ?respuestas-validas)) do
       (format t "%s: " ?pregunta)
       (bind ?respuesta (read)))
-  ?respuesta ; Es lo que devuelve la funcion
+  ?respuesta
 )
 
 (deffunction pregunta-numerica-rango "Funcion para formular preguntas numericas que esten comprendidas entre un intervalo" (?pregunta ?min ?max)
@@ -379,9 +404,11 @@
        else FALSE)
 )
 
-;;; Declaracion de reglas --------------------------
+;                   ======================================================================  
+;                   =======================  Declaracion de reglas =======================  
+;                   ======================================================================  
 
-(defrule MAIN::inicio "Regla inicial"
+(defrule MAIN::inicio "Regla que genera la cabezera inicial"
 	(declare (salience 10))	
 	=>
 	(printout t "====================================================================" crlf)
@@ -393,9 +420,26 @@
 	(focus recopilacion)
 )
 
-;;; Modulo recopilacion
+;                   ======================================================================  
+;                   ======================  Modulo de recopilacion  ======================  
+;                   ======================================================================  
 
-(defrule recopilacion::pregunta-familiar-congreso "Regla que pregunta al usuario si el evento es familiar o un congreso"
+
+
+;                   ======================================================================  
+;                   Debug: Orden de las preguntas
+;                           - Que tipo de evento se va a realizar
+;                           - Si es una cena o una comida
+;                           - Que estilo de comida
+;                           - En que mes se celebra el evento
+;                           - Numero de comensales que van a asistir
+;                           - Presupuesto
+;                           - 
+;
+;                   ======================================================================  
+
+
+(defrule recopilacion::pregunta-familiar-congreso "Pregunta al cliente que tipo de evento se va a realizar"
   (not (Entrada))
   =>
   (bind ?respuesta (pregunta-general "¿Que tipo de evento se va a celebrar? (B)oda/Co(m)union/B(a)utizo/(C)ongreso" b m a c))
@@ -413,15 +457,7 @@
   )
 )
 
-(defrule recopilacion::numero-comensales "Regla que pregunta el numero de comensales"
-    ?e <- (Entrada (numComensales ?comensales))
-    (test (< ?comensales 0))  
-    =>
-    (bind ?respuesta (pregunta-numerica-rango "¿Cuantos comensales sereis?" 50 1000))
-    (modify ?e (numComensales ?respuesta))
-)
-
-(defrule recopilacion::comida-cena "Regla que pregunta si el evento sera una cena o una comida"
+(defrule recopilacion::comida-cena "Pregunta al cliente si el evento sera una cena o una comida"
     ?e <- (Entrada (comida ?comida))
     (test (eq ?comida UNDEF))
     =>
@@ -432,7 +468,39 @@
     )
 )
 
-(defrule recopilacion::pregunta-bebida-plato "Regla que pregunta al usuario si quiere una bebida por plato"
+(defrule recopilacion::pregunta-estilo-comida "Pregunta al cliente el estilo de la comida"
+    ?e <- (Entrada (estilo ?est))
+    (test (eq ?est UNDEF))
+  =>
+  (bind ?respuesta (pregunta-general "¿Que estilo de comida quiere en el menu? (S)ibarita/(M)oderno/(I)ndefinido" sibarita moderno indefinido s m i))
+  (modify ?e (estilo ?respuesta))
+)
+
+(defrule recopilacion::mes-evento "Pregunta al cliente en que mes se realiza el evento"
+    ?e <- (Entrada (mesEvento ?mes))
+    (test (< ?mes 0))
+    =>
+    (bind ?respuesta (pregunta-numerica-rango "¿En que mes se celebrara el evento ?" 1 12))
+    (modify ?e (mesEvento ?respuesta))
+)
+
+(defrule recopilacion::numero-comensales "Pregunta al cliente el numero de comensales"
+    ?e <- (Entrada (numComensales ?comensales))
+    (test (< ?comensales 0))  
+    =>
+    (bind ?respuesta (pregunta-numerica-rango "¿Cuantos comensales sereis?" 20 500))
+    (modify ?e (numComensales ?respuesta))
+)
+
+(defrule recopilacion::establecer-presupuesto-maximo "Pregunta al cliente que presupuesto por menu"
+    ?e <- (Entrada (presupuestoMax ?max))
+    (test (< ?max 0))
+    =>
+    (bind ?presupuesto (pregunta-numerica-min "¿Cual el preuspuesto del menu por persona?" 10))
+    (modify ?e (presupuestoMax ?presupuesto))
+)
+
+(defrule recopilacion::pregunta-bebida-plato "Pregunta al cliente si quiere una bebida por plato"
     ?e <- (Entrada (bebidaPorPlato ?bebida))
     (test (eq ?bebida UNDEF))
     =>
@@ -442,15 +510,7 @@
     )
 )
 
-(defrule recopilacion::establecer-presupuesto-maximo "Establece el presupuesto maximo"
-    ?e <- (Entrada (presupuestoMax ?max))
-    (test (< ?max 0))
-    =>
-    (bind ?presupuesto (pregunta-numerica-rango "¿Cual es vuestro presupuesto maximo ?" 12000 50000))
-    (modify ?e (presupuestoMax ?presupuesto))
-)
-
-(defrule recopilacion::HayVegetarianos "Pregunta si acude gente vegetariana"
+(defrule recopilacion::pregunta-vegetarianos "Pregunta al cliente si acude gente vegetariana"
     ?e <- (Entrada (vegetariano ?veg))
     (test (eq ?veg UNDEF))
     =>
@@ -460,7 +520,7 @@
     )
 )
 
-(defrule recopilacion::HayAlergicosGluten "Pregunta si hay gente alérgica al gluten"
+(defrule recopilacion::pregunta-alergicos-gluten "Pregunta al cliente si hay gente alérgica al gluten"
     ?e <- (Entrada (gluten ?glu))
     (test (eq ?glu UNDEF))
     =>
@@ -470,7 +530,7 @@
     )
 )
 
-(defrule recopilacion::HayAlergicosLactosa "Pregunta si hay gente alérgica a la lactosa"
+(defrule recopilacion::pregunta-alergicos-lactosa "Pregunta al cliente si hay gente alérgica a la lactosa"
     ?e <- (Entrada (lactosa ?lac))
     (test (eq ?lac UNDEF))
     =>
@@ -480,18 +540,57 @@
     )
 )
 
-(defrule recopilacion::mes-evento "Pregunta en que mes se realiza el evento"
-    ?e <- (Entrada (mesEvento ?mes))
-    (test (< ?mes 0))
+(defrule recopilacion::entrada-completada "Regla que comprueba que todas las preguntas han sido respondidas"
+    (Entrada (numComensales ?numComensales))
+    (test (>= ?numComensales 0))
+    
+    (Entrada (presupuestoMax ?presupuestoMax))
+    (test (>= ?presupuestoMax 0))
+    
+    (Entrada (tipoEvento ?tipoEvento))
+    (test (not (eq ?tipoEvento UNDEF)))
+    
+    (Entrada (bebidaPorPlato ?bebidaPorPlato))
+    (test (not (eq ?bebidaPorPlato UNDEF)))
+    
+    (Entrada (mesEvento ?mesEvento))
+    (test (>= ?mesEvento 0))
+    
+    (Entrada (comida ?comida))
+    (test (not (eq ?comida UNDEF)))
+    
+    (Entrada (estilo ?estilo))
+    (test (not (eq ?estilo UNDEF)))
+    
+    (Entrada (vegetariano ?vegetariano))
+    (test (not (eq ?vegetariano UNDEF)))
+    
+    (Entrada (gluten ?gluten))
+    (test (not (eq ?gluten UNDEF)))
+    
+    (Entrada (lactosa ?lactosa))
+    (test (not (eq ?lactosa UNDEF)))
     =>
-    (bind ?respuesta (pregunta-numerica-rango "¿En que mes se celebrara el evento ?" 1 12))
-    (modify ?e (mesEvento ?respuesta))
+    (focus abstracion)
 )
 
-(defrule recopilacion::pregunta-estilo-comida "Pregunta el estilo de la comida"
-    ?e <- (Entrada (estilo ?est))
-    (test (eq ?est UNDEF))
-  =>
-  (bind ?respuesta (pregunta-general "¿Que estilo de comida quiere en el menu? (S)ibarita/(M)oderno/(I)ndefinido" sibarita moderno indefinido s m i))
-  (modify ?e (estilo ?respuesta))
-)
+;                   ======================================================================  
+;                   ======================   Modulo de abstracion   ======================  
+;                   ======================================================================  
+
+
+    ; Presupuesto(bajo, medio, alto, muy alto) => ([10,20),[20,40),[40,80),>80)
+    ; NumComensales(bajo, medio, alto, muy alto) => ([20,30),[30,50),[50,100),[100, 500))
+    ; Complejidad(facil, normal, alto) => ([tradicional,sibarita], clasico, moderno)
+    ; Temporada(invierno, primavera, verano, otoño) => [12-3] [4-5] [6-9] [10-11]
+;(defrule abstracion::generar-problema-abstracto "Regla que genera el problema abstracto a partir de la entrada"
+;    (not ProblemaAbstracto)
+;    =>
+;    (Entrada (numComensales ?numComensales))
+;    (if )
+;    (Entrada (presupuestoMax ?presupuestoMax))
+;    (Entrada (mesEvento ?mesEvento))  
+;    (Entrada (estilo ?estilo))
+;    (assert (ProblemaAbstracto () () () ))
+;)
+
