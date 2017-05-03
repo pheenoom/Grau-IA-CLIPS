@@ -1,0 +1,338 @@
+; Wed May 03 13:07:09 CEST 2017
+; 
+;+ (version "3.5")
+;+ (build "Build 663")
+
+([ontologia_Class1] of  Ingrediente
+
+	(Mes_Final_Temporada 1)
+	(Mes_Inicio_Temporada 12)
+	(Nombre "Lechuga")
+	(PVP 0.6))
+
+([ontologia_Class10] of  Salsa
+)
+
+([ontologia_Class15] of  Ingrediente
+
+	(Mes_Final_Temporada 1)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Aceite"))
+
+([ontologia_Class16] of  Ingrediente
+
+	(Mes_Final_Temporada 1)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Vinagre de Modena"))
+
+([ontologia_Class17] of  Primero
+
+	(Ingredientes
+		[ontologia_Class1]
+		[ontologia_Class2]
+		[ontologia_Class15]
+		[ontologia_Class16]
+		[ontologia_Class3]
+		[ontologia_Class4])
+	(Nombre "Ensalada de queso de cabra y nueces")
+	(Racion Normal)
+	(Vegetariano TRUE))
+
+([ontologia_Class18] of  Ingrediente
+
+	(Mes_Final_Temporada 1)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Carne para guisar"))
+
+([ontologia_Class2] of  Ingrediente
+
+	(Mes_Final_Temporada 1)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Tomate Natural"))
+
+([ontologia_Class20] of  Ingrediente
+
+	(Mes_Final_Temporada 1)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Ajo"))
+
+([ontologia_Class21] of  Ingrediente
+
+	(Mes_Final_Temporada 1)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Hoja de laurel"))
+
+([ontologia_Class22] of  Ingrediente
+
+	(Mes_Final_Temporada 1)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Cebolla"))
+
+([ontologia_Class23] of  Ingrediente
+
+	(Mes_Final_Temporada 1)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Pimientos Choriceros"))
+
+([ontologia_Class24] of  Ingrediente
+
+	(Mes_Final_Temporada 1)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Pimenton de la Vera dulce"))
+
+([ontologia_Class25] of  Ingrediente
+
+	(Mes_Final_Temporada 1)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Pimenton de la Vera picante"))
+
+([ontologia_Class26] of  Ingrediente
+
+	(Mes_Final_Temporada 1)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Zanahoria"))
+
+([ontologia_Class27] of  Ingrediente
+
+	(Mes_Final_Temporada 1)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Vino tinto"))
+
+([ontologia_Class28] of  Primero
+
+	(Ingredientes
+		[ontologia_Class18]
+		[ontologia_Class21]
+		[ontologia_Class24]
+		[ontologia_Class25]
+		[ontologia_Class27]
+		[ontologia_Class26]
+		[ontologia_Class23]
+		[ontologia_Class20]
+		[ontologia_Class22])
+	(Nombre "Carne guisada")
+	(Racion Normal))
+
+([ontologia_Class29] of  Ingrediente
+
+	(Mes_Final_Temporada 1)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Lomo de salmon"))
+
+([ontologia_Class3] of  Ingrediente
+
+	(Mes_Final_Temporada 1)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Nueces"))
+
+([ontologia_Class30] of  Ingrediente
+
+	(Mes_Final_Temporada 1)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Pimiento rojo"))
+
+([ontologia_Class31] of  Ingrediente
+
+	(Mes_Final_Temporada 1)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Salsa de soja"))
+
+([ontologia_Class32] of  Ingrediente
+
+	(Mes_Final_Temporada 1)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Miel"))
+
+([ontologia_Class33] of  Ingrediente
+
+	(Mes_Final_Temporada 1)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Jengibre fresco"))
+
+([ontologia_Class34] of  Ingrediente
+
+	(Mes_Final_Temporada 1)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Aceite de sesamo"))
+
+([ontologia_Class35] of  Ingrediente
+
+	(Mes_Final_Temporada 1)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Sal"))
+
+([ontologia_Class36] of  Segundo
+
+	(Ingredientes
+		[ontologia_Class29]
+		[ontologia_Class22]
+		[ontologia_Class30]
+		[ontologia_Class34]
+		[ontologia_Class33]
+		[ontologia_Class32]
+		[ontologia_Class31]
+		[ontologia_Class35])
+	(Nombre "Salmon al horno")
+	(Racion Normal))
+
+([ontologia_Class37] of  Segundo
+
+	(Ingredientes
+		[ontologia_Class38]
+		[ontologia_Class20]
+		[ontologia_Class32]
+		[ontologia_Class40]
+		[ontologia_Class35]
+		[ontologia_Class39])
+	(Nombre "Pollo al ajillo")
+	(Racion Normal))
+
+([ontologia_Class38] of  Ingrediente
+
+	(Mes_Final_Temporada 1)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Pollo de corral"))
+
+([ontologia_Class39] of  Ingrediente
+
+	(Mes_Final_Temporada 1)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Vino dulce"))
+
+([ontologia_Class4] of  Ingrediente
+
+	(Lactosa TRUE)
+	(Mes_Final_Temporada 1)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Queso de cabra"))
+
+([ontologia_Class40] of  Ingrediente
+
+	(Mes_Final_Temporada 1)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Perejil"))
+
+([ontologia_Class41] of  Ingrediente
+
+	(Gluten TRUE)
+	(Mes_Final_Temporada 1)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Mantequilla"))
+
+([ontologia_Class42] of  Ingrediente
+
+	(Mes_Final_Temporada 1)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Esencia de vainilla"))
+
+([ontologia_Class43] of  Ingrediente
+
+	(Mes_Final_Temporada 1)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Queso philadelphia"))
+
+([ontologia_Class44] of  Ingrediente
+
+	(Mes_Final_Temporada 1)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Nata para montar"))
+
+([ontologia_Class45] of  Ingrediente
+
+	(Mes_Final_Temporada 1)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Galleta"))
+
+([ontologia_Class46] of  Postre
+
+	(Ingredientes
+		[ontologia_Class57]
+		[ontologia_Class52]
+		[ontologia_Class55]
+		[ontologia_Class51]
+		[ontologia_Class50]
+		[ontologia_Class54]
+		[ontologia_Class56])
+	(Nombre "Flan de Huevo")
+	(Racion Normal))
+
+([ontologia_Class50] of  Ingrediente
+
+	(Mes_Final_Temporada 1)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Leche"))
+
+([ontologia_Class51] of  Ingrediente
+
+	(Mes_Final_Temporada 1)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Huevo"))
+
+([ontologia_Class52] of  Ingrediente
+
+	(Mes_Final_Temporada 1)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Azucar"))
+
+([ontologia_Class54] of  Ingrediente
+
+	(Mes_Final_Temporada 1)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Vainilla"))
+
+([ontologia_Class55] of  Ingrediente
+
+	(Mes_Final_Temporada 1)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Canela"))
+
+([ontologia_Class56] of  Ingrediente
+
+	(Mes_Final_Temporada 1)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Zumo de limon"))
+
+([ontologia_Class57] of  Ingrediente
+
+	(Mes_Final_Temporada 1)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Agua"))
+
+([ontologia_Class58] of  Postre
+
+	(Ingredientes
+		[ontologia_Class52]
+		[ontologia_Class61]
+		[ontologia_Class45]
+		[ontologia_Class59]
+		[ontologia_Class41]
+		[ontologia_Class60]
+		[ontologia_Class44]
+		[ontologia_Class43]
+		[ontologia_Class54])
+	(Nombre "Tarta de queso")
+	(Racion Normal))
+
+([ontologia_Class59] of  Ingrediente
+
+	(Mes_Final_Temporada 1)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Gelatina en polvo"))
+
+([ontologia_Class60] of  Ingrediente
+
+	(Mes_Final_Temporada 1)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Mermelada de fresa"))
+
+([ontologia_Class61] of  Ingrediente
+
+	(Mes_Final_Temporada 1)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Cuajada"))
+
+([ontologia_Class8] of  Salsa
+)
+
+([ontologia_Class9] of  Salsa
+)
