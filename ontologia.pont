@@ -1,4 +1,4 @@
-; Wed May 03 13:07:09 CEST 2017
+; Thu May 04 22:16:08 CEST 2017
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -63,14 +63,14 @@
 ;+		(allowed-classes Segundo)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot Platos_Compatibles
+	(multislot Platos_Compatibles
 		(type INSTANCE)
 ;+		(allowed-classes Plato)
-;+		(cardinality 0 1)
+		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write))
 	(single-slot Racion
 		(type SYMBOL)
-		(allowed-values Normal Abundante)
+		(allowed-values Normal Abundante Peque%C3%B1a)
 		(default Normal)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
@@ -211,14 +211,14 @@
 		(create-accessor read-write))
 	(single-slot Racion
 		(type SYMBOL)
-		(allowed-values Normal Abundante)
+		(allowed-values Normal Abundante Peque%C3%B1a)
 		(default Normal)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot Platos_Compatibles
+	(multislot Platos_Compatibles
 		(type INSTANCE)
 ;+		(allowed-classes Plato)
-;+		(cardinality 0 1)
+		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write)))
 
 (defclass Primero
@@ -287,15 +287,23 @@
 	(is-a Ingrediente)
 	(role concrete))
 
-(defclass Especia
-	(is-a Ingrediente)
-	(role concrete))
-
 (defclass Fruta
 	(is-a Ingrediente)
 	(role concrete))
 
-(defclass Misc
+(defclass Grasas
+	(is-a Ingrediente)
+	(role concrete))
+
+(defclass Condimento
+	(is-a Ingrediente)
+	(role concrete))
+
+(defclass Marisco
+	(is-a Ingrediente)
+	(role concrete))
+
+(defclass Frutos_secos
 	(is-a Ingrediente)
 	(role concrete))
 
