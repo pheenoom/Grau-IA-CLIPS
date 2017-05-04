@@ -318,9 +318,9 @@
 
 
 
-;                   ======================================================================  
-;                   ======================  Declaracion de modulos =======================  
-;                   ======================================================================  
+;                   ======================================================================
+;                   ======================  Declaracion de modulos =======================
+;                   ======================================================================
 
 ;;; Modulo principal de utilidades, indicamos que exportamos todo
 (defmodule MAIN (export ?ALL))
@@ -333,13 +333,13 @@
 
 (defmodule abstraccion
     (import MAIN ?ALL)
-    (import recopilacion deftemplate ?ALL)
+    (import recopilacion ?ALL)
     (export ?ALL)
 )
 
-;                   ======================================================================  
-;                   =====================  Declaracion de templates ======================  
-;                   ======================================================================  
+;                   ======================================================================
+;                   =====================  Declaracion de templates ======================
+;                   ======================================================================
 
 (deftemplate MAIN::Entrada
 	(slot numComensales (type INTEGER) (default -1))
@@ -348,27 +348,26 @@
 	(slot bebidaPorPlato (type SYMBOL) (allowed-values FALSE TRUE UNDEF) (default UNDEF))
 	(slot mesEvento (type INTEGER) (default -1))
 	(slot comida (type SYMBOL) (allowed-values FALSE TRUE UNDEF) (default UNDEF))
-	(slot estilo (type SYMBOL) (allowed-values S M I UNDEF) (default UNDEF))
+	(slot estilo (type SYMBOL) (allowed-values Sibarita Moderno Clasico Tradicional UNDEF) (default UNDEF))
 	(slot vegetariano (type SYMBOL) (allowed-values FALSE TRUE UNDEF) (default UNDEF))
 	(slot gluten (type SYMBOL) (allowed-values FALSE TRUE UNDEF) (default UNDEF))
 	(slot lactosa (type SYMBOL) (allowed-values FALSE TRUE UNDEF) (default UNDEF))
 )
-
 
 (deftemplate MAIN::ProblemaAbstracto
     ; Presupuesto(bajo, medio, alto, muy alto) => ([10,20),[20,40),[40,80),>80)
     ; NumComensales(bajo, medio, alto, muy alto) => ([20,30),[30,50),[50,100),[100, 500))
     ; Complejidad(facil, normal, alto) => ([tradicional,sibarita], clasico, moderno)
     ; Temporada(invierno, primavera, verano, otoño) => [12-3] [4-5] [6-9] [10-11]
-    (slot presupuesto (type SYMBOL) (allowed-values Bajo Medio Alto MuyAlto))
-    (slot numComensales (type SYMBOL) (allowed-values Bajo Medio Alto MuyAlto))
-    (slot complejidad (type SYMBOL) (allowed-values Facil Normal Alto))
-    (slot temporada (type SYMBOL) (allowed-values Invierno Primavera Verano Otono))
+    (slot presupuesto (type SYMBOL) (allowed-values Bajo Medio Alto MuyAlto UNDEF) (default UNDEF))
+    (slot numComensales (type SYMBOL) (allowed-values Bajo Medio Alto MuyAlto UNDEF) (default UNDEF))
+    (slot complejidad (type SYMBOL) (allowed-values Facil Normal Alto UNDEF) (default UNDEF))
+    (slot temporada (type SYMBOL) (allowed-values Invierno Primavera Verano Otono UNDEF) (default UNDEF))
 )
 
-;                   ======================================================================  
-;                   =====================  Declaracion de funciones ======================  
-;                   ======================================================================  
+;                   ======================================================================
+;                   =====================  Declaracion de funciones ======================
+;                   ======================================================================
 
 (deffunction pregunta-general "Funcion para formular preguntas generales" (?pregunta $?respuestas-validas)
   (format t "%s: " ?pregunta)
@@ -404,12 +403,12 @@
        else FALSE)
 )
 
-;                   ======================================================================  
-;                   =======================  Declaracion de reglas =======================  
-;                   ======================================================================  
+;                   ======================================================================
+;                   =======================  Declaracion de reglas =======================
+;                   ======================================================================
 
 (defrule MAIN::inicio "Regla que genera la cabezera inicial"
-	(declare (salience 10))	
+	(declare (salience 10))
 	=>
 	(printout t "====================================================================" crlf)
   	(printout t "=    Sistema de elaboracion de menus personalizados Rico Rico      =" crlf)
@@ -420,13 +419,11 @@
 	(focus recopilacion)
 )
 
-;                   ======================================================================  
-;                   ======================  Modulo de recopilacion  ======================  
-;                   ======================================================================  
+;                   ======================================================================
+;                   ======================  Modulo de recopilacion  ======================
+;                   ======================================================================
 
-
-
-;                   ======================================================================  
+;                   ======================================================================
 ;                   Debug: Orden de las preguntas
 ;                           - Que tipo de evento se va a realizar
 ;                           - Si es una cena o una comida
@@ -434,9 +431,9 @@
 ;                           - En que mes se celebra el evento
 ;                           - Numero de comensales que van a asistir
 ;                           - Presupuesto
-;                           - 
+;                           -
 ;
-;                   ======================================================================  
+;                   ======================================================================
 
 
 (defrule recopilacion::pregunta-familiar-congreso "Pregunta al cliente que tipo de evento se va a realizar"
@@ -445,7 +442,7 @@
   (bind ?respuesta (pregunta-general "¿Que tipo de evento se va a celebrar? (B)oda/Co(m)union/B(a)utizo/(C)ongreso" b m a c))
   (if (eq ?respuesta b)
     then (assert (Entrada (tipoEvento Boda)))
-    else 
+    else
       (if (eq ?respuesta m)
         then (assert (Entrada (tipoEvento Comunion) (comida TRUE)))
         else
@@ -472,7 +469,7 @@
     ?e <- (Entrada (estilo ?est))
     (test (eq ?est UNDEF))
   =>
-  (bind ?respuesta (pregunta-general "¿Que estilo de comida quiere en el menu? (S)ibarita/(M)oderno/(I)ndefinido" sibarita moderno indefinido s m i))
+  (bind ?respuesta (pregunta-general "¿Que estilo de comida quiere en el menu? (S)ibarita/(M)oderno/(T)radicional/(C)lasico" s m t c))
   (modify ?e (estilo ?respuesta))
 )
 
@@ -486,7 +483,7 @@
 
 (defrule recopilacion::numero-comensales "Pregunta al cliente el numero de comensales"
     ?e <- (Entrada (numComensales ?comensales))
-    (test (< ?comensales 0))  
+    (test (< ?comensales 0))
     =>
     (bind ?respuesta (pregunta-numerica-rango "¿Cuantos comensales sereis?" 20 500))
     (modify ?e (numComensales ?respuesta))
@@ -543,54 +540,101 @@
 (defrule recopilacion::entrada-completada "Regla que comprueba que todas las preguntas han sido respondidas"
     (Entrada (numComensales ?numComensales))
     (test (>= ?numComensales 0))
-    
+
     (Entrada (presupuestoMax ?presupuestoMax))
     (test (>= ?presupuestoMax 0))
-    
+
     (Entrada (tipoEvento ?tipoEvento))
     (test (not (eq ?tipoEvento UNDEF)))
-    
+
     (Entrada (bebidaPorPlato ?bebidaPorPlato))
     (test (not (eq ?bebidaPorPlato UNDEF)))
-    
+
     (Entrada (mesEvento ?mesEvento))
     (test (>= ?mesEvento 0))
-    
+
     (Entrada (comida ?comida))
     (test (not (eq ?comida UNDEF)))
-    
+
     (Entrada (estilo ?estilo))
     (test (not (eq ?estilo UNDEF)))
-    
+
     (Entrada (vegetariano ?vegetariano))
     (test (not (eq ?vegetariano UNDEF)))
-    
+
     (Entrada (gluten ?gluten))
     (test (not (eq ?gluten UNDEF)))
-    
+
     (Entrada (lactosa ?lactosa))
     (test (not (eq ?lactosa UNDEF)))
     =>
-    (focus abstracion)
+		(focus abstraccion)
 )
 
-;                   ======================================================================  
-;                   ======================   Modulo de abstracion   ======================  
-;                   ======================================================================  
+;                   ======================================================================
+;                   ======================  Modulo de abstraccion   ======================
+;                   ======================================================================
 
+(defrule abstraccion::abstraer-presupuesto "Regla que nos permite abstraer del presupuesto propuesto por el usuario a unos valores abstractos"
+    (not (ProblemaAbstracto))
+		(Entrada (presupuestoMax ?presupuestoMax))
+    =>
+		(if (and (>= ?presupuestoMax 10) (< ?presupuestoMax 20))
+				then (assert (ProblemaAbstracto (presupuesto Bajo)))
+				else (if (and (>= ?presupuestoMax 20) (< ?presupuestoMax 40))
+							then (assert (ProblemaAbstracto (presupuesto Medio)))
+							else (if (and (>= ?presupuestoMax 40) (< ?presupuestoMax 80))
+										then (assert (ProblemaAbstracto (presupuesto Alto)))
+										else (assert (ProblemaAbstracto (presupuesto MuyAlto)))
+							)
+				)
+		)
+)
 
-    ; Presupuesto(bajo, medio, alto, muy alto) => ([10,20),[20,40),[40,80),>80)
-    ; NumComensales(bajo, medio, alto, muy alto) => ([20,30),[30,50),[50,100),[100, 500))
-    ; Complejidad(facil, normal, alto) => ([tradicional,sibarita], clasico, moderno)
-    ; Temporada(invierno, primavera, verano, otoño) => [12-3] [4-5] [6-9] [10-11]
-;(defrule abstracion::generar-problema-abstracto "Regla que genera el problema abstracto a partir de la entrada"
-;    (not ProblemaAbstracto)
-;    =>
-;    (Entrada (numComensales ?numComensales))
-;    (if )
-;    (Entrada (presupuestoMax ?presupuestoMax))
-;    (Entrada (mesEvento ?mesEvento))  
-;    (Entrada (estilo ?estilo))
-;    (assert (ProblemaAbstracto () () () ))
-;)
+(defrule abstraccion::abstraer-comensales "Regla que nos permite abstraer el numero de comensales propuesto por el usuario a unos valores abstractos"
+		?e <- (ProblemaAbstracto (numComensales ?num))
+		(test (eq ?num UNDEF))
+		(Entrada (numComensales ?numComensales))
+		=>
+		(if (and (>= ?numComensales 20) (< ?numComensales 30))
+				then (modify ?e (numComensales Bajo))
+				else (if (and (>= ?numComensales 30) (< ?numComensales 50))
+							then (modify ?e (numComensales Medio))
+							else (if (and (>= ?numComensales 50) (< ?numComensales 100))
+										then (modify ?e (numComensales Alto))
+										else (modify ?e (numComensales MuyAlto))
+							)
+				)
+		)
+)
 
+(defrule abstraccion::abstraer-temporada "Regla que nos permite abstraer el mes del evento propuesto por el usuario a unos valores abstractos"
+		?e <- (ProblemaAbstracto (temporada ?temporada))
+		(test (eq ?temporada UNDEF))
+		(Entrada (mesEvento ?mesEvento))
+		=>
+		(if (and (>= ?mesEvento 4) (<= ?mesEvento 5))
+				then (modify ?e (temporada Primavera))
+				else (if (and (>= ?mesEvento 6) (< ?mesEvento 9))
+							then (modify ?e (temporada Verano))
+							else (if (and (>= ?mesEvento 10) (< ?mesEvento 11))
+										then (modify ?e (temporada Otono))
+										else (modify ?e (temporada Invierno))
+							)
+				)
+		)
+)
+
+(defrule abstraccion::abstraer-complejidad "Regla que nos permite abstraer el estilo propuesto por el usuario a unos valores abstractos"
+		?e <- (ProblemaAbstracto (complejidad ?dificultad))
+		(test (eq ?dificultad UNDEF))
+		(Entrada (estilo ?estilo))
+		=>
+		(if (or (eq ?estilo Tradicional) (eq ?estilo Sibarita))
+				then (modify ?e (complejidad Facil))
+				else (if (eq ?estilo Clasico)
+							then (modify ?e (complejidad Normal))
+							else (modify ?e (complejidad Alto))
+				)
+		)
+)
