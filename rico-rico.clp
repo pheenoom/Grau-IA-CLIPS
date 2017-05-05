@@ -1,3 +1,9 @@
+; Fri May 05 01:04:46 CEST 2017
+;
+;+ (version "3.5")
+;+ (build "Build 663")
+
+
 (defclass %3ACLIPS_TOP_LEVEL_SLOT_CLASS "Fake class to save top-level slot information"
 	(is-a USER)
 	(role abstract)
@@ -5,10 +11,12 @@
 		(type SYMBOL)
 		(allowed-values Boda Bautizo)
 		(default Boda)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot Caliente
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot Cantidad
 		(type SYMBOL)
@@ -55,14 +63,14 @@
 ;+		(allowed-classes Segundo)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot Platos_Compatibles
+	(multislot Platos_Compatibles
 		(type INSTANCE)
 ;+		(allowed-classes Plato)
-;+		(cardinality 0 1)
+		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write))
 	(single-slot Racion
 		(type SYMBOL)
-		(allowed-values Normal Abundante)
+		(allowed-values Normal Abundante Peque%C3%B1a)
 		(default Normal)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
@@ -203,14 +211,14 @@
 		(create-accessor read-write))
 	(single-slot Racion
 		(type SYMBOL)
-		(allowed-values Normal Abundante)
+		(allowed-values Normal Abundante Peque%C3%B1a)
 		(default Normal)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot Platos_Compatibles
+	(multislot Platos_Compatibles
 		(type INSTANCE)
 ;+		(allowed-classes Plato)
-;+		(cardinality 0 1)
+		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write)))
 
 (defclass Primero
@@ -279,7 +287,23 @@
 	(is-a Ingrediente)
 	(role concrete))
 
-(defclass Especia
+(defclass Fruta
+	(is-a Ingrediente)
+	(role concrete))
+
+(defclass Grasas
+	(is-a Ingrediente)
+	(role concrete))
+
+(defclass Condimento
+	(is-a Ingrediente)
+	(role concrete))
+
+(defclass Marisco
+	(is-a Ingrediente)
+	(role concrete))
+
+(defclass Frutos_secos
 	(is-a Ingrediente)
 	(role concrete))
 
@@ -316,6 +340,732 @@
 ;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
+; Fri May 05 01:04:46 CEST 2017
+;
+;+ (version "3.5")
+;+ (build "Build 663")
+
+(definstances instances
+	([ontologia_Class0] of  Primero
+
+		(Bebida_Menu [ontologia_Class39])
+		(Ingredientes
+			[ontologia_Class29]
+			[ontologia_Class22]
+			[ontologia_Class10003]
+			[ontologia_Class10005]
+			[ontologia_Class51]
+			[ontologia_Class31]
+			[ontologia_Class10007]
+			[ontologia_Class10008]
+			[ontologia_Class10009]
+			[ontologia_Class10010]
+			[ontologia_Class10011])
+		(Nombre "Tosta tibia de salmón en conserva con tartar de sus huevas")
+		(PVP 6.0)
+		(Racion Normal))
+
+	([ontologia_Class1] of  Verdura
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Lechuga")
+		(PVP 0.6))
+
+	([ontologia_Class10003] of  Verdura
+
+		(Lactosa TRUE)
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Calabacín")
+		(PVP 1.5))
+
+	([ontologia_Class10004] of  Segundo
+
+		(Bebida_Menu [ontologia_Class27])
+		(Caliente FALSE)
+		(Ingredientes
+			[ontologia_Class10012]
+			[ontologia_Class10014]
+			[ontologia_Class10015]
+			[ontologia_Class10016]
+			[ontologia_Class10017])
+		(Nombre "Carpaccio de presa de cerdo duroc")
+		(PVP 8.0)
+		(Racion Peque%C3%B1a)
+		(Vegetariano FALSE))
+
+	([ontologia_Class10005] of  Verdura
+
+		(Mes_Final_Temporada 1)
+		(Mes_Inicio_Temporada 12)
+		(Nombre "Puerro")
+		(PVP 2.1))
+
+	([ontologia_Class10007] of  Derivado
+
+		(Lactosa TRUE)
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Leche_coco")
+		(PVP 1.5))
+
+	([ontologia_Class10008] of  Cereal
+
+		(Gluten TRUE)
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Masa_fresca")
+		(PVP 2.4))
+
+	([ontologia_Class10009] of  Fruta
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Limón")
+		(PVP 0.4))
+
+	([ontologia_Class10010] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Pimienta_negra")
+		(PVP 1.0))
+
+	([ontologia_Class10011] of  Verdura
+
+		(Mes_Final_Temporada 1)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Cebollino")
+		(PVP 1.1))
+
+	([ontologia_Class10012] of  Carne
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Presa_cerdo")
+		(PVP 10.0))
+
+	([ontologia_Class10014] of  Frutos_secos
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Pasas")
+		(PVP 0.4))
+
+	([ontologia_Class10015] of  Frutos_secos
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Orejones")
+		(PVP 0.8))
+
+	([ontologia_Class10016] of  Fruta
+
+		(Mes_Final_Temporada 8)
+		(Mes_Inicio_Temporada 6)
+		(Nombre "Frambuesa")
+		(PVP 3.0))
+
+	([ontologia_Class10017] of  Verdura
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Calabaza")
+		(PVP 2.0))
+
+	([ontologia_Class10018] of  Carne
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Cochinillo_cerdo")
+		(PVP 20.0))
+
+	([ontologia_Class10019] of  Verdura
+
+		(Mes_Final_Temporada 10)
+		(Mes_Inicio_Temporada 3)
+		(Nombre "Boniato")
+		(PVP 2.5))
+
+	([ontologia_Class10020] of  Verdura
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Pimiento_verde")
+		(PVP 0.7))
+
+	([ontologia_Class10021] of  Pescado
+
+		(Mes_Final_Temporada 6)
+		(Mes_Inicio_Temporada 3)
+		(Nombre "Atún_fresco")
+		(PVP 3.0))
+
+	([ontologia_Class10022] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Wasabi")
+		(PVP 0.3))
+
+	([ontologia_Class10023] of  Verdura
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 6)
+		(Nombre "Nabo_japones")
+		(PVP 3.1))
+
+	([ontologia_Class10024] of  Pescado
+
+		(Mes_Final_Temporada 9)
+		(Mes_Inicio_Temporada 4)
+		(Nombre "Cabracho")
+		(PVP 15.0))
+
+	([ontologia_Class10025] of  Marisco
+
+		(Mes_Final_Temporada 10)
+		(Mes_Inicio_Temporada 4)
+		(Nombre "Erizo_mar")
+		(PVP 8.0))
+
+	([ontologia_Class10026] of  Condimento
+
+		(Lactosa TRUE)
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Tomillo")
+		(PVP 0.2))
+
+	([ontologia_Class10027] of  Cereal
+
+		(Gluten TRUE)
+		(Lactosa FALSE)
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Arroz")
+		(PVP 1.25))
+
+	([ontologia_Class10028] of  Bebida
+
+		(Nombre "Cava"))
+
+	([ontologia_Class10030] of  Verdura
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Lentejas")
+		(PVP 1.3))
+
+	([ontologia_Class10031] of  Marisco
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Gambas")
+		(PVP 4.0))
+
+	([ontologia_Class10032] of  Fruta
+
+		(Mes_Final_Temporada 4)
+		(Mes_Inicio_Temporada 11)
+		(Nombre "Naranja")
+		(PVP 0.8))
+
+	([ontologia_Class10033] of  Fruta
+
+		(Mes_Final_Temporada 4)
+		(Mes_Inicio_Temporada 12)
+		(Nombre "Pomelo")
+		(PVP 0.5))
+
+	([ontologia_Class10034] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Comino")
+		(PVP 0.2))
+
+	([ontologia_Class15] of  Grasas
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Aceite_oliva")
+		(PVP 0.2))
+
+	([ontologia_Class16] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Vinagre de Modena")
+		(PVP 1.3))
+
+	([ontologia_Class17] of  Primero
+
+		(Bebida_Menu [ontologia_Class39])
+		(Ingredientes
+			[ontologia_Class1]
+			[ontologia_Class2]
+			[ontologia_Class15]
+			[ontologia_Class16]
+			[ontologia_Class3]
+			[ontologia_Class4])
+		(Nombre "Ensalada de queso de cabra y nueces")
+		(PVP 1.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class2] of  Verdura
+
+		(Mes_Final_Temporada 1)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Tomate Natural")
+		(PVP 1.5))
+
+	([ontologia_Class20] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Ajo")
+		(PVP 0.25))
+
+	([ontologia_Class20005] of  Segundo
+
+		(Bebida_Menu [ontologia_Class27])
+		(Caliente TRUE)
+		(Ingredientes
+			[ontologia_Class10018]
+			[ontologia_Class41]
+			[ontologia_Class10019]
+			[ontologia_Class10020])
+		(Nombre "Cochinillo con puré de boniato ahumado y pimiento verde frito")
+		(PVP 5.0)
+		(Racion Abundante))
+
+	([ontologia_Class20006] of  Primero
+
+		(Bebida_Menu [ontologia_Class39])
+		(Ingredientes
+			[ontologia_Class10021]
+			[ontologia_Class10022]
+			[ontologia_Class10023]
+			[ontologia_Class33])
+		(Nombre "Tartar de atún con mayonesa de wasabi, jengibre encurtido y nabo japonés")
+		(Origen Japonesa)
+		(PVP 6.0)
+		(Racion Peque%C3%B1a))
+
+	([ontologia_Class20007] of  Segundo
+
+		(Bebida_Menu [ontologia_Class39])
+		(Caliente TRUE)
+		(Ingredientes
+			[ontologia_Class10024]
+			[ontologia_Class51]
+			[ontologia_Class10005]
+			[ontologia_Class20008]
+			[ontologia_Class44]
+			[ontologia_Class26]
+			[ontologia_Class10025])
+		(Nombre "Pudding de cabracho con salsa de erizos de mar")
+		(PVP 8.0)
+		(Racion Normal))
+
+	([ontologia_Class20008] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Tomate_frito")
+		(PVP 0.7))
+
+	([ontologia_Class20009] of  Segundo
+
+		(Bebida_Menu [ontologia_Class27])
+		(Caliente TRUE)
+		(Ingredientes
+			[ontologia_Class22]
+			[ontologia_Class20010]
+			[ontologia_Class20]
+			[ontologia_Class20008]
+			[ontologia_Class24]
+			[ontologia_Class10026]
+			[ontologia_Class15]
+			[ontologia_Class20011])
+		(Nombre "Asadura de cordero")
+		(PVP 5.0)
+		(Racion Abundante))
+
+	([ontologia_Class20010] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Vino_blanco")
+		(PVP 0.75))
+
+	([ontologia_Class20011] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Laurel")
+		(PVP 0.2))
+
+	([ontologia_Class20012] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Cava")
+		(PVP 1.2))
+
+	([ontologia_Class20013] of  Primero
+
+		(Bebida_Menu [ontologia_Class27])
+		(Caliente TRUE)
+		(Ingredientes
+			[ontologia_Class10027]
+			[ontologia_Class20012]
+			[ontologia_Class20014]
+			[ontologia_Class22]
+			[ontologia_Class44]
+			[ontologia_Class15]
+			[ontologia_Class20015]
+			[ontologia_Class35])
+		(Nombre "Arroz al cava")
+		(PVP 6.0)
+		(Racion Normal))
+
+	([ontologia_Class20014] of  Carne
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Carne_picada")
+		(PVP 2.0))
+
+	([ontologia_Class20015] of  Derivado
+
+		(Lactosa TRUE)
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Queso_oveja")
+		(PVP 1.0))
+
+	([ontologia_Class20016] of  Primero
+
+		(Bebida_Menu [ontologia_Class39])
+		(Caliente TRUE)
+		(Ingredientes
+			[ontologia_Class10030]
+			[ontologia_Class15]
+			[ontologia_Class10009]
+			[ontologia_Class10031]
+			[ontologia_Class10032]
+			[ontologia_Class10033]
+			[ontologia_Class22]
+			[ontologia_Class26]
+			[ontologia_Class20011]
+			[ontologia_Class10026])
+		(Nombre "Ensalada con gambas cítricos y comino")
+		(Racion Abundante))
+
+	([ontologia_Class22] of  Verdura
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Cebolla")
+		(PVP 0.2))
+
+	([ontologia_Class23] of  Verdura
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Pimientos Choriceros")
+		(PVP 0.9))
+
+	([ontologia_Class24] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Pimenton de la Vera dulce")
+		(PVP 1.0))
+
+	([ontologia_Class25] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Pimenton de la Vera picante")
+		(PVP 1.0))
+
+	([ontologia_Class26] of  Verdura
+
+		(Mes_Final_Temporada 1)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Zanahoria")
+		(PVP 0.4))
+
+	([ontologia_Class27] of  Bebida
+
+		(Nombre "Vino tinto"))
+
+	([ontologia_Class28] of  Primero
+
+		(Bebida_Menu [ontologia_Class27])
+		(Caliente TRUE)
+		(Ingredientes
+			[ontologia_Class24]
+			[ontologia_Class25]
+			[ontologia_Class26]
+			[ontologia_Class23]
+			[ontologia_Class20]
+			[ontologia_Class22])
+		(Nombre "Carne guisada")
+		(PVP 3.0)
+		(Racion Normal))
+
+	([ontologia_Class29] of  Pescado
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Lomo de salmon")
+		(PVP 7.0))
+
+	([ontologia_Class3] of  Frutos_secos
+
+		(Mes_Final_Temporada 1)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Nueces"))
+
+	([ontologia_Class30] of  Verdura
+
+		(Mes_Final_Temporada 1)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Pimiento rojo")
+		(PVP 0.6))
+
+	([ontologia_Class31] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Salsa de soja")
+		(PVP 1.2))
+
+	([ontologia_Class32] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Miel")
+		(PVP 1.8))
+
+	([ontologia_Class33] of  Verdura
+
+		(Mes_Final_Temporada 1)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Jengibre fresco")
+		(PVP 1.8))
+
+	([ontologia_Class34] of  Grasas
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Aceite de sesamo")
+		(PVP 0.1))
+
+	([ontologia_Class35] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Sal")
+		(PVP 0.2))
+
+	([ontologia_Class36] of  Segundo
+
+		(Bebida_Menu [ontologia_Class39])
+		(Caliente TRUE)
+		(Ingredientes
+			[ontologia_Class29]
+			[ontologia_Class22]
+			[ontologia_Class30]
+			[ontologia_Class34]
+			[ontologia_Class33]
+			[ontologia_Class32]
+			[ontologia_Class31]
+			[ontologia_Class35])
+		(Nombre "Salmon al horno")
+		(PVP 3.0)
+		(Racion Normal))
+
+	([ontologia_Class37] of  Segundo
+
+		(Bebida_Menu [ontologia_Class27])
+		(Caliente TRUE)
+		(Ingredientes
+			[ontologia_Class38]
+			[ontologia_Class20]
+			[ontologia_Class32]
+			[ontologia_Class40]
+			[ontologia_Class35]
+			[ontologia_Class39])
+		(Nombre "Pollo al ajillo")
+		(PVP 2.0)
+		(Racion Normal))
+
+	([ontologia_Class38] of  Carne
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Pollo de corral")
+		(PVP 1.5))
+
+	([ontologia_Class39] of  Bebida
+
+		(Nombre "Vino blanco"))
+
+	([ontologia_Class4] of  Derivado
+
+		(Lactosa TRUE)
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Queso de cabra")
+		(PVP 2.3))
+
+	([ontologia_Class40] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Perejil")
+		(PVP 0.1))
+
+	([ontologia_Class41] of  Grasas
+
+		(Gluten TRUE)
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Mantequilla")
+		(PVP 0.75))
+
+	([ontologia_Class42] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Esencia de vainilla")
+		(PVP 1.0))
+
+	([ontologia_Class43] of  Derivado
+
+		(Lactosa TRUE)
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Queso philadelphia")
+		(PVP 0.8))
+
+	([ontologia_Class44] of  Condimento
+
+		(Lactosa TRUE)
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Nata")
+		(PVP 1.5))
+
+	([ontologia_Class45] of  Cereal
+
+		(Mes_Final_Temporada 1)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Galleta"))
+
+	([ontologia_Class46] of  Postre
+
+		(Ingredientes
+			[ontologia_Class52]
+			[ontologia_Class55]
+			[ontologia_Class51]
+			[ontologia_Class50]
+			[ontologia_Class54]
+			[ontologia_Class56])
+		(Nombre "Flan de Huevo")
+		(PVP 1.0)
+		(Racion Normal))
+
+	([ontologia_Class50] of  Derivado
+
+		(Lactosa TRUE)
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Leche_vaca")
+		(PVP 1.22))
+
+	([ontologia_Class51] of  Derivado
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Huevo")
+		(PVP 0.5))
+
+	([ontologia_Class52] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Azucar")
+		(PVP 0.3))
+
+	([ontologia_Class54] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Vainilla")
+		(PVP 2.0))
+
+	([ontologia_Class55] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Canela")
+		(PVP 1.2))
+
+	([ontologia_Class56] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Zumo de limon")
+		(PVP 0.2))
+
+	([ontologia_Class57] of  Bebida
+
+		(Nombre "Agua"))
+
+	([ontologia_Class58] of  Postre
+
+		(Ingredientes
+			[ontologia_Class52]
+			[ontologia_Class61]
+			[ontologia_Class45]
+			[ontologia_Class59]
+			[ontologia_Class41]
+			[ontologia_Class60]
+			[ontologia_Class44]
+			[ontologia_Class43]
+			[ontologia_Class54])
+		(Nombre "Tarta de queso")
+		(PVP 1.0)
+		(Racion Normal))
+
+	([ontologia_Class59] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Gelatina en polvo")
+		(PVP 0.4))
+
+	([ontologia_Class60] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Mermelada de fresa")
+		(PVP 2.35))
+
+	([ontologia_Class61] of  Derivado
+
+		(Mes_Final_Temporada 1)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Cuajada"))
+)
 
 
 ;                   ======================================================================
@@ -335,6 +1085,21 @@
     (import MAIN ?ALL)
     (import recopilacion ?ALL)
     (export ?ALL)
+)
+
+(defmodule solucionAbstracta
+	 (import MAIN ?ALL)
+	 (import recopilacion ?ALL)
+	 (import abstraccion ?ALL)
+	 (export ?ALL)
+)
+
+(defmodule solucionConcreta
+	 	(import MAIN ?ALL)
+	 	(import recopilacion ?ALL)
+	 	(import abstraccion ?ALL)
+		(import solucionAbstracta ?ALL)
+		(export ?ALL)
 )
 
 ;                   ======================================================================
@@ -365,6 +1130,17 @@
     (slot temporada (type SYMBOL) (allowed-values Invierno Primavera Verano Otono UNDEF) (default UNDEF))
 )
 
+
+(deftemplate MAIN::PlatoAbstracto
+	(slot precio (type FLOAT))
+	(slot plato (type INSTANCE))
+)
+
+(deftemplate MAIN::MenuHappyMeal
+	(slot primerPlato (type INSTANCE))
+	(slot segundoPlato (type INSTANCE))
+	(slot postre (type INSTANCE))
+)
 ;                   ======================================================================
 ;                   =====================  Declaracion de funciones ======================
 ;                   ======================================================================
@@ -637,4 +1413,81 @@
 							else (modify ?e (complejidad Alto))
 				)
 		)
+)
+
+(defrule abstraccion::abstraccion-completada "Regla que comprueba que todas las preguntas han sido respondidas"
+    (ProblemaAbstracto (presupuesto ?presupuesto))
+    (test (not (eq ?presupuesto UNDEF)))
+
+    (ProblemaAbstracto (numComensales ?numComensales))
+    (test (not (eq ?numComensales UNDEF)))
+
+    (ProblemaAbstracto (temporada ?temporada))
+    (test (not (eq ?temporada UNDEF)))
+
+    (ProblemaAbstracto (complejidad ?complejidad))
+    (test (not (eq ?complejidad UNDEF)))
+    =>
+		(focus solucionAbstracta)
+)
+
+
+;                   ======================================================================
+;                   ===================  Modulo de solucion abstracta   ==================
+;                   ======================================================================
+
+; (send <VARIABLE> get-<NOM_ATRIBUT>)
+; (find-all-instances (clase_instancias) (restricciones)).
+; (bind ?variable_instancia (make-instance nombre_instancia of nombre_clase))
+(defrule solucionAbstracta::prueba ""
+	(initial-fact)
+	(ProblemaAbstracto (presupuesto ?presupuesto))
+	(not (MenuHappyMeal))
+	=>
+	(bind ?platos (find-all-instances ((?inst Plato)) (or (not (eq ?presupuesto Bajo)) (< ?inst:PVP 3))))
+
+	;(bind ?primerPlato (make-instance primero of Primero))
+	;(bind ?segundoPlato (make-instance segundo of Segundo))
+	;(bind ?postre (make-instance postre of Postre))
+
+	(bind ?primerPlato (nth$ 1 ?platos))
+	(bind ?segundoPlato (nth$ 2 ?platos))
+	(bind ?postre (nth$ 3 ?platos))
+	;(loop-for-count (?i 1 (length$ ?platos)) do
+	;		(bind ?plato (nth$ ?i ?platos))
+	;		(bind ?precio (send ?plato get-PVP))
+	;		(bind ?nombre (send ?plato get-Nombre))
+
+		;	(bind ?primerPlato (make-instance patata of Primero))
+
+			;(printout t "precio: " ?precio)
+			;(printout t "  nombre: " ?nombre crlf)
+	;)
+
+	(assert (MenuHappyMeal (primerPlato ?primerPlato) (segundoPlato ?segundoPlato) (postre ?postre)))
+	(focus solucionConcreta)
+)
+
+;                   ======================================================================
+;                   ===================   Modulo de solucion concreta   ==================
+;                   ======================================================================
+
+(defrule solucionConcreta::prueba2 ""
+	(initial-fact)
+	(MenuHappyMeal (primerPlato ?primerPlato) (segundoPlato ?segundoPlato) (postre ?postre))
+	=>
+	(bind ?precio1 (send ?primerPlato get-PVP))
+	(bind ?nombre1 (send ?primerPlato get-Nombre))
+	(printout t "precio primer plato: " ?precio1)
+	(printout t "  nombre primer plato: " ?nombre1 crlf)
+
+	(bind ?precio2 (send ?segundoPlato get-PVP))
+	(bind ?nombre2 (send ?segundoPlato get-Nombre))
+	(printout t "precio segundo plato: " ?precio2)
+	(printout t "  nombre segundo plato: " ?nombre2 crlf)
+
+	(bind ?precio3 (send ?postre get-PVP))
+	(bind ?nombre3 (send ?postre get-Nombre))
+	(printout t "precio postre: " ?precio3)
+	(printout t "  nombre postre: " ?nombre3 crlf)
 )
