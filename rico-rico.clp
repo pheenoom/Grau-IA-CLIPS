@@ -1,3 +1,9 @@
+; Fri May 05 01:04:46 CEST 2017
+;
+;+ (version "3.5")
+;+ (build "Build 663")
+
+
 (defclass %3ACLIPS_TOP_LEVEL_SLOT_CLASS "Fake class to save top-level slot information"
 	(is-a USER)
 	(role abstract)
@@ -334,10 +340,12 @@
 ;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
-;;; Declaración de instancias
+; Fri May 05 01:04:46 CEST 2017
+;
+;+ (version "3.5")
+;+ (build "Build 663")
 
 (definstances instances
-
 	([ontologia_Class0] of  Primero
 
 		(Bebida_Menu [ontologia_Class39])
@@ -354,7 +362,6 @@
 			[ontologia_Class10010]
 			[ontologia_Class10011])
 		(Nombre "Tosta tibia de salmón en conserva con tartar de sus huevas")
-		(Platos_Compatibles [ontologia_Class17])
 		(PVP 6.0)
 		(Racion Normal))
 
@@ -384,7 +391,6 @@
 			[ontologia_Class10016]
 			[ontologia_Class10017])
 		(Nombre "Carpaccio de presa de cerdo duroc")
-		(Platos_Compatibles [ontologia_Class17])
 		(PVP 8.0)
 		(Racion Peque%C3%B1a)
 		(Vegetariano FALSE))
@@ -605,10 +611,6 @@
 			[ontologia_Class3]
 			[ontologia_Class4])
 		(Nombre "Ensalada de queso de cabra y nueces")
-		(Platos_Compatibles
-			[ontologia_Class37]
-			[ontologia_Class28]
-			[ontologia_Class36])
 		(PVP 1.0)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -637,9 +639,6 @@
 			[ontologia_Class10019]
 			[ontologia_Class10020])
 		(Nombre "Cochinillo con puré de boniato ahumado y pimiento verde frito")
-		(Platos_Compatibles
-			[ontologia_Class17]
-			[ontologia_Class28])
 		(PVP 5.0)
 		(Racion Abundante))
 
@@ -653,7 +652,6 @@
 			[ontologia_Class33])
 		(Nombre "Tartar de atún con mayonesa de wasabi, jengibre encurtido y nabo japonés")
 		(Origen Japonesa)
-		(Platos_Compatibles [ontologia_Class10004])
 		(PVP 6.0)
 		(Racion Peque%C3%B1a))
 
@@ -670,9 +668,6 @@
 			[ontologia_Class26]
 			[ontologia_Class10025])
 		(Nombre "Pudding de cabracho con salsa de erizos de mar")
-		(Platos_Compatibles
-			[ontologia_Class20006]
-			[ontologia_Class0])
 		(PVP 8.0)
 		(Racion Normal))
 
@@ -697,11 +692,6 @@
 			[ontologia_Class15]
 			[ontologia_Class20011])
 		(Nombre "Asadura de cordero")
-		(Platos_Compatibles
-			[ontologia_Class10004]
-			[ontologia_Class17]
-			[ontologia_Class20007]
-			[ontologia_Class0])
 		(PVP 5.0)
 		(Racion Abundante))
 
@@ -740,12 +730,6 @@
 			[ontologia_Class20015]
 			[ontologia_Class35])
 		(Nombre "Arroz al cava")
-		(Platos_Compatibles
-			[ontologia_Class20009]
-			[ontologia_Class20005]
-			[ontologia_Class37]
-			[ontologia_Class20007]
-			[ontologia_Class36])
 		(PVP 6.0)
 		(Racion Normal))
 
@@ -780,13 +764,6 @@
 			[ontologia_Class20011]
 			[ontologia_Class10026])
 		(Nombre "Ensalada con gambas cítricos y comino")
-		(Platos_Compatibles
-			[ontologia_Class20013]
-			[ontologia_Class20009]
-			[ontologia_Class10004]
-			[ontologia_Class20005]
-			[ontologia_Class20007]
-			[ontologia_Class36])
 		(Racion Abundante))
 
 	([ontologia_Class22] of  Verdura
@@ -840,9 +817,6 @@
 			[ontologia_Class20]
 			[ontologia_Class22])
 		(Nombre "Carne guisada")
-		(Platos_Compatibles
-			[ontologia_Class17]
-			[ontologia_Class0])
 		(PVP 3.0)
 		(Racion Normal))
 
@@ -915,12 +889,6 @@
 			[ontologia_Class31]
 			[ontologia_Class35])
 		(Nombre "Salmon al horno")
-		(Platos_Compatibles
-			[ontologia_Class20013]
-			[ontologia_Class20016]
-			[ontologia_Class17]
-			[ontologia_Class20006]
-			[ontologia_Class0])
 		(PVP 3.0)
 		(Racion Normal))
 
@@ -936,9 +904,6 @@
 			[ontologia_Class35]
 			[ontologia_Class39])
 		(Nombre "Pollo al ajillo")
-		(Platos_Compatibles
-			[ontologia_Class20013]
-			[ontologia_Class20016])
 		(PVP 2.0)
 		(Racion Normal))
 
@@ -999,6 +964,12 @@
 		(Nombre "Nata")
 		(PVP 1.5))
 
+	([ontologia_Class45] of  Cereal
+
+		(Mes_Final_Temporada 1)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Galleta"))
+
 	([ontologia_Class46] of  Postre
 
 		(Ingredientes
@@ -1009,13 +980,6 @@
 			[ontologia_Class54]
 			[ontologia_Class56])
 		(Nombre "Flan de Huevo")
-		(Platos_Compatibles
-			[ontologia_Class20013]
-			[ontologia_Class20009]
-			[ontologia_Class28]
-			[ontologia_Class20005]
-			[ontologia_Class37]
-			[ontologia_Class36])
 		(PVP 1.0)
 		(Racion Normal))
 
@@ -1070,6 +1034,8 @@
 
 		(Ingredientes
 			[ontologia_Class52]
+			[ontologia_Class61]
+			[ontologia_Class45]
 			[ontologia_Class59]
 			[ontologia_Class41]
 			[ontologia_Class60]
@@ -1077,17 +1043,6 @@
 			[ontologia_Class43]
 			[ontologia_Class54])
 		(Nombre "Tarta de queso")
-		(Platos_Compatibles
-			[ontologia_Class20013]
-			[ontologia_Class20009]
-			[ontologia_Class28]
-			[ontologia_Class10004]
-			[ontologia_Class20016]
-			[ontologia_Class37]
-			[ontologia_Class20007]
-			[ontologia_Class36]
-			[ontologia_Class20006]
-			[ontologia_Class0])
 		(PVP 1.0)
 		(Racion Normal))
 
@@ -1105,8 +1060,12 @@
 		(Nombre "Mermelada de fresa")
 		(PVP 2.35))
 
-)
+	([ontologia_Class61] of  Derivado
 
+		(Mes_Final_Temporada 1)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Cuajada"))
+)
 
 ;                   ======================================================================
 ;                   ======================  Declaracion de modulos =======================
@@ -1127,11 +1086,28 @@
     (export ?ALL)
 )
 
+
 ;(defmodule seleccion
 	;(import MAIN? ?ALL)
 	;(import abstraccion ?ALL)
 	;(export ?ALL)
 ;)
+
+(defmodule solucionAbstracta
+	 (import MAIN ?ALL)
+	 (import recopilacion ?ALL)
+	 (import abstraccion ?ALL)
+	 (export ?ALL)
+)
+
+(defmodule solucionConcreta
+	 	(import MAIN ?ALL)
+	 	(import recopilacion ?ALL)
+	 	(import abstraccion ?ALL)
+		(import solucionAbstracta ?ALL)
+		(export ?ALL)
+)
+
 
 ;                   ======================================================================
 ;                   =====================  Declaracion de templates ======================
@@ -1189,6 +1165,71 @@
     (slot complejidad (type SYMBOL) (allowed-values Facil Normal Alto UNDEF) (default UNDEF))
     (slot temporada (type SYMBOL) (allowed-values Invierno Primavera Verano Otono UNDEF) (default UNDEF))
 )
+
+
+(deftemplate MAIN::PlatoAbstracto
+	(slot precio (type FLOAT))
+	(slot plato (type INSTANCE))
+)
+
+
+(deftemplate MAIN::MenuHappyMeal
+	(slot primerPlato (type INSTANCE))
+	(slot segundoPlato (type INSTANCE))
+	(slot postre (type INSTANCE))
+)
+
+;                   ======================================================================
+;                   =====================   Declaracion de clases   ======================
+;                   ======================================================================
+
+(defclass MenuUsuario "Clase menu que representa el menu a mostrar al usuario" (is-a Menu)
+	(slot precio (type FLOAT) (create-accessor read-write))
+
+)
+
+(defclass PlatoPrecio (is-a Plato) (role concrete)
+	(slot Precio (type FLOAT) (create-accessor read-write))
+)
+
+;                   ======================================================================
+;                   ====================   Declaracion de handler   ======================
+;                   ======================================================================
+
+; Nota para optimizar: hacer una funcion que imprima si o no cuando
+; preguntamos si lleva lactosa o no , etc...
+(defmessage-handler MAIN::Plato imprimir ()
+	(format t "Nombre: %s" ?self:Nombre)
+	(printout t crlf)
+	(format t "Precio elaboracion: %d" ?self:PVP)
+	(printout t crlf)
+	(format t "Es un plato vegetariano? %s" ?self:Vegetariano)
+	(printout t crlf)
+	(format t "Es un plato caliente? %s" ?self:Caliente)
+	(printout t crlf)
+	(printout t "Ingredientes del plato: " crlf)
+
+	(bind $?listaIngredientes ?self:Ingredientes)
+	(loop-for-count (?i 1 (length$ ?listaIngredientes)) do
+		(bind ?ingrediente (nth$ ?i ?listaIngredientes))
+		(printout t (send ?ingrediente imprimir) crlf)
+	)
+)
+
+(defmessage-handler MAIN::Ingrediente imprimir ()
+	(format t "%t Nombre: %s %n" ?self:Nombre)
+	(bind ?lactosa ?self:Lactosa)
+	(bind ?gluten ?self:Gluten)
+	(if (eq ?lactosa TRUE)
+		then (format t "%t Lactosa: Si %n")
+		else (format t "%t Lactosa: No %n")
+	)
+	(if (eq ?gluten TRUE)
+		then (format t "%t Gluten: Si %n")
+		else (format t "%t Gluten: No %n")
+	)
+)
+
 
 ;                   ======================================================================
 ;                   =====================  Declaracion de funciones ======================
@@ -1259,7 +1300,6 @@
 ;                           -
 ;
 ;                   ======================================================================
-
 
 (defrule recopilacion::pregunta-familiar-congreso "Pregunta al cliente que tipo de evento se va a realizar"
   (not (Entrada))
@@ -1467,12 +1507,71 @@
 )
 
 
+(defrule abstraccion::abstraccion-completada "Regla que comprueba que todas las preguntas han sido respondidas"
+    (ProblemaAbstracto (presupuesto ?presupuesto))
+    (test (not (eq ?presupuesto UNDEF)))
+
+    (ProblemaAbstracto (numComensales ?numComensales))
+    (test (not (eq ?numComensales UNDEF)))
+
+    (ProblemaAbstracto (temporada ?temporada))
+    (test (not (eq ?temporada UNDEF)))
+
+    (ProblemaAbstracto (complejidad ?complejidad))
+    (test (not (eq ?complejidad UNDEF)))
+    =>
+		(focus solucionAbstracta)
+)
+
 
 ;                   ======================================================================
-;                   ======================  Modulo de seleccion   ======================
+;                   ===================  Modulo de solucion abstracta   ==================
 ;                   ======================================================================
 
-;(defrule seleccion::calcular-puntuacion-plato "Regla que nos permite calcular la puntuacion de un plato a partir del problema abstracto siendo el presupuesto bajo"
-		;?e <- (ProblemaAbstracto (presupuesto ?presupuesto))
-		;(test (eq ?presupuesto Bajo))
-		;?plato <- (object (is-a Plato))
+; (send <VARIABLE> get-<NOM_ATRIBUT>)
+; (find-all-instances (clase_instancias) (restricciones)).
+; (bind ?variable_instancia (make-instance nombre_instancia of nombre_clase))
+(defrule solucionAbstracta::prueba ""
+	(initial-fact)
+	(ProblemaAbstracto (presupuesto ?presupuesto))
+	(not (MenuHappyMeal))
+	=>
+	(bind ?platos (find-all-instances ((?inst Plato)) (or (not (eq ?presupuesto Bajo)) (< ?inst:PVP 3))))
+
+	;(bind ?primerPlato (make-instance primero of Primero))
+	;(bind ?segundoPlato (make-instance segundo of Segundo))
+	;(bind ?postre (make-instance postre of Postre))
+
+	(bind ?primerPlato (nth$ 1 ?platos))
+	(bind ?segundoPlato (nth$ 2 ?platos))
+	(bind ?postre (nth$ 3 ?platos))
+	;(loop-for-count (?i 1 (length$ ?platos)) do
+	;		(bind ?plato (nth$ ?i ?platos))
+	;		(bind ?precio (send ?plato get-PVP))
+	;		(bind ?nombre (send ?plato get-Nombre))
+
+		;	(bind ?primerPlato (make-instance patata of Primero))
+
+			;(printout t "precio: " ?precio)
+			;(printout t "  nombre: " ?nombre crlf)
+	;)
+
+	(assert (MenuHappyMeal (primerPlato ?primerPlato) (segundoPlato ?segundoPlato) (postre ?postre)))
+	(focus solucionConcreta)
+)
+
+;                   ======================================================================
+;                   ===================   Modulo de solucion concreta   ==================
+;                   ======================================================================
+
+(defrule solucionConcreta::prueba2 ""
+	(initial-fact)
+	(MenuHappyMeal (primerPlato ?primerPlato) (segundoPlato ?segundoPlato) (postre ?postre))
+	=>
+	(bind ?listaIngredientes (find-all-instances ((?inst Ingrediente)) TRUE))
+	(loop-for-count (?i 1 (length$ ?listaIngredientes)) do
+		(bind ?ingrediente (nth$ ?i ?listaIngredientes))
+		(printout t (send ?ingrediente imprimir))
+		(printout t crlf)
+	)
+)
