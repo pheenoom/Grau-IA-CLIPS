@@ -1177,6 +1177,8 @@
       )
 )
 
+(defmess)
+
 (defmessage-handler MAIN::MenuAbstracto imprimir ()
 	(format t "Precio %d %n" ?self:Precio)
 	(bind ?menu ?self:Menu)
@@ -1566,6 +1568,7 @@
 )
 
 
+
 ;                   ======================================================================
 ;                   ===================  Modulo de solucion abstracta   ==================
 ;                   ======================================================================
@@ -1612,6 +1615,33 @@
 	(focus solucionConcreta)
 )
 
+(deffunction calcula-complejidad (?complejidad)
+	(bind ?puntuacion 0)
+	(if (<= ?complejidad 2)
+		then (puntuacion (+ 10 ?puntuacion))
+		else( if(< ?complejidad 5)
+				then (+ 5 ?puntuacion)
+				else (- 5 ?puntuacion))
+	)
+	?puntuacion
+)
+
+(defrule solucionAbstracta::Platos-presupuesto-bajo "Establece una puntuacion de los platos candidatos"
+	(ProblemaAbstracto (Presupuesto ?presupuesto))
+	(ProblemaAbstracto (NumComensales ?num))
+	(test(eq ?presupuesto Bajo))
+	(or (test(eq ?num Bajo)) (test(eq ?num Medio)))
+	=>
+	(bind $?candidatos (find-all-instances ((?plato PlatoAbstracto)) TRUE))
+	(loop-for-count (?i 1 (length$ $?candidatos)) do
+		(bind ?candidato (nth$ ?i $?candidatos))
+		(bind ?complejidad (send ?candidato get-Complejidad))
+		(bind ?puntuacion (send ?candidato get-Puntuacion))
+		(bind ?incr (calcula-complejidad ?complejidad))
+		(bind ?puntuacion(+ ?incr ?puntuacion))
+		(modify ?candidato (puntuacion ?puntuacion))
+	)
+)
 ;                   ======================================================================
 ;                   ===================   Modulo de solucion concreta   ==================
 ;                   ======================================================================
