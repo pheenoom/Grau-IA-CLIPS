@@ -902,8 +902,7 @@
 			[ontologia_Class20]
 			[ontologia_Class32]
 			[ontologia_Class40]
-			[ontologia_Class35]
-			[ontologia_Class39])
+			[ontologia_Class35])
 		(Nombre "Pollo al ajillo")
 		(PVP 2.0)
 		(Racion Normal))
@@ -1150,7 +1149,7 @@
 	(slot Precio (type FLOAT) (create-accessor read-write))
 	(slot Categoria (type SYMBOL) (allowed-values Bajo Medio Alto) (create-accessor read-write))
 	(slot Puntuacion (type INTEGER) (create-accessor read-write))
-	(slot Plato (type INSTANCE) (allowed-classes Plato) (create-accessor read-write))
+	(slot Plato (type INSTANCE) (allowed-classes Plato)(create-accessor read-write))
 )
 
 ;                   ======================================================================
@@ -1199,6 +1198,36 @@
 	(printout t "Informacion del postre" crlf)
 	(bind ?postre ?self:Relacion_Menu_Postre)
 	(send ?postre imprimir)
+)
+
+(defmessage-handler MAIN::PlatoAbstracto calcula-categoria()
+	(bind ?plato ?self:Plato)
+	(bind ?precio (send ?plato calcula-precio))
+	(printout t "Precio final del plato " ?precio crlf)
+
+	;(modify ?self (Precio ?precio))
+	;(if (< ?precio 20)
+			;then (modify ?self (Categoria "Bajo"))
+			;else(if (and(>= ?precio 20) (< ?precio 30))
+					;then(modify ?self (Categoria "Medio"))
+					;else (modify ?self (Categoria "Alto"))
+			;)
+)
+
+;([10,20),[20,30), > 30)
+(defmessage-handler MAIN::Plato calcula-precio()
+				(bind $?listaIngredientes self:Ingredientes)
+				(bind ?elaboracion self:PVP)
+				(bind ?precio ?elaboracion)
+        (loop-for-count (?j 1 (length$ $?listaIngredientes)) do
+            (bind ?ingrediente (nth$ ?j $?listaIngredientes))
+						(bind ?pvp (send ?ingrediente get-PVP))
+						(bind ?precio (+ ?precio ?pvp))
+						(printout t (send ?ingrediente get-Nombre) crlf)
+						(printout t ?pvp crlf)
+        )
+				(printout t "Precio final del plato " ?precio crlf)
+				(* ?precio 1)
 )
 
 ; Nota para optimizar: hacer una funcion que imprima si o no cuando
@@ -1547,6 +1576,7 @@
 (defrule solucionAbstracta::prueba ""
 	(initial-fact)
 	(ProblemaAbstracto (presupuesto ?presupuesto))
+	(not (MenuHappyMeal))
 	=>
 	(bind ?platos (find-all-instances ((?inst Plato)) (or (not (eq ?presupuesto Bajo)) (< ?inst:PVP 3))))
 
@@ -1556,8 +1586,7 @@
 
 	(bind ?primerPlato (nth$ 1 ?platos))
 	(bind ?segundoPlato (nth$ 2 ?platos))
-	(bind ?postre (nth$ 4 ?platos))
-
+	(bind ?postre (nth$ 3 ?platos))
 	;(loop-for-count (?i 1 (length$ ?platos)) do
 	;		(bind ?plato (nth$ ?i ?platos))
 	;		(bind ?precio (send ?plato get-PVP))
@@ -1575,6 +1604,11 @@
 	(send ?menu put-Relacion_Menu_Postre ?postre)
 	(bind ?menu2 (make-instance menuHappyMeal of MenuAbstracto))
 	(send ?menu2 put-Menu ?menu)
+
+	;(assert (MenuHappyMeal (primerPlato ?primerPlato) (segundoPlato ?segundoPlato) (postre ?postre)))
+	;(bind ?p (make-instance ejemplo of PlatoPre
+	;(send ?p calcula-categoria)
+
 	(focus solucionConcreta)
 )
 
