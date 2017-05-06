@@ -1167,16 +1167,25 @@
 	(printout t crlf)
 	(format t "Precio elaboracion: %d" ?self:PVP)
 	(printout t crlf)
-	(format t "Es un plato vegetariano? %s" ?self:Vegetariano)
-	(printout t crlf)
-	(format t "Es un plato caliente? %s" ?self:Caliente)
-	(printout t crlf)
-	(printout t "Ingredientes del plato: " crlf)
 
+	(bind ?vegetariano ?self:Vegetariano)
+	(if (eq ?vegetariano TRUE)
+		then (format t "%t Es un plato vegetariano? Si %n")
+		else (format t "%t Es un plato vegetariano? No %n")
+	)
+
+	(bind ?caliente ?self:Caliente)
+	(if (eq ?caliente TRUE)
+		then (format t "%t Es un plato caliente? Si %n")
+		else (format t "%t Es un plato caliente? No %n")
+	)
+
+	(printout t "Ingredientes del plato: " crlf)
 	(bind $?listaIngredientes ?self:Ingredientes)
 	(loop-for-count (?i 1 (length$ ?listaIngredientes)) do
 		(bind ?ingrediente (nth$ ?i ?listaIngredientes))
-		(printout t (send ?ingrediente imprimir) crlf)
+		(send ?ingrediente imprimir)
+		(printout t crlf)
 	)
 )
 
@@ -1529,10 +1538,11 @@
 	(initial-fact)
 	(MenuHappyMeal (primerPlato ?primerPlato) (segundoPlato ?segundoPlato) (postre ?postre))
 	=>
-	(bind ?listaIngredientes (find-all-instances ((?inst Ingrediente)) TRUE))
-	(loop-for-count (?i 1 (length$ ?listaIngredientes)) do
-		(bind ?ingrediente (nth$ ?i ?listaIngredientes))
-		(printout t (send ?ingrediente imprimir))
-		(printout t crlf)
-	)
+	(send ?primerPlato imprimir)
+	;(bind ?listaIngredientes (find-all-instances ((?inst Ingrediente)) TRUE))
+	;(loop-for-count (?i 1 (length$ ?listaIngredientes)) do
+	;	(bind ?ingrediente (nth$ ?i ?listaIngredientes))
+	;	(send ?ingrediente imprimir)
+	;	(printout t crlf)
+	;)
 )
