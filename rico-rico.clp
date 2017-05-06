@@ -332,6 +332,7 @@
 		(create-accessor read-write))
 	(single-slot Nombre
 		(type STRING)
+		(propagation inherit)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot Relacion_Menu_Bebida
@@ -1140,14 +1141,9 @@
 ;                   =====================   Declaracion de clases   ======================
 ;                   ======================================================================
 
-;(defclass MenuAbtracto (is-a USER) (role concrete)
-	;(slot primerPlato (type INSTANCE) (allowed-classes PlatoAbstracto) (create-accessor read-write))
-	;(slot segundoPlato (type INSTANCE) (allowed-classes PlatoAbstracto) (create-accessor read-write))
-;	(slot postre (type INSTANCE) (allowed-classes PlatoAbstracto) (create-accessor read-write))
-;)
-
-(defclass MenuAbstracto (is-a Menu) (role concrete)
+(defclass MenuAbstracto (is-a USER) (role concrete)
 	(slot Precio (type FLOAT) (create-accessor read-write))
+	(slot Menu (type INSTANCE) (create-accessor read-write))
 )
 
 (defclass PlatoAbstracto (is-a USER) (role concrete)
@@ -1160,7 +1156,6 @@
 ;                   ======================================================================
 ;                   ====================   Declaracion de handler   ======================
 ;                   ======================================================================
-
 
 (defmessage-handler MAIN::Plato calcula-precio ()
       (bind $?listaPlatos (find-all-instances ((?plato Plato)) TRUE))
@@ -1181,6 +1176,16 @@
 					(printout t "Precio final del plato " ?precio crlf)
 
       )
+)
+
+(defmessage-handler MAIN::MenuAbstracto imprimir ()
+	(format t "Precio %d %n" ?self:Precio)
+	(bind ?menu ?self:Menu)
+	(send ?menu imprimir)
+)
+
+(defmessage-handler MAIN::MenuAbstracto calcular-precio ()
+
 )
 
 (defmessage-handler MAIN::Menu imprimir ()
@@ -1563,11 +1568,13 @@
 			;(printout t "precio: " ?precio)
 			;(printout t "  nombre: " ?nombre crlf)
 	;)
-	(send ?postre imprimir)
-	(bind ?menu (make-instance menuHappyMeal of Menu))
+
+	(bind ?menu (make-instance menuHappy of Menu))
 	(send ?menu put-Relacion_Menu_Primero ?primerPlato)
 	(send ?menu put-Relacion_Menu_Segundo ?segundoPlato)
 	(send ?menu put-Relacion_Menu_Postre ?postre)
+	(bind ?menu2 (make-instance menuHappyMeal of MenuAbstracto))
+	(send ?menu2 put-Menu ?menu)
 	(focus solucionConcreta)
 )
 
