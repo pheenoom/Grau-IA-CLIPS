@@ -1140,10 +1140,14 @@
 ;                   =====================   Declaracion de clases   ======================
 ;                   ======================================================================
 
-(defclass MenuAbtracto (is-a USER) (role concrete)
-	(slot primerPlato (type INSTANCE) (allowed-classes PlatoAbstracto) (create-accessor read-write))
-	(slot segundoPlato (type INSTANCE) (allowed-classes PlatoAbstracto) (create-accessor read-write))
-	(slot postre (type INSTANCE) (allowed-classes PlatoAbstracto) (create-accessor read-write))
+;(defclass MenuAbtracto (is-a USER) (role concrete)
+	;(slot primerPlato (type INSTANCE) (allowed-classes PlatoAbstracto) (create-accessor read-write))
+	;(slot segundoPlato (type INSTANCE) (allowed-classes PlatoAbstracto) (create-accessor read-write))
+;	(slot postre (type INSTANCE) (allowed-classes PlatoAbstracto) (create-accessor read-write))
+;)
+
+(defclass MenuAbstracto (is-a Menu) (role concrete)
+	(slot Precio (type FLOAT) (create-accessor read-write))
 )
 
 (defclass PlatoAbstracto (is-a USER) (role concrete)
@@ -1177,6 +1181,19 @@
 					(printout t "Precio final del plato " ?precio crlf)
 
       )
+)
+
+(defmessage-handler MAIN::Menu imprimir ()
+	(format t "Nombre: %s" ?self:Nombre)
+	(printout t "Informacion del primer plato" crlf)
+	(bind ?primerPlato ?self:Relacion_Menu_Primero)
+	(send ?primerPlato imprimir)
+	(printout t "Informacion del segundo plato" crlf)
+	(bind ?segundoPlato ?self:Relacion_Menu_Segundo)
+	(send ?segundoPlato imprimir)
+	(printout t "Informacion del postre" crlf)
+	(bind ?postre ?self:Relacion_Menu_Postre)
+	(send ?postre imprimir)
 )
 
 ; Nota para optimizar: hacer una funcion que imprima si o no cuando
@@ -1495,7 +1512,6 @@
 							else (modify ?e (complejidad Alto))
 				)
 		)
-		(printout t (send ?plato calcula-precio) crlf)
 )
 
 
@@ -1526,7 +1542,6 @@
 (defrule solucionAbstracta::prueba ""
 	(initial-fact)
 	(ProblemaAbstracto (presupuesto ?presupuesto))
-	(not (MenuHappyMeal))
 	=>
 	(bind ?platos (find-all-instances ((?inst Plato)) (or (not (eq ?presupuesto Bajo)) (< ?inst:PVP 3))))
 
@@ -1536,7 +1551,8 @@
 
 	(bind ?primerPlato (nth$ 1 ?platos))
 	(bind ?segundoPlato (nth$ 2 ?platos))
-	(bind ?postre (nth$ 3 ?platos))
+	(bind ?postre (nth$ 4 ?platos))
+
 	;(loop-for-count (?i 1 (length$ ?platos)) do
 	;		(bind ?plato (nth$ ?i ?platos))
 	;		(bind ?precio (send ?plato get-PVP))
@@ -1547,8 +1563,11 @@
 			;(printout t "precio: " ?precio)
 			;(printout t "  nombre: " ?nombre crlf)
 	;)
-
-	(assert (MenuHappyMeal (primerPlato ?primerPlato) (segundoPlato ?segundoPlato) (postre ?postre)))
+	(send ?postre imprimir)
+	(bind ?menu (make-instance menuHappyMeal of Menu))
+	(send ?menu put-Relacion_Menu_Primero ?primerPlato)
+	(send ?menu put-Relacion_Menu_Segundo ?segundoPlato)
+	(send ?menu put-Relacion_Menu_Postre ?postre)
 	(focus solucionConcreta)
 )
 
@@ -1558,9 +1577,8 @@
 
 (defrule solucionConcreta::prueba2 ""
 	(initial-fact)
-	(MenuHappyMeal (primerPlato ?primerPlato) (segundoPlato ?segundoPlato) (postre ?postre))
 	=>
-	(send ?primerPlato imprimir)
+	(send (instance-address * [menuHappyMeal]) imprimir)
 	;(bind ?listaIngredientes (find-all-instances ((?inst Ingrediente)) TRUE))
 	;(loop-for-count (?i 1 (length$ ?listaIngredientes)) do
 	;	(bind ?ingrediente (nth$ ?i ?listaIngredientes))
