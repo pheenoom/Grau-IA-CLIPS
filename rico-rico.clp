@@ -1129,7 +1129,6 @@
     (slot temporada (type SYMBOL) (allowed-values Invierno Primavera Verano Otono UNDEF) (default UNDEF))
 )
 
-
 (deftemplate MAIN::MenuHappyMeal
 	(slot primerPlato (type INSTANCE))
 	(slot segundoPlato (type INSTANCE))
@@ -1146,9 +1145,9 @@
 )
 
 (defclass PlatoAbstracto (is-a USER) (role concrete)
-	(slot Precio (type FLOAT) (create-accessor read-write))
+	(slot Precio (type FLOAT) (create-accessor read-write) (default 0.0))
 	(slot Categoria (type SYMBOL) (allowed-values Bajo Medio Alto) (create-accessor read-write))
-	(slot Puntuacion (type INTEGER) (create-accessor read-write))
+	(slot Puntuacion (type INTEGER) (create-accessor read-write) (default 0))
 	(slot Plato (type INSTANCE) (allowed-classes Plato)(create-accessor read-write))
 )
 
@@ -1156,35 +1155,10 @@
 ;                   ====================   Declaracion de handler   ======================
 ;                   ======================================================================
 
-(defmessage-handler MAIN::Plato calcula-precio ()
-      (bind $?listaPlatos (find-all-instances ((?plato Plato)) TRUE))
-      (loop-for-count (?i 1 (length$ $?listaPlatos)) do
-          (bind ?plato (nth$ ?i $?listaPlatos))
-					(bind $?listaIngredientes (send ?plato get-Ingredientes))
-					(printout t (send ?plato get-Nombre) crlf)
-					(bind ?elaboracion (send ?plato get-PVP))
-					(bind ?precio ?elaboracion)
-          (loop-for-count (?j 1 (length$ $?listaIngredientes)) do
-              (bind ?ingrediente (nth$ ?j $?listaIngredientes))
-							(bind ?pvp (send ?ingrediente get-PVP))
-							(bind ?precio (+ ?precio ?pvp))
-							(printout t (send ?ingrediente get-Nombre) crlf)
-							(printout t ?pvp crlf)
-          )
-					;(assert (Plato-precio (Precio ?precio))) esto de aqui peta
-					(printout t "Precio final del plato " ?precio crlf)
-
-      )
-)
-
 (defmessage-handler MAIN::MenuAbstracto imprimir ()
 	(format t "Precio %d %n" ?self:Precio)
 	(bind ?menu ?self:Menu)
 	(send ?menu imprimir)
-)
-
-(defmessage-handler MAIN::MenuAbstracto calcular-precio ()
-
 )
 
 (defmessage-handler MAIN::Menu imprimir ()
@@ -1200,34 +1174,40 @@
 	(send ?postre imprimir)
 )
 
-(defmessage-handler MAIN::PlatoAbstracto calcula-categoria()
+(defmessage-handler MAIN::PlatoAbstracto imprimir ()
+	(printout t crlf)
+	(format t "Precio: %d %n" ?self:Precio)
+	(printout t "Categoria: " ?self:Categoria crlf)
+	(printout t "Puntuacion: " ?self:Puntuacion crlf)
+	(bind ?plato ?self:Plato)
+	(send ?plato imprimir)
+)
+
+(defmessage-handler MAIN::PlatoAbstracto calcula-categoria ()
 	(bind ?plato ?self:Plato)
 	(bind ?precio (send ?plato calcula-precio))
-	(printout t "Precio final del plato " ?precio crlf)
 
-	;(modify ?self (Precio ?precio))
-	;(if (< ?precio 20)
-			;then (modify ?self (Categoria "Bajo"))
-			;else(if (and(>= ?precio 20) (< ?precio 30))
-					;then(modify ?self (Categoria "Medio"))
-					;else (modify ?self (Categoria "Alto"))
-			;)
+	;(send <VARIABLE> put-<NOM_ATRIBUT> <VALOR>)
+	(send ?self put-Precio ?precio)
+	(if (< ?precio 20)
+			then (send ?self put-Categoria Bajo)
+			else (if (and (>= ?precio 20) (< ?precio 30))
+					then(send ?self put-Categoria Medio)
+					else (send ?self put-Categoria Alto)
+			)
+	)
 )
 
 ;([10,20),[20,30), > 30)
 (defmessage-handler MAIN::Plato calcula-precio()
-				(bind $?listaIngredientes self:Ingredientes)
-				(bind ?elaboracion self:PVP)
-				(bind ?precio ?elaboracion)
-        (loop-for-count (?j 1 (length$ $?listaIngredientes)) do
-            (bind ?ingrediente (nth$ ?j $?listaIngredientes))
-						(bind ?pvp (send ?ingrediente get-PVP))
-						(bind ?precio (+ ?precio ?pvp))
-						(printout t (send ?ingrediente get-Nombre) crlf)
-						(printout t ?pvp crlf)
-        )
-				(printout t "Precio final del plato " ?precio crlf)
-				(* ?precio 1)
+		(bind $?listaIngredientes ?self:Ingredientes)
+		(bind ?precio ?self:PVP)
+    (loop-for-count (?j 1 (length$ $?listaIngredientes)) do
+        (bind ?ingrediente (nth$ ?j $?listaIngredientes))
+				(bind ?pvp (send ?ingrediente get-PVP))
+				(bind ?precio (+ ?precio ?pvp))
+    )
+		(* ?precio 1)
 )
 
 ; Nota para optimizar: hacer una funcion que imprima si o no cuando
@@ -1312,6 +1292,22 @@
        else FALSE)
 )
 
+(deffunction calcular-platos-abstractos "" ()
+	(bind ?platos (find-all-instances ((?inst Plato)) TRUE))
+	(loop-for-count (?i 1 (length$ ?platos)) do
+		(bind ?plato (nth$ ?i ?platos))
+		(bind ?platoAbstracto (make-instance (sym-cat platoAbstracto- (gensym)) of PlatoAbstracto))
+		(send ?platoAbstracto put-Plato ?plato)
+		(send ?platoAbstracto calcula-categoria)
+	)
+
+	; (make-instance (sym-cat pepe- (gensym)) of <clase>)
+
+	;(printout t "Categoria: " (send ?platoAbstracto get-Categoria) crlf)
+	;(bind ?plato (send ?platoAbstracto get-Plato))
+	;(send ?plato imprimir)
+)
+
 ;                   ======================================================================
 ;                   =======================  Declaracion de reglas =======================
 ;                   ======================================================================
@@ -1319,10 +1315,17 @@
 (defrule MAIN::inicio "Regla que genera la cabezera inicial"
 	(declare (salience 10))
 	=>
+	(calcular-platos-abstractos)
+	(bind ?platos (find-all-instances ((?inst PlatoAbstracto)) TRUE))
+	(loop-for-count (?i 1 (length$ ?platos)) do
+		(bind ?plato (nth$ ?i ?platos))
+		(send ?plato imprimir)
+	)
+
+  (printout t "====================================================================" crlf)
+  (printout t "=    Sistema de elaboracion de menus personalizados Rico Rico      =" crlf)
 	(printout t "====================================================================" crlf)
-  	(printout t "=    Sistema de elaboracion de menus personalizados Rico Rico      =" crlf)
-	(printout t "====================================================================" crlf)
-  	(printout t crlf)
+  (printout t crlf)
 	(printout t "Bienvenido! A continuacion se le formularan una serie de preguntas para poder crear el menu que mas encaje con sus preferencias." crlf)
 	(printout t crlf)
 	(focus recopilacion)
