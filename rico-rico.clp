@@ -1140,11 +1140,17 @@
 ;                   =====================   Declaracion de clases   ======================
 ;                   ======================================================================
 
-(defclass PlatoPrecio (is-a USER) (role concrete)
+(defclass MenuAbtracto (is-a USER) (role concrete)
+	(slot primerPlato (type INSTANCE) (allowed-classes PlatoAbstracto) (create-accessor read-write))
+	(slot segundoPlato (type INSTANCE) (allowed-classes PlatoAbstracto) (create-accessor read-write))
+	(slot postre (type INSTANCE) (allowed-classes PlatoAbstracto) (create-accessor read-write))
+)
+
+(defclass PlatoAbstracto (is-a USER) (role concrete)
 	(slot Precio (type FLOAT) (create-accessor read-write))
 	(slot Categoria (type SYMBOL) (allowed-values Bajo Medio Alto) (create-accessor read-write))
 	(slot Puntuacion (type INTEGER) (create-accessor read-write))
-	(slot Plato (type INSTANCE) (allowed-classes Plato)(create-accessor read-write))
+	(slot Plato (type INSTANCE) (allowed-classes Plato) (create-accessor read-write))
 )
 
 ;                   ======================================================================
