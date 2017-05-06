@@ -1550,8 +1550,7 @@
 	;)
 
 	(assert (MenuHappyMeal (primerPlato ?primerPlato) (segundoPlato ?segundoPlato) (postre ?postre)))
-	(bind ?p (make-instance ejemplo of PlatoPrecio))
-	(send ?p put-Plato ?primerPlato)
+	(bind ?p (make-instance ejemplo of PlatoPre
 	(send ?p calcula-categoria)
 	;(send ?p put-Plato ?segundoPlato)
 	(focus solucionConcreta)
