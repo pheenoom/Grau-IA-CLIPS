@@ -1136,11 +1136,65 @@
 	(slot plato (type INSTANCE))
 )
 
+
 (deftemplate MAIN::MenuHappyMeal
 	(slot primerPlato (type INSTANCE))
 	(slot segundoPlato (type INSTANCE))
 	(slot postre (type INSTANCE))
 )
+
+;                   ======================================================================
+;                   =====================   Declaracion de clases   ======================
+;                   ======================================================================
+
+(defclass MenuUsuario "Clase menu que representa el menu a mostrar al usuario" (is-a Menu)
+	(slot precio (type FLOAT) (create-accessor read-write))
+
+)
+
+(defclass PlatoPrecio (is-a Plato) (role concrete)
+	(slot Precio (type FLOAT) (create-accessor read-write))
+)
+
+;                   ======================================================================
+;                   ====================   Declaracion de handler   ======================
+;                   ======================================================================
+
+; Nota para optimizar: hacer una funcion que imprima si o no cuando
+; preguntamos si lleva lactosa o no , etc...
+(defmessage-handler MAIN::Plato imprimir ()
+	(format t "Nombre: %s" ?self:Nombre)
+	(printout t crlf)
+	(format t "Precio elaboracion: %d" ?self:PVP)
+	(printout t crlf)
+	(format t "Es un plato vegetariano? %s" ?self:Vegetariano)
+	(printout t crlf)
+	(format t "Es un plato caliente? %s" ?self:Caliente)
+	(printout t crlf)
+	(printout t "Ingredientes del plato: " crlf)
+
+	(bind $?listaIngredientes ?self:Ingredientes)
+	(loop-for-count (?i 1 (length$ ?listaIngredientes)) do
+		(bind ?ingrediente (nth$ ?i ?listaIngredientes))
+		(printout t (send ?ingrediente imprimir) crlf)
+	)
+)
+
+(defmessage-handler MAIN::Ingrediente imprimir ()
+	(format t "%t Nombre: %s %n" ?self:Nombre)
+	(bind ?lactosa ?self:Lactosa)
+	(bind ?gluten ?self:Gluten)
+	(if (eq ?lactosa TRUE)
+		then (format t "%t Lactosa: Si %n")
+		else (format t "%t Lactosa: No %n")
+	)
+	(if (eq ?gluten TRUE)
+		then (format t "%t Gluten: Si %n")
+		else (format t "%t Gluten: No %n")
+	)
+)
+
+
 ;                   ======================================================================
 ;                   =====================  Declaracion de funciones ======================
 ;                   ======================================================================
@@ -1210,7 +1264,6 @@
 ;                           -
 ;
 ;                   ======================================================================
-
 
 (defrule recopilacion::pregunta-familiar-congreso "Pregunta al cliente que tipo de evento se va a realizar"
   (not (Entrada))
@@ -1476,18 +1529,10 @@
 	(initial-fact)
 	(MenuHappyMeal (primerPlato ?primerPlato) (segundoPlato ?segundoPlato) (postre ?postre))
 	=>
-	(bind ?precio1 (send ?primerPlato get-PVP))
-	(bind ?nombre1 (send ?primerPlato get-Nombre))
-	(printout t "precio primer plato: " ?precio1)
-	(printout t "  nombre primer plato: " ?nombre1 crlf)
-
-	(bind ?precio2 (send ?segundoPlato get-PVP))
-	(bind ?nombre2 (send ?segundoPlato get-Nombre))
-	(printout t "precio segundo plato: " ?precio2)
-	(printout t "  nombre segundo plato: " ?nombre2 crlf)
-
-	(bind ?precio3 (send ?postre get-PVP))
-	(bind ?nombre3 (send ?postre get-Nombre))
-	(printout t "precio postre: " ?precio3)
-	(printout t "  nombre postre: " ?nombre3 crlf)
+	(bind ?listaIngredientes (find-all-instances ((?inst Ingrediente)) TRUE))
+	(loop-for-count (?i 1 (length$ ?listaIngredientes)) do
+		(bind ?ingrediente (nth$ ?i ?listaIngredientes))
+		(printout t (send ?ingrediente imprimir))
+		(printout t crlf)
+	)
 )
