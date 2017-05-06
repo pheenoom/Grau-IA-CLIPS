@@ -1,4 +1,4 @@
-; Thu May 04 22:16:08 CEST 2017
+; Sat May 06 11:58:31 CEST 2017
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -29,9 +29,6 @@
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Lechuga")
 	(PVP 0.6))
-
-([ontologia_Class10] of  Salsa
-)
 
 ([ontologia_Class10003] of  Verdura
 
@@ -667,12 +664,6 @@
 	(Nombre "Nata")
 	(PVP 1.5))
 
-([ontologia_Class45] of  Ingrediente
-
-	(Mes_Final_Temporada 1)
-	(Mes_Inicio_Temporada 1)
-	(Nombre "Galleta"))
-
 ([ontologia_Class46] of  Postre
 
 	(Ingredientes
@@ -744,8 +735,6 @@
 
 	(Ingredientes
 		[ontologia_Class52]
-		[ontologia_Class61]
-		[ontologia_Class45]
 		[ontologia_Class59]
 		[ontologia_Class41]
 		[ontologia_Class60]
@@ -780,15 +769,3 @@
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Mermelada de fresa")
 	(PVP 2.35))
-
-([ontologia_Class61] of  Ingrediente
-
-	(Mes_Final_Temporada 1)
-	(Mes_Inicio_Temporada 1)
-	(Nombre "Cuajada"))
-
-([ontologia_Class8] of  Salsa
-)
-
-([ontologia_Class9] of  Salsa
-)

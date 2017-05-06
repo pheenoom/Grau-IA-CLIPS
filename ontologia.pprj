@@ -1,4 +1,4 @@
-; Thu May 04 22:16:08 CEST 2017
+; Sat May 06 11:58:05 CEST 2017
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -20,15 +20,15 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[ontologia_ProjectKB_Class198]
-		[ontologia_ProjectKB_Class199]
-		[ontologia_ProjectKB_Class200]
-		[ontologia_ProjectKB_Class201]
-		[ontologia_ProjectKB_Class202]
-		[ontologia_ProjectKB_Class203]
-		[ontologia_ProjectKB_Class204]
-		[ontologia_ProjectKB_Class205]
-		[ontologia_ProjectKB_Class206]))
+		[ontologia_ProjectKB_Class22]
+		[ontologia_ProjectKB_Class23]
+		[ontologia_ProjectKB_Class24]
+		[ontologia_ProjectKB_Class25]
+		[ontologia_ProjectKB_Class26]
+		[ontologia_ProjectKB_Class27]
+		[ontologia_ProjectKB_Class28]
+		[ontologia_ProjectKB_Class29]
+		[ontologia_ProjectKB_Class30]))
 
 ([CLSES_TAB] of  Widget
 
@@ -72,7 +72,7 @@
 	(is_hidden FALSE)
 	(widget_class_name "edu.stanford.smi.protege.widget.InstancesTab"))
 
-([KB_294186_Class3] of  Map
+([KB_050765_Class3] of  Map
 )
 
 ([KB_517706_Class0] of  String
@@ -83,9 +83,9 @@
 ([KB_517706_Class1] of  Map
 
 	(entries
-		[ontologia_ProjectKB_Class207]
-		[ontologia_ProjectKB_Class208]
-		[ontologia_ProjectKB_Class209]))
+		[ontologia_ProjectKB_Class31]
+		[ontologia_ProjectKB_Class32]
+		[ontologia_ProjectKB_Class33]))
 
 ([KB_517706_Class100] of  String
 
@@ -184,98 +184,86 @@
 	(name "layout properties")
 	(properties [VERTICAL_STRETCHER]))
 
-([ontologia_ProjectKB_Class198] of  String
+([ontologia_ProjectKB_Class19] of  Widget
+
+	(is_hidden FALSE)
+	(name "Salsa")
+	(property_list [ontologia_ProjectKB_Class20])
+	(widget_class_name "edu.stanford.smi.protege.widget.FormWidget"))
+
+([ontologia_ProjectKB_Class20] of  Property_List
+
+	(properties [ontologia_ProjectKB_Class21]))
+
+([ontologia_ProjectKB_Class21] of  Property_List
+
+	(name "layout properties"))
+
+([ontologia_ProjectKB_Class22] of  String
 
 	(name ":INSTANCE-ANNOTATION")
 	(string_value "%3AANNOTATION-TEXT"))
 
-([ontologia_ProjectKB_Class199] of  String
+([ontologia_ProjectKB_Class23] of  String
 
 	(name "Primero")
 	(string_value "Nombre"))
 
-([ontologia_ProjectKB_Class200] of  String
+([ontologia_ProjectKB_Class24] of  String
 
 	(name "Segundo")
 	(string_value "Nombre"))
 
-([ontologia_ProjectKB_Class201] of  String
+([ontologia_ProjectKB_Class25] of  String
 
 	(name "Congreso")
 	(string_value "Nombre"))
 
-([ontologia_ProjectKB_Class202] of  String
+([ontologia_ProjectKB_Class26] of  String
 
 	(name ":PAL-CONSTRAINT")
 	(string_value "%3APAL-NAME"))
 
-([ontologia_ProjectKB_Class203] of  String
+([ontologia_ProjectKB_Class27] of  String
 
 	(name "Postre")
 	(string_value "Nombre"))
 
-([ontologia_ProjectKB_Class204] of  String
+([ontologia_ProjectKB_Class28] of  String
 
 	(name ":META-CLASS")
 	(string_value "%3ANAME"))
 
-([ontologia_ProjectKB_Class205] of  String
+([ontologia_ProjectKB_Class29] of  String
 
 	(name "Ingrediente")
 	(string_value "Nombre"))
 
-([ontologia_ProjectKB_Class206] of  String
+([ontologia_ProjectKB_Class30] of  String
 
 	(name "Menu")
 	(string_value "Nombre"))
 
-([ontologia_ProjectKB_Class207] of  Map_Entry
+([ontologia_ProjectKB_Class31] of  Map_Entry
 
 	(key "suppress_instance_counting")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
 
-([ontologia_ProjectKB_Class208] of  Map_Entry
+([ontologia_ProjectKB_Class32] of  Map_Entry
 
 	(key "add_name_on_instance_form")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
 
-([ontologia_ProjectKB_Class209] of  Map_Entry
+([ontologia_ProjectKB_Class33] of  Map_Entry
 
 	(key "change_tracking_active")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
-
-([ontologia_ProjectKB_Class27] of  Widget
-
-	(height 60)
-	(is_hidden FALSE)
-	(name "Platos_Compatibles")
-	(property_list [ontologia_ProjectKB_Class28])
-	(widget_class_name "edu.stanford.smi.protege.widget.InstanceFieldWidget")
-	(width 200)
-	(x 400)
-	(y 0))
-
-([ontologia_ProjectKB_Class28] of  Property_List
-
-	(properties
-		[ontologia_ProjectKB_Class29]
-		[ontologia_ProjectKB_Class30]))
-
-([ontologia_ProjectKB_Class29] of  Boolean
-
-	(boolean_value FALSE)
-	(name "ButtonDisplayed-View References to Value"))
-
-([ontologia_ProjectKB_Class30] of  Boolean
-
-	(boolean_value FALSE)
-	(name "ButtonDisplayed-Delete Instance"))
 
 ([option_instance] of  Options
 
@@ -692,9 +680,9 @@
 
 	(browser_slot_names [BROWSER_SLOT_NAMES])
 	(customized_instance_widgets
+		[INSTANCE_ANNOTATION_FORM_WIDGET]
 		[STANDARD_CLASS_FORM_WIDGET]
 		[STANDARD_SLOT_FORM_WIDGET]
-		[INSTANCE_ANNOTATION_FORM_WIDGET]
 		[STANDARD_FACET_FORM_WIDGET]
 		[PAL_FORM_WIDGET])
 	(default_cls_metaclass ":STANDARD-CLASS")

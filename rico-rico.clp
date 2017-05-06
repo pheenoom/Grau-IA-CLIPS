@@ -1067,7 +1067,6 @@
 		(Nombre "Cuajada"))
 )
 
-
 ;                   ======================================================================
 ;                   ======================  Declaracion de modulos =======================
 ;                   ======================================================================
@@ -1087,6 +1086,13 @@
     (export ?ALL)
 )
 
+
+;(defmodule seleccion
+	;(import MAIN? ?ALL)
+	;(import abstraccion ?ALL)
+	;(export ?ALL)
+;)
+
 (defmodule solucionAbstracta
 	 (import MAIN ?ALL)
 	 (import recopilacion ?ALL)
@@ -1102,9 +1108,39 @@
 		(export ?ALL)
 )
 
+
 ;                   ======================================================================
 ;                   =====================  Declaracion de templates ======================
 ;                   ======================================================================
+
+(defclass Plato-precio
+	(is-a Plato)
+	(role concrete)
+	(single-slot Precio
+		(type INTEGER))
+)
+
+(defmessage-handler MAIN::Plato calcula-precio ()
+      (bind $?listaPlatos (find-all-instances ((?plato Plato)) TRUE))
+      (loop-for-count (?i 1 (length$ $?listaPlatos)) do
+          (bind ?plato (nth$ ?i $?listaPlatos))
+					(bind $?listaIngredientes (send ?plato get-Ingredientes))
+					(printout t (send ?plato get-Nombre) crlf)
+					(bind ?elaboracion (send ?plato get-PVP))
+					(bind ?precio ?elaboracion)
+          (loop-for-count (?j 1 (length$ $?listaIngredientes)) do
+              (bind ?ingrediente (nth$ ?j $?listaIngredientes))
+							(bind ?pvp (send ?ingrediente get-PVP))
+							(bind ?precio (+ ?precio ?pvp))
+							(printout t (send ?ingrediente get-Nombre) crlf)
+							(printout t ?pvp crlf)
+          )
+					;(assert (Plato-precio (Precio ?precio))) esto de aqui peta
+					(printout t "Precio final del plato " ?precio crlf)
+
+      )
+)
+
 
 (deftemplate MAIN::Entrada
 	(slot numComensales (type INTEGER) (default -1))
@@ -1467,6 +1503,7 @@
 		?e <- (ProblemaAbstracto (complejidad ?dificultad))
 		(test (eq ?dificultad UNDEF))
 		(Entrada (estilo ?estilo))
+		?plato <-(object(is-a Plato))
 		=>
 		(if (or (eq ?estilo Tradicional) (eq ?estilo Sibarita))
 				then (modify ?e (complejidad Facil))
@@ -1475,7 +1512,9 @@
 							else (modify ?e (complejidad Alto))
 				)
 		)
+		(printout t (send ?plato calcula-precio) crlf)
 )
+
 
 (defrule abstraccion::abstraccion-completada "Regla que comprueba que todas las preguntas han sido respondidas"
     (ProblemaAbstracto (presupuesto ?presupuesto))

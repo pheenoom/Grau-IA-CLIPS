@@ -1,4 +1,4 @@
-; Thu May 04 22:16:08 CEST 2017
+; Sat May 06 11:58:31 CEST 2017
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -342,8 +342,4 @@
 
 (defclass %3AUNDEFINED
 	(is-a USER)
-	(role concrete))
-
-(defclass Salsa
-	(is-a %3AUNDEFINED)
 	(role concrete))
