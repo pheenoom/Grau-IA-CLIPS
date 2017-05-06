@@ -1086,13 +1086,6 @@
     (export ?ALL)
 )
 
-
-;(defmodule seleccion
-	;(import MAIN? ?ALL)
-	;(import abstraccion ?ALL)
-	;(export ?ALL)
-;)
-
 (defmodule solucionAbstracta
 	 (import MAIN ?ALL)
 	 (import recopilacion ?ALL)
@@ -1108,20 +1101,9 @@
 		(export ?ALL)
 )
 
-
 ;                   ======================================================================
 ;                   =====================  Declaracion de templates ======================
 ;                   ======================================================================
-
-(defclass Plato-precio
-	(is-a Plato)
-	(role concrete)
-	(single-slot Precio
-		(type FLOAT))
-)
-
-
-
 
 (deftemplate MAIN::Entrada
 	(slot numComensales (type INTEGER) (default -1))
@@ -1148,12 +1130,6 @@
 )
 
 
-(deftemplate MAIN::PlatoAbstracto
-	(slot precio (type FLOAT))
-	(slot plato (type INSTANCE))
-)
-
-
 (deftemplate MAIN::MenuHappyMeal
 	(slot primerPlato (type INSTANCE))
 	(slot segundoPlato (type INSTANCE))
@@ -1164,40 +1140,47 @@
 ;                   =====================   Declaracion de clases   ======================
 ;                   ======================================================================
 
-(defclass MenuUsuario "Clase menu que representa el menu a mostrar al usuario" (is-a Menu)
-	(slot precio (type FLOAT) (create-accessor read-write))
-
-)
-
-(defclass PlatoPrecio (is-a Plato) (role concrete)
+(defclass PlatoPrecio (is-a USER) (role concrete)
 	(slot Precio (type FLOAT) (create-accessor read-write))
+	(slot Categoria (type SYMBOL) (allowed-values Bajo Medio Alto) (create-accessor read-write))
+	(slot Puntuacion (type INTEGER) (create-accessor read-write))
+	(slot Plato (type INSTANCE) (allowed-classes Plato)(create-accessor read-write))
 )
 
 ;                   ======================================================================
 ;                   ====================   Declaracion de handler   ======================
 ;                   ======================================================================
 
-;recibe un plato abstracto
-(defmessage-handler MAIN::Plato calcula-precio ()
-      (bind $?listaPlatos (find-all-instances ((?plato Plato)) TRUE))
-      (loop-for-count (?i 1 (length$ $?listaPlatos)) do
-          (bind ?plato (nth$ ?i $?listaPlatos))
-					(bind $?listaIngredientes (send ?plato get-Ingredientes))
-					(printout t (send ?plato get-Nombre) crlf)
-					(bind ?elaboracion (send ?plato get-PVP))
-					(bind ?precio ?elaboracion)
-          (loop-for-count (?j 1 (length$ $?listaIngredientes)) do
-              (bind ?ingrediente (nth$ ?j $?listaIngredientes))
-							(bind ?pvp (send ?ingrediente get-PVP))
-							(bind ?precio (+ ?precio ?pvp))
-							(printout t (send ?ingrediente get-Nombre) crlf)
-							(printout t ?pvp crlf)
-          )
-					;(assert (Plato-precio (Precio ?precio))) esto de aqui peta
-					(printout t "Precio final del plato " ?precio crlf)
+(defmessage-handler MAIN::PlatoPrecio calcula-categoria()
+	(bind ?plato ?self:Plato)
+	(bind ?precio (send ?plato calcula-precio))
+	(printout t "Precio final del plato " ?precio crlf)
 
-      )
+	;(modify ?self (Precio ?precio))
+	;(if (< ?precio 20)
+			;then (modify ?self (Categoria "Bajo"))
+			;else(if (and(>= ?precio 20) (< ?precio 30))
+					;then(modify ?self (Categoria "Medio"))
+					;else (modify ?self (Categoria "Alto"))
+			;)
 )
+
+;([10,20),[20,30), > 30)
+(defmessage-handler MAIN::Plato calcula-precio()
+				(bind $?listaIngredientes self:Ingredientes)
+				(bind ?elaboracion self:PVP)
+				(bind ?precio ?elaboracion)
+        (loop-for-count (?j 1 (length$ $?listaIngredientes)) do
+            (bind ?ingrediente (nth$ ?j $?listaIngredientes))
+						(bind ?pvp (send ?ingrediente get-PVP))
+						(bind ?precio (+ ?precio ?pvp))
+						(printout t (send ?ingrediente get-Nombre) crlf)
+						(printout t ?pvp crlf)
+        )
+				(printout t "Precio final del plato " ?precio crlf)
+				(* ?precio 1)
+)
+
 ; Nota para optimizar: hacer una funcion que imprima si o no cuando
 ; preguntamos si lleva lactosa o no , etc...
 (defmessage-handler MAIN::Plato imprimir ()
@@ -1514,7 +1497,6 @@
 							else (modify ?e (complejidad Alto))
 				)
 		)
-		(printout t (send ?plato calcula-precio) crlf)
 )
 
 
@@ -1568,6 +1550,10 @@
 	;)
 
 	(assert (MenuHappyMeal (primerPlato ?primerPlato) (segundoPlato ?segundoPlato) (postre ?postre)))
+	(bind ?p (make-instance ejemplo of PlatoPrecio))
+	(send ?p put-Plato ?primerPlato)
+	(send ?p calcula-categoria)
+	;(send ?p put-Plato ?segundoPlato)
 	(focus solucionConcreta)
 )
 
