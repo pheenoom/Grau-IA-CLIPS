@@ -1117,29 +1117,10 @@
 	(is-a Plato)
 	(role concrete)
 	(single-slot Precio
-		(type INTEGER))
+		(type FLOAT))
 )
 
-(defmessage-handler MAIN::Plato calcula-precio ()
-      (bind $?listaPlatos (find-all-instances ((?plato Plato)) TRUE))
-      (loop-for-count (?i 1 (length$ $?listaPlatos)) do
-          (bind ?plato (nth$ ?i $?listaPlatos))
-					(bind $?listaIngredientes (send ?plato get-Ingredientes))
-					(printout t (send ?plato get-Nombre) crlf)
-					(bind ?elaboracion (send ?plato get-PVP))
-					(bind ?precio ?elaboracion)
-          (loop-for-count (?j 1 (length$ $?listaIngredientes)) do
-              (bind ?ingrediente (nth$ ?j $?listaIngredientes))
-							(bind ?pvp (send ?ingrediente get-PVP))
-							(bind ?precio (+ ?precio ?pvp))
-							(printout t (send ?ingrediente get-Nombre) crlf)
-							(printout t ?pvp crlf)
-          )
-					;(assert (Plato-precio (Precio ?precio))) esto de aqui peta
-					(printout t "Precio final del plato " ?precio crlf)
 
-      )
-)
 
 
 (deftemplate MAIN::Entrada
@@ -1196,6 +1177,27 @@
 ;                   ====================   Declaracion de handler   ======================
 ;                   ======================================================================
 
+;recibe un plato abstracto
+(defmessage-handler MAIN::Plato calcula-precio ()
+      (bind $?listaPlatos (find-all-instances ((?plato Plato)) TRUE))
+      (loop-for-count (?i 1 (length$ $?listaPlatos)) do
+          (bind ?plato (nth$ ?i $?listaPlatos))
+					(bind $?listaIngredientes (send ?plato get-Ingredientes))
+					(printout t (send ?plato get-Nombre) crlf)
+					(bind ?elaboracion (send ?plato get-PVP))
+					(bind ?precio ?elaboracion)
+          (loop-for-count (?j 1 (length$ $?listaIngredientes)) do
+              (bind ?ingrediente (nth$ ?j $?listaIngredientes))
+							(bind ?pvp (send ?ingrediente get-PVP))
+							(bind ?precio (+ ?precio ?pvp))
+							(printout t (send ?ingrediente get-Nombre) crlf)
+							(printout t ?pvp crlf)
+          )
+					;(assert (Plato-precio (Precio ?precio))) esto de aqui peta
+					(printout t "Precio final del plato " ?precio crlf)
+
+      )
+)
 ; Nota para optimizar: hacer una funcion que imprima si o no cuando
 ; preguntamos si lleva lactosa o no , etc...
 (defmessage-handler MAIN::Plato imprimir ()
