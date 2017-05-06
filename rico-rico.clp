@@ -1148,7 +1148,8 @@
 	(slot Precio (type FLOAT) (create-accessor read-write) (default 0.0))
 	(slot Categoria (type SYMBOL) (allowed-values Bajo Medio Alto) (create-accessor read-write))
 	(slot Puntuacion (type INTEGER) (create-accessor read-write) (default 0))
-	(slot Plato (type INSTANCE) (allowed-classes Plato)(create-accessor read-write))
+	(slot Complejidad (type SYMBOL) (allowed-values Bajo Medio Alto) (create-accessor read-write))
+	(slot Plato (type INSTANCE) (allowed-classes Plato) (create-accessor read-write))
 )
 
 ;                   ======================================================================
@@ -1179,8 +1180,22 @@
 	(format t "Precio: %d %n" ?self:Precio)
 	(printout t "Categoria: " ?self:Categoria crlf)
 	(printout t "Puntuacion: " ?self:Puntuacion crlf)
+	(printout t "Complejidad: " ?self:Complejidad crlf)
 	(bind ?plato ?self:Plato)
 	(send ?plato imprimir)
+)
+
+(defmessage-handler MAIN::PlatoAbstracto calcula-complejidad ()
+	(bind ?plato ?self:Plato)
+	(bind ?precio (send ?plato get-PVP))
+
+	(if (< ?precio 2)
+			then (send ?self put-Complejidad Bajo)
+			else (if (and (>= ?precio 2) (< ?precio 5))
+					then(send ?self put-Complejidad Medio)
+					else (send ?self put-Complejidad Alto)
+			)
+	)
 )
 
 (defmessage-handler MAIN::PlatoAbstracto calcula-categoria ()
@@ -1299,6 +1314,7 @@
 		(bind ?platoAbstracto (make-instance (sym-cat platoAbstracto- (gensym)) of PlatoAbstracto))
 		(send ?platoAbstracto put-Plato ?plato)
 		(send ?platoAbstracto calcula-categoria)
+		(send ?platoAbstracto calcula-complejidad)
 	)
 
 	; (make-instance (sym-cat pepe- (gensym)) of <clase>)
@@ -1573,9 +1589,8 @@
 ;                   ===================  Modulo de solucion abstracta   ==================
 ;                   ======================================================================
 
-; (send <VARIABLE> get-<NOM_ATRIBUT>)
-; (find-all-instances (clase_instancias) (restricciones)).
-; (bind ?variable_instancia (make-instance nombre_instancia of nombre_clase))
+
+
 (defrule solucionAbstracta::prueba ""
 	(initial-fact)
 	(ProblemaAbstracto (presupuesto ?presupuesto))
@@ -1583,23 +1598,9 @@
 	=>
 	(bind ?platos (find-all-instances ((?inst Plato)) (or (not (eq ?presupuesto Bajo)) (< ?inst:PVP 3))))
 
-	;(bind ?primerPlato (make-instance primero of Primero))
-	;(bind ?segundoPlato (make-instance segundo of Segundo))
-	;(bind ?postre (make-instance postre of Postre))
-
 	(bind ?primerPlato (nth$ 1 ?platos))
 	(bind ?segundoPlato (nth$ 2 ?platos))
 	(bind ?postre (nth$ 3 ?platos))
-	;(loop-for-count (?i 1 (length$ ?platos)) do
-	;		(bind ?plato (nth$ ?i ?platos))
-	;		(bind ?precio (send ?plato get-PVP))
-	;		(bind ?nombre (send ?plato get-Nombre))
-
-		;	(bind ?primerPlato (make-instance patata of Primero))
-
-			;(printout t "precio: " ?precio)
-			;(printout t "  nombre: " ?nombre crlf)
-	;)
 
 	(bind ?menu (make-instance menuHappy of Menu))
 	(send ?menu put-Relacion_Menu_Primero ?primerPlato)
@@ -1607,10 +1608,6 @@
 	(send ?menu put-Relacion_Menu_Postre ?postre)
 	(bind ?menu2 (make-instance menuHappyMeal of MenuAbstracto))
 	(send ?menu2 put-Menu ?menu)
-
-	;(assert (MenuHappyMeal (primerPlato ?primerPlato) (segundoPlato ?segundoPlato) (postre ?postre)))
-	;(bind ?p (make-instance ejemplo of PlatoPre
-	;(send ?p calcula-categoria)
 
 	(focus solucionConcreta)
 )
@@ -1623,10 +1620,4 @@
 	(initial-fact)
 	=>
 	(send (instance-address * [menuHappyMeal]) imprimir)
-	;(bind ?listaIngredientes (find-all-instances ((?inst Ingrediente)) TRUE))
-	;(loop-for-count (?i 1 (length$ ?listaIngredientes)) do
-	;	(bind ?ingrediente (nth$ ?i ?listaIngredientes))
-	;	(send ?ingrediente imprimir)
-	;	(printout t crlf)
-	;)
 )
