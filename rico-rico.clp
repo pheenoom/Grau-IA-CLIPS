@@ -1594,6 +1594,7 @@
 (defclass PlatoAbstracto (is-a USER) (role concrete)
 	(slot Precio (type FLOAT) (create-accessor read-write) (default 0.0))
 	(slot Categoria (type SYMBOL) (allowed-values Bajo Medio Alto) (create-accessor read-write))
+	(slot SubCategoria (type SYMBOL) (allowed-values Bajo Medio Alto) (create-accessor read-write))
 	(slot Puntuacion (type INTEGER) (create-accessor read-write) (default 0))
 	(slot Complejidad (type SYMBOL) (allowed-values Bajo Medio Alto) (create-accessor read-write))
 	(slot Plato (type INSTANCE) (create-accessor read-write))
@@ -1647,11 +1648,47 @@
 	(printout t crlf)
 	(format t "Precio: %d %n" ?self:Precio)
 	(printout t "Categoria: " ?self:Categoria crlf)
+	(printout t "Sub-Categoria: " ?self:SubCategoria crlf)
 	(printout t "Puntuacion: " ?self:Puntuacion crlf)
 	(printout t "Complejidad: " ?self:Complejidad crlf)
 	(bind ?plato ?self:Plato)
 	(send ?plato imprimir)
 )
+
+(defmessage-handler MAIN::PlatoAbstracto calcula-sub-categoria-baja ()
+	(bind ?precio ?self:Precio)
+	(if (< ?precio 3)
+				then (send ?self put-SubCategoria Bajo)
+				else (if (and (>= ?precio 3) (< ?precio 6))
+						then (send ?self put-SubCategoria Medio)
+						else (send ?self put-SubCategoria Alto)
+				)
+	)
+)
+
+(defmessage-handler MAIN::PlatoAbstracto calcula-sub-categoria-media ()
+	(bind ?precio ?self:Precio)
+	(if (< ?precio 13)
+				then (send ?self put-SubCategoria Bajo)
+				else (if (and (>= ?precio 13) (< ?precio 16))
+						then (send ?self put-SubCategoria Medio)
+						else (send ?self put-SubCategoria Alto)
+				)
+	)
+)
+
+(defmessage-handler MAIN::PlatoAbstracto calcula-sub-categoria-alta ()
+	(bind ?precio ?self:Precio)
+	(send ?self put-Precio ?precio)
+	(if (< ?precio 25)
+				then (send ?self put-SubCategoria Bajo)
+				else (if (and (>= ?precio 25) (< ?precio 30))
+						then (send ?self put-SubCategoria Medio)
+						else (send ?self put-SubCategoria Alto)
+				)
+	)
+)
+
 
 (defmessage-handler MAIN::PlatoAbstracto calcula-categoria ()
 	(bind ?plato ?self:Plato)
@@ -1663,15 +1700,21 @@
 			then (if (< ?precio 5)
 						then (send ?self put-Categoria Bajo)
 						else (if (and (>= ?precio 5) (< ?precio 8))
-								then(send ?self put-Categoria Medio)
+								then (send ?self put-Categoria Medio)
 								else (send ?self put-Categoria Alto)
 						)
 			)
 			else 	(if (< ?precio 10)
-						then (send ?self put-Categoria Bajo)
-						else (if (and (>= ?precio 10) (< ?precio 15))
-								then(send ?self put-Categoria Medio)
-								else (send ?self put-Categoria Alto)
+						then
+								(send ?self put-Categoria Bajo)
+								(send ?self calcula-sub-categoria-baja)
+						else (if (and (>= ?precio 10) (< ?precio 20))
+								then
+										(send ?self put-Categoria Medio)
+										(send ?self calcula-sub-categoria-media)
+								else
+										(send ?self put-Categoria Alto)
+										(send ?self calcula-sub-categoria-alta)
 						)
 			)
 	)
@@ -1824,18 +1867,6 @@
 				)
 		)
 )
-
-
-;(deftemplate MAIN::ProblemaAbstracto
-    ; Presupuesto(bajo, medio, alto, muy alto) => ([10,20),[20,40),[40,80),>80)
-    ; NumComensales(bajo, medio, alto, muy alto) => ([20,30),[30,50),[50,100),[100, 500))
-    ; Complejidad(facil, normal, alto) => ([tradicional,sibarita], clasico, moderno)
-    ; Temporada(invierno, primavera, verano, otoño) => [12-3] [4-5] [6-9] [10-11]
-    ;(slot presupuesto (type SYMBOL) (allowed-values Bajo Medio Alto MuyAlto UNDEF) (default UNDEF))
-    ;(slot numComensales (type SYMBOL) (allowed-values Bajo Medio Alto MuyAlto UNDEF) (default UNDEF))
-;    (slot complejidad (type SYMBOL) (allowed-values Facil Normal Alto UNDEF) (default UNDEF))
-;    (slot temporada (type SYMBOL) (allowed-values Invierno Primavera Verano Otono UNDEF) (default UNDEF))
-;)
 
 (deffunction calcular-puntuacion-temporada "" (?platoAbstracto ?temporada)
 	(bind ?plato (send ?platoAbstracto get-Plato))
@@ -2182,8 +2213,6 @@
 		(focus solucionAbstracta)
 )
 
-
-
 ;                   ======================================================================
 ;                   ===================  Modulo de solucion abstracta   ==================
 ;                   ======================================================================
@@ -2235,8 +2264,6 @@
 	(loop-for-count (?i 1 (length$ ?listaPlatosAbstractos)) do
 			(bind ?platoAbstracto (nth$ ?i ?listaPlatosAbstractos))
 			(bind ?plato (send ?platoAbstracto get-Plato))
-			;(eq (class ?instancia) APrincipal)
-			;(send ?platoAbstracto imprimir)
 			(if (eq (class (instance-address * ?plato)) Primero)
 					then (if (= ?indiceMaxPrimero 0)
 								then (bind ?indiceMaxPrimero ?i)
@@ -2266,7 +2293,8 @@
 					)
 			)
 	)
-	(printout t "======================= MENUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU ==================== " crlf)
+
+	(printout t "======================= MENU ======================= " crlf)
 	(bind ?menuAbstracto (make-instance menuHappyMeal of MenuAbstracto))
 	(bind ?menu (make-instance menu of Menu))
 	(send ?menu put-Relacion_Menu_Primero (send (nth$ ?indiceMaxPrimero ?listaPlatosAbstractos) get-Plato))
