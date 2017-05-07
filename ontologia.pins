@@ -1,4 +1,4 @@
-; Sun May 07 13:10:17 CEST 2017
+; Sun May 07 14:43:30 CEST 2017
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -93,8 +93,8 @@
 
 ([ontologia_Class10005] of  Verdura
 
-	(Mes_Final_Temporada 1)
-	(Mes_Inicio_Temporada 12)
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
 	(Nombre "Puerro")
 	(PVP 2.1))
 
@@ -103,7 +103,7 @@
 	(Lactosa TRUE)
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
-	(Nombre "Leche_coco")
+	(Nombre "Leche de coco")
 	(PVP 1.5))
 
 ([ontologia_Class10008] of  Cereal
@@ -139,7 +139,7 @@
 
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
-	(Nombre "Presa_cerdo")
+	(Nombre "Presa de cerdo")
 	(PVP 10.0))
 
 ([ontologia_Class10014] of  Frutos_secos
@@ -174,7 +174,7 @@
 
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
-	(Nombre "Cochinillo_cerdo")
+	(Nombre "Cochinillo de cerdo")
 	(PVP 20.0))
 
 ([ontologia_Class10019] of  Verdura
@@ -188,7 +188,7 @@
 
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
-	(Nombre "Pimiento_verde")
+	(Nombre "Pimiento verde")
 	(PVP 0.7))
 
 ([ontologia_Class10021] of  Pescado
@@ -209,7 +209,7 @@
 
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 6)
-	(Nombre "Nabo_japones")
+	(Nombre "Nabo japones")
 	(PVP 3.1))
 
 ([ontologia_Class10024] of  Pescado
@@ -223,7 +223,7 @@
 
 	(Mes_Final_Temporada 10)
 	(Mes_Inicio_Temporada 4)
-	(Nombre "Erizo_mar")
+	(Nombre "Erizo de mar")
 	(PVP 8.0))
 
 ([ontologia_Class10026] of  Condimento
@@ -263,15 +263,15 @@
 
 ([ontologia_Class10032] of  Fruta
 
-	(Mes_Final_Temporada 4)
-	(Mes_Inicio_Temporada 11)
+	(Mes_Final_Temporada 11)
+	(Mes_Inicio_Temporada 4)
 	(Nombre "Naranja")
 	(PVP 0.8))
 
 ([ontologia_Class10033] of  Fruta
 
-	(Mes_Final_Temporada 4)
-	(Mes_Inicio_Temporada 12)
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 4)
 	(Nombre "Pomelo")
 	(PVP 0.5))
 
@@ -487,7 +487,7 @@
 
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
-	(Nombre "Carne_picada")
+	(Nombre "Carne picada")
 	(PVP 2.0))
 
 ([ontologia_Class20015] of  Derivado
@@ -495,7 +495,7 @@
 	(Lactosa TRUE)
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
-	(Nombre "Queso_oveja")
+	(Nombre "Queso de oveja")
 	(PVP 1.0))
 
 ([ontologia_Class20016] of  Primero
@@ -604,7 +604,24 @@
 ([ontologia_Class30005] of  Postre
 
 	(Bebida_Menu [ontologia_Class57])
+	(Ingredientes
+		[ontologia_Class30006]
+		[ontologia_Class50]
+		[ontologia_Class30008]
+		[ontologia_Class52]
+		[ontologia_Class55]
+		[ontologia_Class30009]
+		[ontologia_Class54]
+		[ontologia_Class51]
+		[ontologia_Class10009]
+		[ontologia_Class30007])
 	(Nombre "Torrijas")
+	(Platos_Compatibles
+		[ontologia_Class20013]
+		[ontologia_Class28]
+		[ontologia_Class0]
+		[ontologia_Class20009]
+		[ontologia_Class37])
 	(PVP 4.0)
 	(Racion Abundante)
 	(Vegetariano FALSE))
@@ -622,7 +639,299 @@
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Aceite de girasol")
-	(PVP 0.9))
+	(PVP 0.2))
+
+([ontologia_Class30008] of  Condimento
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Agua")
+	(PVP 0.2))
+
+([ontologia_Class30009] of  Condimento
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Coñac")
+	(PVP 0.4))
+
+([ontologia_Class30010] of  Postre
+
+	(Bebida_Menu [ontologia_Class57])
+	(Caliente FALSE)
+	(Ingredientes
+		[ontologia_Class30011]
+		[ontologia_Class30012]
+		[ontologia_Class30013]
+		[ontologia_Class30014]
+		[ontologia_Class51]
+		[ontologia_Class15]
+		[ontologia_Class30015]
+		[ontologia_Class35])
+	(Nombre "Muffins salados de pavo con queso Cheedar")
+	(Platos_Compatibles
+		[ontologia_Class20016]
+		[ontologia_Class20006]
+		[ontologia_Class0]
+		[ontologia_Class10004]
+		[ontologia_Class20005]
+		[ontologia_Class20007])
+	(PVP 5.0)
+	(Racion Peque%C3%B1a))
+
+([ontologia_Class30011] of  Cereal
+
+	(Gluten TRUE)
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Harina")
+	(PVP 0.8))
+
+([ontologia_Class30012] of  Derivado
+
+	(Gluten TRUE)
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Levadura")
+	(PVP 0.5))
+
+([ontologia_Class30013] of  Derivado
+
+	(Lactosa TRUE)
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Queso Cheddar")
+	(PVP 1.5))
+
+([ontologia_Class30014] of  Carne
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Pavo")
+	(PVP 1.0))
+
+([ontologia_Class30015] of  Derivado
+
+	(Lactosa TRUE)
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Yogur natural")
+	(PVP 0.5))
+
+([ontologia_Class30016] of  Postre
+
+	(Bebida_Menu [ontologia_Class57])
+	(Ingredientes
+		[ontologia_Class30017]
+		[ontologia_Class52]
+		[ontologia_Class32]
+		[ontologia_Class30015])
+	(Nombre "Crema fría de kiwi")
+	(Platos_Compatibles
+		[ontologia_Class20013]
+		[ontologia_Class20016]
+		[ontologia_Class20006]
+		[ontologia_Class0]
+		[ontologia_Class10004]
+		[ontologia_Class20007]
+		[ontologia_Class36])
+	(Racion Normal)
+	(Vegetariano TRUE))
+
+([ontologia_Class30017] of  Fruta
+
+	(Mes_Final_Temporada 9)
+	(Mes_Inicio_Temporada 4)
+	(Nombre "Kiwi")
+	(PVP 4.0))
+
+([ontologia_Class30018] of  Cereal
+
+	(Gluten TRUE)
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Galleta")
+	(PVP 0.5))
+
+([ontologia_Class30019] of  Derivado
+
+	(Lactosa TRUE)
+	(Mes_Final_Temporada 1)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Cuajada")
+	(PVP 0.8))
+
+([ontologia_Class30020] of  Condimento
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Chocolate blanco")
+	(PVP 0.5))
+
+([ontologia_Class30021] of  Condimento
+
+	(Lactosa TRUE)
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Chocolate con leche")
+	(PVP 0.5))
+
+([ontologia_Class30022] of  Condimento
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Chocolate negro")
+	(PVP 0.8))
+
+([ontologia_Class30023] of  Postre
+
+	(Bebida_Menu [ontologia_Class57])
+	(Ingredientes
+		[ontologia_Class30018]
+		[ontologia_Class41]
+		[ontologia_Class44]
+		[ontologia_Class50]
+		[ontologia_Class30019]
+		[ontologia_Class30008]
+		[ontologia_Class30020]
+		[ontologia_Class30021]
+		[ontologia_Class30022])
+	(Nombre "Tarta de tres chocolates")
+	(Platos_Compatibles
+		[ontologia_Class20013]
+		[ontologia_Class28]
+		[ontologia_Class20016]
+		[ontologia_Class20009]
+		[ontologia_Class20005]
+		[ontologia_Class37]
+		[ontologia_Class36])
+	(PVP 4.0)
+	(Racion Normal)
+	(Vegetariano TRUE))
+
+([ontologia_Class30024] of  Carne
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Jamon iberico")
+	(PVP 5.0))
+
+([ontologia_Class30025] of  Primero
+
+	(Bebida_Menu [ontologia_Class57])
+	(Ingredientes
+		[ontologia_Class2]
+		[ontologia_Class30006]
+		[ontologia_Class20]
+		[ontologia_Class15]
+		[ontologia_Class30008]
+		[ontologia_Class35]
+		[ontologia_Class51]
+		[ontologia_Class30024])
+	(Nombre "Salmorejo cordoves")
+	(PVP 2.0)
+	(Racion Normal))
+
+([ontologia_Class30027] of  Fruta
+
+	(Mes_Final_Temporada 10)
+	(Mes_Inicio_Temporada 5)
+	(Nombre "Aguacate")
+	(PVP 1.0))
+
+([ontologia_Class30028] of  Verdura
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Patata")
+	(PVP 0.8))
+
+([ontologia_Class30029] of  Condimento
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Caldo de verduras")
+	(PVP 1.0))
+
+([ontologia_Class30030] of  Primero
+
+	(Caliente FALSE)
+	(Ingredientes
+		[ontologia_Class30028]
+		[ontologia_Class10005]
+		[ontologia_Class30027]
+		[ontologia_Class30031]
+		[ontologia_Class10009]
+		[ontologia_Class44]
+		[ontologia_Class10011]
+		[ontologia_Class41]
+		[ontologia_Class30029]
+		[ontologia_Class35])
+	(Nombre "Vichyssoise de aguacate y langostinos")
+	(Platos_Compatibles
+		[ontologia_Class20013]
+		[ontologia_Class17]
+		[ontologia_Class10004]
+		[ontologia_Class20005]
+		[ontologia_Class20007])
+	(PVP 5.0)
+	(Racion Normal))
+
+([ontologia_Class30031] of  Marisco
+
+	(Mes_Final_Temporada 6)
+	(Mes_Inicio_Temporada 3)
+	(Nombre "Langostinos")
+	(PVP 5.0))
+
+([ontologia_Class30032] of  Verdura
+
+	(Mes_Final_Temporada 11)
+	(Mes_Inicio_Temporada 9)
+	(Nombre "Setas variadas")
+	(PVP 3.0))
+
+([ontologia_Class30033] of  Primero
+
+	(Bebida_Menu [ontologia_Class57])
+	(Ingredientes
+		[ontologia_Class30032]
+		[ontologia_Class30034]
+		[ontologia_Class30006]
+		[ontologia_Class30035]
+		[ontologia_Class15]
+		[ontologia_Class30008]
+		[ontologia_Class10034]
+		[ontologia_Class24]
+		[ontologia_Class35])
+	(Nombre "Gazpacho de setas")
+	(Platos_Compatibles
+		[ontologia_Class20013]
+		[ontologia_Class28]
+		[ontologia_Class30025]
+		[ontologia_Class20006]
+		[ontologia_Class0]
+		[ontologia_Class20009]
+		[ontologia_Class10004]
+		[ontologia_Class20005]
+		[ontologia_Class37]
+		[ontologia_Class36])
+	(PVP 3.0)
+	(Racion Normal))
+
+([ontologia_Class30034] of  Carne
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Caldo de ave")
+	(PVP 1.0))
+
+([ontologia_Class30035] of  Condimento
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Vinage de vino")
+	(PVP 0.8))
 
 ([ontologia_Class31] of  Condimento
 
@@ -782,7 +1091,7 @@
 	(Lactosa TRUE)
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
-	(Nombre "Leche_vaca")
+	(Nombre "Leche de vaca")
 	(PVP 1.22))
 
 ([ontologia_Class51] of  Derivado
