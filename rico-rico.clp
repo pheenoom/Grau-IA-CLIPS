@@ -1657,18 +1657,26 @@
 	(ProblemaAbstracto (Presupuesto ?presupuesto))
 	(ProblemaAbstracto (NumComensales ?num))
 	(test(eq ?presupuesto Bajo))
-	(or (test(eq ?num Bajo)) (test(eq ?num Medio)))
 	=>
 	(bind $?candidatos (find-all-instances ((?plato PlatoAbstracto)) TRUE))
 	(loop-for-count (?i 1 (length$ $?candidatos)) do
 		(bind ?candidato (nth$ ?i $?candidatos))
 		(bind ?complejidad (send ?candidato get-Complejidad))
 		(bind ?puntuacion (send ?candidato get-Puntuacion))
-		(bind ?incr (calcula-complejidad ?complejidad))
-		(bind ?puntuacion(+ ?incr ?puntuacion))
-		(modify ?candidato (puntuacion ?puntuacion))
+		(if (or(eq ?num Bajo) (eq ?num Medio))
+					then((bind ?incr (calcula-complejidad ?complejidad)))
+					else(if (eq ?num Alto)
+						then()
+						else()
+					)
+			)
+
+		;(bind ?puntuacion(+ ?incr ?puntuacion))
+		;(modify ?candidato (puntuacion ?puntuacion))
 	)
 )
+
+
 ;                   ======================================================================
 ;                   ===================   Modulo de solucion concreta   ==================
 ;                   ======================================================================
