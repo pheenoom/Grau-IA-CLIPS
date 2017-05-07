@@ -1150,6 +1150,27 @@
 ;                   ====================   Declaracion de handler   ======================
 ;                   ======================================================================
 
+(defmessage-handler MAIN::Plato calcula-precio ()
+      (bind $?listaPlatos (find-all-instances ((?plato Plato)) TRUE))
+      (loop-for-count (?i 1 (length$ $?listaPlatos)) do
+          (bind ?plato (nth$ ?i $?listaPlatos))
+					(bind $?listaIngredientes (send ?plato get-Ingredientes))
+					(printout t (send ?plato get-Nombre) crlf)
+					(bind ?elaboracion (send ?plato get-PVP))
+					(bind ?precio ?elaboracion)
+          (loop-for-count (?j 1 (length$ $?listaIngredientes)) do
+              (bind ?ingrediente (nth$ ?j $?listaIngredientes))
+							(bind ?pvp (send ?ingrediente get-PVP))
+							(bind ?precio (+ ?precio ?pvp))
+							(printout t (send ?ingrediente get-Nombre) crlf)
+							(printout t ?pvp crlf)
+          )
+					;(assert (Plato-precio (Precio ?precio))) esto de aqui peta
+					(printout t "Precio final del plato " ?precio crlf)
+
+      )
+)
+
 (defmessage-handler MAIN::MenuAbstracto imprimir ()
 	(format t "Precio %d %n" ?self:Precio)
 	(bind ?menu ?self:Menu)
@@ -1174,22 +1195,8 @@
 	(format t "Precio: %d %n" ?self:Precio)
 	(printout t "Categoria: " ?self:Categoria crlf)
 	(printout t "Puntuacion: " ?self:Puntuacion crlf)
-	(printout t "Complejidad: " ?self:Complejidad crlf)
 	(bind ?plato ?self:Plato)
 	(send ?plato imprimir)
-)
-
-(defmessage-handler MAIN::PlatoAbstracto calcula-complejidad ()
-	(bind ?plato ?self:Plato)
-	(bind ?precio (send ?plato get-PVP))
-
-	(if (< ?precio 2)
-			then (send ?self put-Complejidad Bajo)
-			else (if (and (>= ?precio 2) (< ?precio 5))
-					then(send ?self put-Complejidad Medio)
-					else (send ?self put-Complejidad Alto)
-			)
-	)
 )
 
 (defmessage-handler MAIN::PlatoAbstracto calcula-categoria ()
@@ -1264,6 +1271,7 @@
 	(format t "%t Temporada Final: %d %n" ?self:Mes_Final_Temporada)
 )
 
+
 ;                   ======================================================================
 ;                   =====================  Declaracion de funciones ======================
 ;                   ======================================================================
@@ -1309,7 +1317,6 @@
 		(bind ?platoAbstracto (make-instance (sym-cat platoAbstracto- (gensym)) of PlatoAbstracto))
 		(send ?platoAbstracto put-Plato ?plato)
 		(send ?platoAbstracto calcula-categoria)
-		(send ?platoAbstracto calcula-complejidad)
 	)
 )
 
@@ -1459,7 +1466,7 @@
 	(bind ?platos (find-all-instances ((?inst PlatoAbstracto)) TRUE))
 	(loop-for-count (?i 1 (length$ ?platos)) do
 		(bind ?plato (nth$ ?i ?platos))
-		;(send ?plato imprimir)
+		(send ?plato imprimir)
 	)
 
   (printout t "====================================================================" crlf)
@@ -1679,6 +1686,7 @@
 		)
 )
 
+
 (defrule abstraccion::abstraccion-completada "Regla que comprueba que todas las preguntas han sido respondidas"
     (ProblemaAbstracto (presupuesto ?presupuesto))
     (test (not (eq ?presupuesto UNDEF)))
@@ -1695,11 +1703,16 @@
 		(focus solucionAbstracta)
 )
 
+
+
 ;                   ======================================================================
 ;                   ===================  Modulo de solucion abstracta   ==================
 ;                   ======================================================================
 
-(defrule solucionAbstracta::generar-menu ""
+; (send <VARIABLE> get-<NOM_ATRIBUT>)
+; (find-all-instances (clase_instancias) (restricciones)).
+; (bind ?variable_instancia (make-instance nombre_instancia of nombre_clase))
+(defrule solucionAbstracta::prueba ""
 	(initial-fact)
 	(ProblemaAbstracto (presupuesto ?presupuesto))
 	(ProblemaAbstracto (numComensales ?numComensales))
@@ -1724,7 +1737,7 @@
 ;                   ===================   Modulo de solucion concreta   ==================
 ;                   ======================================================================
 
-(defrule solucionConcreta::generarSolucion ""
+(defrule solucionConcreta::prueba2 ""
 	(initial-fact)
 	=>
 	(bind ?indiceMaxPrimero 0)
