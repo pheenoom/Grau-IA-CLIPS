@@ -356,7 +356,6 @@
 			[ontologia_Class22]
 			[ontologia_Class10003]
 			[ontologia_Class10005]
-			[ontologia_Class51]
 			[ontologia_Class31]
 			[ontologia_Class10007]
 			[ontologia_Class10008]
@@ -782,7 +781,6 @@
 		(Caliente TRUE)
 		(Ingredientes
 			[ontologia_Class10024]
-			[ontologia_Class51]
 			[ontologia_Class10005]
 			[ontologia_Class20008]
 			[ontologia_Class44]
@@ -873,7 +871,7 @@
 		(Mes_Final_Temporada 12)
 		(Mes_Inicio_Temporada 1)
 		(Nombre "Carne picada")
-		(PVP 2.0))
+		(PVP 1.2))
 
 	([ontologia_Class20015] of  Derivado
 
@@ -986,6 +984,36 @@
 		(Nombre "Pimiento rojo")
 		(PVP 0.6))
 
+	([ontologia_Class30000] of  Condimento
+
+		(Mes_Final_Temporada 1)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Crema de cacao")
+		(PVP 0.5))
+
+	([ontologia_Class30001] of  Postre
+
+		(Bebida_Menu [ontologia_Class57])
+		(Caliente TRUE)
+		(Ingredientes
+			[ontologia_Class30011]
+			[ontologia_Class50]
+			[ontologia_Class41]
+			[ontologia_Class30000]
+			[ontologia_Class35])
+		(Nombre "Crepes de Nutella")
+		(PVP 0.3)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class30002] of  Postre
+
+		(Ingredientes [ontologia_Class10001])
+		(Nombre "Sandia")
+		(PVP 0.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
 	([ontologia_Class30003] of  Cereal
 
 		(Gluten TRUE)
@@ -1027,7 +1055,6 @@
 			[ontologia_Class55]
 			[ontologia_Class30009]
 			[ontologia_Class54]
-			[ontologia_Class51]
 			[ontologia_Class10009]
 			[ontologia_Class30007])
 		(Nombre "Torrijas")
@@ -1079,7 +1106,6 @@
 			[ontologia_Class30012]
 			[ontologia_Class30013]
 			[ontologia_Class30014]
-			[ontologia_Class51]
 			[ontologia_Class15]
 			[ontologia_Class30015]
 			[ontologia_Class35])
@@ -1241,7 +1267,6 @@
 			[ontologia_Class15]
 			[ontologia_Class30008]
 			[ontologia_Class35]
-			[ontologia_Class51]
 			[ontologia_Class30024])
 		(Nombre "Salmorejo cordoves")
 		(PVP 2.0)
@@ -1440,7 +1465,7 @@
 		(Mes_Final_Temporada 12)
 		(Mes_Inicio_Temporada 1)
 		(Nombre "Queso de cabra")
-		(PVP 2.3))
+		(PVP 1.0))
 
 	([ontologia_Class40] of  Condimento
 
@@ -1448,6 +1473,21 @@
 		(Mes_Inicio_Temporada 1)
 		(Nombre "Perejil")
 		(PVP 0.1))
+
+	([ontologia_Class40003] of  Fruta
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Manzana")
+		(PVP 1.05))
+
+	([ontologia_Class40004] of  Postre
+
+		(Ingredientes [ontologia_Class30017])
+		(Nombre "Kiwi")
+		(PVP 0.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
 
 	([ontologia_Class40005] of  Carne
 
@@ -1547,7 +1587,6 @@
 			[ontologia_Class54]
 			[ontologia_Class10009]
 			[ontologia_Class52]
-			[ontologia_Class51]
 			[ontologia_Class30011])
 		(Nombre "Natillas caseras")
 		(Platos_Compatibles
@@ -1619,7 +1658,6 @@
 			[ontologia_Class40015]
 			[ontologia_Class30028]
 			[ontologia_Class26]
-			[ontologia_Class51]
 			[ontologia_Class40019])
 		(Nombre "Ensaladilla rusa")
 		(Platos_Compatibles
@@ -1679,7 +1717,6 @@
 		(Ingredientes
 			[ontologia_Class52]
 			[ontologia_Class55]
-			[ontologia_Class51]
 			[ontologia_Class50]
 			[ontologia_Class54]
 			[ontologia_Class56])
@@ -1697,18 +1734,158 @@
 
 	([ontologia_Class50] of  Derivado
 
+		(Gluten FALSE)
 		(Lactosa TRUE)
 		(Mes_Final_Temporada 12)
 		(Mes_Inicio_Temporada 1)
 		(Nombre "Leche de vaca")
-		(PVP 1.22))
+		(PVP 0.25))
 
-	([ontologia_Class51] of  Derivado
+	([ontologia_Class50005] of  Postre
+
+		(Ingredientes [ontologia_Class10002])
+		(Nombre "Melon")
+		(PVP 0.0)
+		(Racion Normal))
+
+	([ontologia_Class50006] of  Postre
+
+		(Ingredientes
+			[ontologia_Class30011]
+			[ontologia_Class52]
+			[ontologia_Class32]
+			[ontologia_Class30012]
+			[ontologia_Class30008]
+			[ontologia_Class30000])
+		(Nombre "Dorayakis caseros de chocolate")
+		(PVP 0.4)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class50007] of  Postre
+
+		(Ingredientes [ontologia_Class10032])
+		(Nombre "Naranja")
+		(Racion Normal))
+
+	([ontologia_Class50008] of  Postre
+
+		(Ingredientes [ontologia_Class10033])
+		(Nombre "Pomelo")
+		(Racion Normal))
+
+	([ontologia_Class50009] of  Postre
+
+		(Ingredientes
+			[ontologia_Class52]
+			[ontologia_Class10009]
+			[ontologia_Class41]
+			[ontologia_Class55]
+			[ontologia_Class3])
+		(Nombre "Tarta de Santiago")
+		(PVP 14.0)
+		(Racion Normal))
+
+	([ontologia_Class50010] of  Postre
+
+		(Ingredientes
+			[ontologia_Class52]
+			[ontologia_Class50]
+			[ontologia_Class55]
+			[ontologia_Class10009]
+			[ontologia_Class54])
+		(Nombre "Crema catalana")
+		(PVP 4.0)
+		(Racion Normal))
+
+	([ontologia_Class50011] of  Segundo
+
+		(Ingredientes
+			[ontologia_Class30006]
+			[ontologia_Class4]
+			[ontologia_Class20002]
+			[ontologia_Class20014])
+		(Nombre "Mini Hamburguesa rellena de queso Cabrales")
+		(PVP 0.0)
+		(Racion Normal))
+
+	([ontologia_Class50012] of  Segundo
+
+		(Ingredientes
+			[ontologia_Class20014]
+			[ontologia_Class30006])
+		(Nombre "Hamburguesa")
+		(PVP 0.0)
+		(Racion Normal))
+
+	([ontologia_Class50013] of  Segundo
+
+		(Ingredientes
+			[ontologia_Class41]
+			[ontologia_Class10032]
+			[ontologia_Class52]
+			[ontologia_Class10010]
+			[ontologia_Class35]
+			[ontologia_Class22]
+			[ontologia_Class50014])
+		(Nombre "Pato a la naranja")
+		(PVP 13.0)
+		(Racion Normal))
+
+	([ontologia_Class50014] of  Carne
+
+		(Mes_Final_Temporada 1)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Pato")
+		(PVP 3.0))
+
+	([ontologia_Class50018] of  Derivado
 
 		(Mes_Final_Temporada 12)
 		(Mes_Inicio_Temporada 1)
 		(Nombre "Huevo")
 		(PVP 0.5))
+
+	([ontologia_Class50022] of  Primero
+
+		(Ingredientes
+			[ontologia_Class20014]
+			[ontologia_Class30006])
+		(Nombre "Hamburgesa")
+		(PVP 0.0)
+		(Racion Normal))
+
+	([ontologia_Class50023] of  Primero
+
+		(Ingredientes
+			[ontologia_Class10031]
+			[ontologia_Class30028]
+			[ontologia_Class30]
+			[ontologia_Class25]
+			[ontologia_Class10010]
+			[ontologia_Class35]
+			[ontologia_Class30035]
+			[ontologia_Class15]
+			[ontologia_Class2]
+			[ontologia_Class54])
+		(Nombre "Leon come gambas")
+		(PVP 80.0)
+		(Racion Normal))
+
+	([ontologia_Class50024] of  Primero
+
+		(Ingredientes
+			[ontologia_Class30011]
+			[ontologia_Class10012]
+			[ontologia_Class20002]
+			[ontologia_Class35]
+			[ontologia_Class20008]
+			[ontologia_Class30014]
+			[ontologia_Class38]
+			[ontologia_Class4])
+		(Nombre "Pizza de Carne")
+		(PVP 12.0)
+		(Racion Normal))
 
 	([ontologia_Class52] of  Condimento
 
@@ -1781,6 +1958,7 @@
 		(Mes_Inicio_Temporada 1)
 		(Nombre "Mermelada de fresa")
 		(PVP 2.35))
+
 )
 
 ;                   ======================================================================
@@ -1889,7 +2067,7 @@
 )
 
 (defmessage-handler MAIN::MenuAbstracto imprimir ()
-	(format t "Precio %d %n" ?self:Precio)
+	(format t "Precio %f %n" ?self:Precio)
 	(bind ?menu ?self:Menu)
 	(send ?menu imprimir)
 )
@@ -1908,7 +2086,7 @@
 
 (defmessage-handler MAIN::PlatoAbstracto imprimir ()
 	(printout t crlf)
-	(format t "Precio: %d %n" ?self:Precio)
+	(format t "Precio: %f %n" ?self:Precio)
 	(printout t "Categoria: " ?self:Categoria crlf)
 	(printout t "Sub-Categoria: " ?self:SubCategoria crlf)
 	(printout t "Puntuacion: " ?self:Puntuacion crlf)
@@ -1919,36 +2097,71 @@
 
 (defmessage-handler MAIN::PlatoAbstracto calcula-sub-categoria-baja ()
 	(bind ?precio ?self:Precio)
-	(if (< ?precio 3)
-				then (send ?self put-SubCategoria Bajo)
-				else (if (and (>= ?precio 3) (< ?precio 6))
-						then (send ?self put-SubCategoria Medio)
-						else (send ?self put-SubCategoria Alto)
-				)
-	)
+	(bind ?plato ?self:Plato)
+
+	(if (eq (class ?plato) Postre)
+			then (if (< ?precio 1.6)
+						then (send ?self put-SubCategoria Bajo)
+						else (if (and (>= ?precio 1.6) (< ?precio 3))
+								then (send ?self put-SubCategoria Medio)
+								else (send ?self put-SubCategoria Alto)
+						)
+			)
+			else
+					(if (< ?precio 3)
+								then (send ?self put-SubCategoria Bajo)
+								else (if (and (>= ?precio 3) (< ?precio 6))
+										then (send ?self put-SubCategoria Medio)
+										else (send ?self put-SubCategoria Alto)
+								)
+					)
+		)
 )
 
 (defmessage-handler MAIN::PlatoAbstracto calcula-sub-categoria-media ()
 	(bind ?precio ?self:Precio)
-	(if (< ?precio 13)
-				then (send ?self put-SubCategoria Bajo)
-				else (if (and (>= ?precio 13) (< ?precio 16))
-						then (send ?self put-SubCategoria Medio)
-						else (send ?self put-SubCategoria Alto)
-				)
+	(bind ?plato ?self:Plato)
+
+	(if (eq (class ?plato) Postre)
+			then (if (< ?precio 4.5)
+						then (send ?self put-SubCategoria Bajo)
+						else (if (and (>= ?precio 4.5) (< ?precio 6.75))
+								then (send ?self put-SubCategoria Medio)
+								else (send ?self put-SubCategoria Alto)
+						)
+			)
+			else
+					(if (< ?precio 13)
+								then (send ?self put-SubCategoria Bajo)
+								else (if (and (>= ?precio 13) (< ?precio 16))
+										then (send ?self put-SubCategoria Medio)
+										else (send ?self put-SubCategoria Alto)
+								)
+					)
 	)
 )
 
 (defmessage-handler MAIN::PlatoAbstracto calcula-sub-categoria-alta ()
 	(bind ?precio ?self:Precio)
-	(send ?self put-Precio ?precio)
-	(if (< ?precio 25)
-				then (send ?self put-SubCategoria Bajo)
-				else (if (and (>= ?precio 25) (< ?precio 30))
-						then (send ?self put-SubCategoria Medio)
-						else (send ?self put-SubCategoria Alto)
-				)
-	)
+	(bind ?plato ?self:Plato)
+
+	(if (eq (class ?plato) Postre)
+			then (if (< ?precio 9)
+						then (send ?self put-SubCategoria Bajo)
+						else (if (and (>= ?precio 9) (< ?precio 12))
+								then (send ?self put-SubCategoria Medio)
+								else (send ?self put-SubCategoria Alto)
+						)
+			)
+			else
+					(if (< ?precio 25)
+								then (send ?self put-SubCategoria Bajo)
+								else (if (and (>= ?precio 25) (< ?precio 30))
+										then (send ?self put-SubCategoria Medio)
+										else (send ?self put-SubCategoria Alto)
+								)
+					)
+		)
 )
 
 
@@ -1956,14 +2169,19 @@
 	(bind ?plato ?self:Plato)
 	(bind ?precio (send ?plato calcula-precio))
 
-	;(send <VARIABLE> put-<NOM_ATRIBUT> <VALOR>)
 	(send ?self put-Precio ?precio)
 	(if (eq (class ?plato) Postre)
-			then (if (< ?precio 5)
-						then (send ?self put-Categoria Bajo)
-						else (if (and (>= ?precio 5) (< ?precio 8))
-								then (send ?self put-Categoria Medio)
-								else (send ?self put-Categoria Alto)
+			then (if (< ?precio 4)
+						then
+								(send ?self put-Categoria Bajo)
+								(send ?self calcula-sub-categoria-baja)
+						else (if (and (>= ?precio 4) (< ?precio 8))
+								then
+										(send ?self put-Categoria Medio)
+										(send ?self calcula-sub-categoria-media)
+								else
+										(send ?self put-Categoria Alto)
+										(send ?self calcula-sub-categoria-alta)
 						)
 			)
 			else 	(if (< ?precio 10)
@@ -1982,7 +2200,6 @@
 	)
 )
 
-;([10,20),[20,30), > 30)
 (defmessage-handler MAIN::Plato calcula-precio()
 		(bind $?listaIngredientes ?self:Ingredientes)
 		(bind ?precio ?self:PVP)
@@ -1994,47 +2211,46 @@
 		(* ?precio 1)
 )
 
-; Nota para optimizar: hacer una funcion que imprima si o no cuando
-; preguntamos si lleva lactosa o no , etc...
 (defmessage-handler MAIN::Plato imprimir ()
 	(format t "Nombre: %s" ?self:Nombre)
 	(printout t crlf)
-
-	(bind ?vegetariano ?self:Vegetariano)
-	(if (eq ?vegetariano TRUE)
-		then (format t "%t Es un plato vegetariano? Si %n")
-		else (format t "%t Es un plato vegetariano? No %n")
-	)
-
-	(bind ?caliente ?self:Caliente)
-	(if (eq ?caliente TRUE)
-		then (format t "%t Es un plato caliente? Si %n")
-		else (format t "%t Es un plato caliente? No %n")
-	)
-
-	;(printout t "Ingredientes del plato: " crlf)
-	;(bind $?listaIngredientes ?self:Ingredientes)
-	;(loop-for-count (?i 1 (length$ ?listaIngredientes)) do
-	;	(bind ?ingrediente (nth$ ?i ?listaIngredientes))
-	;	(send ?ingrediente imprimir)
-	;	(printout t crlf)
+	;(bind ?vegetariano ?self:Vegetariano)
+	;(if (eq ?vegetariano TRUE)
+	;	then (format t "%t Es un plato vegetariano? Si %n")
+	;	else (format t "%t Es un plato vegetariano? No %n")
 	;)
+
+	;(bind ?caliente ?self:Caliente)
+	;(if (eq ?caliente TRUE)
+	;	then (format t "%t Es un plato caliente? Si %n")
+	;	else (format t "%t Es un plato caliente? No %n")
+	;)
+
+	(printout t "Ingredientes del plato: ")
+	(bind $?listaIngredientes ?self:Ingredientes)
+	(format t "(" )
+	(loop-for-count (?i 1 (length$ ?listaIngredientes)) do
+		(bind ?ingrediente (nth$ ?i ?listaIngredientes))
+		(send ?ingrediente imprimir)
+	)
+	(printout t ")" crlf)
+	(printout t crlf)
 )
 
 (defmessage-handler MAIN::Ingrediente imprimir ()
-	(format t "%t Nombre: %s %n" ?self:Nombre)
-	(bind ?lactosa ?self:Lactosa)
-	(bind ?gluten ?self:Gluten)
-	(if (eq ?lactosa TRUE)
-		then (format t "%t Lactosa: Si %n")
-		else (format t "%t Lactosa: No %n")
-	)
-	(if (eq ?gluten TRUE)
-		then (format t "%t Gluten: Si %n")
-		else (format t "%t Gluten: No %n")
-	)
-	(format t "%t Temporada Inicio: %d %n" ?self:Mes_Inicio_Temporada)
-	(format t "%t Temporada Final: %d %n" ?self:Mes_Final_Temporada)
+	(format t "%s - " ?self:Nombre)
+	;(bind ?lactosa ?self:Lactosa)
+	;(bind ?gluten ?self:Gluten)
+	;(if (eq ?lactosa TRUE)
+	;	then (format t "%t Lactosa: Si %n")
+	;	else (format t "%t Lactosa: No %n")
+	;)
+	;(if (eq ?gluten TRUE)
+	;	then (format t "%t Gluten: Si %n")
+	;	else (format t "%t Gluten: No %n")
+	;)
+	;(format t "%t Temporada Inicio: %d %n" ?self:Mes_Inicio_Temporada)
+	;(format t "%t Temporada Final: %d %n" ?self:Mes_Final_Temporada)
 )
 
 
@@ -2090,42 +2306,98 @@
 	(bind ?precioPlato (send ?plato get-Categoria))
 	(if (eq ?presupuesto Bajo)
 			then (if (eq ?precioPlato Bajo)
-						then (send ?plato put-Puntuacion (+ 2 (send ?plato get-Puntuacion))) ; Presupuesto Bajo y Precio Plato Bajo
-								 (printout t "+2 --> Presupuesto Bajo y precio plato Bajo" crlf)
+						then (send ?plato put-Puntuacion (+ 2 (send ?plato get-Puntuacion)))
+								 ;(printout t "+2 --> Presupuesto Bajo y precio plato Bajo" crlf)
 						else (if (eq ?precioPlato Medio)
-									then (send ?plato put-Puntuacion (+ 1 (send ?plato get-Puntuacion))) ; Presupuesto Bajo y Precio Plato Medio
-											 (printout t "+1 --> Presupuesto Bajo y precio plato Medio" crlf)
+									then (send ?plato put-Puntuacion (+ 1 (send ?plato get-Puntuacion)))
+											 ;(printout t "+1 --> Presupuesto Bajo y precio plato Medio" crlf)
 				    )
 			 )
 			 else (if (eq ?presupuesto Medio)
 			 			then (if (eq ?precioPlato Medio)
-									then (send ?plato put-Puntuacion (+ 2 (send ?plato get-Puntuacion))) ; Presupuesto Medio y Precio Plato Medio
-											 (printout t "+2 --> Presupuesto Medio y precio plato Medio" crlf)
+									then (send ?plato put-Puntuacion (+ 2 (send ?plato get-Puntuacion)))
+											; (printout t "+2 --> Presupuesto Medio y precio plato Medio" crlf)
 									else (if (eq ?precioPlato Bajo)
-												then (send ?plato put-Puntuacion (+ 1 (send ?plato get-Puntuacion))) ; Presupuesto Medio y Precio Plato Bajo
-													 		(printout t "+1 --> Presupuesto Medio y precio plato Bajo" crlf)
+												then (send ?plato put-Puntuacion (+ 1 (send ?plato get-Puntuacion)))
+													 		;(printout t "+1 --> Presupuesto Medio y precio plato Bajo" crlf)
 									)
 						)
 						else (if (eq ?presupuesto Alto)
 									then (if (eq ?precioPlato Medio)
-												then (send ?plato put-Puntuacion (+ 1 (send ?plato get-Puntuacion))) ; Presupuesto Medio y Precio Plato Medio
-														 (printout t "+1 --> Presupuesto Alto y precio plato Medio" crlf)
+												then (send ?plato put-Puntuacion (+ 1 (send ?plato get-Puntuacion)))
+														 ;(printout t "+1 --> Presupuesto Alto y precio plato Medio" crlf)
 												else (if (eq ?precioPlato Alto)
-															then (send ?plato put-Puntuacion (+ 2 (send ?plato get-Puntuacion))) ; Presupuesto Medio y Precio Plato Bajo
-																	 (printout t "+2 --> Presupuesto Alto y precio plato Alto" crlf)
+															then (send ?plato put-Puntuacion (+ 2 (send ?plato get-Puntuacion)))
+																	 ;(printout t "+2 --> Presupuesto Alto y precio plato Alto" crlf)
 												)
 									)
 									else (if (eq ?precioPlato Alto)
-												then (send ?plato put-Puntuacion (+ 3 (send ?plato get-Puntuacion))) ; Presupuesto Alto y Precio Plato alto
-														 (printout t "+3 --> Presupuesto Muy Alto y precio plato Alto" crlf)
+												then (send ?plato put-Puntuacion (+ 3 (send ?plato get-Puntuacion)))
+														 ;(printout t "+3 --> Presupuesto Muy Alto y precio plato Alto" crlf)
 												else (if (eq ?precioPlato Medio)
-															then (send ?plato put-Puntuacion (+ 1 (send ?plato get-Puntuacion))) ; Presupuesto Alto y Precio Plato alto
-																	 (printout t "+1 --> Presupuesto Muy Alto y precio plato Medio" crlf)
+															then (send ?plato put-Puntuacion (+ 1 (send ?plato get-Puntuacion)))
+																	 ;(printout t "+1 --> Presupuesto Muy Alto y precio plato Medio" crlf)
 												)
 									)
 						)
 				)
 		)
+)
+
+(deffunction generar-menu "" (?tipoCategoria ?nombreMenuAbstracto ?nombreMenu)
+		(bind ?indiceMaxPrimero 0)
+		(bind ?indiceMaxSegundo 0)
+		(bind ?indiceMaxPostre 0)
+
+		(bind ?listaPlatosAbstractos (find-all-instances ((?inst PlatoAbstracto)) TRUE))
+		(loop-for-count (?i 1 (length$ ?listaPlatosAbstractos)) do
+				(bind ?platoAbstracto (nth$ ?i ?listaPlatosAbstractos))
+				(bind ?plato (send ?platoAbstracto get-Plato))
+
+				(if (eq (send ?platoAbstracto get-SubCategoria) ?tipoCategoria)
+					then
+							(if (eq (class (instance-address * ?plato)) Primero)
+									then (if (= ?indiceMaxPrimero 0)
+												then (bind ?indiceMaxPrimero ?i)
+												else
+														(bind ?platoAbstracoMax (nth$ ?indiceMaxPrimero ?listaPlatosAbstractos))
+														(if (< (send ?platoAbstracoMax get-Puntuacion) (send ?platoAbstracto get-Puntuacion))
+																then (bind ?indiceMaxPrimero ?i)
+														)
+									)
+									else (if (eq (class (instance-address * ?plato)) Segundo)
+												then (if (= ?indiceMaxSegundo 0)
+															then (bind ?indiceMaxSegundo ?i)
+															else
+																	(bind ?platoAbstracoMax (nth$ ?indiceMaxSegundo ?listaPlatosAbstractos))
+																	(if (< (send ?platoAbstracoMax get-Puntuacion) (send ?platoAbstracto get-Puntuacion))
+																			then (bind ?indiceMaxSegundo ?i)
+																	)
+												)
+												else (if (= ?indiceMaxPostre 0)
+															then (bind ?indiceMaxPostre ?i)
+															else
+																	(bind ?platoAbstracoMax (nth$ ?indiceMaxPostre ?listaPlatosAbstractos))
+																	(if (< (send ?platoAbstracoMax get-Puntuacion) (send ?platoAbstracto get-Puntuacion))
+																			then (bind ?indiceMaxPostre ?i)
+																	)
+												)
+									)
+						)
+				)
+		)
+
+		(bind ?menuAbstracto (make-instance ?nombreMenuAbstracto of MenuAbstracto))
+		(bind ?menu (make-instance ?nombreMenu of Menu))
+		(send ?menu put-Relacion_Menu_Primero (send (nth$ ?indiceMaxPrimero ?listaPlatosAbstractos) get-Plato))
+		(send ?menu put-Relacion_Menu_Segundo (send (nth$ ?indiceMaxSegundo ?listaPlatosAbstractos) get-Plato))
+		(send ?menu put-Relacion_Menu_Postre (send (nth$ ?indiceMaxPostre ?listaPlatosAbstractos) get-Plato))
+		(send ?menuAbstracto put-Menu ?menu)
+		(send ?menuAbstracto put-Precio
+				(+ (send (nth$ ?indiceMaxPrimero ?listaPlatosAbstractos) get-Precio)
+				(+ (send (nth$ ?indiceMaxSegundo ?listaPlatosAbstractos) get-Precio)
+					 (send (nth$ ?indiceMaxPostre ?listaPlatosAbstractos) get-Precio))
+		))
 )
 
 (deffunction calcular-puntuacion-temporada "" (?platoAbstracto ?temporada)
@@ -2160,16 +2432,16 @@
 	)
 	(if (= ?puntuacion (length$ ?listaIngredientes))
 			then (send ?platoAbstracto put-Puntuacion (+ 4 (send ?platoAbstracto get-Puntuacion)))
-					 (printout t "+4 --> Puntuacion por tener todos los ingredientes" crlf)
+					 ;(printout t "+4 --> Puntuacion por tener todos los ingredientes" crlf)
 			else (if (>= ?puntuacion (* 0.75 (length$ ?listaIngredientes)))
 					then (send ?platoAbstracto put-Puntuacion (+ 3 (send ?platoAbstracto get-Puntuacion)))
-							 (printout t "+3 --> Puntuacion por tener 75% de los ingredientes" crlf)
+							 ;(printout t "+3 --> Puntuacion por tener 75% de los ingredientes" crlf)
 					else (if (>= ?puntuacion (* 0.50 (length$ ?listaIngredientes)))
 							then (send ?platoAbstracto put-Puntuacion (+ 2 (send ?platoAbstracto get-Puntuacion)))
-									 (printout t "+2 --> Puntuacion por tener 50% de los ingredientes" crlf)
+									 ;(printout t "+2 --> Puntuacion por tener 50% de los ingredientes" crlf)
 							else (if (>= ?puntuacion (* 0.25 (length$ ?listaIngredientes)))
 									then (send ?platoAbstracto put-Puntuacion (+ 1 (send ?platoAbstracto get-Puntuacion)))
-											 (printout t "+1 --> Puntuacion por tener 25% de los ingredientes" crlf)
+											 ;(printout t "+1 --> Puntuacion por tener 25% de los ingredientes" crlf)
 							)
 				  )
 		 )
@@ -2178,22 +2450,22 @@
 	(if (and (eq ?temporada Otono) (eq (send ?plato get-Caliente) TRUE))
 			then
 				(bind ?puntuacion (+ 1 ?puntuacion))
-				(printout t "+1 --> Extra de puntos por otono y ser un plato caliente" crlf)
+				;(printout t "+1 --> Extra de puntos por otono y ser un plato caliente" crlf)
 	)
 	(if (and (eq ?temporada Invierno) (eq (send ?plato get-Caliente) TRUE))
 			then
 				(bind ?puntuacion (+ 2 ?puntuacion))
-				(printout t "+2 --> Extra de puntos por invierno y ser un plato caliente" crlf)
+				;(printout t "+2 --> Extra de puntos por invierno y ser un plato caliente" crlf)
 	)
 	(if (and (eq ?temporada Primavera) (eq (send ?plato get-Caliente) FALSE))
 			then
 				(bind ?puntuacion (+ 1 ?puntuacion))
-				(printout t "+1 --> Extra de puntos por primavera y ser un plato frio" crlf)
+				;(printout t "+1 --> Extra de puntos por primavera y ser un plato frio" crlf)
 	)
 	(if (and (eq ?temporada Verano) (eq (send ?plato get-Caliente) FALSE))
 			then
 				(bind ?puntuacion (+ 2 ?puntuacion))
-				(printout t "+2 --> Extra de puntos por verano y ser un plato frio" crlf)
+				;(printout t "+2 --> Extra de puntos por verano y ser un plato frio" crlf)
 	)
 )
 
@@ -2202,28 +2474,28 @@
 	(if (eq ?numComensales Medio)
  			then (if (eq ?complejidad Medio)
 						then (send ?plato put-Puntuacion (+ 2 (send ?plato get-Puntuacion)))
-								 (printout t "+2 --> Num comensales Medio y complejidad del plato Medio" crlf)
+								 ;(printout t "+2 --> Num comensales Medio y complejidad del plato Medio" crlf)
 						else (if (eq ?complejidad Bajo)
 									then (send ?plato put-Puntuacion (+ 1 (send ?plato get-Puntuacion)))
-											 (printout t "+1 --> Num comensales Medio y complejidad del plato Bajo" crlf)
+											 ;(printout t "+1 --> Num comensales Medio y complejidad del plato Bajo" crlf)
 						)
 			)
 
 			else (if (eq ?numComensales Alto)
 						then (if (eq ?complejidad Bajo)
 									then (send ?plato put-Puntuacion (+ 2 (send ?plato get-Puntuacion)))
-											 (printout t "+2 --> Num comensales Alto y complejidad del plato Bajo" crlf)
+											 ;(printout t "+2 --> Num comensales Alto y complejidad del plato Bajo" crlf)
 									else (if (eq ?complejidad Medio)
-												then (send ?plato put-Puntuacion (+ 1 (send ?plato get-Puntuacion)))
-												 		 (printout t "+1 --> Num comensales Alto y complejidad del plato Medio" crlf))
+												then (send ?plato put-Puntuacion (+ 1 (send ?plato get-Puntuacion))))
+												 		 ;(printout t "+1 --> Num comensales Alto y complejidad del plato Medio" crlf))
 						)
 						else (if (eq ?numComensales MuyAlto)
 									then (if (eq ?complejidad Bajo)
 												then (send ?plato put-Puntuacion (+ 3 (send ?plato get-Puntuacion)))
-														 (printout t "+3 --> Num comensales Muy Alto y complejidad del plato Bajo" crlf)
+														 ;(printout t "+3 --> Num comensales Muy Alto y complejidad del plato Bajo" crlf)
 												else (if (eq ?complejidad Medio)
-															then (send ?plato put-Puntuacion (+ 1 (send ?plato get-Puntuacion)))
-															 		 (printout t "+1 --> Num comensales Muy Alto y complejidad del plato Medio" crlf))
+															then (send ?plato put-Puntuacion (+ 1 (send ?plato get-Puntuacion))))
+															 		 ;(printout t "+1 --> Num comensales Muy Alto y complejidad del plato Medio" crlf))
 												)
 						)
 			)
@@ -2456,7 +2728,6 @@
 		)
 )
 
-
 (defrule abstraccion::abstraccion-completada "Regla que comprueba que todas las preguntas han sido respondidas"
     (ProblemaAbstracto (presupuesto ?presupuesto))
     (test (not (eq ?presupuesto UNDEF)))
@@ -2477,10 +2748,7 @@
 ;                   ===================  Modulo de solucion abstracta   ==================
 ;                   ======================================================================
 
-; (send <VARIABLE> get-<NOM_ATRIBUT>)
-; (find-all-instances (clase_instancias) (restricciones)).
-; (bind ?variable_instancia (make-instance nombre_instancia of nombre_clase))
-(defrule solucionAbstracta::prueba ""
+(defrule solucionAbstracta::calcular-puntuaciones ""
 	(initial-fact)
 	(ProblemaAbstracto (presupuesto ?presupuesto))
 	(ProblemaAbstracto (numComensales ?numComensales))
@@ -2488,22 +2756,10 @@
 	=>
 	(bind ?listaPlatosAbstractos (find-all-instances ((?inst PlatoAbstracto)) TRUE))
 	(loop-for-count (?i 1 (length$ ?listaPlatosAbstractos)) do
-		(printout t "=====================================================" crlf)
 		(bind ?platoAbstracto (nth$ ?i ?listaPlatosAbstractos))
 		(calcular-puntuacion-presupuesto ?platoAbstracto ?presupuesto)
 		(calcular-puntuacion-complejidad ?platoAbstracto ?numComensales)
 		(calcular-puntuacion-temporada ?platoAbstracto ?temporada)
-
-		(bind ?plato (send ?platoAbstracto get-Plato))
-		(if (eq (class (instance-address * ?plato)) Primero)
-				then (printout t "----> Este plato es un primero")
-				else (if (eq (class (instance-address * ?plato)) Segundo)
-						then (printout t "----> Este plato es un segundo")
-						else (printout t "----> Este plato es un postre")
-				)
-		)
-		(send ?platoAbstracto imprimir)
-		(printout t "=====================================================" crlf)
 	)
 	(focus solucionConcreta)
 )
@@ -2513,176 +2769,29 @@
 ;                   ======================================================================
 
 (defrule solucionConcreta::generar-menu-bajo ""
-	(not (degeneradoMenuBajo))
+	(not (generarMenuBajo))
 	=>
-	(bind ?indiceMaxPrimero 0)
-	(bind ?indiceMaxSegundo 0)
-	(bind ?indiceMaxPostre 0)
-
-	(bind ?listaPlatosAbstractos (find-all-instances ((?inst PlatoAbstracto)) TRUE))
-	(loop-for-count (?i 1 (length$ ?listaPlatosAbstractos)) do
-			(bind ?platoAbstracto (nth$ ?i ?listaPlatosAbstractos))
-			(bind ?plato (send ?platoAbstracto get-Plato))
-
-			(if (and (eq (send ?platoAbstracto get-SubCategoria) Bajo) (eq (class (instance-address * ?plato)) Primero))
-					then (if (= ?indiceMaxPrimero 0)
-								then (bind ?indiceMaxPrimero ?i)
-								else
-										(bind ?platoAbstracoMax (nth$ ?indiceMaxPrimero ?listaPlatosAbstractos))
-										(if (< (send ?platoAbstracoMax get-Puntuacion) (send ?platoAbstracto get-Puntuacion))
-												then (bind ?indiceMaxPrimero ?i)
-										)
-					)
-					else (if (eq (class (instance-address * ?plato)) Segundo)
-								then (if (= ?indiceMaxSegundo 0)
-											then (bind ?indiceMaxSegundo ?i)
-											else
-													(bind ?platoAbstracoMax (nth$ ?indiceMaxSegundo ?listaPlatosAbstractos))
-													(if (< (send ?platoAbstracoMax get-Puntuacion) (send ?platoAbstracto get-Puntuacion))
-															then (bind ?indiceMaxSegundo ?i)
-													)
-								)
-								else (if (= ?indiceMaxPostre 0)
-											then (bind ?indiceMaxPostre ?i)
-											else
-													(bind ?platoAbstracoMax (nth$ ?indiceMaxPostre ?listaPlatosAbstractos))
-													(if (< (send ?platoAbstracoMax get-Puntuacion) (send ?platoAbstracto get-Puntuacion))
-															then (bind ?indiceMaxPostre ?i)
-													)
-								)
-					)
-			)
-	)
-
-	(bind ?menuAbstracto (make-instance menuAbstractoBarato of MenuAbstracto))
-	(bind ?menu (make-instance menuBarato of Menu))
-	(send ?menu put-Relacion_Menu_Primero (send (nth$ ?indiceMaxPrimero ?listaPlatosAbstractos) get-Plato))
-	(send ?menu put-Relacion_Menu_Segundo (send (nth$ ?indiceMaxSegundo ?listaPlatosAbstractos) get-Plato))
-	(send ?menu put-Relacion_Menu_Postre (send (nth$ ?indiceMaxPostre ?listaPlatosAbstractos) get-Plato))
-	(send ?menuAbstracto put-Menu ?menu)
-	(send ?menuAbstracto put-Precio
-			(+ (send (nth$ ?indiceMaxPrimero ?listaPlatosAbstractos) get-Precio)
-			(+ (send (nth$ ?indiceMaxSegundo ?listaPlatosAbstractos) get-Precio)
-				 (send (nth$ ?indiceMaxPostre ?listaPlatosAbstractos) get-Precio))
-		))
-	(assert (degeneradoMenuBajo))
+	(generar-menu Bajo menuAbstractoBarato menuBajo)
+	(assert (generarMenuBajo))
 )
 
 (defrule solucionConcreta::generar-menu-medio ""
-	(not (degeneradoMenuMedio))
+	(not (generarMenuMedio))
 	=>
-	(bind ?indiceMaxPrimero 0)
-	(bind ?indiceMaxSegundo 0)
-	(bind ?indiceMaxPostre 0)
-
-	(bind ?listaPlatosAbstractos (find-all-instances ((?inst PlatoAbstracto)) TRUE))
-	(loop-for-count (?i 1 (length$ ?listaPlatosAbstractos)) do
-			(bind ?platoAbstracto (nth$ ?i ?listaPlatosAbstractos))
-			(bind ?plato (send ?platoAbstracto get-Plato))
-
-			(if (and (eq (send ?platoAbstracto get-SubCategoria) Medio) (eq (class (instance-address * ?plato)) Primero))
-					then (if (= ?indiceMaxPrimero 0)
-								then (bind ?indiceMaxPrimero ?i)
-								else
-										(bind ?platoAbstracoMax (nth$ ?indiceMaxPrimero ?listaPlatosAbstractos))
-										(if (< (send ?platoAbstracoMax get-Puntuacion) (send ?platoAbstracto get-Puntuacion))
-												then (bind ?indiceMaxPrimero ?i)
-										)
-					)
-					else (if (eq (class (instance-address * ?plato)) Segundo)
-								then (if (= ?indiceMaxSegundo 0)
-											then (bind ?indiceMaxSegundo ?i)
-											else
-													(bind ?platoAbstracoMax (nth$ ?indiceMaxSegundo ?listaPlatosAbstractos))
-													(if (< (send ?platoAbstracoMax get-Puntuacion) (send ?platoAbstracto get-Puntuacion))
-															then (bind ?indiceMaxSegundo ?i)
-													)
-								)
-								else (if (= ?indiceMaxPostre 0)
-											then (bind ?indiceMaxPostre ?i)
-											else
-													(bind ?platoAbstracoMax (nth$ ?indiceMaxPostre ?listaPlatosAbstractos))
-													(if (< (send ?platoAbstracoMax get-Puntuacion) (send ?platoAbstracto get-Puntuacion))
-															then (bind ?indiceMaxPostre ?i)
-													)
-								)
-					)
-			)
-	)
-
-	(bind ?menuAbstracto (make-instance menuAbstractoMedio of MenuAbstracto))
-	(bind ?menu (make-instance menuMedio of Menu))
-	(send ?menu put-Relacion_Menu_Primero (send (nth$ ?indiceMaxPrimero ?listaPlatosAbstractos) get-Plato))
-	(send ?menu put-Relacion_Menu_Segundo (send (nth$ ?indiceMaxSegundo ?listaPlatosAbstractos) get-Plato))
-	(send ?menu put-Relacion_Menu_Postre (send (nth$ ?indiceMaxPostre ?listaPlatosAbstractos) get-Plato))
-	(send ?menuAbstracto put-Menu ?menu)
-	(send ?menuAbstracto put-Precio
-			(+ (send (nth$ ?indiceMaxPrimero ?listaPlatosAbstractos) get-Precio)
-			(+ (send (nth$ ?indiceMaxSegundo ?listaPlatosAbstractos) get-Precio)
-				 (send (nth$ ?indiceMaxPostre ?listaPlatosAbstractos) get-Precio))
-		))
-	(assert (degeneradoMenuMedio))
+	(generar-menu Medio menuAbstractoMedio menuMedio)
+	(assert (generarMenuMedio))
 )
 (defrule solucionConcreta::generar-menu-alto ""
-	(not (degeneradoMenuAlto))
+	(not (generarMenuAlto))
 	=>
-	(bind ?indiceMaxPrimero 0)
-	(bind ?indiceMaxSegundo 0)
-	(bind ?indiceMaxPostre 0)
-
-	(bind ?listaPlatosAbstractos (find-all-instances ((?inst PlatoAbstracto)) TRUE))
-	(loop-for-count (?i 1 (length$ ?listaPlatosAbstractos)) do
-			(bind ?platoAbstracto (nth$ ?i ?listaPlatosAbstractos))
-			(bind ?plato (send ?platoAbstracto get-Plato))
-
-			(if (and (eq (send ?platoAbstracto get-SubCategoria) Alto) (eq (class (instance-address * ?plato)) Primero))
-					then (if (= ?indiceMaxPrimero 0)
-								then (bind ?indiceMaxPrimero ?i)
-								else
-										(bind ?platoAbstracoMax (nth$ ?indiceMaxPrimero ?listaPlatosAbstractos))
-										(if (< (send ?platoAbstracoMax get-Puntuacion) (send ?platoAbstracto get-Puntuacion))
-												then (bind ?indiceMaxPrimero ?i)
-										)
-					)
-					else (if (eq (class (instance-address * ?plato)) Segundo)
-								then (if (= ?indiceMaxSegundo 0)
-											then (bind ?indiceMaxSegundo ?i)
-											else
-													(bind ?platoAbstracoMax (nth$ ?indiceMaxSegundo ?listaPlatosAbstractos))
-													(if (< (send ?platoAbstracoMax get-Puntuacion) (send ?platoAbstracto get-Puntuacion))
-															then (bind ?indiceMaxSegundo ?i)
-													)
-								)
-								else (if (= ?indiceMaxPostre 0)
-											then (bind ?indiceMaxPostre ?i)
-											else
-													(bind ?platoAbstracoMax (nth$ ?indiceMaxPostre ?listaPlatosAbstractos))
-													(if (< (send ?platoAbstracoMax get-Puntuacion) (send ?platoAbstracto get-Puntuacion))
-															then (bind ?indiceMaxPostre ?i)
-													)
-								)
-					)
-			)
-	)
-
-	(bind ?menuAbstracto (make-instance menuAbstractoAlto of MenuAbstracto))
-	(bind ?menu (make-instance menuAlto of Menu))
-	(send ?menu put-Relacion_Menu_Primero (send (nth$ ?indiceMaxPrimero ?listaPlatosAbstractos) get-Plato))
-	(send ?menu put-Relacion_Menu_Segundo (send (nth$ ?indiceMaxSegundo ?listaPlatosAbstractos) get-Plato))
-	(send ?menu put-Relacion_Menu_Postre (send (nth$ ?indiceMaxPostre ?listaPlatosAbstractos) get-Plato))
-	(send ?menuAbstracto put-Menu ?menu)
-	(send ?menuAbstracto put-Precio
-			(+ (send (nth$ ?indiceMaxPrimero ?listaPlatosAbstractos) get-Precio)
-			(+ (send (nth$ ?indiceMaxSegundo ?listaPlatosAbstractos) get-Precio)
-				 (send (nth$ ?indiceMaxPostre ?listaPlatosAbstractos) get-Precio))
-		))
-	(assert (degeneradoMenuAlto))
+	(generar-menu Alto menuAbstractoAlto menuAlto)
+	(assert (generarMenuAlto))
 )
 
 (defrule solucionConcreta::imprimirResultado
-	(degeneradoMenuBajo)
-	(degeneradoMenuMedio)
-	(degeneradoMenuAlto)
+	(generarMenuBajo)
+	(generarMenuMedio)
+	(generarMenuAlto)
 	(Entrada (numComensales ?numComensales))
 	(not (final))
 	=>

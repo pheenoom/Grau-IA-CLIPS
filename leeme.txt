@@ -1,0 +1,29 @@
+
+Este prototipo inicial es capaz de proponer 3 menús a partir de un conjunto de preguntas.
+Para formular la solución se tienen en cuenta las siguientes características:
+
+- Presupuesto
+- Categoría (precio del plato)
+- Subcategoría(nos permitirá obtener los 3 menús)
+- Número de comensales
+- Complejidad de elaboración
+- Temporada
+
+En base a estas preguntas:
+
+    - Preguntar por el número de comensales.
+    - Preguntar por el mes del evento.
+    - Preguntar por presupuesto del menu por persona
+
+Las demas preguntas no tienen ningún efecto por ahora.
+
+En el prototipo final incluiremos restricciones sobre las alergias (gluten, lactosa), sobre el evento y
+sobre si el plato es vegetariano.
+
+Una vez se ha dado valor a todos los campos, se recorren todos los platos y se les va
+dando una puntuación en función del número de requisitos que cumplan (véase tabla de puntuación).
+Para obtener los tres menús se buscan los platos que obtienen mejor puntuación para cada
+subcategoría.
+
+La solución mostrará los platos que componen el menú junto con sus ingredientes, su precio
+y el precio final para todos los comensales.
