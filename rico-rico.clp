@@ -456,7 +456,7 @@
 		(Gluten TRUE)
 		(Mes_Final_Temporada 12)
 		(Mes_Inicio_Temporada 1)
-		(Nombre "Masa_fresca")
+		(Nombre "Masa fresca")
 		(PVP 2.4))
 
 	([ontologia_Class10009] of  Fruta
@@ -673,6 +673,46 @@
 		(Mes_Inicio_Temporada 1)
 		(Nombre "Ajo")
 		(PVP 0.25))
+
+	([ontologia_Class20000] of  Segundo
+
+		(Bebida_Menu [ontologia_Class27])
+		(Caliente TRUE)
+		(Ingredientes
+			[ontologia_Class20014]
+			[ontologia_Class22]
+			[ontologia_Class10020]
+			[ontologia_Class20008]
+			[ontologia_Class20015]
+			[ontologia_Class20001]
+			[ontologia_Class41]
+			[ontologia_Class30011]
+			[ontologia_Class15]
+			[ontologia_Class50]
+			[ontologia_Class35])
+		(Nombre "Canelones caseros")
+		(Platos_Compatibles
+			[ontologia_Class17]
+			[ontologia_Class30025]
+			[ontologia_Class37]
+			[ontologia_Class36])
+		(PVP 3.0)
+		(Racion Normal))
+
+	([ontologia_Class20001] of  Cereal
+
+		(Gluten TRUE)
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Láminas de canelones")
+		(PVP 1.0))
+
+	([ontologia_Class20002] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Oregano")
+		(PVP 0.2))
 
 	([ontologia_Class20003] of  Fruta
 
@@ -946,6 +986,36 @@
 		(Nombre "Pimiento rojo")
 		(PVP 0.6))
 
+	([ontologia_Class30003] of  Cereal
+
+		(Gluten TRUE)
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Macarrones")
+		(PVP 0.4))
+
+	([ontologia_Class30004] of  Segundo
+
+		(Bebida_Menu [ontologia_Class27])
+		(Caliente TRUE)
+		(Ingredientes
+			[ontologia_Class30003]
+			[ontologia_Class40005]
+			[ontologia_Class20002]
+			[ontologia_Class20008]
+			[ontologia_Class40006])
+		(Nombre "Macarrones gratinados con chorizo")
+		(Platos_Compatibles
+			[ontologia_Class20000]
+			[ontologia_Class37]
+			[ontologia_Class36]
+			[ontologia_Class28]
+			[ontologia_Class17]
+			[ontologia_Class30033]
+			[ontologia_Class30025])
+		(PVP 2.0)
+		(Racion Abundante))
+
 	([ontologia_Class30005] of  Postre
 
 		(Bebida_Menu [ontologia_Class57])
@@ -1045,7 +1115,7 @@
 		(Lactosa TRUE)
 		(Mes_Final_Temporada 12)
 		(Mes_Inicio_Temporada 1)
-		(Nombre "Queso Cheddar")
+		(Nombre "Queso cheddar")
 		(PVP 1.5))
 
 	([ontologia_Class30014] of  Carne
@@ -1379,6 +1449,200 @@
 		(Nombre "Perejil")
 		(PVP 0.1))
 
+	([ontologia_Class40005] of  Carne
+
+		(Gluten FALSE)
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Chorizo")
+		(PVP 1.0))
+
+	([ontologia_Class40006] of  Derivado
+
+		(Lactosa TRUE)
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Queso parmesano")
+		(PVP 2.0))
+
+	([ontologia_Class40007] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Salsa rosa")
+		(PVP 0.5))
+
+	([ontologia_Class40008] of  Primero
+
+		(Bebida_Menu [ontologia_Class39])
+		(Ingredientes
+			[ontologia_Class30027]
+			[ontologia_Class10031]
+			[ontologia_Class40007]
+			[ontologia_Class22]
+			[ontologia_Class1])
+		(Nombre "Coctel de gambas")
+		(Platos_Compatibles
+			[ontologia_Class20000]
+			[ontologia_Class37]
+			[ontologia_Class36]
+			[ontologia_Class20013]
+			[ontologia_Class28]
+			[ontologia_Class30033]
+			[ontologia_Class30025])
+		(PVP 1.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class40009] of  Verdura
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Judias")
+		(PVP 1.0))
+
+	([ontologia_Class40010] of  Segundo
+
+		(Bebida_Menu [ontologia_Class27])
+		(Caliente TRUE)
+		(Ingredientes
+			[ontologia_Class40009]
+			[ontologia_Class40005]
+			[ontologia_Class40012]
+			[ontologia_Class40011]
+			[ontologia_Class35])
+		(Nombre "Judias con chorizo y panceta")
+		(Platos_Compatibles
+			[ontologia_Class20013]
+			[ontologia_Class40008]
+			[ontologia_Class30033]
+			[ontologia_Class30025]
+			[ontologia_Class20000]
+			[ontologia_Class30004]
+			[ontologia_Class37]
+			[ontologia_Class36])
+		(Racion Normal)
+		(Vegetariano FALSE))
+
+	([ontologia_Class40011] of  Carne
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Panceta")
+		(PVP 1.5))
+
+	([ontologia_Class40012] of  Carne
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Morcilla")
+		(PVP 2.5))
+
+	([ontologia_Class40013] of  Postre
+
+		(Bebida_Menu [ontologia_Class57])
+		(Ingredientes
+			[ontologia_Class50]
+			[ontologia_Class55]
+			[ontologia_Class54]
+			[ontologia_Class10009]
+			[ontologia_Class52]
+			[ontologia_Class51]
+			[ontologia_Class30011])
+		(Nombre "Natillas caseras")
+		(Platos_Compatibles
+			[ontologia_Class28]
+			[ontologia_Class40008]
+			[ontologia_Class30033]
+			[ontologia_Class30025]
+			[ontologia_Class20000]
+			[ontologia_Class40010]
+			[ontologia_Class30004]
+			[ontologia_Class37]
+			[ontologia_Class36])
+		(PVP 2.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class40014] of  Postre
+
+		(Bebida_Menu [ontologia_Class57])
+		(Ingredientes
+			[ontologia_Class50]
+			[ontologia_Class10027]
+			[ontologia_Class10009]
+			[ontologia_Class52]
+			[ontologia_Class55]
+			[ontologia_Class41])
+		(Nombre "Arroz con leche casero")
+		(Platos_Compatibles
+			[ontologia_Class28]
+			[ontologia_Class40008]
+			[ontologia_Class17]
+			[ontologia_Class30033]
+			[ontologia_Class30025]
+			[ontologia_Class20000]
+			[ontologia_Class40010]
+			[ontologia_Class30004]
+			[ontologia_Class37]
+			[ontologia_Class36])
+		(PVP 2.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class40015] of  Verdura
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Guisantes")
+		(PVP 0.8))
+
+	([ontologia_Class40016] of  Verdura
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Aceitunas verdes")
+		(PVP 0.8))
+
+	([ontologia_Class40017] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Mayonesa")
+		(PVP 1.0))
+
+	([ontologia_Class40018] of  Segundo
+
+		(Bebida_Menu [ontologia_Class57])
+		(Ingredientes
+			[ontologia_Class40016]
+			[ontologia_Class40015]
+			[ontologia_Class30028]
+			[ontologia_Class26]
+			[ontologia_Class51]
+			[ontologia_Class40019])
+		(Nombre "Ensaladilla rusa")
+		(Platos_Compatibles
+			[ontologia_Class28]
+			[ontologia_Class40008]
+			[ontologia_Class17]
+			[ontologia_Class30033]
+			[ontologia_Class30025]
+			[ontologia_Class20000]
+			[ontologia_Class40010]
+			[ontologia_Class30004]
+			[ontologia_Class37]
+			[ontologia_Class36])
+		(PVP 2.0)
+		(Racion Normal))
+
+	([ontologia_Class40019] of  Pescado
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Atún en lata")
+		(PVP 2.0))
+
 	([ontologia_Class41] of  Grasas
 
 		(Gluten TRUE)
@@ -1517,7 +1781,6 @@
 		(Mes_Inicio_Temporada 1)
 		(Nombre "Mermelada de fresa")
 		(PVP 2.35))
-
 )
 
 ;                   ======================================================================
@@ -1587,7 +1850,7 @@
 ;                   ======================================================================
 
 (defclass MenuAbstracto (is-a USER) (role concrete)
-	(slot Precio (type FLOAT) (create-accessor read-write))
+	(slot Precio (type FLOAT) (create-accessor read-write) (default 0.0))
 	(slot Menu (type INSTANCE) (create-accessor read-write))
 )
 
@@ -1632,7 +1895,6 @@
 )
 
 (defmessage-handler MAIN::Menu imprimir ()
-	(format t "Nombre: %s" ?self:Nombre)
 	(printout t "Informacion del primer plato" crlf)
 	(bind ?primerPlato ?self:Relacion_Menu_Primero)
 	(send ?primerPlato imprimir)
@@ -1737,8 +1999,6 @@
 (defmessage-handler MAIN::Plato imprimir ()
 	(format t "Nombre: %s" ?self:Nombre)
 	(printout t crlf)
-	(format t "Precio elaboracion: %d" ?self:PVP)
-	(printout t crlf)
 
 	(bind ?vegetariano ?self:Vegetariano)
 	(if (eq ?vegetariano TRUE)
@@ -1752,13 +2012,13 @@
 		else (format t "%t Es un plato caliente? No %n")
 	)
 
-	(printout t "Ingredientes del plato: " crlf)
-	(bind $?listaIngredientes ?self:Ingredientes)
-	(loop-for-count (?i 1 (length$ ?listaIngredientes)) do
-		(bind ?ingrediente (nth$ ?i ?listaIngredientes))
-		(send ?ingrediente imprimir)
-		(printout t crlf)
-	)
+	;(printout t "Ingredientes del plato: " crlf)
+	;(bind $?listaIngredientes ?self:Ingredientes)
+	;(loop-for-count (?i 1 (length$ ?listaIngredientes)) do
+	;	(bind ?ingrediente (nth$ ?i ?listaIngredientes))
+	;	(send ?ingrediente imprimir)
+	;	(printout t crlf)
+	;)
 )
 
 (defmessage-handler MAIN::Ingrediente imprimir ()
@@ -2252,19 +2512,19 @@
 ;                   ===================   Modulo de solucion concreta   ==================
 ;                   ======================================================================
 
-(defrule solucionConcreta::prueba2 ""
-	(initial-fact)
+(defrule solucionConcreta::generar-menu-bajo ""
+	(not (degeneradoMenuBajo))
 	=>
 	(bind ?indiceMaxPrimero 0)
 	(bind ?indiceMaxSegundo 0)
 	(bind ?indiceMaxPostre 0)
 
-
 	(bind ?listaPlatosAbstractos (find-all-instances ((?inst PlatoAbstracto)) TRUE))
 	(loop-for-count (?i 1 (length$ ?listaPlatosAbstractos)) do
 			(bind ?platoAbstracto (nth$ ?i ?listaPlatosAbstractos))
 			(bind ?plato (send ?platoAbstracto get-Plato))
-			(if (eq (class (instance-address * ?plato)) Primero)
+
+			(if (and (eq (send ?platoAbstracto get-SubCategoria) Bajo) (eq (class (instance-address * ?plato)) Primero))
 					then (if (= ?indiceMaxPrimero 0)
 								then (bind ?indiceMaxPrimero ?i)
 								else
@@ -2294,12 +2554,152 @@
 			)
 	)
 
-	(printout t "======================= MENU ======================= " crlf)
-	(bind ?menuAbstracto (make-instance menuHappyMeal of MenuAbstracto))
-	(bind ?menu (make-instance menu of Menu))
+	(bind ?menuAbstracto (make-instance menuAbstractoBarato of MenuAbstracto))
+	(bind ?menu (make-instance menuBarato of Menu))
 	(send ?menu put-Relacion_Menu_Primero (send (nth$ ?indiceMaxPrimero ?listaPlatosAbstractos) get-Plato))
 	(send ?menu put-Relacion_Menu_Segundo (send (nth$ ?indiceMaxSegundo ?listaPlatosAbstractos) get-Plato))
 	(send ?menu put-Relacion_Menu_Postre (send (nth$ ?indiceMaxPostre ?listaPlatosAbstractos) get-Plato))
 	(send ?menuAbstracto put-Menu ?menu)
-	(send ?menuAbstracto imprimir)
+	(send ?menuAbstracto put-Precio
+			(+ (send (nth$ ?indiceMaxPrimero ?listaPlatosAbstractos) get-Precio)
+			(+ (send (nth$ ?indiceMaxSegundo ?listaPlatosAbstractos) get-Precio)
+				 (send (nth$ ?indiceMaxPostre ?listaPlatosAbstractos) get-Precio))
+		))
+	(assert (degeneradoMenuBajo))
+)
+
+(defrule solucionConcreta::generar-menu-medio ""
+	(not (degeneradoMenuMedio))
+	=>
+	(bind ?indiceMaxPrimero 0)
+	(bind ?indiceMaxSegundo 0)
+	(bind ?indiceMaxPostre 0)
+
+	(bind ?listaPlatosAbstractos (find-all-instances ((?inst PlatoAbstracto)) TRUE))
+	(loop-for-count (?i 1 (length$ ?listaPlatosAbstractos)) do
+			(bind ?platoAbstracto (nth$ ?i ?listaPlatosAbstractos))
+			(bind ?plato (send ?platoAbstracto get-Plato))
+
+			(if (and (eq (send ?platoAbstracto get-SubCategoria) Medio) (eq (class (instance-address * ?plato)) Primero))
+					then (if (= ?indiceMaxPrimero 0)
+								then (bind ?indiceMaxPrimero ?i)
+								else
+										(bind ?platoAbstracoMax (nth$ ?indiceMaxPrimero ?listaPlatosAbstractos))
+										(if (< (send ?platoAbstracoMax get-Puntuacion) (send ?platoAbstracto get-Puntuacion))
+												then (bind ?indiceMaxPrimero ?i)
+										)
+					)
+					else (if (eq (class (instance-address * ?plato)) Segundo)
+								then (if (= ?indiceMaxSegundo 0)
+											then (bind ?indiceMaxSegundo ?i)
+											else
+													(bind ?platoAbstracoMax (nth$ ?indiceMaxSegundo ?listaPlatosAbstractos))
+													(if (< (send ?platoAbstracoMax get-Puntuacion) (send ?platoAbstracto get-Puntuacion))
+															then (bind ?indiceMaxSegundo ?i)
+													)
+								)
+								else (if (= ?indiceMaxPostre 0)
+											then (bind ?indiceMaxPostre ?i)
+											else
+													(bind ?platoAbstracoMax (nth$ ?indiceMaxPostre ?listaPlatosAbstractos))
+													(if (< (send ?platoAbstracoMax get-Puntuacion) (send ?platoAbstracto get-Puntuacion))
+															then (bind ?indiceMaxPostre ?i)
+													)
+								)
+					)
+			)
+	)
+
+	(bind ?menuAbstracto (make-instance menuAbstractoMedio of MenuAbstracto))
+	(bind ?menu (make-instance menuMedio of Menu))
+	(send ?menu put-Relacion_Menu_Primero (send (nth$ ?indiceMaxPrimero ?listaPlatosAbstractos) get-Plato))
+	(send ?menu put-Relacion_Menu_Segundo (send (nth$ ?indiceMaxSegundo ?listaPlatosAbstractos) get-Plato))
+	(send ?menu put-Relacion_Menu_Postre (send (nth$ ?indiceMaxPostre ?listaPlatosAbstractos) get-Plato))
+	(send ?menuAbstracto put-Menu ?menu)
+	(send ?menuAbstracto put-Precio
+			(+ (send (nth$ ?indiceMaxPrimero ?listaPlatosAbstractos) get-Precio)
+			(+ (send (nth$ ?indiceMaxSegundo ?listaPlatosAbstractos) get-Precio)
+				 (send (nth$ ?indiceMaxPostre ?listaPlatosAbstractos) get-Precio))
+		))
+	(assert (degeneradoMenuMedio))
+)
+(defrule solucionConcreta::generar-menu-alto ""
+	(not (degeneradoMenuAlto))
+	=>
+	(bind ?indiceMaxPrimero 0)
+	(bind ?indiceMaxSegundo 0)
+	(bind ?indiceMaxPostre 0)
+
+	(bind ?listaPlatosAbstractos (find-all-instances ((?inst PlatoAbstracto)) TRUE))
+	(loop-for-count (?i 1 (length$ ?listaPlatosAbstractos)) do
+			(bind ?platoAbstracto (nth$ ?i ?listaPlatosAbstractos))
+			(bind ?plato (send ?platoAbstracto get-Plato))
+
+			(if (and (eq (send ?platoAbstracto get-SubCategoria) Alto) (eq (class (instance-address * ?plato)) Primero))
+					then (if (= ?indiceMaxPrimero 0)
+								then (bind ?indiceMaxPrimero ?i)
+								else
+										(bind ?platoAbstracoMax (nth$ ?indiceMaxPrimero ?listaPlatosAbstractos))
+										(if (< (send ?platoAbstracoMax get-Puntuacion) (send ?platoAbstracto get-Puntuacion))
+												then (bind ?indiceMaxPrimero ?i)
+										)
+					)
+					else (if (eq (class (instance-address * ?plato)) Segundo)
+								then (if (= ?indiceMaxSegundo 0)
+											then (bind ?indiceMaxSegundo ?i)
+											else
+													(bind ?platoAbstracoMax (nth$ ?indiceMaxSegundo ?listaPlatosAbstractos))
+													(if (< (send ?platoAbstracoMax get-Puntuacion) (send ?platoAbstracto get-Puntuacion))
+															then (bind ?indiceMaxSegundo ?i)
+													)
+								)
+								else (if (= ?indiceMaxPostre 0)
+											then (bind ?indiceMaxPostre ?i)
+											else
+													(bind ?platoAbstracoMax (nth$ ?indiceMaxPostre ?listaPlatosAbstractos))
+													(if (< (send ?platoAbstracoMax get-Puntuacion) (send ?platoAbstracto get-Puntuacion))
+															then (bind ?indiceMaxPostre ?i)
+													)
+								)
+					)
+			)
+	)
+
+	(bind ?menuAbstracto (make-instance menuAbstractoAlto of MenuAbstracto))
+	(bind ?menu (make-instance menuAlto of Menu))
+	(send ?menu put-Relacion_Menu_Primero (send (nth$ ?indiceMaxPrimero ?listaPlatosAbstractos) get-Plato))
+	(send ?menu put-Relacion_Menu_Segundo (send (nth$ ?indiceMaxSegundo ?listaPlatosAbstractos) get-Plato))
+	(send ?menu put-Relacion_Menu_Postre (send (nth$ ?indiceMaxPostre ?listaPlatosAbstractos) get-Plato))
+	(send ?menuAbstracto put-Menu ?menu)
+	(send ?menuAbstracto put-Precio
+			(+ (send (nth$ ?indiceMaxPrimero ?listaPlatosAbstractos) get-Precio)
+			(+ (send (nth$ ?indiceMaxSegundo ?listaPlatosAbstractos) get-Precio)
+				 (send (nth$ ?indiceMaxPostre ?listaPlatosAbstractos) get-Precio))
+		))
+	(assert (degeneradoMenuAlto))
+)
+
+(defrule solucionConcreta::imprimirResultado
+	(degeneradoMenuBajo)
+	(degeneradoMenuMedio)
+	(degeneradoMenuAlto)
+	(Entrada (numComensales ?numComensales))
+	(not (final))
+	=>
+	(printout t "====================  Menu Barato ===================== " crlf)
+	(send (instance-address * [menuAbstractoBarato]) imprimir)
+	(bind ?precio (* ?numComensales (send (instance-address * [menuAbstractoBarato]) get-Precio)))
+	(printout t "Precio total: " ?precio crlf)
+
+	(printout t "====================  Menu Medio ===================== " crlf)
+	(send (instance-address * [menuAbstractoMedio]) imprimir)
+	(bind ?precio (* ?numComensales (send (instance-address * [menuAbstractoMedio]) get-Precio)))
+	(printout t "Precio total: " ?precio crlf)
+
+	(printout t "====================  Menu Alto ===================== " crlf)
+	(send (instance-address * [menuAbstractoAlto]) imprimir)
+	(bind ?precio (* ?numComensales (send (instance-address * [menuAbstractoAlto]) get-Precio)))
+	(printout t "Precio total: " ?precio crlf)
+
+	(assert (final))
 )
