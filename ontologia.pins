@@ -1,4 +1,4 @@
-; Sun May 07 14:43:30 CEST 2017
+; Sun May 07 14:48:39 CEST 2017
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -125,12 +125,12 @@
 
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
-	(Nombre "Pimienta_negra")
+	(Nombre "Pimienta negra")
 	(PVP 1.0))
 
 ([ontologia_Class10011] of  Verdura
 
-	(Mes_Final_Temporada 1)
+	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Cebollino")
 	(PVP 1.1))
@@ -195,7 +195,7 @@
 
 	(Mes_Final_Temporada 6)
 	(Mes_Inicio_Temporada 3)
-	(Nombre "Atún_fresco")
+	(Nombre "Atún fresco")
 	(PVP 3.0))
 
 ([ontologia_Class10022] of  Condimento
@@ -317,7 +317,7 @@
 
 ([ontologia_Class2] of  Verdura
 
-	(Mes_Final_Temporada 1)
+	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Tomate Natural")
 	(PVP 1.5))
@@ -414,7 +414,7 @@
 
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
-	(Nombre "Tomate_frito")
+	(Nombre "Tomate frito")
 	(PVP 0.7))
 
 ([ontologia_Class20009] of  Segundo
@@ -443,7 +443,7 @@
 
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
-	(Nombre "Vino_blanco")
+	(Nombre "Vino blanco")
 	(PVP 0.75))
 
 ([ontologia_Class20011] of  Condimento
@@ -554,7 +554,7 @@
 
 ([ontologia_Class26] of  Verdura
 
-	(Mes_Final_Temporada 1)
+	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Zanahoria")
 	(PVP 0.4))
@@ -596,7 +596,7 @@
 
 ([ontologia_Class30] of  Verdura
 
-	(Mes_Final_Temporada 1)
+	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Pimiento rojo")
 	(PVP 0.6))
@@ -756,7 +756,7 @@
 ([ontologia_Class30019] of  Derivado
 
 	(Lactosa TRUE)
-	(Mes_Final_Temporada 1)
+	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Cuajada")
 	(PVP 0.8))
@@ -949,7 +949,7 @@
 
 ([ontologia_Class33] of  Verdura
 
-	(Mes_Final_Temporada 1)
+	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Jengibre fresco")
 	(PVP 1.8))
