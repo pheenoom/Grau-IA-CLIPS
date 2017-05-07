@@ -347,6 +347,7 @@
 ;+ (build "Build 663")
 
 (definstances instances
+
 	([ontologia_Class0] of  Primero
 
 		(Bebida_Menu [ontologia_Class39])
@@ -363,6 +364,7 @@
 			[ontologia_Class10010]
 			[ontologia_Class10011])
 		(Nombre "Tosta tibia de salmón en conserva con tartar de sus huevas")
+		(Platos_Compatibles [ontologia_Class17])
 		(PVP 6.0)
 		(Racion Normal))
 
@@ -372,6 +374,43 @@
 		(Mes_Inicio_Temporada 1)
 		(Nombre "Lechuga")
 		(PVP 0.6))
+
+	([ontologia_Class10000] of  Postre
+
+		(Bebida_Menu [ontologia_Class57])
+		(Ingredientes
+			[ontologia_Class10002]
+			[ontologia_Class10001]
+			[ontologia_Class52])
+		(Nombre "Sopa fría de sandía con bolas de melón")
+		(Platos_Compatibles
+			[ontologia_Class20013]
+			[ontologia_Class28]
+			[ontologia_Class17]
+			[ontologia_Class20006]
+			[ontologia_Class0]
+			[ontologia_Class20009]
+			[ontologia_Class20005]
+			[ontologia_Class37]
+			[ontologia_Class20007]
+			[ontologia_Class36])
+		(PVP 1.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class10001] of  Fruta
+
+		(Mes_Final_Temporada 9)
+		(Mes_Inicio_Temporada 5)
+		(Nombre "Sandia")
+		(PVP 2.0))
+
+	([ontologia_Class10002] of  Fruta
+
+		(Mes_Final_Temporada 10)
+		(Mes_Inicio_Temporada 5)
+		(Nombre "Melon")
+		(PVP 1.5))
 
 	([ontologia_Class10003] of  Verdura
 
@@ -392,14 +431,15 @@
 			[ontologia_Class10016]
 			[ontologia_Class10017])
 		(Nombre "Carpaccio de presa de cerdo duroc")
+		(Platos_Compatibles [ontologia_Class17])
 		(PVP 8.0)
 		(Racion Peque%C3%B1a)
 		(Vegetariano FALSE))
 
 	([ontologia_Class10005] of  Verdura
 
-		(Mes_Final_Temporada 1)
-		(Mes_Inicio_Temporada 12)
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
 		(Nombre "Puerro")
 		(PVP 2.1))
 
@@ -408,7 +448,7 @@
 		(Lactosa TRUE)
 		(Mes_Final_Temporada 12)
 		(Mes_Inicio_Temporada 1)
-		(Nombre "Leche_coco")
+		(Nombre "Leche de coco")
 		(PVP 1.5))
 
 	([ontologia_Class10008] of  Cereal
@@ -430,12 +470,12 @@
 
 		(Mes_Final_Temporada 12)
 		(Mes_Inicio_Temporada 1)
-		(Nombre "Pimienta_negra")
+		(Nombre "Pimienta negra")
 		(PVP 1.0))
 
 	([ontologia_Class10011] of  Verdura
 
-		(Mes_Final_Temporada 1)
+		(Mes_Final_Temporada 12)
 		(Mes_Inicio_Temporada 1)
 		(Nombre "Cebollino")
 		(PVP 1.1))
@@ -444,7 +484,7 @@
 
 		(Mes_Final_Temporada 12)
 		(Mes_Inicio_Temporada 1)
-		(Nombre "Presa_cerdo")
+		(Nombre "Presa de cerdo")
 		(PVP 10.0))
 
 	([ontologia_Class10014] of  Frutos_secos
@@ -479,7 +519,7 @@
 
 		(Mes_Final_Temporada 12)
 		(Mes_Inicio_Temporada 1)
-		(Nombre "Cochinillo_cerdo")
+		(Nombre "Cochinillo de cerdo")
 		(PVP 20.0))
 
 	([ontologia_Class10019] of  Verdura
@@ -493,14 +533,14 @@
 
 		(Mes_Final_Temporada 12)
 		(Mes_Inicio_Temporada 1)
-		(Nombre "Pimiento_verde")
+		(Nombre "Pimiento verde")
 		(PVP 0.7))
 
 	([ontologia_Class10021] of  Pescado
 
 		(Mes_Final_Temporada 6)
 		(Mes_Inicio_Temporada 3)
-		(Nombre "Atún_fresco")
+		(Nombre "Atún fresco")
 		(PVP 3.0))
 
 	([ontologia_Class10022] of  Condimento
@@ -514,7 +554,7 @@
 
 		(Mes_Final_Temporada 12)
 		(Mes_Inicio_Temporada 6)
-		(Nombre "Nabo_japones")
+		(Nombre "Nabo japones")
 		(PVP 3.1))
 
 	([ontologia_Class10024] of  Pescado
@@ -528,7 +568,7 @@
 
 		(Mes_Final_Temporada 10)
 		(Mes_Inicio_Temporada 4)
-		(Nombre "Erizo_mar")
+		(Nombre "Erizo de mar")
 		(PVP 8.0))
 
 	([ontologia_Class10026] of  Condimento
@@ -568,15 +608,15 @@
 
 	([ontologia_Class10032] of  Fruta
 
-		(Mes_Final_Temporada 4)
-		(Mes_Inicio_Temporada 11)
+		(Mes_Final_Temporada 11)
+		(Mes_Inicio_Temporada 4)
 		(Nombre "Naranja")
 		(PVP 0.8))
 
 	([ontologia_Class10033] of  Fruta
 
-		(Mes_Final_Temporada 4)
-		(Mes_Inicio_Temporada 12)
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 4)
 		(Nombre "Pomelo")
 		(PVP 0.5))
 
@@ -591,7 +631,7 @@
 
 		(Mes_Final_Temporada 12)
 		(Mes_Inicio_Temporada 1)
-		(Nombre "Aceite_oliva")
+		(Nombre "Aceite de oliva")
 		(PVP 0.2))
 
 	([ontologia_Class16] of  Condimento
@@ -612,13 +652,17 @@
 			[ontologia_Class3]
 			[ontologia_Class4])
 		(Nombre "Ensalada de queso de cabra y nueces")
+		(Platos_Compatibles
+			[ontologia_Class37]
+			[ontologia_Class28]
+			[ontologia_Class36])
 		(PVP 1.0)
 		(Racion Normal)
 		(Vegetariano TRUE))
 
 	([ontologia_Class2] of  Verdura
 
-		(Mes_Final_Temporada 1)
+		(Mes_Final_Temporada 12)
 		(Mes_Inicio_Temporada 1)
 		(Nombre "Tomate Natural")
 		(PVP 1.5))
@@ -630,6 +674,38 @@
 		(Nombre "Ajo")
 		(PVP 0.25))
 
+	([ontologia_Class20003] of  Fruta
+
+		(Mes_Final_Temporada 5)
+		(Mes_Inicio_Temporada 2)
+		(Nombre "Fresa")
+		(PVP 3.0))
+
+	([ontologia_Class20004] of  Postre
+
+		(Bebida_Menu [ontologia_Class57])
+		(Ingredientes
+			[ontologia_Class20003]
+			[ontologia_Class30]
+			[ontologia_Class2]
+			[ontologia_Class20]
+			[ontologia_Class35]
+			[ontologia_Class15])
+		(Nombre "Gazpacho de fresas")
+		(Platos_Compatibles
+			[ontologia_Class20013]
+			[ontologia_Class28]
+			[ontologia_Class17]
+			[ontologia_Class20006]
+			[ontologia_Class0]
+			[ontologia_Class20009]
+			[ontologia_Class10004]
+			[ontologia_Class20005]
+			[ontologia_Class37]
+			[ontologia_Class36])
+		(PVP 2.0)
+		(Racion Normal))
+
 	([ontologia_Class20005] of  Segundo
 
 		(Bebida_Menu [ontologia_Class27])
@@ -640,6 +716,9 @@
 			[ontologia_Class10019]
 			[ontologia_Class10020])
 		(Nombre "Cochinillo con puré de boniato ahumado y pimiento verde frito")
+		(Platos_Compatibles
+			[ontologia_Class17]
+			[ontologia_Class28])
 		(PVP 5.0)
 		(Racion Abundante))
 
@@ -653,6 +732,7 @@
 			[ontologia_Class33])
 		(Nombre "Tartar de atún con mayonesa de wasabi, jengibre encurtido y nabo japonés")
 		(Origen Japonesa)
+		(Platos_Compatibles [ontologia_Class10004])
 		(PVP 6.0)
 		(Racion Peque%C3%B1a))
 
@@ -669,6 +749,9 @@
 			[ontologia_Class26]
 			[ontologia_Class10025])
 		(Nombre "Pudding de cabracho con salsa de erizos de mar")
+		(Platos_Compatibles
+			[ontologia_Class20006]
+			[ontologia_Class0])
 		(PVP 8.0)
 		(Racion Normal))
 
@@ -676,7 +759,7 @@
 
 		(Mes_Final_Temporada 12)
 		(Mes_Inicio_Temporada 1)
-		(Nombre "Tomate_frito")
+		(Nombre "Tomate frito")
 		(PVP 0.7))
 
 	([ontologia_Class20009] of  Segundo
@@ -693,6 +776,11 @@
 			[ontologia_Class15]
 			[ontologia_Class20011])
 		(Nombre "Asadura de cordero")
+		(Platos_Compatibles
+			[ontologia_Class10004]
+			[ontologia_Class17]
+			[ontologia_Class20007]
+			[ontologia_Class0])
 		(PVP 5.0)
 		(Racion Abundante))
 
@@ -700,7 +788,7 @@
 
 		(Mes_Final_Temporada 12)
 		(Mes_Inicio_Temporada 1)
-		(Nombre "Vino_blanco")
+		(Nombre "Vino blanco")
 		(PVP 0.75))
 
 	([ontologia_Class20011] of  Condimento
@@ -731,6 +819,12 @@
 			[ontologia_Class20015]
 			[ontologia_Class35])
 		(Nombre "Arroz al cava")
+		(Platos_Compatibles
+			[ontologia_Class20009]
+			[ontologia_Class20005]
+			[ontologia_Class37]
+			[ontologia_Class20007]
+			[ontologia_Class36])
 		(PVP 6.0)
 		(Racion Normal))
 
@@ -738,7 +832,7 @@
 
 		(Mes_Final_Temporada 12)
 		(Mes_Inicio_Temporada 1)
-		(Nombre "Carne_picada")
+		(Nombre "Carne picada")
 		(PVP 2.0))
 
 	([ontologia_Class20015] of  Derivado
@@ -746,7 +840,7 @@
 		(Lactosa TRUE)
 		(Mes_Final_Temporada 12)
 		(Mes_Inicio_Temporada 1)
-		(Nombre "Queso_oveja")
+		(Nombre "Queso de oveja")
 		(PVP 1.0))
 
 	([ontologia_Class20016] of  Primero
@@ -765,6 +859,14 @@
 			[ontologia_Class20011]
 			[ontologia_Class10026])
 		(Nombre "Ensalada con gambas cítricos y comino")
+		(Platos_Compatibles
+			[ontologia_Class20013]
+			[ontologia_Class20009]
+			[ontologia_Class10004]
+			[ontologia_Class20005]
+			[ontologia_Class20007]
+			[ontologia_Class36])
+		(PVP 2.0)
 		(Racion Abundante))
 
 	([ontologia_Class22] of  Verdura
@@ -797,7 +899,7 @@
 
 	([ontologia_Class26] of  Verdura
 
-		(Mes_Final_Temporada 1)
+		(Mes_Final_Temporada 12)
 		(Mes_Inicio_Temporada 1)
 		(Nombre "Zanahoria")
 		(PVP 0.4))
@@ -818,6 +920,9 @@
 			[ontologia_Class20]
 			[ontologia_Class22])
 		(Nombre "Carne guisada")
+		(Platos_Compatibles
+			[ontologia_Class17]
+			[ontologia_Class0])
 		(PVP 3.0)
 		(Racion Normal))
 
@@ -836,10 +941,342 @@
 
 	([ontologia_Class30] of  Verdura
 
-		(Mes_Final_Temporada 1)
+		(Mes_Final_Temporada 12)
 		(Mes_Inicio_Temporada 1)
 		(Nombre "Pimiento rojo")
 		(PVP 0.6))
+
+	([ontologia_Class30005] of  Postre
+
+		(Bebida_Menu [ontologia_Class57])
+		(Ingredientes
+			[ontologia_Class30006]
+			[ontologia_Class50]
+			[ontologia_Class30008]
+			[ontologia_Class52]
+			[ontologia_Class55]
+			[ontologia_Class30009]
+			[ontologia_Class54]
+			[ontologia_Class51]
+			[ontologia_Class10009]
+			[ontologia_Class30007])
+		(Nombre "Torrijas")
+		(Platos_Compatibles
+			[ontologia_Class20013]
+			[ontologia_Class28]
+			[ontologia_Class0]
+			[ontologia_Class20009]
+			[ontologia_Class37])
+		(PVP 4.0)
+		(Racion Abundante)
+		(Vegetariano FALSE))
+
+	([ontologia_Class30006] of  Cereal
+
+		(Gluten TRUE)
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Pan")
+		(PVP 0.5))
+
+	([ontologia_Class30007] of  Grasas
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Aceite de girasol")
+		(PVP 0.2))
+
+	([ontologia_Class30008] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Agua")
+		(PVP 0.2))
+
+	([ontologia_Class30009] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Coñac")
+		(PVP 0.4))
+
+	([ontologia_Class30010] of  Postre
+
+		(Bebida_Menu [ontologia_Class57])
+		(Caliente FALSE)
+		(Ingredientes
+			[ontologia_Class30011]
+			[ontologia_Class30012]
+			[ontologia_Class30013]
+			[ontologia_Class30014]
+			[ontologia_Class51]
+			[ontologia_Class15]
+			[ontologia_Class30015]
+			[ontologia_Class35])
+		(Nombre "Muffins salados de pavo con queso Cheedar")
+		(Platos_Compatibles
+			[ontologia_Class20016]
+			[ontologia_Class20006]
+			[ontologia_Class0]
+			[ontologia_Class10004]
+			[ontologia_Class20005]
+			[ontologia_Class20007])
+		(PVP 5.0)
+		(Racion Peque%C3%B1a))
+
+	([ontologia_Class30011] of  Cereal
+
+		(Gluten TRUE)
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Harina")
+		(PVP 0.8))
+
+	([ontologia_Class30012] of  Derivado
+
+		(Gluten TRUE)
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Levadura")
+		(PVP 0.5))
+
+	([ontologia_Class30013] of  Derivado
+
+		(Lactosa TRUE)
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Queso Cheddar")
+		(PVP 1.5))
+
+	([ontologia_Class30014] of  Carne
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Pavo")
+		(PVP 1.0))
+
+	([ontologia_Class30015] of  Derivado
+
+		(Lactosa TRUE)
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Yogur natural")
+		(PVP 0.5))
+
+	([ontologia_Class30016] of  Postre
+
+		(Bebida_Menu [ontologia_Class57])
+		(Ingredientes
+			[ontologia_Class30017]
+			[ontologia_Class52]
+			[ontologia_Class32]
+			[ontologia_Class30015])
+		(Nombre "Crema fría de kiwi")
+		(Platos_Compatibles
+			[ontologia_Class20013]
+			[ontologia_Class20016]
+			[ontologia_Class20006]
+			[ontologia_Class0]
+			[ontologia_Class10004]
+			[ontologia_Class20007]
+			[ontologia_Class36])
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class30017] of  Fruta
+
+		(Mes_Final_Temporada 9)
+		(Mes_Inicio_Temporada 4)
+		(Nombre "Kiwi")
+		(PVP 4.0))
+
+	([ontologia_Class30018] of  Cereal
+
+		(Gluten TRUE)
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Galleta")
+		(PVP 0.5))
+
+	([ontologia_Class30019] of  Derivado
+
+		(Lactosa TRUE)
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Cuajada")
+		(PVP 0.8))
+
+	([ontologia_Class30020] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Chocolate blanco")
+		(PVP 0.5))
+
+	([ontologia_Class30021] of  Condimento
+
+		(Lactosa TRUE)
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Chocolate con leche")
+		(PVP 0.5))
+
+	([ontologia_Class30022] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Chocolate negro")
+		(PVP 0.8))
+
+	([ontologia_Class30023] of  Postre
+
+		(Bebida_Menu [ontologia_Class57])
+		(Ingredientes
+			[ontologia_Class30018]
+			[ontologia_Class41]
+			[ontologia_Class44]
+			[ontologia_Class50]
+			[ontologia_Class30019]
+			[ontologia_Class30008]
+			[ontologia_Class30020]
+			[ontologia_Class30021]
+			[ontologia_Class30022])
+		(Nombre "Tarta de tres chocolates")
+		(Platos_Compatibles
+			[ontologia_Class20013]
+			[ontologia_Class28]
+			[ontologia_Class20016]
+			[ontologia_Class20009]
+			[ontologia_Class20005]
+			[ontologia_Class37]
+			[ontologia_Class36])
+		(PVP 4.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class30024] of  Carne
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Jamon iberico")
+		(PVP 5.0))
+
+	([ontologia_Class30025] of  Primero
+
+		(Bebida_Menu [ontologia_Class57])
+		(Ingredientes
+			[ontologia_Class2]
+			[ontologia_Class30006]
+			[ontologia_Class20]
+			[ontologia_Class15]
+			[ontologia_Class30008]
+			[ontologia_Class35]
+			[ontologia_Class51]
+			[ontologia_Class30024])
+		(Nombre "Salmorejo cordoves")
+		(PVP 2.0)
+		(Racion Normal))
+
+	([ontologia_Class30027] of  Fruta
+
+		(Mes_Final_Temporada 10)
+		(Mes_Inicio_Temporada 5)
+		(Nombre "Aguacate")
+		(PVP 1.0))
+
+	([ontologia_Class30028] of  Verdura
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Patata")
+		(PVP 0.8))
+
+	([ontologia_Class30029] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Caldo de verduras")
+		(PVP 1.0))
+
+	([ontologia_Class30030] of  Primero
+
+		(Caliente FALSE)
+		(Ingredientes
+			[ontologia_Class30028]
+			[ontologia_Class10005]
+			[ontologia_Class30027]
+			[ontologia_Class30031]
+			[ontologia_Class10009]
+			[ontologia_Class44]
+			[ontologia_Class10011]
+			[ontologia_Class41]
+			[ontologia_Class30029]
+			[ontologia_Class35])
+		(Nombre "Vichyssoise de aguacate y langostinos")
+		(Platos_Compatibles
+			[ontologia_Class20013]
+			[ontologia_Class17]
+			[ontologia_Class10004]
+			[ontologia_Class20005]
+			[ontologia_Class20007])
+		(PVP 5.0)
+		(Racion Normal))
+
+	([ontologia_Class30031] of  Marisco
+
+		(Mes_Final_Temporada 6)
+		(Mes_Inicio_Temporada 3)
+		(Nombre "Langostinos")
+		(PVP 5.0))
+
+	([ontologia_Class30032] of  Verdura
+
+		(Mes_Final_Temporada 11)
+		(Mes_Inicio_Temporada 9)
+		(Nombre "Setas variadas")
+		(PVP 3.0))
+
+	([ontologia_Class30033] of  Primero
+
+		(Bebida_Menu [ontologia_Class57])
+		(Ingredientes
+			[ontologia_Class30032]
+			[ontologia_Class30034]
+			[ontologia_Class30006]
+			[ontologia_Class30035]
+			[ontologia_Class15]
+			[ontologia_Class30008]
+			[ontologia_Class10034]
+			[ontologia_Class24]
+			[ontologia_Class35])
+		(Nombre "Gazpacho de setas")
+		(Platos_Compatibles
+			[ontologia_Class20013]
+			[ontologia_Class28]
+			[ontologia_Class30025]
+			[ontologia_Class20006]
+			[ontologia_Class0]
+			[ontologia_Class20009]
+			[ontologia_Class10004]
+			[ontologia_Class20005]
+			[ontologia_Class37]
+			[ontologia_Class36])
+		(PVP 3.0)
+		(Racion Normal))
+
+	([ontologia_Class30034] of  Carne
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Caldo de ave")
+		(PVP 1.0))
+
+	([ontologia_Class30035] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Vinage de vino")
+		(PVP 0.8))
 
 	([ontologia_Class31] of  Condimento
 
@@ -857,7 +1294,7 @@
 
 	([ontologia_Class33] of  Verdura
 
-		(Mes_Final_Temporada 1)
+		(Mes_Final_Temporada 12)
 		(Mes_Inicio_Temporada 1)
 		(Nombre "Jengibre fresco")
 		(PVP 1.8))
@@ -890,6 +1327,12 @@
 			[ontologia_Class31]
 			[ontologia_Class35])
 		(Nombre "Salmon al horno")
+		(Platos_Compatibles
+			[ontologia_Class20013]
+			[ontologia_Class20016]
+			[ontologia_Class17]
+			[ontologia_Class20006]
+			[ontologia_Class0])
 		(PVP 3.0)
 		(Racion Normal))
 
@@ -904,6 +1347,9 @@
 			[ontologia_Class40]
 			[ontologia_Class35])
 		(Nombre "Pollo al ajillo")
+		(Platos_Compatibles
+			[ontologia_Class20013]
+			[ontologia_Class20016])
 		(PVP 2.0)
 		(Racion Normal))
 
@@ -964,12 +1410,6 @@
 		(Nombre "Nata")
 		(PVP 1.5))
 
-	([ontologia_Class45] of  Cereal
-
-		(Mes_Final_Temporada 1)
-		(Mes_Inicio_Temporada 1)
-		(Nombre "Galleta"))
-
 	([ontologia_Class46] of  Postre
 
 		(Ingredientes
@@ -980,15 +1420,23 @@
 			[ontologia_Class54]
 			[ontologia_Class56])
 		(Nombre "Flan de Huevo")
+		(Platos_Compatibles
+			[ontologia_Class20013]
+			[ontologia_Class20009]
+			[ontologia_Class28]
+			[ontologia_Class20005]
+			[ontologia_Class37]
+			[ontologia_Class36])
 		(PVP 1.0)
-		(Racion Normal))
+		(Racion Normal)
+		(Vegetariano TRUE))
 
 	([ontologia_Class50] of  Derivado
 
 		(Lactosa TRUE)
 		(Mes_Final_Temporada 12)
 		(Mes_Inicio_Temporada 1)
-		(Nombre "Leche_vaca")
+		(Nombre "Leche de vaca")
 		(PVP 1.22))
 
 	([ontologia_Class51] of  Derivado
@@ -1034,8 +1482,6 @@
 
 		(Ingredientes
 			[ontologia_Class52]
-			[ontologia_Class61]
-			[ontologia_Class45]
 			[ontologia_Class59]
 			[ontologia_Class41]
 			[ontologia_Class60]
@@ -1043,8 +1489,20 @@
 			[ontologia_Class43]
 			[ontologia_Class54])
 		(Nombre "Tarta de queso")
+		(Platos_Compatibles
+			[ontologia_Class20013]
+			[ontologia_Class20009]
+			[ontologia_Class28]
+			[ontologia_Class10004]
+			[ontologia_Class20016]
+			[ontologia_Class37]
+			[ontologia_Class20007]
+			[ontologia_Class36]
+			[ontologia_Class20006]
+			[ontologia_Class0])
 		(PVP 1.0)
-		(Racion Normal))
+		(Racion Normal)
+		(Vegetariano TRUE))
 
 	([ontologia_Class59] of  Condimento
 
@@ -1060,11 +1518,6 @@
 		(Nombre "Mermelada de fresa")
 		(PVP 2.35))
 
-	([ontologia_Class61] of  Derivado
-
-		(Mes_Final_Temporada 1)
-		(Mes_Inicio_Temporada 1)
-		(Nombre "Cuajada"))
 )
 
 ;                   ======================================================================
@@ -1195,6 +1648,7 @@
 	(format t "Precio: %d %n" ?self:Precio)
 	(printout t "Categoria: " ?self:Categoria crlf)
 	(printout t "Puntuacion: " ?self:Puntuacion crlf)
+	(printout t "Complejidad: " ?self:Complejidad crlf)
 	(bind ?plato ?self:Plato)
 	(send ?plato imprimir)
 )
@@ -1205,11 +1659,20 @@
 
 	;(send <VARIABLE> put-<NOM_ATRIBUT> <VALOR>)
 	(send ?self put-Precio ?precio)
-	(if (< ?precio 20)
-			then (send ?self put-Categoria Bajo)
-			else (if (and (>= ?precio 20) (< ?precio 30))
-					then(send ?self put-Categoria Medio)
-					else (send ?self put-Categoria Alto)
+	(if (eq (class ?plato) Postre)
+			then (if (< ?precio 5)
+						then (send ?self put-Categoria Bajo)
+						else (if (and (>= ?precio 5) (< ?precio 8))
+								then(send ?self put-Categoria Medio)
+								else (send ?self put-Categoria Alto)
+						)
+			)
+			else 	(if (< ?precio 10)
+						then (send ?self put-Categoria Bajo)
+						else (if (and (>= ?precio 10) (< ?precio 15))
+								then(send ?self put-Categoria Medio)
+								else (send ?self put-Categoria Alto)
+						)
 			)
 	)
 )
@@ -1325,28 +1788,36 @@
 	(if (eq ?presupuesto Bajo)
 			then (if (eq ?precioPlato Bajo)
 						then (send ?plato put-Puntuacion (+ 2 (send ?plato get-Puntuacion))) ; Presupuesto Bajo y Precio Plato Bajo
+								 (printout t "+2 --> Presupuesto Bajo y precio plato Bajo" crlf)
 						else (if (eq ?precioPlato Medio)
 									then (send ?plato put-Puntuacion (+ 1 (send ?plato get-Puntuacion))) ; Presupuesto Bajo y Precio Plato Medio
+											 (printout t "+1 --> Presupuesto Bajo y precio plato Medio" crlf)
 				    )
 			 )
 			 else (if (eq ?presupuesto Medio)
 			 			then (if (eq ?precioPlato Medio)
 									then (send ?plato put-Puntuacion (+ 2 (send ?plato get-Puntuacion))) ; Presupuesto Medio y Precio Plato Medio
+											 (printout t "+2 --> Presupuesto Medio y precio plato Medio" crlf)
 									else (if (eq ?precioPlato Bajo)
 												then (send ?plato put-Puntuacion (+ 1 (send ?plato get-Puntuacion))) ; Presupuesto Medio y Precio Plato Bajo
+													 		(printout t "+1 --> Presupuesto Medio y precio plato Bajo" crlf)
 									)
 						)
 						else (if (eq ?presupuesto Alto)
 									then (if (eq ?precioPlato Medio)
 												then (send ?plato put-Puntuacion (+ 1 (send ?plato get-Puntuacion))) ; Presupuesto Medio y Precio Plato Medio
+														 (printout t "+1 --> Presupuesto Alto y precio plato Medio" crlf)
 												else (if (eq ?precioPlato Alto)
 															then (send ?plato put-Puntuacion (+ 2 (send ?plato get-Puntuacion))) ; Presupuesto Medio y Precio Plato Bajo
+																	 (printout t "+2 --> Presupuesto Alto y precio plato Alto" crlf)
 												)
 									)
 									else (if (eq ?precioPlato Alto)
 												then (send ?plato put-Puntuacion (+ 3 (send ?plato get-Puntuacion))) ; Presupuesto Alto y Precio Plato alto
+														 (printout t "+3 --> Presupuesto Muy Alto y precio plato Alto" crlf)
 												else (if (eq ?precioPlato Medio)
 															then (send ?plato put-Puntuacion (+ 1 (send ?plato get-Puntuacion))) ; Presupuesto Alto y Precio Plato alto
+																	 (printout t "+1 --> Presupuesto Muy Alto y precio plato Medio" crlf)
 												)
 									)
 						)
@@ -1371,11 +1842,9 @@
 	(bind $?listaIngredientes (send ?plato get-Ingredientes))
 
 	(bind ?puntuacion 0)
-	(printout t crlf)
 	(loop-for-count (?i 1 (length$ ?listaIngredientes)) do
 			(bind ?puntuacionIngrediente 0)
 			(bind ?ingrediente (nth$ ?i ?listaIngredientes))
-			(send ?ingrediente imprimir)
 			(bind ?temporadaInicio (send ?ingrediente get-Mes_Inicio_Temporada))
 			(bind ?temporadaFinal (send ?ingrediente get-Mes_Final_Temporada))
 			(if (eq ?temporada Primavera)
@@ -1396,63 +1865,78 @@
 							)
 					)
 			)
-			(printout t " ---------------------------------- Puntuacion: " ?puntuacionIngrediente crlf)
 			(bind ?puntuacion (+ ?puntuacion ?puntuacionIngrediente))
+	)
+	(if (= ?puntuacion (length$ ?listaIngredientes))
+			then (send ?platoAbstracto put-Puntuacion (+ 4 (send ?platoAbstracto get-Puntuacion)))
+					 (printout t "+4 --> Puntuacion por tener todos los ingredientes" crlf)
+			else (if (>= ?puntuacion (* 0.75 (length$ ?listaIngredientes)))
+					then (send ?platoAbstracto put-Puntuacion (+ 3 (send ?platoAbstracto get-Puntuacion)))
+							 (printout t "+3 --> Puntuacion por tener 75% de los ingredientes" crlf)
+					else (if (>= ?puntuacion (* 0.50 (length$ ?listaIngredientes)))
+							then (send ?platoAbstracto put-Puntuacion (+ 2 (send ?platoAbstracto get-Puntuacion)))
+									 (printout t "+2 --> Puntuacion por tener 50% de los ingredientes" crlf)
+							else (if (>= ?puntuacion (* 0.25 (length$ ?listaIngredientes)))
+									then (send ?platoAbstracto put-Puntuacion (+ 1 (send ?platoAbstracto get-Puntuacion)))
+											 (printout t "+1 --> Puntuacion por tener 25% de los ingredientes" crlf)
+							)
+				  )
+		 )
 	)
 
 	(if (and (eq ?temporada Otono) (eq (send ?plato get-Caliente) TRUE))
 			then
 				(bind ?puntuacion (+ 1 ?puntuacion))
-				(printout t "Extra de puntos por otono y ser un plato caliente" crlf)
+				(printout t "+1 --> Extra de puntos por otono y ser un plato caliente" crlf)
 	)
 	(if (and (eq ?temporada Invierno) (eq (send ?plato get-Caliente) TRUE))
 			then
 				(bind ?puntuacion (+ 2 ?puntuacion))
-				(printout t "Extra de puntos por invierno y ser un plato caliente" crlf)
+				(printout t "+2 --> Extra de puntos por invierno y ser un plato caliente" crlf)
 	)
 	(if (and (eq ?temporada Primavera) (eq (send ?plato get-Caliente) FALSE))
 			then
 				(bind ?puntuacion (+ 1 ?puntuacion))
-				(printout t "Extra de puntos por primavera y ser un plato frio" crlf)
+				(printout t "+1 --> Extra de puntos por primavera y ser un plato frio" crlf)
 	)
 	(if (and (eq ?temporada Verano) (eq (send ?plato get-Caliente) FALSE))
 			then
 				(bind ?puntuacion (+ 2 ?puntuacion))
-				(printout t "Extra de puntos por verano y ser un plato frio" crlf)
+				(printout t "+2 --> Extra de puntos por verano y ser un plato frio" crlf)
 	)
-
-	(if (= ?puntuacion (length$ ?listaIngredientes))
-			then (send ?platoAbstracto put-Puntuacion (+ 4 (send ?platoAbstracto get-Puntuacion)))
-			else (if (>= ?puntuacion (* 0.75 (length$ ?listaIngredientes)))
-					then (send ?platoAbstracto put-Puntuacion (+ 3 (send ?platoAbstracto get-Puntuacion)))
-					else (if (>= ?puntuacion (* 0.50 (length$ ?listaIngredientes)))
-							then (send ?platoAbstracto put-Puntuacion (+ 2 (send ?platoAbstracto get-Puntuacion)))
-							else (if (>= ?puntuacion (* 0.25 (length$ ?listaIngredientes)))
-									then (send ?platoAbstracto put-Puntuacion (+ 1 (send ?platoAbstracto get-Puntuacion)))
-							)
-				  )
-		 )
-	)
-	(printout t "Puntuacion total: " ?puntuacion crlf)
 )
 
 (deffunction calcular-puntuacion-complejidad "" (?plato ?numComensales)
 	(bind ?complejidad (send ?plato get-Complejidad))
 	(if (eq ?numComensales Medio)
  			then (if (eq ?complejidad Medio)
-						then (send ?plato put-Puntuacion (+ 2 (send ?plato get-Puntuacion))) ; Presupuesto Medio y Precio Plato Medio
+						then (send ?plato put-Puntuacion (+ 2 (send ?plato get-Puntuacion)))
+								 (printout t "+2 --> Num comensales Medio y complejidad del plato Medio" crlf)
 						else (if (eq ?complejidad Bajo)
-									then (send ?plato put-Puntuacion (+ 1 (send ?plato get-Puntuacion))) ; Presupuesto Medio y Precio Plato Bajo
+									then (send ?plato put-Puntuacion (+ 1 (send ?plato get-Puntuacion)))
+											 (printout t "+1 --> Num comensales Medio y complejidad del plato Bajo" crlf)
 						)
 			)
-			; Num comensales ALTO
-			else (if (eq ?complejidad Bajo)
-						then (send ?plato put-Puntuacion (+ 2 (send ?plato get-Puntuacion))) ; Presupuesto Medio y Precio Plato Medio
-						else (if (eq ?complejidad Medio)
-									then (send ?plato put-Puntuacion (+ 1 (send ?plato get-Puntuacion))) ; Presupuesto Medio y Precio Plato Bajo
+
+			else (if (eq ?numComensales Alto)
+						then (if (eq ?complejidad Bajo)
+									then (send ?plato put-Puntuacion (+ 2 (send ?plato get-Puntuacion)))
+											 (printout t "+2 --> Num comensales Alto y complejidad del plato Bajo" crlf)
+									else (if (eq ?complejidad Medio)
+												then (send ?plato put-Puntuacion (+ 1 (send ?plato get-Puntuacion)))
+												 		 (printout t "+1 --> Num comensales Alto y complejidad del plato Medio" crlf))
+						)
+						else (if (eq ?numComensales MuyAlto)
+									then (if (eq ?complejidad Bajo)
+												then (send ?plato put-Puntuacion (+ 3 (send ?plato get-Puntuacion)))
+														 (printout t "+3 --> Num comensales Muy Alto y complejidad del plato Bajo" crlf)
+												else (if (eq ?complejidad Medio)
+															then (send ?plato put-Puntuacion (+ 1 (send ?plato get-Puntuacion)))
+															 		 (printout t "+1 --> Num comensales Muy Alto y complejidad del plato Medio" crlf))
+												)
 						)
 			)
-	)
+	 )
 )
 
 ;                   ======================================================================
@@ -1463,11 +1947,6 @@
 	(declare (salience 10))
 	=>
 	(calcular-platos-abstractos)
-	(bind ?platos (find-all-instances ((?inst PlatoAbstracto)) TRUE))
-	(loop-for-count (?i 1 (length$ ?platos)) do
-		(bind ?plato (nth$ ?i ?platos))
-		(send ?plato imprimir)
-	)
 
   (printout t "====================================================================" crlf)
   (printout t "=    Sistema de elaboracion de menus personalizados Rico Rico      =" crlf)
@@ -1720,15 +2199,22 @@
 	=>
 	(bind ?listaPlatosAbstractos (find-all-instances ((?inst PlatoAbstracto)) TRUE))
 	(loop-for-count (?i 1 (length$ ?listaPlatosAbstractos)) do
-		(bind ?plato (nth$ ?i ?listaPlatosAbstractos))
-		(calcular-puntuacion-presupuesto ?plato ?presupuesto)
-		(calcular-puntuacion-complejidad ?plato ?numComensales)
-		(printout t "Plato Abstracto: ")
-		(send ?plato imprimir)
-		(printout t "=====================================" crlf)
-		(printout t "Calculo puntauciones de los ingredientes ")
-		(calcular-puntuacion-temporada ?plato ?temporada)
-		(printout t "=====================================" crlf)
+		(printout t "=====================================================" crlf)
+		(bind ?platoAbstracto (nth$ ?i ?listaPlatosAbstractos))
+		(calcular-puntuacion-presupuesto ?platoAbstracto ?presupuesto)
+		(calcular-puntuacion-complejidad ?platoAbstracto ?numComensales)
+		(calcular-puntuacion-temporada ?platoAbstracto ?temporada)
+
+		(bind ?plato (send ?platoAbstracto get-Plato))
+		(if (eq (class (instance-address * ?plato)) Primero)
+				then (printout t "----> Este plato es un primero")
+				else (if (eq (class (instance-address * ?plato)) Segundo)
+						then (printout t "----> Este plato es un segundo")
+						else (printout t "----> Este plato es un postre")
+				)
+		)
+		(send ?platoAbstracto imprimir)
+		(printout t "=====================================================" crlf)
 	)
 	(focus solucionConcreta)
 )
@@ -1750,7 +2236,7 @@
 			(bind ?platoAbstracto (nth$ ?i ?listaPlatosAbstractos))
 			(bind ?plato (send ?platoAbstracto get-Plato))
 			;(eq (class ?instancia) APrincipal)
-			(send ?platoAbstracto imprimir)
+			;(send ?platoAbstracto imprimir)
 			(if (eq (class (instance-address * ?plato)) Primero)
 					then (if (= ?indiceMaxPrimero 0)
 								then (bind ?indiceMaxPrimero ?i)
