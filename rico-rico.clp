@@ -1129,12 +1129,6 @@
     (slot temporada (type SYMBOL) (allowed-values Invierno Primavera Verano Otono UNDEF) (default UNDEF))
 )
 
-(deftemplate MAIN::MenuHappyMeal
-	(slot primerPlato (type INSTANCE))
-	(slot segundoPlato (type INSTANCE))
-	(slot postre (type INSTANCE))
-)
-
 ;                   ======================================================================
 ;                   =====================   Declaracion de clases   ======================
 ;                   ======================================================================
@@ -1268,7 +1262,6 @@
 	)
 )
 
-
 ;                   ======================================================================
 ;                   =====================  Declaracion de funciones ======================
 ;                   ======================================================================
@@ -1316,12 +1309,70 @@
 		(send ?platoAbstracto calcula-categoria)
 		(send ?platoAbstracto calcula-complejidad)
 	)
+)
 
-	; (make-instance (sym-cat pepe- (gensym)) of <clase>)
+;(deftemplate MAIN::ProblemaAbstracto
+    ; Presupuesto(bajo, medio, alto, muy alto) => ([10,20),[20,40),[40,80),>80)
+    ; NumComensales(bajo, medio, alto, muy alto) => ([20,30),[30,50),[50,100),[100, 500))
+    ; Complejidad(facil, normal, alto) => ([tradicional,sibarita], clasico, moderno)
+    ; Temporada(invierno, primavera, verano, otoño) => [12-3] [4-5] [6-9] [10-11]
+    ;(slot presupuesto (type SYMBOL) (allowed-values Bajo Medio Alto MuyAlto UNDEF) (default UNDEF))
+    ;(slot numComensales (type SYMBOL) (allowed-values Bajo Medio Alto MuyAlto UNDEF) (default UNDEF))
+;    (slot complejidad (type SYMBOL) (allowed-values Facil Normal Alto UNDEF) (default UNDEF))
+;    (slot temporada (type SYMBOL) (allowed-values Invierno Primavera Verano Otono UNDEF) (default UNDEF))
+;)
 
-	;(printout t "Categoria: " (send ?platoAbstracto get-Categoria) crlf)
-	;(bind ?plato (send ?platoAbstracto get-Plato))
-	;(send ?plato imprimir)
+(deffunction calcular-puntuacion-presupuesto "" (?plato ?presupuesto)
+	(bind ?precioPlato (send ?plato get-Categoria))
+	(if (eq ?presupuesto Bajo)
+			then (if (eq ?precioPlato Bajo)
+						then (send ?plato put-Puntuacion (+ 2 (send ?plato get-Puntuacion))) ; Presupuesto Bajo y Precio Plato Bajo
+						else (if (eq ?precioPlato Medio)
+									then (send ?plato put-Puntuacion (+ 1 (send ?plato get-Puntuacion))) ; Presupuesto Bajo y Precio Plato Medio
+				    )
+			 )
+			 else (if (eq ?presupuesto Medio)
+			 			then (if (eq ?precioPlato Medio)
+									then (send ?plato put-Puntuacion (+ 2 (send ?plato get-Puntuacion))) ; Presupuesto Medio y Precio Plato Medio
+									else (if (eq ?precioPlato Bajo)
+												then (send ?plato put-Puntuacion (+ 1 (send ?plato get-Puntuacion))) ; Presupuesto Medio y Precio Plato Bajo
+									)
+						)
+						else (if (eq ?presupuesto Alto)
+									then (if (eq ?precioPlato Medio)
+												then (send ?plato put-Puntuacion (+ 1 (send ?plato get-Puntuacion))) ; Presupuesto Medio y Precio Plato Medio
+												else (if (eq ?precioPlato Alto)
+															then (send ?plato put-Puntuacion (+ 2 (send ?plato get-Puntuacion))) ; Presupuesto Medio y Precio Plato Bajo
+												)
+									)
+									else (if (eq ?precioPlato Alto)
+												then (send ?plato put-Puntuacion (+ 3 (send ?plato get-Puntuacion))) ; Presupuesto Alto y Precio Plato alto
+												else (if (eq ?precioPlato Medio)
+															then (send ?plato put-Puntuacion (+ 1 (send ?plato get-Puntuacion))) ; Presupuesto Alto y Precio Plato alto
+												)
+									)
+						)
+				)
+		)
+)
+
+(deffunction calcular-puntuacion-complejidad "" (?plato ?numComensales)
+	(bind ?complejidad (send ?plato get-Complejidad))
+	(if (eq ?numComensales Medio)
+ 			then (if (eq ?complejidad Medio)
+						then (send ?plato put-Puntuacion (+ 2 (send ?plato get-Puntuacion))) ; Presupuesto Medio y Precio Plato Medio
+						else (if (eq ?complejidad Bajo)
+									then (send ?plato put-Puntuacion (+ 1 (send ?plato get-Puntuacion))) ; Presupuesto Medio y Precio Plato Bajo
+						)
+			)
+			; Num comensales ALTO
+			else (if (eq ?complejidad Bajo)
+						then (send ?plato put-Puntuacion (+ 2 (send ?plato get-Puntuacion))) ; Presupuesto Medio y Precio Plato Medio
+						else (if (eq ?complejidad Medio)
+									then (send ?plato put-Puntuacion (+ 1 (send ?plato get-Puntuacion))) ; Presupuesto Medio y Precio Plato Bajo
+						)
+			)
+	)
 )
 
 ;                   ======================================================================
@@ -1335,7 +1386,7 @@
 	(bind ?platos (find-all-instances ((?inst PlatoAbstracto)) TRUE))
 	(loop-for-count (?i 1 (length$ ?platos)) do
 		(bind ?plato (nth$ ?i ?platos))
-		(send ?plato imprimir)
+		;(send ?plato imprimir)
 	)
 
   (printout t "====================================================================" crlf)
@@ -1349,18 +1400,6 @@
 
 ;                   ======================================================================
 ;                   ======================  Modulo de recopilacion  ======================
-;                   ======================================================================
-
-;                   ======================================================================
-;                   Debug: Orden de las preguntas
-;                           - Que tipo de evento se va a realizar
-;                           - Si es una cena o una comida
-;                           - Que estilo de comida
-;                           - En que mes se celebra el evento
-;                           - Numero de comensales que van a asistir
-;                           - Presupuesto
-;                           -
-;
 ;                   ======================================================================
 
 (defrule recopilacion::pregunta-familiar-congreso "Pregunta al cliente que tipo de evento se va a realizar"
@@ -1567,7 +1606,6 @@
 		)
 )
 
-
 (defrule abstraccion::abstraccion-completada "Regla que comprueba que todas las preguntas han sido respondidas"
     (ProblemaAbstracto (presupuesto ?presupuesto))
     (test (not (eq ?presupuesto UNDEF)))
@@ -1584,31 +1622,21 @@
 		(focus solucionAbstracta)
 )
 
-
 ;                   ======================================================================
 ;                   ===================  Modulo de solucion abstracta   ==================
 ;                   ======================================================================
 
-
-
-(defrule solucionAbstracta::prueba ""
+(defrule solucionAbstracta::generar-menu ""
 	(initial-fact)
 	(ProblemaAbstracto (presupuesto ?presupuesto))
-	(not (MenuHappyMeal))
+	(ProblemaAbstracto (numComensales ?numComensales))
 	=>
-	(bind ?platos (find-all-instances ((?inst Plato)) (or (not (eq ?presupuesto Bajo)) (< ?inst:PVP 3))))
-
-	(bind ?primerPlato (nth$ 1 ?platos))
-	(bind ?segundoPlato (nth$ 2 ?platos))
-	(bind ?postre (nth$ 3 ?platos))
-
-	(bind ?menu (make-instance menuHappy of Menu))
-	(send ?menu put-Relacion_Menu_Primero ?primerPlato)
-	(send ?menu put-Relacion_Menu_Segundo ?segundoPlato)
-	(send ?menu put-Relacion_Menu_Postre ?postre)
-	(bind ?menu2 (make-instance menuHappyMeal of MenuAbstracto))
-	(send ?menu2 put-Menu ?menu)
-
+	(bind ?listaPlatosAbstractos (find-all-instances ((?inst PlatoAbstracto)) TRUE))
+	(loop-for-count (?i 1 (length$ ?listaPlatosAbstractos)) do
+		(bind ?plato (nth$ ?i ?listaPlatosAbstractos))
+		(calcular-puntuacion-presupuesto ?plato ?presupuesto)
+		(calcular-puntuacion-complejidad ?plato ?numComensales)
+	)
 	(focus solucionConcreta)
 )
 
@@ -1616,8 +1644,46 @@
 ;                   ===================   Modulo de solucion concreta   ==================
 ;                   ======================================================================
 
-(defrule solucionConcreta::prueba2 ""
+(defrule solucionConcreta::generarSolucion ""
 	(initial-fact)
 	=>
-	(send (instance-address * [menuHappyMeal]) imprimir)
+	(bind ?indiceMaxPrimero 1)
+	(bind ?indiceMaxSegundo 1)
+	(bind ?indiceMaxPostre 1)
+
+	(bind ?listaPlatosAbstractos (find-all-instances ((?inst PlatoAbstracto)) TRUE))
+
+	(loop-for-count (?i 2 (length$ ?listaPlatosAbstractos)) do
+	    (bind ?platoAbstracto (nth$ ?i ?listaPlatosAbstractos))
+	    (bind ?plato (send ?platoAbstracto get-Plato))
+
+	    (if (eq (type ?plato) Primero)
+	      then
+	          (bind ?platoAbstracoMax (nth$ ?indiceMaxPrimero ?listaPlatosAbstractos))
+	          (if (< (send ?platoAbstracoMax get-Puntuacion) (send ?platoAbstracto get-Puntuacion))
+	              then (bind ?indiceMaxPrimero ?i)
+	          )
+	      else (if (eq (type ?plato) Segundo)
+	          then
+	              (bind ?platoAbstracoMax (nth$ ?indiceMaxSegundo ?listaPlatosAbstractos))
+	              (if (< (send ?platoAbstracoMax get-Puntuacion) (send ?platoAbstracto get-Puntuacion))
+	                  then (bind ?indiceMaxSegundo ?i)
+	              )
+	          else
+	              (bind ?platoAbstracoMax (nth$ ?indiceMaxPostre ?listaPlatosAbstractos))
+	              (if (< (send ?platoAbstracoMax get-Puntuacion) (send ?platoAbstracto get-Puntuacion))
+	                  then (bind ?indiceMaxPostre ?i)
+	              )
+	      )
+	    )
+	)
+
+
+	(bind ?menuAbstracto (make-instance menuHappyMeal of MenuAbstracto))
+	(bind ?menu (make-instance menu of Menu))
+	(send ?menu put-Relacion_Menu_Primero (send (nth$ ?indiceMaxPrimero ?listaPlatosAbstractos) get-Plato))
+	(send ?menu put-Relacion_Menu_Segundo (send (nth$ ?indiceMaxSegundo ?listaPlatosAbstractos) get-Plato))
+	(send ?menu put-Relacion_Menu_Postre (send (nth$ ?indiceMaxPostre ?listaPlatosAbstractos) get-Plato))
+	(send ?menuAbstracto put-Menu ?menu)
+	(send ?menuAbstracto imprimir)
 )
