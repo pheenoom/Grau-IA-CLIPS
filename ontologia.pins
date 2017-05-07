@@ -1,4 +1,4 @@
-; Sat May 06 11:58:31 CEST 2017
+; Sun May 07 13:10:17 CEST 2017
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -29,6 +29,43 @@
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Lechuga")
 	(PVP 0.6))
+
+([ontologia_Class10000] of  Postre
+
+	(Bebida_Menu [ontologia_Class57])
+	(Ingredientes
+		[ontologia_Class10002]
+		[ontologia_Class10001]
+		[ontologia_Class52])
+	(Nombre "Sopa fría de sandía con bolas de melón")
+	(Platos_Compatibles
+		[ontologia_Class20013]
+		[ontologia_Class28]
+		[ontologia_Class17]
+		[ontologia_Class20006]
+		[ontologia_Class0]
+		[ontologia_Class20009]
+		[ontologia_Class20005]
+		[ontologia_Class37]
+		[ontologia_Class20007]
+		[ontologia_Class36])
+	(PVP 1.0)
+	(Racion Normal)
+	(Vegetariano TRUE))
+
+([ontologia_Class10001] of  Fruta
+
+	(Mes_Final_Temporada 9)
+	(Mes_Inicio_Temporada 5)
+	(Nombre "Sandia")
+	(PVP 2.0))
+
+([ontologia_Class10002] of  Fruta
+
+	(Mes_Final_Temporada 10)
+	(Mes_Inicio_Temporada 5)
+	(Nombre "Melon")
+	(PVP 1.5))
 
 ([ontologia_Class10003] of  Verdura
 
@@ -249,7 +286,7 @@
 
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
-	(Nombre "Aceite_oliva")
+	(Nombre "Aceite de oliva")
 	(PVP 0.2))
 
 ([ontologia_Class16] of  Condimento
@@ -291,6 +328,38 @@
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Ajo")
 	(PVP 0.25))
+
+([ontologia_Class20003] of  Fruta
+
+	(Mes_Final_Temporada 5)
+	(Mes_Inicio_Temporada 2)
+	(Nombre "Fresa")
+	(PVP 3.0))
+
+([ontologia_Class20004] of  Postre
+
+	(Bebida_Menu [ontologia_Class57])
+	(Ingredientes
+		[ontologia_Class20003]
+		[ontologia_Class30]
+		[ontologia_Class2]
+		[ontologia_Class20]
+		[ontologia_Class35]
+		[ontologia_Class15])
+	(Nombre "Gazpacho de fresas")
+	(Platos_Compatibles
+		[ontologia_Class20013]
+		[ontologia_Class28]
+		[ontologia_Class17]
+		[ontologia_Class20006]
+		[ontologia_Class0]
+		[ontologia_Class20009]
+		[ontologia_Class10004]
+		[ontologia_Class20005]
+		[ontologia_Class37]
+		[ontologia_Class36])
+	(PVP 2.0)
+	(Racion Normal))
 
 ([ontologia_Class20005] of  Segundo
 
@@ -452,6 +521,7 @@
 		[ontologia_Class20005]
 		[ontologia_Class20007]
 		[ontologia_Class36])
+	(PVP 2.0)
 	(Racion Abundante))
 
 ([ontologia_Class22] of  Verdura
@@ -531,6 +601,29 @@
 	(Nombre "Pimiento rojo")
 	(PVP 0.6))
 
+([ontologia_Class30005] of  Postre
+
+	(Bebida_Menu [ontologia_Class57])
+	(Nombre "Torrijas")
+	(PVP 4.0)
+	(Racion Abundante)
+	(Vegetariano FALSE))
+
+([ontologia_Class30006] of  Cereal
+
+	(Gluten TRUE)
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Pan")
+	(PVP 0.5))
+
+([ontologia_Class30007] of  Grasas
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Aceite de girasol")
+	(PVP 0.9))
+
 ([ontologia_Class31] of  Condimento
 
 	(Mes_Final_Temporada 12)
@@ -598,8 +691,7 @@
 		[ontologia_Class20]
 		[ontologia_Class32]
 		[ontologia_Class40]
-		[ontologia_Class35]
-		[ontologia_Class39])
+		[ontologia_Class35])
 	(Nombre "Pollo al ajillo")
 	(Platos_Compatibles
 		[ontologia_Class20013]
@@ -682,7 +774,8 @@
 		[ontologia_Class37]
 		[ontologia_Class36])
 	(PVP 1.0)
-	(Racion Normal))
+	(Racion Normal)
+	(Vegetariano TRUE))
 
 ([ontologia_Class50] of  Derivado
 
@@ -754,7 +847,8 @@
 		[ontologia_Class20006]
 		[ontologia_Class0])
 	(PVP 1.0)
-	(Racion Normal))
+	(Racion Normal)
+	(Vegetariano TRUE))
 
 ([ontologia_Class59] of  Condimento
 
