@@ -2039,38 +2039,192 @@
 	(slot Puntuacion (type INTEGER) (create-accessor read-write) (default 0))
 	(slot Complejidad (type SYMBOL) (allowed-values Bajo Medio Alto) (create-accessor read-write))
 	(slot Plato (type INSTANCE) (create-accessor read-write))
-	(multislot Puntos (type INTEGER) (create-accessor read-write))
 )
 
 ;                   ======================================================================
-;                   =================   Declaracion de handler DBEUG   ===================
+;                   ====================   Declaracion de handler   ======================
 ;                   ======================================================================
 
-(defmessage-handler MAIN::PlatoAbstracto imprimir-debug ()
-	(printout t "Precio: " ?self:Precio crlf)
+(defmessage-handler MAIN::Plato calcula-precio ()
+      (bind $?listaPlatos (find-all-instances ((?plato Plato)) TRUE))
+      (loop-for-count (?i 1 (length$ $?listaPlatos)) do
+          (bind ?plato (nth$ ?i $?listaPlatos))
+					(bind $?listaIngredientes (send ?plato get-Ingredientes))
+					(printout t (send ?plato get-Nombre) crlf)
+					(bind ?elaboracion (send ?plato get-PVP))
+					(bind ?precio ?elaboracion)
+          (loop-for-count (?j 1 (length$ $?listaIngredientes)) do
+              (bind ?ingrediente (nth$ ?j $?listaIngredientes))
+							(bind ?pvp (send ?ingrediente get-PVP))
+							(bind ?precio (+ ?precio ?pvp))
+							(printout t (send ?ingrediente get-Nombre) crlf)
+							(printout t ?pvp crlf)
+          )
+					;(assert (Plato-precio (Precio ?precio))) esto de aqui peta
+					(printout t "Precio final del plato " ?precio crlf)
+
+      )
+)
+
+(defmessage-handler MAIN::MenuAbstracto imprimir ()
+	(format t "Precio %f %n" ?self:Precio)
+	(bind ?menu ?self:Menu)
+	(send ?menu imprimir)
+)
+
+(defmessage-handler MAIN::Menu imprimir ()
+	(printout t "Informacion del primer plato" crlf)
+	(bind ?primerPlato ?self:Relacion_Menu_Primero)
+	(send ?primerPlato imprimir)
+	(printout t "Informacion del segundo plato" crlf)
+	(bind ?segundoPlato ?self:Relacion_Menu_Segundo)
+	(send ?segundoPlato imprimir)
+	(printout t "Informacion del postre" crlf)
+	(bind ?postre ?self:Relacion_Menu_Postre)
+	(send ?postre imprimir)
+)
+
+(defmessage-handler MAIN::PlatoAbstracto imprimir ()
+	(printout t crlf)
+	(format t "Precio: %f %n" ?self:Precio)
 	(printout t "Categoria: " ?self:Categoria crlf)
 	(printout t "Sub-Categoria: " ?self:SubCategoria crlf)
 	(printout t "Puntuacion: " ?self:Puntuacion crlf)
 	(printout t "Complejidad: " ?self:Complejidad crlf)
-	(printout t "------------------- Informacion del plato  ----------------" crlf)
 	(bind ?plato ?self:Plato)
 	(send ?plato imprimir)
 )
 
-(defmessage-handler MAIN::Plato imprimir-debug ()
+(defmessage-handler MAIN::PlatoAbstracto calcula-sub-categoria-baja ()
+	(bind ?precio ?self:Precio)
+	(bind ?plato ?self:Plato)
+
+	(if (eq (class ?plato) Postre)
+			then (if (< ?precio 1.6)
+						then (send ?self put-SubCategoria Bajo)
+						else (if (and (>= ?precio 1.6) (< ?precio 3))
+								then (send ?self put-SubCategoria Medio)
+								else (send ?self put-SubCategoria Alto)
+						)
+			)
+			else
+					(if (< ?precio 3)
+								then (send ?self put-SubCategoria Bajo)
+								else (if (and (>= ?precio 3) (< ?precio 6))
+										then (send ?self put-SubCategoria Medio)
+										else (send ?self put-SubCategoria Alto)
+								)
+					)
+		)
+)
+
+(defmessage-handler MAIN::PlatoAbstracto calcula-sub-categoria-media ()
+	(bind ?precio ?self:Precio)
+	(bind ?plato ?self:Plato)
+
+	(if (eq (class ?plato) Postre)
+			then (if (< ?precio 4.5)
+						then (send ?self put-SubCategoria Bajo)
+						else (if (and (>= ?precio 4.5) (< ?precio 6.75))
+								then (send ?self put-SubCategoria Medio)
+								else (send ?self put-SubCategoria Alto)
+						)
+			)
+			else
+					(if (< ?precio 13)
+								then (send ?self put-SubCategoria Bajo)
+								else (if (and (>= ?precio 13) (< ?precio 16))
+										then (send ?self put-SubCategoria Medio)
+										else (send ?self put-SubCategoria Alto)
+								)
+					)
+	)
+)
+
+(defmessage-handler MAIN::PlatoAbstracto calcula-sub-categoria-alta ()
+	(bind ?precio ?self:Precio)
+	(bind ?plato ?self:Plato)
+
+	(if (eq (class ?plato) Postre)
+			then (if (< ?precio 9)
+						then (send ?self put-SubCategoria Bajo)
+						else (if (and (>= ?precio 9) (< ?precio 12))
+								then (send ?self put-SubCategoria Medio)
+								else (send ?self put-SubCategoria Alto)
+						)
+			)
+			else
+					(if (< ?precio 25)
+								then (send ?self put-SubCategoria Bajo)
+								else (if (and (>= ?precio 25) (< ?precio 30))
+										then (send ?self put-SubCategoria Medio)
+										else (send ?self put-SubCategoria Alto)
+								)
+					)
+		)
+)
+
+
+(defmessage-handler MAIN::PlatoAbstracto calcula-categoria ()
+	(bind ?plato ?self:Plato)
+	(bind ?precio (send ?plato calcula-precio))
+
+	(send ?self put-Precio ?precio)
+	(if (eq (class ?plato) Postre)
+			then (if (< ?precio 4)
+						then
+								(send ?self put-Categoria Bajo)
+								(send ?self calcula-sub-categoria-baja)
+						else (if (and (>= ?precio 4) (< ?precio 8))
+								then
+										(send ?self put-Categoria Medio)
+										(send ?self calcula-sub-categoria-media)
+								else
+										(send ?self put-Categoria Alto)
+										(send ?self calcula-sub-categoria-alta)
+						)
+			)
+			else 	(if (< ?precio 10)
+						then
+								(send ?self put-Categoria Bajo)
+								(send ?self calcula-sub-categoria-baja)
+						else (if (and (>= ?precio 10) (< ?precio 20))
+								then
+										(send ?self put-Categoria Medio)
+										(send ?self calcula-sub-categoria-media)
+								else
+										(send ?self put-Categoria Alto)
+										(send ?self calcula-sub-categoria-alta)
+						)
+			)
+	)
+)
+
+(defmessage-handler MAIN::Plato calcula-precio()
+		(bind $?listaIngredientes ?self:Ingredientes)
+		(bind ?precio ?self:PVP)
+    (loop-for-count (?j 1 (length$ $?listaIngredientes)) do
+        (bind ?ingrediente (nth$ ?j $?listaIngredientes))
+				(bind ?pvp (send ?ingrediente get-PVP))
+				(bind ?precio (+ ?precio ?pvp))
+    )
+		(* ?precio 1)
+)
+
+(defmessage-handler MAIN::Plato imprimir ()
 	(format t "Nombre: %s" ?self:Nombre)
 	(printout t crlf)
-	(bind ?vegetariano ?self:Vegetariano)
-	(if (eq ?vegetariano TRUE)
-		then (format t "%t Es un plato vegetariano? Si %n")
-		else (format t "%t Es un plato vegetariano? No %n")
-	)
+	;(bind ?vegetariano ?self:Vegetariano)
+	;(if (eq ?vegetariano TRUE)
+	;	then (format t "%t Es un plato vegetariano? Si %n")
+	;	else (format t "%t Es un plato vegetariano? No %n")
+	;)
 
-	(bind ?caliente ?self:Caliente)
-	(if (eq ?caliente TRUE)
-		then (format t "%t Es un plato caliente? Si %n")
-		else (format t "%t Es un plato caliente? No %n")
-	)
+	;(bind ?caliente ?self:Caliente)
+	;(if (eq ?caliente TRUE)
+	;	then (format t "%t Es un plato caliente? Si %n")
+	;	else (format t "%t Es un plato caliente? No %n")
+	;)
 
 	(printout t "Ingredientes del plato: ")
 	(bind $?listaIngredientes ?self:Ingredientes)
@@ -2085,212 +2239,20 @@
 
 (defmessage-handler MAIN::Ingrediente imprimir ()
 	(format t "%s - " ?self:Nombre)
-	(bind ?lactosa ?self:Lactosa)
-	(bind ?gluten ?self:Gluten)
-	(if (eq ?lactosa TRUE)
-		then (format t "%t Lactosa: Si %n")
-		else (format t "%t Lactosa: No %n")
-	)
-	(if (eq ?gluten TRUE)
-		then (format t "%t Gluten: Si %n")
-		else (format t "%t Gluten: No %n")
-	)
-	(format t "%t Temporada Inicio: %d %n" ?self:Mes_Inicio_Temporada)
-	(format t "%t Temporada Final: %d %n" ?self:Mes_Final_Temporada)
+	;(bind ?lactosa ?self:Lactosa)
+	;(bind ?gluten ?self:Gluten)
+	;(if (eq ?lactosa TRUE)
+	;	then (format t "%t Lactosa: Si %n")
+	;	else (format t "%t Lactosa: No %n")
+	;)
+	;(if (eq ?gluten TRUE)
+	;	then (format t "%t Gluten: Si %n")
+	;	else (format t "%t Gluten: No %n")
+	;)
+	;(format t "%t Temporada Inicio: %d %n" ?self:Mes_Inicio_Temporada)
+	;(format t "%t Temporada Final: %d %n" ?self:Mes_Final_Temporada)
 )
 
-;                   ======================================================================
-;                   ====================   Declaracion de handler   ======================
-;                   ======================================================================
-
-
-
-;                   ======================================================================
-;                   ====================   Handler PlatoAbstracto   ======================
-;                   ======================================================================
-
-(defmessage-handler MAIN::PlatoAbstracto calcula-sub-categoria "Handler que calcula la sub-categoria dado dos parametros: 
-                                                                        Bajo  -> [0...precioMedio)
-                                                                        Medio -> [precioMedio...precioAlto)
-                                                                        Alto  -> [precioAlto...Inf)" (?precioMedio ?precioAlto)
-	(bind ?precioPlato ?self:Precio)
-	
-    (if (eq (class ?self:Plato) Postre)
-        then (if (< ?precioPlato ?precioMedio)
-            then (send ?self put-SubCategoria Bajo)
-            else (if (and (>= ?precioPlato ?precioMedio) (< ?precioPlato ?precioAlto))
-                then (send ?self put-SubCategoria Medio)
-                else (send ?self put-SubCategoria Alto)
-            )
-        )
-        else (if (< ?precioPlato ?precioMedio)
-            then (send ?self put-SubCategoria Bajo)
-            else (if (and (>= ?precioPlato ?precioMedio) (< ?precioPlato ?precioAlto))
-                then (send ?self put-SubCategoria Medio)
-                else (send ?self put-SubCategoria Alto)
-            )
-        )
-    )
-)
-
-(defmessage-handler MAIN::PlatoAbstracto calcula-categoria "Handler que calcula la categoria" ()
-    (bind ?plato ?self:Plato)
-    (bind ?precioPlato (send ?plato calcula-precio))
-
-    (send ?self put-Precio ?precioPlato)
-    (if (eq (class ?plato) Postre)
-        then (if (< ?precioPlato 4)
-            then (send ?self put-Categoria Bajo)
-                 (send ?self calcula-sub-categoria 1.6 3.0)
-            else (if (and (>= ?precioPlato 4) (< ?precioPlato 8))
-                then (send ?self put-Categoria Medio)
-                     (send ?self calcula-sub-categoria 4.5 6.75)
-                else (send ?self put-Categoria Alto)
-                     (send ?self calcula-sub-categoria 9.0 12.0)
-            )
-        )
-        else (if (< ?precioPlato 10)
-            then (send ?self put-Categoria Bajo)
-                 (send ?self calcula-sub-categoria 3.0 6.0)
-            else (if (and (>= ?precioPlato 10) (< ?precioPlato 20))
-                then (send ?self put-Categoria Medio)
-                     (send ?self calcula-sub-categoria 13.0 16.0)
-                else (send ?self put-Categoria Alto)
-                     (send ?self calcula-sub-categoria 25.0 30.0)
-            )
-        )
-    )
-)
-
-(defmessage-handler MAIN::PlatoAbstracto calcula-puntuacion-presupuesto "" (?presupuesto)
-    (bind ?puntos 0)
-    (if (eq ?presupuesto Bajo)
-        then (if (eq ?self:Categoria Bajo)
-            then (bind ?puntos 2)
-            else (if (eq ?self:Categoria Medio)
-                    then (bind ?puntos 1)
-            )
-        )
-        else (if (eq ?presupuesto Medio)
-            then (if (eq ?self:Categoria Medio)
-                then (bind ?puntos 2)
-                else (if (eq ?self:Categoria Bajo)
-                    then (bind ?puntos 1)
-                )
-            )
-            else (if (eq ?presupuesto Alto)
-                then (if (eq ?self:Categoria Medio)
-                    then (bind ?puntos 1)
-                    else (if (eq ?self:Categoria Alto)
-                        then (bind ?puntos 2)
-                    )
-                )
-                else (if (eq ?self:Categoria Alto)
-                    then (bind ?puntos 3)
-                    else (if (eq ?self:Categoria Medio)
-                        then (bind ?puntos 1)
-                    )
-                )
-            )
-        )
-    )
-    
-    (send ?self put-Puntuacion (+ ?puntos (send ?self get-Puntuacion)))
-    ;(slot-insert$ ?self Puntos 0 ?puntos)
-)
-
-(defmessage-handler MAIN::PlatoAbstracto calcula-puntuacion-complejidad "" (?numComensales)
-    (bind ?puntos 0)
-    (if (eq ?numComensales Medio)
-        then (if (eq ?self:Complejidad Medio)
-            then (bind ?puntos 2)
-            else (if (eq ?self:Complejidad Bajo)
-                    then (bind ?puntos 1)
-            )
-        )
-        else (if (eq ?numComensales Alto)
-            then (if (eq ?self:Complejidad Bajo)
-                then (bind ?puntos 2)
-                else (if (eq ?self:Complejidad Medio)
-                    then (bind ?puntos 1)
-                )
-            )
-            else (if (eq ?numComensales MuyAlto)
-                then (if (eq ?self:Complejidad Bajo)
-                    then (bind ?puntos 3)
-                    else (if (eq ?self:Complejidad Medio)
-                        then (bind ?puntos 1)
-                    )
-                )
-            )
-        )
-    )
-    
-    (send ?self put-Puntuacion (+ ?puntos (send ?self get-Puntuacion)))
-    ;(slot-insert$ ?self Puntos 1 ?puntos)
-)
-
-
-
-;                   ======================================================================
-;                   ========================     Handler Plato     =======================
-;                   ======================================================================
-
-(defmessage-handler MAIN::Plato calcula-precio "Handler que calcula el precio de un plato en base a recorrer y 
-                                                sumar el precio de todos los ingredientes que lo compone" ()
-    (bind ?listaIngredientes ?self:Ingredientes)
-    (bind ?precioPlato ?self:PVP)
-    (loop-for-count (?i 1 (length$ $?listaIngredientes)) do
-        (bind ?ingrediente (nth$ ?i $?listaIngredientes))
-        (bind ?precioPlato (+ ?precioPlato (send ?ingrediente get-PVP)))
-    )
-    
-    ?precioPlato
-)
-
-(defmessage-handler MAIN::Plato imprimir "Handler que imprime por la salida estandard la informacion basica de un plato" ()
-	(printout t "Nombre      : " ?self:Nombre crlf)
-	(printout t "Ingredientes: (")
-	(bind ?listaIngredientes ?self:Ingredientes)
-	(loop-for-count (?i 1 (- (length$ ?listaIngredientes) 1)) do
-		(bind ?ingrediente (nth$ ?i ?listaIngredientes))
-		(send ?ingrediente imprimir)
-		(printout t ",")
-	)
-    (send (nth$ (length$ ?listaIngredientes) ?listaIngredientes) imprimir)	
-	(printout t ")" crlf)
-)
-
-;                   ======================================================================
-;                   =====================     Handler Ingrediente     ====================
-;                   ======================================================================
-
-(defmessage-handler MAIN::Ingrediente imprimir "Handler que imprime el nombre del ingrediente" ()
-	(printout t ?self:Nombre)
-)
-
-;                   ======================================================================
-;                   ===================      Handler Menu Abstracto     ==================
-;                   ======================================================================
-
-(defmessage-handler MAIN::MenuAbstracto imprimir "Handler que imprime la informacion basica de un menu y su precio" ()
-	(bind ?menu ?self:Menu)
-	(send ?menu imprimir)
-	(printout t "Precio menu: " ?self:Precio crlf)
-)
-
-;                   ======================================================================
-;                   =========================     Handler Menu     =======================
-;                   ======================================================================
-
-(defmessage-handler MAIN::Menu imprimir ()
-	(printout t "--- Primer plato  ---" crlf)	
-	(send ?self:Relacion_Menu_Primero imprimir)
-	(printout t "--- Segundo plato ---" crlf)
-	(send ?self:Relacion_Menu_Segundo imprimir)
-	(printout t "--- Postre        ---" crlf)
-	(send ?self:Relacion_Menu_Postre imprimir)
-)
 
 ;                   ======================================================================
 ;                   =====================  Declaracion de funciones ======================
@@ -2338,6 +2300,48 @@
 		(send ?platoAbstracto put-Plato ?plato)
 		(send ?platoAbstracto calcula-categoria)
 	)
+)
+
+(deffunction calcular-puntuacion-presupuesto "" (?plato ?presupuesto)
+	(bind ?precioPlato (send ?plato get-Categoria))
+	(if (eq ?presupuesto Bajo)
+			then (if (eq ?precioPlato Bajo)
+						then (send ?plato put-Puntuacion (+ 2 (send ?plato get-Puntuacion)))
+								 ;(printout t "+2 --> Presupuesto Bajo y precio plato Bajo" crlf)
+						else (if (eq ?precioPlato Medio)
+									then (send ?plato put-Puntuacion (+ 1 (send ?plato get-Puntuacion)))
+											 ;(printout t "+1 --> Presupuesto Bajo y precio plato Medio" crlf)
+				    )
+			 )
+			 else (if (eq ?presupuesto Medio)
+			 			then (if (eq ?precioPlato Medio)
+									then (send ?plato put-Puntuacion (+ 2 (send ?plato get-Puntuacion)))
+											; (printout t "+2 --> Presupuesto Medio y precio plato Medio" crlf)
+									else (if (eq ?precioPlato Bajo)
+												then (send ?plato put-Puntuacion (+ 1 (send ?plato get-Puntuacion)))
+													 		;(printout t "+1 --> Presupuesto Medio y precio plato Bajo" crlf)
+									)
+						)
+						else (if (eq ?presupuesto Alto)
+									then (if (eq ?precioPlato Medio)
+												then (send ?plato put-Puntuacion (+ 1 (send ?plato get-Puntuacion)))
+														 ;(printout t "+1 --> Presupuesto Alto y precio plato Medio" crlf)
+												else (if (eq ?precioPlato Alto)
+															then (send ?plato put-Puntuacion (+ 2 (send ?plato get-Puntuacion)))
+																	 ;(printout t "+2 --> Presupuesto Alto y precio plato Alto" crlf)
+												)
+									)
+									else (if (eq ?precioPlato Alto)
+												then (send ?plato put-Puntuacion (+ 3 (send ?plato get-Puntuacion)))
+														 ;(printout t "+3 --> Presupuesto Muy Alto y precio plato Alto" crlf)
+												else (if (eq ?precioPlato Medio)
+															then (send ?plato put-Puntuacion (+ 1 (send ?plato get-Puntuacion)))
+																	 ;(printout t "+1 --> Presupuesto Muy Alto y precio plato Medio" crlf)
+												)
+									)
+						)
+				)
+		)
 )
 
 (deffunction generar-menu "" (?tipoCategoria ?nombreMenuAbstracto ?nombreMenu)
@@ -2465,22 +2469,55 @@
 	)
 )
 
+(deffunction calcular-puntuacion-complejidad "" (?plato ?numComensales)
+	(bind ?complejidad (send ?plato get-Complejidad))
+	(if (eq ?numComensales Medio)
+ 			then (if (eq ?complejidad Medio)
+						then (send ?plato put-Puntuacion (+ 2 (send ?plato get-Puntuacion)))
+								 ;(printout t "+2 --> Num comensales Medio y complejidad del plato Medio" crlf)
+						else (if (eq ?complejidad Bajo)
+									then (send ?plato put-Puntuacion (+ 1 (send ?plato get-Puntuacion)))
+											 ;(printout t "+1 --> Num comensales Medio y complejidad del plato Bajo" crlf)
+						)
+			)
+
+			else (if (eq ?numComensales Alto)
+						then (if (eq ?complejidad Bajo)
+									then (send ?plato put-Puntuacion (+ 2 (send ?plato get-Puntuacion)))
+											 ;(printout t "+2 --> Num comensales Alto y complejidad del plato Bajo" crlf)
+									else (if (eq ?complejidad Medio)
+												then (send ?plato put-Puntuacion (+ 1 (send ?plato get-Puntuacion))))
+												 		 ;(printout t "+1 --> Num comensales Alto y complejidad del plato Medio" crlf))
+						)
+						else (if (eq ?numComensales MuyAlto)
+									then (if (eq ?complejidad Bajo)
+												then (send ?plato put-Puntuacion (+ 3 (send ?plato get-Puntuacion)))
+														 ;(printout t "+3 --> Num comensales Muy Alto y complejidad del plato Bajo" crlf)
+												else (if (eq ?complejidad Medio)
+															then (send ?plato put-Puntuacion (+ 1 (send ?plato get-Puntuacion))))
+															 		 ;(printout t "+1 --> Num comensales Muy Alto y complejidad del plato Medio" crlf))
+												)
+						)
+			)
+	 )
+)
 
 ;                   ======================================================================
 ;                   =======================  Declaracion de reglas =======================
 ;                   ======================================================================
 
 (defrule MAIN::inicio "Regla que genera la cabezera inicial"
-    (declare (salience 10))
-    =>    
-    (calcular-platos-abstractos)
-    (printout t "====================================================================" crlf)
-    (printout t "=    Sistema de elaboracion de menus personalizados Rico Rico      =" crlf)
-    (printout t "====================================================================" crlf)
-    (printout t crlf)
-    (printout t "Bienvenido! A continuacion se le formularan una serie de preguntas para poder crear el menu que mas encaje con sus preferencias." crlf)
-    (printout t crlf)
-    (focus recopilacion)
+	(declare (salience 10))
+	=>
+	(calcular-platos-abstractos)
+
+  (printout t "====================================================================" crlf)
+  (printout t "=    Sistema de elaboracion de menus personalizados Rico Rico      =" crlf)
+	(printout t "====================================================================" crlf)
+  (printout t crlf)
+	(printout t "Bienvenido! A continuacion se le formularan una serie de preguntas para poder crear el menu que mas encaje con sus preferencias." crlf)
+	(printout t crlf)
+	(focus recopilacion)
 )
 
 ;                   ======================================================================
@@ -2488,19 +2525,21 @@
 ;                   ======================================================================
 
 (defrule recopilacion::pregunta-familiar-congreso "Pregunta al cliente que tipo de evento se va a realizar"
-    (not (Entrada))
-    =>
-    (bind ?respuesta (pregunta-general "¿Que tipo de evento se va a celebrar? (B)oda/Co(m)union/B(a)utizo/(C)ongreso" b m a c))
-    (if (eq ?respuesta b)
-        then (assert (Entrada (tipoEvento Boda)))
-        else (if (eq ?respuesta m)
-            then (assert (Entrada (tipoEvento Comunion) (comida TRUE)))
-            else (if (eq ?respuesta a)
-                then (assert (Entrada (tipoEvento Bautizo) (comida TRUE)))
-                else (assert (Entrada (tipoEvento Congreso)))
-            )
-        )
-    )
+  (not (Entrada))
+  =>
+  (bind ?respuesta (pregunta-general "¿Que tipo de evento se va a celebrar? (B)oda/Co(m)union/B(a)utizo/(C)ongreso" b m a c))
+  (if (eq ?respuesta b)
+    then (assert (Entrada (tipoEvento Boda)))
+    else
+      (if (eq ?respuesta m)
+        then (assert (Entrada (tipoEvento Comunion) (comida TRUE)))
+        else
+          (if (eq ?respuesta a)
+            then (assert (Entrada (tipoEvento Bautizo) (comida TRUE)))
+            else (assert (Entrada (tipoEvento Congreso)))
+          )
+      )
+  )
 )
 
 (defrule recopilacion::comida-cena "Pregunta al cliente si el evento sera una cena o una comida"
@@ -2517,9 +2556,9 @@
 (defrule recopilacion::pregunta-estilo-comida "Pregunta al cliente el estilo de la comida"
     ?e <- (Entrada (estilo ?est))
     (test (eq ?est UNDEF))
-    =>
-    (bind ?respuesta (pregunta-general "¿Que estilo de comida quiere en el menu? (S)ibarita/(M)oderno/(T)radicional/(C)lasico" s m t c))
-    (modify ?e (estilo ?respuesta))
+  =>
+  (bind ?respuesta (pregunta-general "¿Que estilo de comida quiere en el menu? (S)ibarita/(M)oderno/(T)radicional/(C)lasico" s m t c))
+  (modify ?e (estilo ?respuesta))
 )
 
 (defrule recopilacion::mes-evento "Pregunta al cliente en que mes se realiza el evento"
@@ -2617,7 +2656,7 @@
     (Entrada (lactosa ?lactosa))
     (test (not (eq ?lactosa UNDEF)))
     =>
-	(focus abstraccion)
+		(focus abstraccion)
 )
 
 ;                   ======================================================================
@@ -2626,67 +2665,67 @@
 
 (defrule abstraccion::abstraer-presupuesto "Regla que nos permite abstraer del presupuesto propuesto por el usuario a unos valores abstractos"
     (not (ProblemaAbstracto))
-    (Entrada (presupuestoMax ?presupuestoMax))
+		(Entrada (presupuestoMax ?presupuestoMax))
     =>
-    (if (and (>= ?presupuestoMax 10) (< ?presupuestoMax 20))
-        then (assert (ProblemaAbstracto (presupuesto Bajo)))
-        else (if (and (>= ?presupuestoMax 20) (< ?presupuestoMax 40))
-            then (assert (ProblemaAbstracto (presupuesto Medio)))
-            else (if (and (>= ?presupuestoMax 40) (< ?presupuestoMax 80))
-                then (assert (ProblemaAbstracto (presupuesto Alto)))
-                else (assert (ProblemaAbstracto (presupuesto MuyAlto)))
-            )
-        )
-    )
+		(if (and (>= ?presupuestoMax 10) (< ?presupuestoMax 20))
+				then (assert (ProblemaAbstracto (presupuesto Bajo)))
+				else (if (and (>= ?presupuestoMax 20) (< ?presupuestoMax 40))
+							then (assert (ProblemaAbstracto (presupuesto Medio)))
+							else (if (and (>= ?presupuestoMax 40) (< ?presupuestoMax 80))
+										then (assert (ProblemaAbstracto (presupuesto Alto)))
+										else (assert (ProblemaAbstracto (presupuesto MuyAlto)))
+							)
+				)
+		)
 )
 
 (defrule abstraccion::abstraer-comensales "Regla que nos permite abstraer el numero de comensales propuesto por el usuario a unos valores abstractos"
-	?e <- (ProblemaAbstracto (numComensales ?num))
-	(test (eq ?num UNDEF))
-	(Entrada (numComensales ?numComensales))
-	=>
-    (if (and (>= ?numComensales 20) (< ?numComensales 30))
-        then (modify ?e (numComensales Bajo))
-        else (if (and (>= ?numComensales 30) (< ?numComensales 50))
-            then (modify ?e (numComensales Medio))
-            else (if (and (>= ?numComensales 50) (< ?numComensales 100))
-                then (modify ?e (numComensales Alto))
-                else (modify ?e (numComensales MuyAlto))
-            )
-        )
-    )
+		?e <- (ProblemaAbstracto (numComensales ?num))
+		(test (eq ?num UNDEF))
+		(Entrada (numComensales ?numComensales))
+		=>
+		(if (and (>= ?numComensales 20) (< ?numComensales 30))
+				then (modify ?e (numComensales Bajo))
+				else (if (and (>= ?numComensales 30) (< ?numComensales 50))
+							then (modify ?e (numComensales Medio))
+							else (if (and (>= ?numComensales 50) (< ?numComensales 100))
+										then (modify ?e (numComensales Alto))
+										else (modify ?e (numComensales MuyAlto))
+							)
+				)
+		)
 )
 
 (defrule abstraccion::abstraer-temporada "Regla que nos permite abstraer el mes del evento propuesto por el usuario a unos valores abstractos"
-    ?e <- (ProblemaAbstracto (temporada ?temporada))
-    (test (eq ?temporada UNDEF))
-    (Entrada (mesEvento ?mesEvento))
-    =>
-    (if (and (>= ?mesEvento 4) (<= ?mesEvento 5))
-        then (modify ?e (temporada Primavera))
-        else (if (and (>= ?mesEvento 6) (< ?mesEvento 9))
-            then (modify ?e (temporada Verano))
-            else (if (and (>= ?mesEvento 10) (< ?mesEvento 11))
-                then (modify ?e (temporada Otono))
-                else (modify ?e (temporada Invierno))
-            )
-        )
-    )
+		?e <- (ProblemaAbstracto (temporada ?temporada))
+		(test (eq ?temporada UNDEF))
+		(Entrada (mesEvento ?mesEvento))
+		=>
+		(if (and (>= ?mesEvento 4) (<= ?mesEvento 5))
+				then (modify ?e (temporada Primavera))
+				else (if (and (>= ?mesEvento 6) (< ?mesEvento 9))
+							then (modify ?e (temporada Verano))
+							else (if (and (>= ?mesEvento 10) (< ?mesEvento 11))
+										then (modify ?e (temporada Otono))
+										else (modify ?e (temporada Invierno))
+							)
+				)
+		)
 )
 
 (defrule abstraccion::abstraer-complejidad "Regla que nos permite abstraer el estilo propuesto por el usuario a unos valores abstractos"
-    ?e <- (ProblemaAbstracto (complejidad ?dificultad))
-    (test (eq ?dificultad UNDEF))
-    (Entrada (estilo ?estilo))
-    ?plato <-(object(is-a Plato))
-    =>
-    (if (or (eq ?estilo Tradicional) (eq ?estilo Sibarita))
-        then (modify ?e (complejidad Facil))
-        else (if (eq ?estilo Clasico)
-            then (modify ?e (complejidad Normal))
-            else (modify ?e (complejidad Alto))
-        )
-    )
+		?e <- (ProblemaAbstracto (complejidad ?dificultad))
+		(test (eq ?dificultad UNDEF))
+		(Entrada (estilo ?estilo))
+		?plato <-(object(is-a Plato))
+		=>
+		(if (or (eq ?estilo Tradicional) (eq ?estilo Sibarita))
+				then (modify ?e (complejidad Facil))
+				else (if (eq ?estilo Clasico)
+							then (modify ?e (complejidad Normal))
+							else (modify ?e (complejidad Alto))
+				)
+		)
 )
 
 (defrule abstraccion::abstraccion-completada "Regla que comprueba que todas las preguntas han sido respondidas"
@@ -2702,7 +2741,7 @@
     (ProblemaAbstracto (complejidad ?complejidad))
     (test (not (eq ?complejidad UNDEF)))
     =>
-	(focus solucionAbstracta)
+		(focus solucionAbstracta)
 )
 
 ;                   ======================================================================
@@ -2718,21 +2757,12 @@
 	(bind ?listaPlatosAbstractos (find-all-instances ((?inst PlatoAbstracto)) TRUE))
 	(loop-for-count (?i 1 (length$ ?listaPlatosAbstractos)) do
 		(bind ?platoAbstracto (nth$ ?i ?listaPlatosAbstractos))
-		(send ?platoAbstracto calcula-puntuacion-presupuesto ?presupuesto)
-		(send ?platoAbstracto calcula-puntuacion-complejidad ?numComensales)
-		
+		(calcular-puntuacion-presupuesto ?platoAbstracto ?presupuesto)
+		(calcular-puntuacion-complejidad ?platoAbstracto ?numComensales)
 		(calcular-puntuacion-temporada ?platoAbstracto ?temporada)
 	)
 	(focus solucionConcreta)
 )
-
-;(defrule solucionAbstracta::calcular-puntuacion-presupuesto ""
-;    (not (calcularPuntuacionPresupuesto)
-;	(ProblemaAbstracto (presupuesto ?presupuesto))
- ;   =>
-;    
-;    (assert (calcularPuntuacionPresupuesto))
-;)
 
 ;                   ======================================================================
 ;                   ===================   Modulo de solucion concreta   ==================
