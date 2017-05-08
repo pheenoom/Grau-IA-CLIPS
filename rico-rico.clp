@@ -2230,6 +2230,77 @@
     ;(slot-insert$ ?self Puntos 1 ?puntos)
 )
 
+(deffunction es-ingrediente-temporada "" (?temporada ?temporadaInicio ?temporadaFinal)
+    (if (eq ?temporada Primavera)
+        then (if (and (<= ?temporadaInicio 5) (>= ?temporadaFinal 4))
+                then TRUE
+                else FALSE
+        )
+        else (if (eq ?temporada Verano)
+            then (if (and (<= ?temporadaInicio 9) (>= ?temporadaFinal 6))
+                then TRUE
+                else FALSE
+            )
+            else (if (eq ?temporada Otono)
+                then (if (and (<= ?temporadaInicio 11) (>= ?temporadaFinal 10))
+                    then TRUE
+                    else FALSE
+                )
+                else (if (or (and (<= ?temporadaInicio 3) (>= ?temporadaFinal 1)) (or (= ?temporadaInicio 12) (= ?temporadaFinal 12)))
+                    then TRUE
+                    else FALSE
+                )
+            )
+        )
+    )    
+)
+
+(defmessage-handler MAIN::PlatoAbstracto calcula-puntuacion-temporada "" (?temporada)
+    (bind ?plato (send ?self get-Plato))
+
+    (bind ?puntuacion 0)
+    
+    (bind $?listaIngredientes (send ?plato get-Ingredientes))
+    (bind ?lenLista (length$ ?listaIngredientes))
+    (loop-for-count (?i 1 ?lenLista) do
+        (bind ?ingrediente (nth$ ?i ?listaIngredientes))
+        (bind ?temporadaInicio (send ?ingrediente get-Mes_Inicio_Temporada))
+        (bind ?temporadaFinal (send ?ingrediente get-Mes_Final_Temporada))
+        
+        (if (eq (es-ingrediente-temporada ?temporada ?temporadaInicio ?temporadaFinal) TRUE)
+            then (bind ?puntuacion (+ 1 ?puntuacion))
+        )
+    )
+    
+    (if (= ?puntuacion ?lenLista)
+        then (bind ?puntuacion 4)
+        else (if (>= ?puntuacion (* 0.75 ?lenLista))
+            then (bind ?puntuacion 3)
+            else (if (>= ?puntuacion (* 0.50 ?lenLista))
+                then (bind ?puntuacion 2)
+                else (if (>= ?puntuacion (* 0.25 ?lenLista))
+                    then (bind ?puntuacion 1)   
+                )
+            )
+        )
+    )
+
+    (if (and (eq ?temporada Otono) (eq (send ?plato get-Caliente) TRUE))
+        then (bind ?puntuacion (+ 1 ?puntuacion))
+    )
+    (if (and (eq ?temporada Invierno) (eq (send ?plato get-Caliente) TRUE))
+        then (bind ?puntuacion (+ 2 ?puntuacion))
+    )
+    (if (and (eq ?temporada Primavera) (eq (send ?plato get-Caliente) FALSE))
+        then (bind ?puntuacion (+ 1 ?puntuacion))    
+    )
+    (if (and (eq ?temporada Verano) (eq (send ?plato get-Caliente) FALSE))
+       then (bind ?puntuacion (+ 2 ?puntuacion))
+    )
+    
+    (send ?self put-Puntuacion (+ ?puntuacion (send ?self get-Puntuacion)))
+)
+
 
 
 ;                   ======================================================================
@@ -2340,6 +2411,8 @@
 	)
 )
 
+
+
 (deffunction generar-menu "" (?tipoCategoria ?nombreMenuAbstracto ?nombreMenu)
 		(bind ?indiceMaxPrimero 0)
 		(bind ?indiceMaxSegundo 0)
@@ -2396,74 +2469,6 @@
 		))
 )
 
-(deffunction calcular-puntuacion-temporada "" (?platoAbstracto ?temporada)
-	(bind ?plato (send ?platoAbstracto get-Plato))
-	(bind $?listaIngredientes (send ?plato get-Ingredientes))
-
-	(bind ?puntuacion 0)
-	(loop-for-count (?i 1 (length$ ?listaIngredientes)) do
-			(bind ?puntuacionIngrediente 0)
-			(bind ?ingrediente (nth$ ?i ?listaIngredientes))
-			(bind ?temporadaInicio (send ?ingrediente get-Mes_Inicio_Temporada))
-			(bind ?temporadaFinal (send ?ingrediente get-Mes_Final_Temporada))
-			(if (eq ?temporada Primavera)
-					then (if (and (<= ?temporadaInicio 5) (>= ?temporadaFinal 4))
-							then (bind ?puntuacionIngrediente (+ 1 ?puntuacionIngrediente))
-					)
-					else (if (eq ?temporada Verano)
-								then (if (and (<= ?temporadaInicio 9) (>= ?temporadaFinal 6))
-										then (bind ?puntuacionIngrediente (+ 1 ?puntuacionIngrediente))
-								)
-							else (if (eq ?temporada Otono)
-										then (if (and (<= ?temporadaInicio 11) (>= ?temporadaFinal 10))
-												then (bind ?puntuacionIngrediente (+ 1 ?puntuacionIngrediente))
-										)
-										else (if (or (and (<= ?temporadaInicio 3) (>= ?temporadaFinal 1)) (or (= ?temporadaInicio 12) (= ?temporadaFinal 12)))
-												then (bind ?puntuacionIngrediente (+ 1 ?puntuacionIngrediente))
-										)
-							)
-					)
-			)
-			(bind ?puntuacion (+ ?puntuacion ?puntuacionIngrediente))
-	)
-	(if (= ?puntuacion (length$ ?listaIngredientes))
-			then (send ?platoAbstracto put-Puntuacion (+ 4 (send ?platoAbstracto get-Puntuacion)))
-					 ;(printout t "+4 --> Puntuacion por tener todos los ingredientes" crlf)
-			else (if (>= ?puntuacion (* 0.75 (length$ ?listaIngredientes)))
-					then (send ?platoAbstracto put-Puntuacion (+ 3 (send ?platoAbstracto get-Puntuacion)))
-							 ;(printout t "+3 --> Puntuacion por tener 75% de los ingredientes" crlf)
-					else (if (>= ?puntuacion (* 0.50 (length$ ?listaIngredientes)))
-							then (send ?platoAbstracto put-Puntuacion (+ 2 (send ?platoAbstracto get-Puntuacion)))
-									 ;(printout t "+2 --> Puntuacion por tener 50% de los ingredientes" crlf)
-							else (if (>= ?puntuacion (* 0.25 (length$ ?listaIngredientes)))
-									then (send ?platoAbstracto put-Puntuacion (+ 1 (send ?platoAbstracto get-Puntuacion)))
-											 ;(printout t "+1 --> Puntuacion por tener 25% de los ingredientes" crlf)
-							)
-				  )
-		 )
-	)
-
-	(if (and (eq ?temporada Otono) (eq (send ?plato get-Caliente) TRUE))
-			then
-				(bind ?puntuacion (+ 1 ?puntuacion))
-				;(printout t "+1 --> Extra de puntos por otono y ser un plato caliente" crlf)
-	)
-	(if (and (eq ?temporada Invierno) (eq (send ?plato get-Caliente) TRUE))
-			then
-				(bind ?puntuacion (+ 2 ?puntuacion))
-				;(printout t "+2 --> Extra de puntos por invierno y ser un plato caliente" crlf)
-	)
-	(if (and (eq ?temporada Primavera) (eq (send ?plato get-Caliente) FALSE))
-			then
-				(bind ?puntuacion (+ 1 ?puntuacion))
-				;(printout t "+1 --> Extra de puntos por primavera y ser un plato frio" crlf)
-	)
-	(if (and (eq ?temporada Verano) (eq (send ?plato get-Caliente) FALSE))
-			then
-				(bind ?puntuacion (+ 2 ?puntuacion))
-				;(printout t "+2 --> Extra de puntos por verano y ser un plato frio" crlf)
-	)
-)
 
 
 ;                   ======================================================================
@@ -2719,9 +2724,8 @@
 	(loop-for-count (?i 1 (length$ ?listaPlatosAbstractos)) do
 		(bind ?platoAbstracto (nth$ ?i ?listaPlatosAbstractos))
 		(send ?platoAbstracto calcula-puntuacion-presupuesto ?presupuesto)
-		(send ?platoAbstracto calcula-puntuacion-complejidad ?numComensales)
-		
-		(calcular-puntuacion-temporada ?platoAbstracto ?temporada)
+		(send ?platoAbstracto calcula-puntuacion-complejidad ?numComensales)		
+		(send ?platoAbstracto calcula-puntuacion-temporada ?temporada)
 	)
 	(focus solucionConcreta)
 )
