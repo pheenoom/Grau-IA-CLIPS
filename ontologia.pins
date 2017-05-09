@@ -1,5 +1,4 @@
-; Sun May 07 21:14:22 CEST 2017
-; 
+
 ;+ (version "3.5")
 ;+ (build "Build 663")
 
@@ -831,6 +830,7 @@
 		[ontologia_Class10004]
 		[ontologia_Class20007]
 		[ontologia_Class36])
+	(PVP 1.0)
 	(Racion Normal)
 	(Vegetariano TRUE))
 
@@ -1254,7 +1254,7 @@
 		[ontologia_Class30004]
 		[ontologia_Class37]
 		[ontologia_Class36])
-	(PVP 2.0)
+	(PVP 0.0)
 	(Racion Normal)
 	(Vegetariano TRUE))
 
@@ -1280,7 +1280,7 @@
 		[ontologia_Class30004]
 		[ontologia_Class37]
 		[ontologia_Class36])
-	(PVP 2.0)
+	(PVP 0.0)
 	(Racion Normal)
 	(Vegetariano TRUE))
 
@@ -1383,7 +1383,7 @@
 		[ontologia_Class20005]
 		[ontologia_Class37]
 		[ontologia_Class36])
-	(PVP 1.0)
+	(PVP 0.0)
 	(Racion Normal)
 	(Vegetariano TRUE))
 
