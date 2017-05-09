@@ -2109,12 +2109,12 @@
 ;                   ====================   Handler PlatoAbstracto   ======================
 ;                   ======================================================================
 
-(defmessage-handler MAIN::PlatoAbstracto calcula-sub-categoria "Handler que calcula la sub-categoria dado dos parametros: 
+(defmessage-handler MAIN::PlatoAbstracto calcula-sub-categoria "Handler que calcula la sub-categoria dado dos parametros:
                                                                         Bajo  -> [0...precioMedio)
                                                                         Medio -> [precioMedio...precioAlto)
                                                                         Alto  -> [precioAlto...Inf)" (?precioMedio ?precioAlto)
 	(bind ?precioPlato ?self:Precio)
-	
+
     (if (eq (class ?self:Plato) Postre)
         then (if (< ?precioPlato ?precioMedio)
             then (send ?self put-SubCategoria Bajo)
@@ -2194,7 +2194,7 @@
             )
         )
     )
-    
+
     (send ?self put-Puntuacion (+ ?puntos (send ?self get-Puntuacion)))
     ;(slot-insert$ ?self Puntos 0 ?puntos)
 )
@@ -2225,89 +2225,60 @@
             )
         )
     )
-    
+
     (send ?self put-Puntuacion (+ ?puntos (send ?self get-Puntuacion)))
     ;(slot-insert$ ?self Puntos 1 ?puntos)
 )
 
-(deffunction es-ingrediente-temporada "" (?temporada ?temporadaInicio ?temporadaFinal)
-    (if (eq ?temporada Primavera)
-        then (if (and (<= ?temporadaInicio 5) (>= ?temporadaFinal 4))
-                then TRUE
-                else FALSE
-        )
-        else (if (eq ?temporada Verano)
-            then (if (and (<= ?temporadaInicio 9) (>= ?temporadaFinal 6))
-                then TRUE
-                else FALSE
-            )
-            else (if (eq ?temporada Otono)
-                then (if (and (<= ?temporadaInicio 11) (>= ?temporadaFinal 10))
-                    then TRUE
-                    else FALSE
-                )
-                else (if (or (and (<= ?temporadaInicio 3) (>= ?temporadaFinal 1)) (or (= ?temporadaInicio 12) (= ?temporadaFinal 12)))
-                    then TRUE
-                    else FALSE
-                )
-            )
-        )
-    )    
-)
-
 (defmessage-handler MAIN::PlatoAbstracto calcula-puntuacion-temporada "" (?temporada)
-    (bind ?plato (send ?self get-Plato))
+	(bind ?plato (send ?self get-Plato))
 
-    (bind ?puntuacion 0)
-    
-    (bind $?listaIngredientes (send ?plato get-Ingredientes))
-    (bind ?lenLista (length$ ?listaIngredientes))
-    (loop-for-count (?i 1 ?lenLista) do
-        (bind ?ingrediente (nth$ ?i ?listaIngredientes))
-        (bind ?temporadaInicio (send ?ingrediente get-Mes_Inicio_Temporada))
-        (bind ?temporadaFinal (send ?ingrediente get-Mes_Final_Temporada))
-        
-        (if (eq (es-ingrediente-temporada ?temporada ?temporadaInicio ?temporadaFinal) TRUE)
-            then (bind ?puntuacion (+ 1 ?puntuacion))
-        )
-    )
-    
-    (if (= ?puntuacion ?lenLista)
-        then (bind ?puntuacion 4)
-        else (if (>= ?puntuacion (* 0.75 ?lenLista))
-            then (bind ?puntuacion 3)
-            else (if (>= ?puntuacion (* 0.50 ?lenLista))
-                then (bind ?puntuacion 2)
-                else (if (>= ?puntuacion (* 0.25 ?lenLista))
-                    then (bind ?puntuacion 1)   
-                )
-            )
-        )
-    )
+	(bind ?puntuacion 0)
 
-    (if (and (eq ?temporada Otono) (eq (send ?plato get-Caliente) TRUE))
-        then (bind ?puntuacion (+ 1 ?puntuacion))
-    )
-    (if (and (eq ?temporada Invierno) (eq (send ?plato get-Caliente) TRUE))
-        then (bind ?puntuacion (+ 2 ?puntuacion))
-    )
-    (if (and (eq ?temporada Primavera) (eq (send ?plato get-Caliente) FALSE))
-        then (bind ?puntuacion (+ 1 ?puntuacion))    
-    )
-    (if (and (eq ?temporada Verano) (eq (send ?plato get-Caliente) FALSE))
-       then (bind ?puntuacion (+ 2 ?puntuacion))
-    )
-    
-    (send ?self put-Puntuacion (+ ?puntuacion (send ?self get-Puntuacion)))
+	(bind $?listaIngredientes (send ?plato get-Ingredientes))
+	(bind ?lenLista (length$ ?listaIngredientes))
+	(loop-for-count (?i 1 ?lenLista) do
+			(bind ?ingrediente (nth$ ?i ?listaIngredientes))
+
+			(if (send ?ingrediente es-ingrediente-temporada ?temporada)
+					then (bind ?puntuacion (+ 1 ?puntuacion))
+			)
+	)
+
+	(if (= ?puntuacion ?lenLista)
+			then (bind ?puntuacion 4)
+			else (if (>= ?puntuacion (* 0.75 ?lenLista))
+					then (bind ?puntuacion 3)
+					else (if (>= ?puntuacion (* 0.50 ?lenLista))
+							then (bind ?puntuacion 2)
+							else (if (>= ?puntuacion (* 0.25 ?lenLista))
+									then (bind ?puntuacion 1)
+							)
+					)
+			)
+	)
+
+	(if (and (eq ?temporada Otono) (eq (send ?plato get-Caliente) TRUE))
+			then (bind ?puntuacion (+ 1 ?puntuacion))
+	)
+	(if (and (eq ?temporada Invierno) (eq (send ?plato get-Caliente) TRUE))
+			then (bind ?puntuacion (+ 2 ?puntuacion))
+	)
+	(if (and (eq ?temporada Primavera) (eq (send ?plato get-Caliente) FALSE))
+			then (bind ?puntuacion (+ 1 ?puntuacion))
+	)
+	(if (and (eq ?temporada Verano) (eq (send ?plato get-Caliente) FALSE))
+		 then (bind ?puntuacion (+ 2 ?puntuacion))
+	)
+
+	(send ?self put-Puntuacion (+ ?puntuacion (send ?self get-Puntuacion)))
 )
-
-
 
 ;                   ======================================================================
 ;                   ========================     Handler Plato     =======================
 ;                   ======================================================================
 
-(defmessage-handler MAIN::Plato calcula-precio "Handler que calcula el precio de un plato en base a recorrer y 
+(defmessage-handler MAIN::Plato calcula-precio "Handler que calcula el precio de un plato en base a recorrer y
                                                 sumar el precio de todos los ingredientes que lo compone" ()
     (bind ?listaIngredientes ?self:Ingredientes)
     (bind ?precioPlato ?self:PVP)
@@ -2315,7 +2286,7 @@
         (bind ?ingrediente (nth$ ?i $?listaIngredientes))
         (bind ?precioPlato (+ ?precioPlato (send ?ingrediente get-PVP)))
     )
-    
+
     ?precioPlato
 )
 
@@ -2328,7 +2299,7 @@
 		(send ?ingrediente imprimir)
 		(printout t ",")
 	)
-    (send (nth$ (length$ ?listaIngredientes) ?listaIngredientes) imprimir)	
+    (send (nth$ (length$ ?listaIngredientes) ?listaIngredientes) imprimir)
 	(printout t ")" crlf)
 )
 
@@ -2338,6 +2309,32 @@
 
 (defmessage-handler MAIN::Ingrediente imprimir "Handler que imprime el nombre del ingrediente" ()
 	(printout t ?self:Nombre)
+)
+
+(defmessage-handler MAIN::Ingrediente es-ingrediente-temporada "" (?temporada)
+    (if (eq ?temporada Primavera)
+        then (if (and (<= ?self:Mes_Inicio_Temporada 5) (>= ?self:Mes_Final_Temporada 4))
+                then TRUE
+                else FALSE
+        )
+        else (if (eq ?temporada Verano)
+            then (if (and (<= ?self:Mes_Inicio_Temporada 9) (>= ?self:Mes_Final_Temporada 6))
+                then TRUE
+                else FALSE
+            )
+            else (if (eq ?temporada Otono)
+                then (if (and (<= ?self:Mes_Inicio_Temporada 11) (>= ?self:Mes_Final_Temporada 10))
+                    then TRUE
+                    else FALSE
+                )
+                else (if (or (and (<= ?self:Mes_Inicio_Temporada 3) (>= ?self:Mes_Final_Temporada 1))
+                             (or  (=  ?self:Mes_Inicio_Temporada 12) (= ?self:Mes_Final_Temporada 12)))
+                    then TRUE
+                    else FALSE
+                )
+            )
+        )
+    )
 )
 
 ;                   ======================================================================
@@ -2350,12 +2347,68 @@
 	(printout t "Precio menu: " ?self:Precio crlf)
 )
 
+(defmessage-handler MAIN::MenuAbstracto generar-menu (?tipoCategoria)
+	(bind ?indiceMaxPrimero 0)
+	(bind ?indiceMaxSegundo 0)
+	(bind ?indiceMaxPostre 0)
+
+	(bind ?listaPlatosAbstractos (find-all-instances ((?inst PlatoAbstracto)) TRUE))
+	(loop-for-count (?i 1 (length$ ?listaPlatosAbstractos)) do
+		(bind ?platoAbstracto (nth$ ?i ?listaPlatosAbstractos))
+		(bind ?plato (send ?platoAbstracto get-Plato))
+		(bind ?tipoPlato (class (instance-address * ?plato)))
+
+		(if (eq (send ?platoAbstracto get-SubCategoria) ?tipoCategoria)
+			then (if (eq ?tipoPlato Primero)
+					then (if (= ?indiceMaxPrimero 0)
+						then (bind ?indiceMaxPrimero ?i)
+						else (if (< (send (nth$ ?indiceMaxPrimero ?listaPlatosAbstractos) get-Puntuacion)
+										 		(send ?platoAbstracto get-Puntuacion))
+								then (bind ?indiceMaxPrimero ?i)
+							)
+					)
+					else (if (eq ?tipoPlato Segundo)
+						then (if (= ?indiceMaxSegundo 0)
+							then (bind ?indiceMaxSegundo ?i)
+							else (if (< (send (nth$ ?indiceMaxSegundo ?listaPlatosAbstractos) get-Puntuacion)
+											 		(send ?platoAbstracto get-Puntuacion))
+									then (bind ?indiceMaxSegundo ?i)
+							)
+						)
+						else (if (= ?indiceMaxPostre 0)
+							then (bind ?indiceMaxPostre ?i)
+							else (if (< (send (nth$ ?indiceMaxPostre ?listaPlatosAbstractos) get-Puntuacion)
+													(send ?platoAbstracto get-Puntuacion))
+									then (bind ?indiceMaxPostre ?i)
+							)
+						)
+				  )
+			)
+		)
+	)
+
+	(bind ?menu (make-instance (sym-cat menu-MenuAbstracto- (gensym)) of Menu))
+	(send ?menu put-Relacion_Menu_Primero (send (nth$ ?indiceMaxPrimero ?listaPlatosAbstractos) get-Plato))
+	(send ?menu put-Relacion_Menu_Segundo (send (nth$ ?indiceMaxSegundo ?listaPlatosAbstractos) get-Plato))
+	(send ?menu put-Relacion_Menu_Postre  (send (nth$ ?indiceMaxPostre  ?listaPlatosAbstractos) get-Plato))
+	(send ?self put-Menu ?menu)
+	(send ?self put-Precio
+		(+ (send (nth$ ?indiceMaxPrimero ?listaPlatosAbstractos) get-Precio)
+		(+ (send (nth$ ?indiceMaxSegundo ?listaPlatosAbstractos) get-Precio)
+		(send (nth$ ?indiceMaxPostre ?listaPlatosAbstractos) get-Precio))))
+)
+
+
+(deffunction generar-menu "" (?tipoCategoria ?nombreMenuAbstracto ?nombreMenu)
+
+)
+
 ;                   ======================================================================
 ;                   =========================     Handler Menu     =======================
 ;                   ======================================================================
 
 (defmessage-handler MAIN::Menu imprimir ()
-	(printout t "--- Primer plato  ---" crlf)	
+	(printout t "--- Primer plato  ---" crlf)
 	(send ?self:Relacion_Menu_Primero imprimir)
 	(printout t "--- Segundo plato ---" crlf)
 	(send ?self:Relacion_Menu_Segundo imprimir)
@@ -2411,73 +2464,13 @@
 	)
 )
 
-
-
-(deffunction generar-menu "" (?tipoCategoria ?nombreMenuAbstracto ?nombreMenu)
-		(bind ?indiceMaxPrimero 0)
-		(bind ?indiceMaxSegundo 0)
-		(bind ?indiceMaxPostre 0)
-
-		(bind ?listaPlatosAbstractos (find-all-instances ((?inst PlatoAbstracto)) TRUE))
-		(loop-for-count (?i 1 (length$ ?listaPlatosAbstractos)) do
-				(bind ?platoAbstracto (nth$ ?i ?listaPlatosAbstractos))
-				(bind ?plato (send ?platoAbstracto get-Plato))
-
-				(if (eq (send ?platoAbstracto get-SubCategoria) ?tipoCategoria)
-					then
-							(if (eq (class (instance-address * ?plato)) Primero)
-									then (if (= ?indiceMaxPrimero 0)
-												then (bind ?indiceMaxPrimero ?i)
-												else
-														(bind ?platoAbstracoMax (nth$ ?indiceMaxPrimero ?listaPlatosAbstractos))
-														(if (< (send ?platoAbstracoMax get-Puntuacion) (send ?platoAbstracto get-Puntuacion))
-																then (bind ?indiceMaxPrimero ?i)
-														)
-									)
-									else (if (eq (class (instance-address * ?plato)) Segundo)
-												then (if (= ?indiceMaxSegundo 0)
-															then (bind ?indiceMaxSegundo ?i)
-															else
-																	(bind ?platoAbstracoMax (nth$ ?indiceMaxSegundo ?listaPlatosAbstractos))
-																	(if (< (send ?platoAbstracoMax get-Puntuacion) (send ?platoAbstracto get-Puntuacion))
-																			then (bind ?indiceMaxSegundo ?i)
-																	)
-												)
-												else (if (= ?indiceMaxPostre 0)
-															then (bind ?indiceMaxPostre ?i)
-															else
-																	(bind ?platoAbstracoMax (nth$ ?indiceMaxPostre ?listaPlatosAbstractos))
-																	(if (< (send ?platoAbstracoMax get-Puntuacion) (send ?platoAbstracto get-Puntuacion))
-																			then (bind ?indiceMaxPostre ?i)
-																	)
-												)
-									)
-						)
-				)
-		)
-
-		(bind ?menuAbstracto (make-instance ?nombreMenuAbstracto of MenuAbstracto))
-		(bind ?menu (make-instance ?nombreMenu of Menu))
-		(send ?menu put-Relacion_Menu_Primero (send (nth$ ?indiceMaxPrimero ?listaPlatosAbstractos) get-Plato))
-		(send ?menu put-Relacion_Menu_Segundo (send (nth$ ?indiceMaxSegundo ?listaPlatosAbstractos) get-Plato))
-		(send ?menu put-Relacion_Menu_Postre (send (nth$ ?indiceMaxPostre ?listaPlatosAbstractos) get-Plato))
-		(send ?menuAbstracto put-Menu ?menu)
-		(send ?menuAbstracto put-Precio
-				(+ (send (nth$ ?indiceMaxPrimero ?listaPlatosAbstractos) get-Precio)
-				(+ (send (nth$ ?indiceMaxSegundo ?listaPlatosAbstractos) get-Precio)
-					 (send (nth$ ?indiceMaxPostre ?listaPlatosAbstractos) get-Precio))
-		))
-)
-
-
-
 ;                   ======================================================================
 ;                   =======================  Declaracion de reglas =======================
 ;                   ======================================================================
 
 (defrule MAIN::inicio "Regla que genera la cabezera inicial"
     (declare (salience 10))
-    =>    
+    =>
     (calcular-platos-abstractos)
     (printout t "====================================================================" crlf)
     (printout t "=    Sistema de elaboracion de menus personalizados Rico Rico      =" crlf)
@@ -2724,19 +2717,11 @@
 	(loop-for-count (?i 1 (length$ ?listaPlatosAbstractos)) do
 		(bind ?platoAbstracto (nth$ ?i ?listaPlatosAbstractos))
 		(send ?platoAbstracto calcula-puntuacion-presupuesto ?presupuesto)
-		(send ?platoAbstracto calcula-puntuacion-complejidad ?numComensales)		
+		(send ?platoAbstracto calcula-puntuacion-complejidad ?numComensales)
 		(send ?platoAbstracto calcula-puntuacion-temporada ?temporada)
 	)
 	(focus solucionConcreta)
 )
-
-;(defrule solucionAbstracta::calcular-puntuacion-presupuesto ""
-;    (not (calcularPuntuacionPresupuesto)
-;	(ProblemaAbstracto (presupuesto ?presupuesto))
- ;   =>
-;    
-;    (assert (calcularPuntuacionPresupuesto))
-;)
 
 ;                   ======================================================================
 ;                   ===================   Modulo de solucion concreta   ==================
@@ -2745,20 +2730,23 @@
 (defrule solucionConcreta::generar-menu-bajo ""
 	(not (generarMenuBajo))
 	=>
-	(generar-menu Bajo menuAbstractoBarato menuBajo)
+	(bind ?menuAbstracto (make-instance menuAbstractoBarato of MenuAbstracto))
+	(send ?menuAbstracto generar-menu Bajo)
 	(assert (generarMenuBajo))
 )
 
 (defrule solucionConcreta::generar-menu-medio ""
 	(not (generarMenuMedio))
 	=>
-	(generar-menu Medio menuAbstractoMedio menuMedio)
+	(bind ?menuAbstracto (make-instance menuAbstractoMedio of MenuAbstracto))
+	(send ?menuAbstracto generar-menu Medio)
 	(assert (generarMenuMedio))
 )
 (defrule solucionConcreta::generar-menu-alto ""
 	(not (generarMenuAlto))
 	=>
-	(generar-menu Alto menuAbstractoAlto menuAlto)
+	(bind ?menuAbstracto (make-instance menuAbstractoAlto of MenuAbstracto))
+	(send ?menuAbstracto generar-menu Alto)
 	(assert (generarMenuAlto))
 )
 
