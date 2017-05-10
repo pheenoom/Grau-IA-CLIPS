@@ -393,7 +393,7 @@
 			[ontologia_Class37]
 			[ontologia_Class20007]
 			[ontologia_Class36])
-		(PVP 1.0)
+		(PVP 0.5)
 		(Racion Normal)
 		(Vegetariano TRUE))
 
@@ -1184,7 +1184,7 @@
 		(Mes_Final_Temporada 9)
 		(Mes_Inicio_Temporada 4)
 		(Nombre "Kiwi")
-		(PVP 4.0))
+		(PVP 3.9))
 
 	([ontologia_Class30018] of  Cereal
 
@@ -2166,7 +2166,7 @@
 
     (send ?self put-Precio ?precioPlato)
     (if (eq (class ?plato) Postre)
-        then (if (< ?precioPlato 4.1)
+        then (if (< ?precioPlato 4)
             then (send ?self put-Categoria Bajo)
                  (send ?self calcula-sub-categoria 1.6 3.0)
             else (if (and (>= ?precioPlato 4) (< ?precioPlato 8))
@@ -2383,7 +2383,7 @@
 	(bind ?listaPlatosAbstractos (find-all-instances ((?inst PlatoAbstracto)) TRUE))
 	(loop-for-count (?i 1 (length$ ?listaPlatosAbstractos)) do
 		(bind ?platoAbstracto (nth$ ?i ?listaPlatosAbstractos))
-		(send ?platoAbstracto imprimir-debug)
+		;(send ?platoAbstracto imprimir-debug)
 		(bind ?plato (send ?platoAbstracto get-Plato))
 		(bind ?tipoPlato (class (instance-address * ?plato)))
 
@@ -2682,11 +2682,11 @@
 	(test (eq ?num UNDEF))
 	(Entrada (numComensales ?numComensales))
 	=>
-    (if (and (>= ?numComensales 20) (< ?numComensales 30))
+    (if (< ?numComensales 30)
         then (modify ?e (numComensales Bajo))
-        else (if (and (>= ?numComensales 30) (< ?numComensales 50))
+        else (if (< ?numComensales 50)
             then (modify ?e (numComensales Medio))
-            else (if (and (>= ?numComensales 50) (< ?numComensales 100))
+            else (if (< ?numComensales 100)
                 then (modify ?e (numComensales Alto))
                 else (modify ?e (numComensales MuyAlto))
             )
@@ -2806,20 +2806,20 @@
 	(not (final))
 	=>
 	(printout t "====================  Menu Barato ===================== " crlf)
-	(send (instance-address * [menuAbstractoBarato]) imprimir)
-	;(send (instance-address * [menuAbstractoBarato]) imprimir-debug)
+	;(send (instance-address * [menuAbstractoBarato]) imprimir)
+	(send (instance-address * [menuAbstractoBarato]) imprimir-debug)
 	(bind ?precio (* ?numComensales (send (instance-address * [menuAbstractoBarato]) get-Precio)))
 	(printout t "Precio total: " ?precio crlf)
 
 	(printout t "====================  Menu Medio ===================== " crlf)
-	(send (instance-address * [menuAbstractoMedio]) imprimir)
-	;(send (instance-address * [menuAbstractoMedio]) imprimir-debug)
+	;(send (instance-address * [menuAbstractoMedio]) imprimir)
+	(send (instance-address * [menuAbstractoMedio]) imprimir-debug)
 	(bind ?precio (* ?numComensales (send (instance-address * [menuAbstractoMedio]) get-Precio)))
 	(printout t "Precio total: " ?precio crlf)
 
 	(printout t "====================  Menu Alto ===================== " crlf)
-	(send (instance-address * [menuAbstractoAlto]) imprimir)
-	;(send (instance-address * [menuAbstractoAlto]) imprimir-debug)
+	;(send (instance-address * [menuAbstractoAlto]) imprimir)
+	(send (instance-address * [menuAbstractoAlto]) imprimir-debug)
 	(bind ?precio (* ?numComensales (send (instance-address * [menuAbstractoAlto]) get-Precio)))
 	(printout t "Precio total: " ?precio crlf)
 
