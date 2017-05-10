@@ -2429,8 +2429,8 @@
 		(+ (send (nth$ ?indiceMaxPrimero ?listaPlatosAbstractos) get-Precio)
 		(+ (send (nth$ ?indiceMaxSegundo ?listaPlatosAbstractos) get-Precio)
 		(send (nth$ ?indiceMaxPostre ?listaPlatosAbstractos) get-Precio))))
-	(send ?self put-Categoria ?tipoCategoria)
-	(send ?self put-SubCategoria ?categoria)
+	(send ?self put-Categoria ?categoria)
+	(send ?self put-SubCategoria ?tipoCategoria)
 	(send ?self put-Puntuacion 
 		(+ (send (nth$ ?indiceMaxPrimero ?listaPlatosAbstractos) get-Puntuacion)
 		(+ (send (nth$ ?indiceMaxSegundo ?listaPlatosAbstractos) get-Puntuacion)
