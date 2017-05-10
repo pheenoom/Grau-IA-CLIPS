@@ -2030,6 +2030,9 @@
 (defclass MenuAbstracto (is-a USER) (role concrete)
 	(slot Precio (type FLOAT) (create-accessor read-write) (default 0.0))
 	(slot Menu (type INSTANCE) (create-accessor read-write))
+	(slot Categoria (type SYMBOL) (allowed-values Bajo Medio Alto) (create-accessor read-write))
+	(slot SubCategoria (type SYMBOL) (allowed-values Bajo Medio Alto) (create-accessor read-write))
+	(slot Puntuacion (type INTEGER) (create-accessor read-write) (default 0))
 )
 
 (defclass PlatoAbstracto (is-a USER) (role concrete)
@@ -2047,14 +2050,24 @@
 ;                   ======================================================================
 
 (defmessage-handler MAIN::PlatoAbstracto imprimir-debug ()
+	(printout t "------------------- Informacion del plato  ----------------" crlf)
+	(bind ?plato ?self:Plato)
+	(send ?plato imprimir)
 	(printout t "Precio: " ?self:Precio crlf)
 	(printout t "Categoria: " ?self:Categoria crlf)
 	(printout t "Sub-Categoria: " ?self:SubCategoria crlf)
 	(printout t "Puntuacion: " ?self:Puntuacion crlf)
 	(printout t "Complejidad: " ?self:Complejidad crlf)
-	(printout t "------------------- Informacion del plato  ----------------" crlf)
-	(bind ?plato ?self:Plato)
-	(send ?plato imprimir)
+)
+
+(defmessage-handler MAIN::MenuAbstracto imprimir-debug ()
+	(printout t "------------------- Informacion del Menu  ----------------" crlf)
+	(bind ?menu ?self:Menu)
+	(send ?menu imprimir)
+	(printout t "Precio: " ?self:Precio crlf)
+	(printout t "Categoria: " ?self:Categoria crlf)
+	(printout t "Sub-Categoria: " ?self:SubCategoria crlf)
+	(printout t "Puntuacion: " ?self:Puntuacion crlf)
 )
 
 (defmessage-handler MAIN::Plato imprimir-debug ()
@@ -2132,14 +2145,28 @@
         )
     )
 )
-
+;Bajos
+;primero (0, 10)
+;segundo (0, 10)
+;postre (0, 4)
+;total: max 24
+;Medios
+;primero [10, 20)
+;segundo [10, 20)
+;postre (4, 8)
+;total: min 24, max 48
+;altos
+;primero [20, ...)
+;segundo [20,...)
+;postre (8, ...)
+;total: min 48 max ...
 (defmessage-handler MAIN::PlatoAbstracto calcula-categoria "Handler que calcula la categoria" ()
     (bind ?plato ?self:Plato)
     (bind ?precioPlato (send ?plato calcula-precio))
 
     (send ?self put-Precio ?precioPlato)
     (if (eq (class ?plato) Postre)
-        then (if (< ?precioPlato 4)
+        then (if (< ?precioPlato 4.1)
             then (send ?self put-Categoria Bajo)
                  (send ?self calcula-sub-categoria 1.6 3.0)
             else (if (and (>= ?precioPlato 4) (< ?precioPlato 8))
@@ -2352,15 +2379,17 @@
 	(bind ?indiceMaxSegundo 0)
 	(bind ?indiceMaxPostre 0)
 
-	(printout t "Categoria " ?categoria crlf)
-	(printout t "subcategoria " ?tipoCategoria crlf)
 
 	(bind ?listaPlatosAbstractos (find-all-instances ((?inst PlatoAbstracto)) TRUE))
 	(loop-for-count (?i 1 (length$ ?listaPlatosAbstractos)) do
 		(bind ?platoAbstracto (nth$ ?i ?listaPlatosAbstractos))
+		(send ?platoAbstracto imprimir-debug)
 		(bind ?plato (send ?platoAbstracto get-Plato))
 		(bind ?tipoPlato (class (instance-address * ?plato)))
 
+
+		;Peta si no hay un plato de una subcategoria dada
+		;por lo cual tenemos que asegurarnos que haya almenos uno en la ontologia
 		(if (and(eq (send ?platoAbstracto get-SubCategoria) ?tipoCategoria)
 				(eq (send ?platoAbstracto get-Categoria) ?categoria))
 			then (if (eq ?tipoPlato Primero)
@@ -2400,12 +2429,18 @@
 		(+ (send (nth$ ?indiceMaxPrimero ?listaPlatosAbstractos) get-Precio)
 		(+ (send (nth$ ?indiceMaxSegundo ?listaPlatosAbstractos) get-Precio)
 		(send (nth$ ?indiceMaxPostre ?listaPlatosAbstractos) get-Precio))))
+	(send ?self put-Categoria ?tipoCategoria)
+	(send ?self put-SubCategoria ?categoria)
+	(send ?self put-Puntuacion 
+		(+ (send (nth$ ?indiceMaxPrimero ?listaPlatosAbstractos) get-Puntuacion)
+		(+ (send (nth$ ?indiceMaxSegundo ?listaPlatosAbstractos) get-Puntuacion)
+		(send (nth$ ?indiceMaxPostre ?listaPlatosAbstractos) get-Puntuacion))))
 )
 
 
-(deffunction generar-menu "" (?tipoCategoria ?nombreMenuAbstracto ?nombreMenu)
+;(deffunction generar-menu "" (?tipoCategoria ?nombreMenuAbstracto ?nombreMenu)
 
-)
+;)
 
 ;                   ======================================================================
 ;                   =========================     Handler Menu     =======================
@@ -2630,11 +2665,11 @@
     (not (ProblemaAbstracto))
     (Entrada (presupuestoMax ?presupuestoMax))
     =>
-    (if (and (>= ?presupuestoMax 10) (< ?presupuestoMax 20))
+    (if  (< ?presupuestoMax 25)
         then (assert (ProblemaAbstracto (presupuesto Bajo)))
-        else (if (and (>= ?presupuestoMax 20) (< ?presupuestoMax 40))
+        else (if (< ?presupuestoMax 49)
             then (assert (ProblemaAbstracto (presupuesto Medio)))
-            else (if (and (>= ?presupuestoMax 40) (< ?presupuestoMax 80))
+            else (if (< ?presupuestoMax 81)
                 then (assert (ProblemaAbstracto (presupuesto Alto)))
                 else (assert (ProblemaAbstracto (presupuesto MuyAlto)))
             )
@@ -2772,16 +2807,19 @@
 	=>
 	(printout t "====================  Menu Barato ===================== " crlf)
 	(send (instance-address * [menuAbstractoBarato]) imprimir)
+	;(send (instance-address * [menuAbstractoBarato]) imprimir-debug)
 	(bind ?precio (* ?numComensales (send (instance-address * [menuAbstractoBarato]) get-Precio)))
 	(printout t "Precio total: " ?precio crlf)
 
 	(printout t "====================  Menu Medio ===================== " crlf)
 	(send (instance-address * [menuAbstractoMedio]) imprimir)
+	;(send (instance-address * [menuAbstractoMedio]) imprimir-debug)
 	(bind ?precio (* ?numComensales (send (instance-address * [menuAbstractoMedio]) get-Precio)))
 	(printout t "Precio total: " ?precio crlf)
 
 	(printout t "====================  Menu Alto ===================== " crlf)
 	(send (instance-address * [menuAbstractoAlto]) imprimir)
+	;(send (instance-address * [menuAbstractoAlto]) imprimir-debug)
 	(bind ?precio (* ?numComensales (send (instance-address * [menuAbstractoAlto]) get-Precio)))
 	(printout t "Precio total: " ?precio crlf)
 
