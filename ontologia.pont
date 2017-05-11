@@ -1,4 +1,5 @@
-
+; Fri May 05 01:04:46 CEST 2017
+;
 ;+ (version "3.5")
 ;+ (build "Build 663")
 
@@ -214,6 +215,11 @@
 		(default Normal)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(multislot Estilos
+		(type SYMBOL)
+		(allowed-values Tradicional Moderno Sibarita Clasico)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(multislot Platos_Compatibles
 		(type INSTANCE)
 ;+		(allowed-classes Plato)
@@ -331,6 +337,7 @@
 		(create-accessor read-write))
 	(single-slot Nombre
 		(type STRING)
+		(propagation inherit)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot Relacion_Menu_Bebida
@@ -338,7 +345,3 @@
 ;+		(allowed-classes Bebida)
 ;+		(cardinality 1 1)
 		(create-accessor read-write)))
-
-(defclass %3AUNDEFINED
-	(is-a USER)
-	(role concrete))
