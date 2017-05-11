@@ -2234,20 +2234,9 @@
 )
 
 (defmessage-handler MAIN::PlatoAbstracto calcula-puntuacion-estilo "" (?estilo)
-    (bind ?puntos 0)
-    (bind ?estilos (send ?self:Plato get-Estilos))
-    (bind ?lenLista (length$ ?estilos))
-    (if (> ?lenLista 0)
-    	then (loop-for-count (?i 0 ?lenLista) do
-				(bind ?estiloe (nth$ ?i ?estilos))
-				(printout t "Estilo: " ?estiloe ", " ?estilo crlf)
-				(if (eq ?estiloe ?estilo)
-						then (bind ?puntos (+ 1 ?puntos))
-				)
-			)
-    )
-
-    (send ?self put-Puntuacion (+ ?puntos (send ?self get-Puntuacion)))
+	(if (member ?estilo (send ?self:Plato get-Estilos))
+		then (send ?self put-Puntuacion (+ 1 (send ?self get-Puntuacion)))
+	)   
 )
 
 (defmessage-handler MAIN::PlatoAbstracto calcula-puntuacion-complejidad "" (?numComensales)
