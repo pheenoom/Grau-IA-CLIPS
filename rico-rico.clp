@@ -215,6 +215,11 @@
 		(default Normal)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(multislot Estilos
+		(type SYMBOL)
+		(allowed-values Tradicional Moderno Sibarita Clasico)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(multislot Platos_Compatibles
 		(type INSTANCE)
 ;+		(allowed-classes Plato)
@@ -958,6 +963,8 @@
 			[ontologia_Class20]
 			[ontologia_Class22])
 		(Nombre "Carne guisada")
+		(Estilos
+			Tradicional)
 		(Platos_Compatibles
 			[ontologia_Class17]
 			[ontologia_Class0])
@@ -2226,6 +2233,12 @@
     ;(slot-insert$ ?self Puntos 0 ?puntos)
 )
 
+(defmessage-handler MAIN::PlatoAbstracto calcula-puntuacion-estilo "" (?estilo)
+	(if (member ?estilo (send ?self:Plato get-Estilos))
+		then (send ?self put-Puntuacion (+ 1 (send ?self get-Puntuacion)))
+	)   
+)
+
 (defmessage-handler MAIN::PlatoAbstracto calcula-puntuacion-complejidad "" (?numComensales)
     (bind ?puntos 0)
     (if (eq ?numComensales Medio)
@@ -2488,6 +2501,7 @@
   (while (not (member (lowcase ?respuesta) ?respuestas-validas)) do
       (format t "%s: " ?pregunta)
       (bind ?respuesta (read)))
+  ;(format t "pregunta general: %s" ?respuesta)
   ?respuesta
 )
 
@@ -2579,7 +2593,16 @@
     (test (eq ?est UNDEF))
     =>
     (bind ?respuesta (pregunta-general "¿Que estilo de comida quiere en el menu? (S)ibarita/(M)oderno/(T)radicional/(C)lasico" s m t c))
-    (modify ?e (estilo ?respuesta))
+    (if (eq ?respuesta t)
+        then (modify ?e (estilo Tradicional))
+        else (if (eq ?respuesta s)
+            then (modify ?e (estilo Sibarita))
+            else (if (eq ?respuesta c)
+                then (modify ?e (estilo Clasico))
+                else (modify ?e (estilo Moderno))
+            )
+        )
+    )
 )
 
 (defrule recopilacion::mes-evento "Pregunta al cliente en que mes se realiza el evento"
@@ -2717,6 +2740,7 @@
     )
 )
 
+
 (defrule abstraccion::abstraer-temporada "Regla que nos permite abstraer el mes del evento propuesto por el usuario a unos valores abstractos"
     ?e <- (ProblemaAbstracto (temporada ?temporada))
     (test (eq ?temporada UNDEF))
@@ -2734,20 +2758,20 @@
     )
 )
 
-(defrule abstraccion::abstraer-complejidad "Regla que nos permite abstraer el estilo propuesto por el usuario a unos valores abstractos"
-    ?e <- (ProblemaAbstracto (complejidad ?dificultad))
-    (test (eq ?dificultad UNDEF))
-    (Entrada (estilo ?estilo))
-    ?plato <-(object(is-a Plato))
-    =>
-    (if (or (eq ?estilo Tradicional) (eq ?estilo Sibarita))
-        then (modify ?e (complejidad Facil))
-        else (if (eq ?estilo Clasico)
-            then (modify ?e (complejidad Normal))
-            else (modify ?e (complejidad Alto))
-        )
-    )
-)
+;(defrule abstraccion::abstraer-complejidad "Regla que nos permite abstraer el estilo propuesto por el usuario a unos valores abstractos"
+;   ?e <- (ProblemaAbstracto (complejidad ?dificultad))
+;   (test (eq ?dificultad UNDEF))
+;    (Entrada (estilo ?estilo))
+;    ?plato <-(object(is-a Plato))
+;    =>
+;    (if (or (eq ?estilo Tradicional) (eq ?estilo Sibarita))
+;        then (modify ?e (complejidad Facil))
+;        else (if (eq ?estilo Clasico)
+;            then (modify ?e (complejidad Normal))
+;            else (modify ?e (complejidad Alto))
+;        )
+;    )
+;)
 
 (defrule abstraccion::abstraccion-completada "Regla que comprueba que todas las preguntas han sido respondidas"
     (ProblemaAbstracto (presupuesto ?presupuesto))
@@ -2759,8 +2783,9 @@
     (ProblemaAbstracto (temporada ?temporada))
     (test (not (eq ?temporada UNDEF)))
 
-    (ProblemaAbstracto (complejidad ?complejidad))
-    (test (not (eq ?complejidad UNDEF)))
+
+;    (ProblemaAbstracto (complejidad ?complejidad))
+;    (test (not (eq ?complejidad UNDEF)))
     =>
 	(focus solucionAbstracta)
 )
@@ -2774,6 +2799,7 @@
 	(ProblemaAbstracto (presupuesto ?presupuesto))
 	(ProblemaAbstracto (numComensales ?numComensales))
 	(ProblemaAbstracto (temporada ?temporada))
+	(Entrada (estilo ?estilo))
 	=>
 	(bind ?listaPlatosAbstractos (find-all-instances ((?inst PlatoAbstracto)) TRUE))
 	(loop-for-count (?i 1 (length$ ?listaPlatosAbstractos)) do
@@ -2781,6 +2807,7 @@
 		(send ?platoAbstracto calcula-puntuacion-presupuesto ?presupuesto)
 		(send ?platoAbstracto calcula-puntuacion-complejidad ?numComensales)
 		(send ?platoAbstracto calcula-puntuacion-temporada ?temporada)
+		(send ?platoAbstracto calcula-puntuacion-estilo ?estilo)
 	)
 	(focus solucionConcreta)
 )
