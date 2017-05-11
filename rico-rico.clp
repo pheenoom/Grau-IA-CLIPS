@@ -2069,7 +2069,21 @@
 	(printout t "Sub-Categoria: " ?self:SubCategoria crlf)
 	(printout t "Puntuacion: " ?self:Puntuacion crlf)
 )
-
+(defmessage-handler MAIN::Ingrediente imprimir-debug ()
+	(format t "%s - " ?self:Nombre)
+	(bind ?lactosa ?self:Lactosa)
+	(bind ?gluten ?self:Gluten)
+	(if (eq ?lactosa TRUE)
+		then (format t "%t Lactosa: Si %n")
+		else (format t "%t Lactosa: No %n")
+	)
+	(if (eq ?gluten TRUE)
+		then (format t "%t Gluten: Si %n")
+		else (format t "%t Gluten: No %n")
+	)
+	(format t "%t Temporada Inicio: %d %n" ?self:Mes_Inicio_Temporada)
+	(format t "%t Temporada Final: %d %n" ?self:Mes_Final_Temporada)
+)
 (defmessage-handler MAIN::Plato imprimir-debug ()
 	(format t "Nombre: %s" ?self:Nombre)
 	(printout t crlf)
@@ -2096,21 +2110,7 @@
 	(printout t crlf)
 )
 
-(defmessage-handler MAIN::Ingrediente imprimir ()
-	(format t "%s - " ?self:Nombre)
-	(bind ?lactosa ?self:Lactosa)
-	(bind ?gluten ?self:Gluten)
-	(if (eq ?lactosa TRUE)
-		then (format t "%t Lactosa: Si %n")
-		else (format t "%t Lactosa: No %n")
-	)
-	(if (eq ?gluten TRUE)
-		then (format t "%t Gluten: Si %n")
-		else (format t "%t Gluten: No %n")
-	)
-	(format t "%t Temporada Inicio: %d %n" ?self:Mes_Inicio_Temporada)
-	(format t "%t Temporada Final: %d %n" ?self:Mes_Final_Temporada)
-)
+
 
 ;                   ======================================================================
 ;                   ====================   Declaracion de handler   ======================
@@ -2261,24 +2261,41 @@
 	(bind ?plato (send ?self get-Plato))
 
 	(bind ?puntuacion 0)
+	(bind ?ingredientesTemporales 0)
+	(bind ?ingredientesTemporalesOk 0)
 
+	;(send ?plato imprimir-debug)
+	
 	(bind $?listaIngredientes (send ?plato get-Ingredientes))
 	(bind ?lenLista (length$ ?listaIngredientes))
 	(loop-for-count (?i 1 ?lenLista) do
 			(bind ?ingrediente (nth$ ?i ?listaIngredientes))
+			
+	;		(send ?ingrediente imprimir-debug)
 
-			(if (send ?ingrediente es-ingrediente-temporada ?temporada)
-					then (bind ?puntuacion (+ 1 ?puntuacion))
+			(if (send ?ingrediente es-ingrediente-temporal)
+					then 
+						(bind ?ingredientesTemporales (+ 1 ?ingredientesTemporales))
+						(if (send ?ingrediente es-ingrediente-temporada ?temporada)
+							then 
+								(bind ?ingredientesTemporalesOk (+ 1 ?ingredientesTemporalesOk))
+								
+	;							(printout t "Ok ^^" crlf)
+						)
 			)
 	)
 
-	(if (= ?puntuacion ?lenLista)
+	;(format t "Ingtemp: %d, IngOk: %d" ?ingredientesTemporales ?ingredientesTemporalesOk)
+	;(printout t crlf)
+	;(printout t "-------" crlf)
+
+	(if (= ?ingredientesTemporalesOk ?ingredientesTemporales)
 			then (bind ?puntuacion 4)
-			else (if (>= ?puntuacion (* 0.75 ?lenLista))
+			else (if (>= ?ingredientesTemporalesOk (* 0.75 ?ingredientesTemporales))
 					then (bind ?puntuacion 3)
-					else (if (>= ?puntuacion (* 0.50 ?lenLista))
+					else (if (>= ?ingredientesTemporalesOk (* 0.50 ?ingredientesTemporales))
 							then (bind ?puntuacion 2)
-							else (if (>= ?puntuacion (* 0.25 ?lenLista))
+							else (if (>= ?ingredientesTemporalesOk (* 0.25 ?ingredientesTemporales))
 									then (bind ?puntuacion 1)
 							)
 					)
@@ -2337,7 +2354,13 @@
 (defmessage-handler MAIN::Ingrediente imprimir "Handler que imprime el nombre del ingrediente" ()
 	(printout t ?self:Nombre)
 )
-
+(defmessage-handler MAIN::Ingrediente es-ingrediente-temporal "" ()
+	(if (or (not (eq ?self:Mes_Inicio_Temporada 1)) (not (eq ?self:Mes_Final_Temporada 12)))
+		then TRUE
+		else FALSE
+	)
+)
+;Sandia inicio:5, final:9
 (defmessage-handler MAIN::Ingrediente es-ingrediente-temporada "" (?temporada)
     (if (eq ?temporada Primavera)
         then (if (and (<= ?self:Mes_Inicio_Temporada 5) (>= ?self:Mes_Final_Temporada 4))
