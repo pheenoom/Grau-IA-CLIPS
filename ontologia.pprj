@@ -1,4 +1,5 @@
-
+; Sun May 07 21:14:12 CEST 2017
+; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
 
@@ -19,17 +20,6 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-<<<<<<< HEAD
-		[ontologia_ProjectKB_Class10043]
-		[ontologia_ProjectKB_Class10044]
-		[ontologia_ProjectKB_Class10045]
-		[ontologia_ProjectKB_Class10046]
-		[ontologia_ProjectKB_Class10047]
-		[ontologia_ProjectKB_Class10048]
-		[ontologia_ProjectKB_Class10049]
-		[ontologia_ProjectKB_Class10050]
-		[ontologia_ProjectKB_Class10051]))
-=======
 		[ontologia_ProjectKB_Class10367]
 		[ontologia_ProjectKB_Class10368]
 		[ontologia_ProjectKB_Class10369]
@@ -39,7 +29,6 @@
 		[ontologia_ProjectKB_Class10373]
 		[ontologia_ProjectKB_Class10374]
 		[ontologia_ProjectKB_Class10375]))
->>>>>>> ba929e454f9ae406fa2108b07e9bef42741887e2
 
 ([CLSES_TAB] of  Widget
 
@@ -83,12 +72,9 @@
 	(is_hidden FALSE)
 	(widget_class_name "edu.stanford.smi.protege.widget.InstancesTab"))
 
-<<<<<<< HEAD
-=======
 ([KB_273246_Class3] of  Map
 )
 
->>>>>>> ba929e454f9ae406fa2108b07e9bef42741887e2
 ([KB_517706_Class0] of  String
 
 	(name "factory_class_name")
@@ -97,15 +83,9 @@
 ([KB_517706_Class1] of  Map
 
 	(entries
-<<<<<<< HEAD
-		[ontologia_ProjectKB_Class10052]
-		[ontologia_ProjectKB_Class10053]
-		[ontologia_ProjectKB_Class10054]))
-=======
 		[ontologia_ProjectKB_Class10376]
 		[ontologia_ProjectKB_Class10377]
 		[ontologia_ProjectKB_Class10378]))
->>>>>>> ba929e454f9ae406fa2108b07e9bef42741887e2
 
 ([KB_517706_Class100] of  String
 
@@ -199,122 +179,71 @@
 	(name "classes_file_name")
 	(string_value "ontologia.pont"))
 
-([KB_522085_Class3] of  Map
-)
-
 ([LAYOUT_PROPERTIES] of  Property_List
 
 	(name "layout properties")
 	(properties [VERTICAL_STRETCHER]))
 
-<<<<<<< HEAD
-([ontologia_ProjectKB_Class10043] of  String
-=======
 ([ontologia_ProjectKB_Class10367] of  String
->>>>>>> ba929e454f9ae406fa2108b07e9bef42741887e2
 
 	(name ":INSTANCE-ANNOTATION")
 	(string_value "%3AANNOTATION-TEXT"))
 
-<<<<<<< HEAD
-([ontologia_ProjectKB_Class10044] of  String
-=======
 ([ontologia_ProjectKB_Class10368] of  String
->>>>>>> ba929e454f9ae406fa2108b07e9bef42741887e2
 
 	(name "Primero")
 	(string_value "Nombre"))
 
-<<<<<<< HEAD
-([ontologia_ProjectKB_Class10045] of  String
-=======
 ([ontologia_ProjectKB_Class10369] of  String
->>>>>>> ba929e454f9ae406fa2108b07e9bef42741887e2
 
 	(name "Segundo")
 	(string_value "Nombre"))
 
-<<<<<<< HEAD
-([ontologia_ProjectKB_Class10046] of  String
-=======
 ([ontologia_ProjectKB_Class10370] of  String
->>>>>>> ba929e454f9ae406fa2108b07e9bef42741887e2
 
 	(name "Congreso")
 	(string_value "Nombre"))
 
-<<<<<<< HEAD
-([ontologia_ProjectKB_Class10047] of  String
-=======
 ([ontologia_ProjectKB_Class10371] of  String
->>>>>>> ba929e454f9ae406fa2108b07e9bef42741887e2
 
 	(name ":PAL-CONSTRAINT")
 	(string_value "%3APAL-NAME"))
 
-<<<<<<< HEAD
-([ontologia_ProjectKB_Class10048] of  String
-=======
 ([ontologia_ProjectKB_Class10372] of  String
->>>>>>> ba929e454f9ae406fa2108b07e9bef42741887e2
 
 	(name "Postre")
 	(string_value "Nombre"))
 
-<<<<<<< HEAD
-([ontologia_ProjectKB_Class10049] of  String
-=======
 ([ontologia_ProjectKB_Class10373] of  String
->>>>>>> ba929e454f9ae406fa2108b07e9bef42741887e2
 
 	(name ":META-CLASS")
 	(string_value "%3ANAME"))
 
-<<<<<<< HEAD
-([ontologia_ProjectKB_Class10050] of  String
-=======
 ([ontologia_ProjectKB_Class10374] of  String
->>>>>>> ba929e454f9ae406fa2108b07e9bef42741887e2
 
 	(name "Ingrediente")
 	(string_value "Nombre"))
 
-<<<<<<< HEAD
-([ontologia_ProjectKB_Class10051] of  String
-=======
 ([ontologia_ProjectKB_Class10375] of  String
->>>>>>> ba929e454f9ae406fa2108b07e9bef42741887e2
 
 	(name "Menu")
 	(string_value "Nombre"))
 
-<<<<<<< HEAD
-([ontologia_ProjectKB_Class10052] of  Map_Entry
-=======
 ([ontologia_ProjectKB_Class10376] of  Map_Entry
->>>>>>> ba929e454f9ae406fa2108b07e9bef42741887e2
 
 	(key "suppress_instance_counting")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
 
-<<<<<<< HEAD
-([ontologia_ProjectKB_Class10053] of  Map_Entry
-=======
 ([ontologia_ProjectKB_Class10377] of  Map_Entry
->>>>>>> ba929e454f9ae406fa2108b07e9bef42741887e2
 
 	(key "add_name_on_instance_form")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
 
-<<<<<<< HEAD
-([ontologia_ProjectKB_Class10054] of  Map_Entry
-=======
 ([ontologia_ProjectKB_Class10378] of  Map_Entry
->>>>>>> ba929e454f9ae406fa2108b07e9bef42741887e2
 
 	(key "change_tracking_active")
 	(key_class "java.lang.String")

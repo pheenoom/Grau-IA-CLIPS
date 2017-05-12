@@ -1,4 +1,5 @@
-
+; Sun May 07 21:14:22 CEST 2017
+; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
 
@@ -47,7 +48,7 @@
 		[ontologia_Class37]
 		[ontologia_Class20007]
 		[ontologia_Class36])
-	(PVP 0.5)
+	(PVP 1.0)
 	(Racion Normal)
 	(Vegetariano TRUE))
 
@@ -612,8 +613,6 @@
 		[ontologia_Class20]
 		[ontologia_Class22])
 	(Nombre "Carne guisada")
-	(Estilos
-		Tradicional)
 	(Platos_Compatibles
 		[ontologia_Class17]
 		[ontologia_Class0])
@@ -840,7 +839,7 @@
 	(Mes_Final_Temporada 9)
 	(Mes_Inicio_Temporada 4)
 	(Nombre "Kiwi")
-	(PVP 3.9))
+	(PVP 4.0))
 
 ([ontologia_Class30018] of  Cereal
 
