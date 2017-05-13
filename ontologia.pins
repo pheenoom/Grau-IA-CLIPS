@@ -1,4 +1,4 @@
-; Sat May 13 18:40:35 CEST 2017
+; Sat May 13 20:05:38 CEST 2017
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -6,6 +6,7 @@
 ([ontologia_Class0] of  Primero
 
 	(AptoCena TRUE)
+	(Estilo Moderno)
 	(Ingredientes
 		[ontologia_Class29]
 		[ontologia_Class22]
@@ -34,6 +35,7 @@
 	(AptoCena TRUE)
 	(AptoNinos TRUE)
 	(Bebida_Menu [ontologia_Class57])
+	(Estilo Moderno)
 	(Ingredientes
 		[ontologia_Class10002]
 		[ontologia_Class10001]
@@ -79,6 +81,7 @@
 ([ontologia_Class10004] of  Segundo
 
 	(Caliente FALSE)
+	(Estilo Sibarita)
 	(Ingredientes
 		[ontologia_Class10012]
 		[ontologia_Class10014]
@@ -295,6 +298,7 @@
 ([ontologia_Class17] of  Primero
 
 	(AptoCena TRUE)
+	(Estilo Moderno)
 	(Ingredientes
 		[ontologia_Class1]
 		[ontologia_Class2]
@@ -330,6 +334,7 @@
 	(AptoCena TRUE)
 	(AptoNinos TRUE)
 	(Caliente TRUE)
+	(Estilo Clasico)
 	(Ingredientes
 		[ontologia_Class20014]
 		[ontologia_Class22]
@@ -378,6 +383,7 @@
 	(AptoCena TRUE)
 	(AptoNinos TRUE)
 	(Bebida_Menu [ontologia_Class57])
+	(Estilo Moderno)
 	(Ingredientes
 		[ontologia_Class20003]
 		[ontologia_Class30]
@@ -404,6 +410,7 @@
 
 	(AptoCena TRUE)
 	(Caliente TRUE)
+	(Estilo Moderno)
 	(Ingredientes
 		[ontologia_Class10018]
 		[ontologia_Class41]
@@ -419,6 +426,7 @@
 ([ontologia_Class20006] of  Primero
 
 	(AptoCena TRUE)
+	(Estilo Sibarita)
 	(Ingredientes
 		[ontologia_Class10021]
 		[ontologia_Class10022]
@@ -434,6 +442,7 @@
 
 	(AptoCena TRUE)
 	(Caliente TRUE)
+	(Estilo Sibarita)
 	(Ingredientes
 		[ontologia_Class10024]
 		[ontologia_Class10005]
@@ -458,6 +467,7 @@
 ([ontologia_Class20009] of  Segundo
 
 	(Caliente TRUE)
+	(Estilo Clasico)
 	(Ingredientes
 		[ontologia_Class22]
 		[ontologia_Class20010]
@@ -501,6 +511,7 @@
 
 	(AptoCena TRUE)
 	(Caliente TRUE)
+	(Estilo Moderno)
 	(Ingredientes
 		[ontologia_Class10027]
 		[ontologia_Class20012]
@@ -539,6 +550,7 @@
 
 	(AptoCena TRUE)
 	(Caliente TRUE)
+	(Estilo Moderno)
 	(Ingredientes
 		[ontologia_Class10030]
 		[ontologia_Class15]
@@ -600,6 +612,7 @@
 
 	(AptoCena TRUE)
 	(Caliente TRUE)
+	(Estilo Tradicional)
 	(Ingredientes
 		[ontologia_Class24]
 		[ontologia_Class25]
@@ -608,6 +621,7 @@
 		[ontologia_Class20]
 		[ontologia_Class22])
 	(Nombre "Carne guisada")
+	(Origen Espa%C3%B1a)
 	(Platos_Compatibles
 		[ontologia_Class17]
 		[ontologia_Class0])
@@ -648,6 +662,7 @@
 	(AptoNinos TRUE)
 	(Bebida_Menu [ontologia_Class57])
 	(Caliente TRUE)
+	(Estilo Clasico)
 	(Ingredientes
 		[ontologia_Class30011]
 		[ontologia_Class50]
@@ -681,6 +696,7 @@
 
 	(AptoNinos TRUE)
 	(Caliente TRUE)
+	(Estilo Clasico)
 	(Ingredientes
 		[ontologia_Class30003]
 		[ontologia_Class40005]
@@ -688,6 +704,7 @@
 		[ontologia_Class20008]
 		[ontologia_Class40006])
 	(Nombre "Macarrones gratinados con chorizo")
+	(Origen Espa%C3%B1a)
 	(Platos_Compatibles
 		[ontologia_Class20000]
 		[ontologia_Class37]
@@ -703,6 +720,7 @@
 
 	(AptoNinos TRUE)
 	(Bebida_Menu [ontologia_Class57])
+	(Estilo Tradicional)
 	(Ingredientes
 		[ontologia_Class30006]
 		[ontologia_Class50]
@@ -714,6 +732,7 @@
 		[ontologia_Class10009]
 		[ontologia_Class30007])
 	(Nombre "Torrijas")
+	(Origen Espa%C3%B1a)
 	(Platos_Compatibles
 		[ontologia_Class20013]
 		[ontologia_Class28]
@@ -722,7 +741,7 @@
 		[ontologia_Class37])
 	(PVP 4.0)
 	(Racion Abundante)
-	(Vegetariano FALSE))
+	(Vegetariano TRUE))
 
 ([ontologia_Class30006] of  Cereal
 
@@ -759,6 +778,7 @@
 	(AptoNinos TRUE)
 	(Bebida_Menu [ontologia_Class57])
 	(Caliente FALSE)
+	(Estilo Moderno)
 	(Ingredientes
 		[ontologia_Class30011]
 		[ontologia_Class30012]
@@ -822,6 +842,7 @@
 	(AptoCena TRUE)
 	(AptoNinos TRUE)
 	(Bebida_Menu [ontologia_Class57])
+	(Estilo Moderno)
 	(Ingredientes
 		[ontologia_Class30017]
 		[ontologia_Class52]
@@ -922,6 +943,7 @@
 
 	(AptoCena TRUE)
 	(Bebida_Menu [ontologia_Class57])
+	(Estilo Sibarita)
 	(Ingredientes
 		[ontologia_Class2]
 		[ontologia_Class30006]
@@ -959,6 +981,7 @@
 
 	(AptoCena TRUE)
 	(Caliente FALSE)
+	(Estilo Sibarita)
 	(Ingredientes
 		[ontologia_Class30028]
 		[ontologia_Class10005]
@@ -998,6 +1021,7 @@
 
 	(AptoCena TRUE)
 	(Bebida_Menu [ontologia_Class57])
+	(Estilo Moderno)
 	(Ingredientes
 		[ontologia_Class30032]
 		[ontologia_Class30034]
@@ -1100,6 +1124,7 @@
 	(AptoCena TRUE)
 	(AptoNinos TRUE)
 	(Caliente TRUE)
+	(Estilo Clasico)
 	(Ingredientes
 		[ontologia_Class38]
 		[ontologia_Class20]
@@ -1183,6 +1208,7 @@
 ([ontologia_Class40008] of  Primero
 
 	(AptoCena TRUE)
+	(Estilo Clasico)
 	(Ingredientes
 		[ontologia_Class30027]
 		[ontologia_Class10031]
@@ -1212,6 +1238,7 @@
 ([ontologia_Class40010] of  Segundo
 
 	(Caliente TRUE)
+	(Estilo Tradicional)
 	(Ingredientes
 		[ontologia_Class40009]
 		[ontologia_Class40005]
@@ -1219,6 +1246,7 @@
 		[ontologia_Class40011]
 		[ontologia_Class35])
 	(Nombre "Judias con chorizo y panceta")
+	(Origen Espa%C3%B1a)
 	(Platos_Compatibles
 		[ontologia_Class20013]
 		[ontologia_Class40008]
@@ -1250,6 +1278,7 @@
 	(AptoCena TRUE)
 	(AptoNinos TRUE)
 	(Bebida_Menu [ontologia_Class57])
+	(Estilo Tradicional)
 	(Ingredientes
 		[ontologia_Class50]
 		[ontologia_Class55]
@@ -1277,6 +1306,7 @@
 	(AptoCena TRUE)
 	(AptoNinos TRUE)
 	(Bebida_Menu [ontologia_Class57])
+	(Estilo Tradicional)
 	(Ingredientes
 		[ontologia_Class50]
 		[ontologia_Class10027]
@@ -1285,6 +1315,7 @@
 		[ontologia_Class55]
 		[ontologia_Class41])
 	(Nombre "Arroz con leche casero")
+	(Origen Espa%C3%B1a)
 	(Platos_Compatibles
 		[ontologia_Class28]
 		[ontologia_Class40008]
@@ -1326,6 +1357,7 @@
 	(AptoCena TRUE)
 	(AptoNinos TRUE)
 	(Bebida_Menu [ontologia_Class57])
+	(Estilo Clasico)
 	(Ingredientes
 		[ontologia_Class40016]
 		[ontologia_Class40015]
@@ -1389,6 +1421,7 @@
 
 	(AptoCena TRUE)
 	(AptoNinos TRUE)
+	(Estilo Clasico)
 	(Ingredientes
 		[ontologia_Class52]
 		[ontologia_Class55]
@@ -1449,6 +1482,7 @@
 
 	(AptoCena TRUE)
 	(AptoNinos TRUE)
+	(Estilo Tradicional)
 	(Ingredientes
 		[ontologia_Class30011]
 		[ontologia_Class52]
@@ -1457,6 +1491,7 @@
 		[ontologia_Class30008]
 		[ontologia_Class30000])
 	(Nombre "Dorayakis caseros de chocolate")
+	(Origen Japonesa)
 	(PVP 0.4)
 	(Racion Normal)
 	(Vegetariano TRUE))
@@ -1479,6 +1514,7 @@
 
 ([ontologia_Class50009] of  Postre
 
+	(Estilo Tradicional)
 	(Ingredientes
 		[ontologia_Class52]
 		[ontologia_Class10009]
@@ -1493,6 +1529,7 @@
 
 	(AptoCena TRUE)
 	(AptoNinos TRUE)
+	(Estilo Tradicional)
 	(Ingredientes
 		[ontologia_Class52]
 		[ontologia_Class50]
@@ -1500,6 +1537,7 @@
 		[ontologia_Class10009]
 		[ontologia_Class54])
 	(Nombre "Crema catalana")
+	(Origen Espa%C3%B1a)
 	(PVP 4.0)
 	(Racion Normal))
 
@@ -1508,6 +1546,7 @@
 	(AptoCena TRUE)
 	(AptoNinos TRUE)
 	(Caliente TRUE)
+	(Estilo Moderno)
 	(Ingredientes
 		[ontologia_Class30006]
 		[ontologia_Class4]
@@ -1522,6 +1561,7 @@
 	(AptoCena TRUE)
 	(AptoNinos TRUE)
 	(Caliente TRUE)
+	(Estilo Clasico)
 	(Ingredientes
 		[ontologia_Class20014]
 		[ontologia_Class30006])
@@ -1533,6 +1573,7 @@
 
 	(AptoCena TRUE)
 	(Caliente TRUE)
+	(Estilo Clasico)
 	(Ingredientes
 		[ontologia_Class41]
 		[ontologia_Class10032]
@@ -1563,6 +1604,7 @@
 
 	(AptoCena TRUE)
 	(AptoNinos TRUE)
+	(Estilo Clasico)
 	(Ingredientes
 		[ontologia_Class20014]
 		[ontologia_Class30006])
@@ -1573,6 +1615,7 @@
 ([ontologia_Class50023] of  Primero
 
 	(AptoCena TRUE)
+	(Estilo Sibarita)
 	(Ingredientes
 		[ontologia_Class10031]
 		[ontologia_Class30028]
@@ -1592,6 +1635,7 @@
 
 	(AptoCena FALSE)
 	(AptoNinos TRUE)
+	(Estilo Clasico)
 	(Ingredientes
 		[ontologia_Class30011]
 		[ontologia_Class10012]
@@ -1642,6 +1686,7 @@
 
 	(AptoCena TRUE)
 	(AptoNinos TRUE)
+	(Estilo Clasico)
 	(Ingredientes
 		[ontologia_Class52]
 		[ontologia_Class59]

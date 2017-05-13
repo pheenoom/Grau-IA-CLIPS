@@ -1,4 +1,4 @@
-; Sat May 13 18:40:35 CEST 2017
+; Sat May 13 20:05:38 CEST 2017
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -17,6 +17,11 @@
 		(range 1 12)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(single-slot Estilo
+		(type SYMBOL)
+		(allowed-values Moderno Tradicional Clasico Sibarita)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(single-slot Nombre
 		(type STRING)
 ;+		(cardinality 0 1)
@@ -27,24 +32,24 @@
 		(default 1)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
+	(single-slot Relacion_Menu_Postre
+		(type INSTANCE)
+;+		(allowed-classes Postre)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot Mes_Final_Temporada
 		(type INTEGER)
 		(range 1 12)
 		(default 1)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot Relacion_Menu_Postre
-		(type INSTANCE)
-;+		(allowed-classes Postre)
-;+		(cardinality 1 1)
+	(single-slot Origen
+		(type SYMBOL)
+		(allowed-values Japonesa Italiana Espa%C3%B1a)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot Cantidad
 		(type SYMBOL)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Origen
-		(type SYMBOL)
-		(allowed-values Japonesa Italiana)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot Racion
@@ -58,12 +63,12 @@
 ;+		(allowed-classes Plato)
 		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write))
-	(single-slot Gluten
+	(single-slot AptoNinos
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot AptoNinos
+	(single-slot Gluten
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
@@ -82,10 +87,6 @@
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot Alergias
-		(type SYMBOL)
-;+		(allowed-parents)
 		(create-accessor read-write))
 	(single-slot NombreAlergia
 		(type STRING)
@@ -112,12 +113,12 @@
 ;+		(allowed-classes Primero)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot Vegetariano
+	(single-slot AptoCena
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot AptoCena
+	(single-slot Vegetariano
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
@@ -215,13 +216,9 @@
 (defclass Plato
 	(is-a USER)
 	(role concrete)
-	(multislot Alergias
-		(type SYMBOL)
-;+		(allowed-parents)
-		(create-accessor read-write))
 	(single-slot Origen
 		(type SYMBOL)
-		(allowed-values Japonesa Italiana)
+		(allowed-values Japonesa Italiana Espa%C3%B1a)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot Racion
@@ -235,14 +232,19 @@
 ;+		(allowed-classes Bebida)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(single-slot AptoCena
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(single-slot Vegetariano
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot AptoCena
+	(single-slot Estilo
 		(type SYMBOL)
-		(allowed-values FALSE TRUE)
+		(allowed-values Moderno Tradicional Clasico Sibarita)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot Nombre
@@ -377,14 +379,14 @@
 ;+		(allowed-classes Bebida)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot Relacion_Menu_Primero
-		(type INSTANCE)
-;+		(allowed-classes Primero)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(single-slot Relacion_Menu_Evento
 		(type INSTANCE)
 ;+		(allowed-classes Evento)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot Relacion_Menu_Primero
+		(type INSTANCE)
+;+		(allowed-classes Primero)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot Relacion_Menu_Postre
