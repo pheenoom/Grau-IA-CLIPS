@@ -1,4 +1,4 @@
-; Sat May 13 18:36:40 CEST 2017
+; Sat May 13 18:40:35 CEST 2017
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -6,7 +6,6 @@
 ([ontologia_Class0] of  Primero
 
 	(AptoCena TRUE)
-	(Bebida_Menu [ontologia_Class39])
 	(Ingredientes
 		[ontologia_Class29]
 		[ontologia_Class22]
@@ -79,7 +78,6 @@
 
 ([ontologia_Class10004] of  Segundo
 
-	(Bebida_Menu [ontologia_Class27])
 	(Caliente FALSE)
 	(Ingredientes
 		[ontologia_Class10012]
@@ -245,10 +243,6 @@
 	(Nombre "Arroz")
 	(PVP 0.6))
 
-([ontologia_Class10028] of  Bebida
-
-	(Nombre "Cava"))
-
 ([ontologia_Class10030] of  Verdura
 
 	(Mes_Final_Temporada 12)
@@ -301,7 +295,6 @@
 ([ontologia_Class17] of  Primero
 
 	(AptoCena TRUE)
-	(Bebida_Menu [ontologia_Class39])
 	(Ingredientes
 		[ontologia_Class1]
 		[ontologia_Class2]
@@ -336,7 +329,6 @@
 
 	(AptoCena TRUE)
 	(AptoNinos TRUE)
-	(Bebida_Menu [ontologia_Class27])
 	(Caliente TRUE)
 	(Ingredientes
 		[ontologia_Class20014]
@@ -411,7 +403,6 @@
 ([ontologia_Class20005] of  Segundo
 
 	(AptoCena TRUE)
-	(Bebida_Menu [ontologia_Class27])
 	(Caliente TRUE)
 	(Ingredientes
 		[ontologia_Class10018]
@@ -428,7 +419,6 @@
 ([ontologia_Class20006] of  Primero
 
 	(AptoCena TRUE)
-	(Bebida_Menu [ontologia_Class39])
 	(Ingredientes
 		[ontologia_Class10021]
 		[ontologia_Class10022]
@@ -443,7 +433,6 @@
 ([ontologia_Class20007] of  Segundo
 
 	(AptoCena TRUE)
-	(Bebida_Menu [ontologia_Class39])
 	(Caliente TRUE)
 	(Ingredientes
 		[ontologia_Class10024]
@@ -468,7 +457,6 @@
 
 ([ontologia_Class20009] of  Segundo
 
-	(Bebida_Menu [ontologia_Class27])
 	(Caliente TRUE)
 	(Ingredientes
 		[ontologia_Class22]
@@ -512,7 +500,6 @@
 ([ontologia_Class20013] of  Primero
 
 	(AptoCena TRUE)
-	(Bebida_Menu [ontologia_Class27])
 	(Caliente TRUE)
 	(Ingredientes
 		[ontologia_Class10027]
@@ -551,7 +538,6 @@
 ([ontologia_Class20016] of  Primero
 
 	(AptoCena TRUE)
-	(Bebida_Menu [ontologia_Class39])
 	(Caliente TRUE)
 	(Ingredientes
 		[ontologia_Class10030]
@@ -610,14 +596,9 @@
 	(Nombre "Zanahoria")
 	(PVP 0.4))
 
-([ontologia_Class27] of  Bebida
-
-	(Nombre "Vino tinto"))
-
 ([ontologia_Class28] of  Primero
 
 	(AptoCena TRUE)
-	(Bebida_Menu [ontologia_Class27])
 	(Caliente TRUE)
 	(Ingredientes
 		[ontologia_Class24]
@@ -699,7 +680,6 @@
 ([ontologia_Class30004] of  Segundo
 
 	(AptoNinos TRUE)
-	(Bebida_Menu [ontologia_Class27])
 	(Caliente TRUE)
 	(Ingredientes
 		[ontologia_Class30003]
@@ -1095,7 +1075,6 @@
 ([ontologia_Class36] of  Segundo
 
 	(AptoCena TRUE)
-	(Bebida_Menu [ontologia_Class39])
 	(Caliente TRUE)
 	(Ingredientes
 		[ontologia_Class29]
@@ -1120,7 +1099,6 @@
 
 	(AptoCena TRUE)
 	(AptoNinos TRUE)
-	(Bebida_Menu [ontologia_Class27])
 	(Caliente TRUE)
 	(Ingredientes
 		[ontologia_Class38]
@@ -1141,10 +1119,6 @@
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Pollo de corral")
 	(PVP 0.75))
-
-([ontologia_Class39] of  Bebida
-
-	(Nombre "Vino blanco"))
 
 ([ontologia_Class4] of  Derivado
 
@@ -1209,7 +1183,6 @@
 ([ontologia_Class40008] of  Primero
 
 	(AptoCena TRUE)
-	(Bebida_Menu [ontologia_Class39])
 	(Ingredientes
 		[ontologia_Class30027]
 		[ontologia_Class10031]
@@ -1238,7 +1211,6 @@
 
 ([ontologia_Class40010] of  Segundo
 
-	(Bebida_Menu [ontologia_Class27])
 	(Caliente TRUE)
 	(Ingredientes
 		[ontologia_Class40009]
@@ -1663,7 +1635,8 @@
 
 ([ontologia_Class57] of  Bebida
 
-	(Nombre "Agua"))
+	(Nombre "Agua")
+	(PVP 0.0))
 
 ([ontologia_Class58] of  Postre
 
@@ -1816,3 +1789,13 @@
 
 	(Nombre "Gramona Imperial")
 	(PVP 18.0))
+
+([ontologia_Class60027] of  Bebida
+
+	(Nombre "Refresco")
+	(PVP 0.8))
+
+([ontologia_Class60028] of  Bebida
+
+	(Nombre "Cerveza")
+	(PVP 1.2))
