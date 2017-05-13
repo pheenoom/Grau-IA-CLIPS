@@ -1,4 +1,4 @@
-; Sat May 13 20:14:37 CEST 2017
+; Sat May 13 20:58:50 CEST 2017
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -404,7 +404,8 @@
 		[ontologia_Class37]
 		[ontologia_Class36])
 	(PVP 2.0)
-	(Racion Normal))
+	(Racion Normal)
+	(Vegetariano TRUE))
 
 ([ontologia_Class20005] of  Segundo
 
@@ -1476,7 +1477,8 @@
 	(Ingredientes [ontologia_Class10002])
 	(Nombre "Melon")
 	(PVP 0.0)
-	(Racion Normal))
+	(Racion Normal)
+	(Vegetariano TRUE))
 
 ([ontologia_Class50006] of  Postre
 
@@ -1502,7 +1504,8 @@
 	(AptoNinos TRUE)
 	(Ingredientes [ontologia_Class10032])
 	(Nombre "Naranja")
-	(Racion Normal))
+	(Racion Normal)
+	(Vegetariano TRUE))
 
 ([ontologia_Class50008] of  Postre
 
@@ -1510,7 +1513,8 @@
 	(AptoNinos TRUE)
 	(Ingredientes [ontologia_Class10033])
 	(Nombre "Pomelo")
-	(Racion Normal))
+	(Racion Normal)
+	(Vegetariano TRUE))
 
 ([ontologia_Class50009] of  Postre
 
@@ -1523,7 +1527,8 @@
 		[ontologia_Class3])
 	(Nombre "Tarta de Santiago")
 	(PVP 14.0)
-	(Racion Normal))
+	(Racion Normal)
+	(Vegetariano TRUE))
 
 ([ontologia_Class50010] of  Postre
 
