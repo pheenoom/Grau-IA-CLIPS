@@ -1,10 +1,11 @@
-; Sun May 07 21:14:22 CEST 2017
+; Sat May 13 18:36:40 CEST 2017
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
 
 ([ontologia_Class0] of  Primero
 
+	(AptoCena TRUE)
 	(Bebida_Menu [ontologia_Class39])
 	(Ingredientes
 		[ontologia_Class29]
@@ -31,6 +32,8 @@
 
 ([ontologia_Class10000] of  Postre
 
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
 	(Bebida_Menu [ontologia_Class57])
 	(Ingredientes
 		[ontologia_Class10002]
@@ -57,14 +60,14 @@
 	(Mes_Final_Temporada 9)
 	(Mes_Inicio_Temporada 5)
 	(Nombre "Sandia")
-	(PVP 2.0))
+	(PVP 0.5))
 
 ([ontologia_Class10002] of  Fruta
 
 	(Mes_Final_Temporada 10)
 	(Mes_Inicio_Temporada 5)
 	(Nombre "Melon")
-	(PVP 1.5))
+	(PVP 0.75))
 
 ([ontologia_Class10003] of  Verdura
 
@@ -72,7 +75,7 @@
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Calabacín")
-	(PVP 1.5))
+	(PVP 0.8))
 
 ([ontologia_Class10004] of  Segundo
 
@@ -95,7 +98,7 @@
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Puerro")
-	(PVP 2.1))
+	(PVP 1.0))
 
 ([ontologia_Class10007] of  Derivado
 
@@ -103,7 +106,7 @@
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Leche de coco")
-	(PVP 1.5))
+	(PVP 0.7))
 
 ([ontologia_Class10008] of  Cereal
 
@@ -111,7 +114,7 @@
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Masa fresca")
-	(PVP 2.4))
+	(PVP 1.2))
 
 ([ontologia_Class10009] of  Fruta
 
@@ -125,21 +128,21 @@
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Pimienta negra")
-	(PVP 1.0))
+	(PVP 0.3))
 
 ([ontologia_Class10011] of  Verdura
 
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Cebollino")
-	(PVP 1.1))
+	(PVP 0.5))
 
 ([ontologia_Class10012] of  Carne
 
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Presa de cerdo")
-	(PVP 10.0))
+	(PVP 5.0))
 
 ([ontologia_Class10014] of  Frutos_secos
 
@@ -167,21 +170,21 @@
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Calabaza")
-	(PVP 2.0))
+	(PVP 0.9))
 
 ([ontologia_Class10018] of  Carne
 
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Cochinillo de cerdo")
-	(PVP 20.0))
+	(PVP 8.0))
 
 ([ontologia_Class10019] of  Verdura
 
 	(Mes_Final_Temporada 10)
 	(Mes_Inicio_Temporada 3)
 	(Nombre "Boniato")
-	(PVP 2.5))
+	(PVP 0.8))
 
 ([ontologia_Class10020] of  Verdura
 
@@ -195,7 +198,7 @@
 	(Mes_Final_Temporada 6)
 	(Mes_Inicio_Temporada 3)
 	(Nombre "Atún fresco")
-	(PVP 3.0))
+	(PVP 2.0))
 
 ([ontologia_Class10022] of  Condimento
 
@@ -209,21 +212,21 @@
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 6)
 	(Nombre "Nabo japones")
-	(PVP 3.1))
+	(PVP 1.0))
 
 ([ontologia_Class10024] of  Pescado
 
 	(Mes_Final_Temporada 9)
 	(Mes_Inicio_Temporada 4)
 	(Nombre "Cabracho")
-	(PVP 15.0))
+	(PVP 8.0))
 
 ([ontologia_Class10025] of  Marisco
 
 	(Mes_Final_Temporada 10)
 	(Mes_Inicio_Temporada 4)
 	(Nombre "Erizo de mar")
-	(PVP 8.0))
+	(PVP 5.0))
 
 ([ontologia_Class10026] of  Condimento
 
@@ -240,7 +243,7 @@
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Arroz")
-	(PVP 1.25))
+	(PVP 0.6))
 
 ([ontologia_Class10028] of  Bebida
 
@@ -251,21 +254,21 @@
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Lentejas")
-	(PVP 1.3))
+	(PVP 0.7))
 
 ([ontologia_Class10031] of  Marisco
 
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Gambas")
-	(PVP 4.0))
+	(PVP 3.0))
 
 ([ontologia_Class10032] of  Fruta
 
 	(Mes_Final_Temporada 11)
 	(Mes_Inicio_Temporada 4)
 	(Nombre "Naranja")
-	(PVP 0.8))
+	(PVP 0.4))
 
 ([ontologia_Class10033] of  Fruta
 
@@ -293,10 +296,11 @@
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Vinagre de Modena")
-	(PVP 1.3))
+	(PVP 0.7))
 
 ([ontologia_Class17] of  Primero
 
+	(AptoCena TRUE)
 	(Bebida_Menu [ontologia_Class39])
 	(Ingredientes
 		[ontologia_Class1]
@@ -319,17 +323,19 @@
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Tomate Natural")
-	(PVP 1.5))
+	(PVP 0.8))
 
 ([ontologia_Class20] of  Condimento
 
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Ajo")
-	(PVP 0.25))
+	(PVP 0.1))
 
 ([ontologia_Class20000] of  Segundo
 
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
 	(Bebida_Menu [ontologia_Class27])
 	(Caliente TRUE)
 	(Ingredientes
@@ -359,24 +365,26 @@
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Láminas de canelones")
-	(PVP 1.0))
+	(PVP 0.5))
 
 ([ontologia_Class20002] of  Condimento
 
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Oregano")
-	(PVP 0.2))
+	(PVP 0.1))
 
 ([ontologia_Class20003] of  Fruta
 
 	(Mes_Final_Temporada 5)
 	(Mes_Inicio_Temporada 2)
 	(Nombre "Fresa")
-	(PVP 3.0))
+	(PVP 1.0))
 
 ([ontologia_Class20004] of  Postre
 
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
 	(Bebida_Menu [ontologia_Class57])
 	(Ingredientes
 		[ontologia_Class20003]
@@ -402,6 +410,7 @@
 
 ([ontologia_Class20005] of  Segundo
 
+	(AptoCena TRUE)
 	(Bebida_Menu [ontologia_Class27])
 	(Caliente TRUE)
 	(Ingredientes
@@ -418,6 +427,7 @@
 
 ([ontologia_Class20006] of  Primero
 
+	(AptoCena TRUE)
 	(Bebida_Menu [ontologia_Class39])
 	(Ingredientes
 		[ontologia_Class10021]
@@ -432,6 +442,7 @@
 
 ([ontologia_Class20007] of  Segundo
 
+	(AptoCena TRUE)
 	(Bebida_Menu [ontologia_Class39])
 	(Caliente TRUE)
 	(Ingredientes
@@ -453,7 +464,7 @@
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Tomate frito")
-	(PVP 0.7))
+	(PVP 0.4))
 
 ([ontologia_Class20009] of  Segundo
 
@@ -482,24 +493,25 @@
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Vino blanco")
-	(PVP 0.75))
+	(PVP 0.4))
 
 ([ontologia_Class20011] of  Condimento
 
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Laurel")
-	(PVP 0.2))
+	(PVP 0.1))
 
 ([ontologia_Class20012] of  Condimento
 
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Cava")
-	(PVP 1.2))
+	(PVP 0.7))
 
 ([ontologia_Class20013] of  Primero
 
+	(AptoCena TRUE)
 	(Bebida_Menu [ontologia_Class27])
 	(Caliente TRUE)
 	(Ingredientes
@@ -526,7 +538,7 @@
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Carne picada")
-	(PVP 1.2))
+	(PVP 0.5))
 
 ([ontologia_Class20015] of  Derivado
 
@@ -534,10 +546,11 @@
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Queso de oveja")
-	(PVP 1.0))
+	(PVP 0.5))
 
 ([ontologia_Class20016] of  Primero
 
+	(AptoCena TRUE)
 	(Bebida_Menu [ontologia_Class39])
 	(Caliente TRUE)
 	(Ingredientes
@@ -581,14 +594,14 @@
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Pimenton de la Vera dulce")
-	(PVP 1.0))
+	(PVP 0.5))
 
 ([ontologia_Class25] of  Condimento
 
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Pimenton de la Vera picante")
-	(PVP 1.0))
+	(PVP 0.5))
 
 ([ontologia_Class26] of  Verdura
 
@@ -603,6 +616,7 @@
 
 ([ontologia_Class28] of  Primero
 
+	(AptoCena TRUE)
 	(Bebida_Menu [ontologia_Class27])
 	(Caliente TRUE)
 	(Ingredientes
@@ -624,13 +638,14 @@
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Lomo de salmon")
-	(PVP 7.0))
+	(PVP 5.0))
 
 ([ontologia_Class3] of  Frutos_secos
 
 	(Mes_Final_Temporada 1)
 	(Mes_Inicio_Temporada 1)
-	(Nombre "Nueces"))
+	(Nombre "Nueces")
+	(PVP 0.3))
 
 ([ontologia_Class30] of  Verdura
 
@@ -644,10 +659,12 @@
 	(Mes_Final_Temporada 1)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Crema de cacao")
-	(PVP 0.5))
+	(PVP 0.2))
 
 ([ontologia_Class30001] of  Postre
 
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
 	(Bebida_Menu [ontologia_Class57])
 	(Caliente TRUE)
 	(Ingredientes
@@ -663,6 +680,8 @@
 
 ([ontologia_Class30002] of  Postre
 
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
 	(Ingredientes [ontologia_Class10001])
 	(Nombre "Sandia")
 	(PVP 0.0)
@@ -675,10 +694,11 @@
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Macarrones")
-	(PVP 0.4))
+	(PVP 0.2))
 
 ([ontologia_Class30004] of  Segundo
 
+	(AptoNinos TRUE)
 	(Bebida_Menu [ontologia_Class27])
 	(Caliente TRUE)
 	(Ingredientes
@@ -701,6 +721,7 @@
 
 ([ontologia_Class30005] of  Postre
 
+	(AptoNinos TRUE)
 	(Bebida_Menu [ontologia_Class57])
 	(Ingredientes
 		[ontologia_Class30006]
@@ -729,7 +750,7 @@
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Pan")
-	(PVP 0.5))
+	(PVP 0.1))
 
 ([ontologia_Class30007] of  Grasas
 
@@ -743,7 +764,7 @@
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Agua")
-	(PVP 0.2))
+	(PVP 0.1))
 
 ([ontologia_Class30009] of  Condimento
 
@@ -754,6 +775,8 @@
 
 ([ontologia_Class30010] of  Postre
 
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
 	(Bebida_Menu [ontologia_Class57])
 	(Caliente FALSE)
 	(Ingredientes
@@ -781,7 +804,7 @@
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Harina")
-	(PVP 0.8))
+	(PVP 0.4))
 
 ([ontologia_Class30012] of  Derivado
 
@@ -789,7 +812,7 @@
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Levadura")
-	(PVP 0.5))
+	(PVP 0.2))
 
 ([ontologia_Class30013] of  Derivado
 
@@ -797,14 +820,14 @@
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Queso cheddar")
-	(PVP 1.5))
+	(PVP 0.7))
 
 ([ontologia_Class30014] of  Carne
 
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Pavo")
-	(PVP 1.0))
+	(PVP 0.5))
 
 ([ontologia_Class30015] of  Derivado
 
@@ -812,10 +835,12 @@
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Yogur natural")
-	(PVP 0.5))
+	(PVP 0.25))
 
 ([ontologia_Class30016] of  Postre
 
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
 	(Bebida_Menu [ontologia_Class57])
 	(Ingredientes
 		[ontologia_Class30017]
@@ -839,7 +864,7 @@
 	(Mes_Final_Temporada 9)
 	(Mes_Inicio_Temporada 4)
 	(Nombre "Kiwi")
-	(PVP 4.0))
+	(PVP 1.0))
 
 ([ontologia_Class30018] of  Cereal
 
@@ -847,7 +872,7 @@
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Galleta")
-	(PVP 0.5))
+	(PVP 0.1))
 
 ([ontologia_Class30019] of  Derivado
 
@@ -862,7 +887,7 @@
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Chocolate blanco")
-	(PVP 0.5))
+	(PVP 0.2))
 
 ([ontologia_Class30021] of  Condimento
 
@@ -870,17 +895,18 @@
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Chocolate con leche")
-	(PVP 0.5))
+	(PVP 0.2))
 
 ([ontologia_Class30022] of  Condimento
 
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Chocolate negro")
-	(PVP 0.8))
+	(PVP 0.4))
 
 ([ontologia_Class30023] of  Postre
 
+	(AptoNinos TRUE)
 	(Bebida_Menu [ontologia_Class57])
 	(Ingredientes
 		[ontologia_Class30018]
@@ -910,10 +936,11 @@
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Jamon iberico")
-	(PVP 5.0))
+	(PVP 3.0))
 
 ([ontologia_Class30025] of  Primero
 
+	(AptoCena TRUE)
 	(Bebida_Menu [ontologia_Class57])
 	(Ingredientes
 		[ontologia_Class2]
@@ -932,7 +959,7 @@
 	(Mes_Final_Temporada 10)
 	(Mes_Inicio_Temporada 5)
 	(Nombre "Aguacate")
-	(PVP 1.0))
+	(PVP 0.4))
 
 ([ontologia_Class30028] of  Verdura
 
@@ -946,10 +973,11 @@
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Caldo de verduras")
-	(PVP 1.0))
+	(PVP 0.4))
 
 ([ontologia_Class30030] of  Primero
 
+	(AptoCena TRUE)
 	(Caliente FALSE)
 	(Ingredientes
 		[ontologia_Class30028]
@@ -977,17 +1005,18 @@
 	(Mes_Final_Temporada 6)
 	(Mes_Inicio_Temporada 3)
 	(Nombre "Langostinos")
-	(PVP 5.0))
+	(PVP 4.0))
 
 ([ontologia_Class30032] of  Verdura
 
 	(Mes_Final_Temporada 11)
 	(Mes_Inicio_Temporada 9)
 	(Nombre "Setas variadas")
-	(PVP 3.0))
+	(PVP 2.0))
 
 ([ontologia_Class30033] of  Primero
 
+	(AptoCena TRUE)
 	(Bebida_Menu [ontologia_Class57])
 	(Ingredientes
 		[ontologia_Class30032]
@@ -1019,35 +1048,35 @@
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Caldo de ave")
-	(PVP 1.0))
+	(PVP 0.3))
 
 ([ontologia_Class30035] of  Condimento
 
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Vinage de vino")
-	(PVP 0.8))
+	(PVP 0.4))
 
 ([ontologia_Class31] of  Condimento
 
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Salsa de soja")
-	(PVP 1.2))
+	(PVP 0.6))
 
 ([ontologia_Class32] of  Condimento
 
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Miel")
-	(PVP 1.8))
+	(PVP 0.8))
 
 ([ontologia_Class33] of  Verdura
 
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Jengibre fresco")
-	(PVP 1.8))
+	(PVP 1.3))
 
 ([ontologia_Class34] of  Grasas
 
@@ -1061,10 +1090,11 @@
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Sal")
-	(PVP 0.2))
+	(PVP 0.1))
 
 ([ontologia_Class36] of  Segundo
 
+	(AptoCena TRUE)
 	(Bebida_Menu [ontologia_Class39])
 	(Caliente TRUE)
 	(Ingredientes
@@ -1088,6 +1118,8 @@
 
 ([ontologia_Class37] of  Segundo
 
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
 	(Bebida_Menu [ontologia_Class27])
 	(Caliente TRUE)
 	(Ingredientes
@@ -1108,7 +1140,7 @@
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Pollo de corral")
-	(PVP 1.5))
+	(PVP 0.75))
 
 ([ontologia_Class39] of  Bebida
 
@@ -1120,7 +1152,7 @@
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Queso de cabra")
-	(PVP 1.0))
+	(PVP 0.5))
 
 ([ontologia_Class40] of  Condimento
 
@@ -1129,15 +1161,22 @@
 	(Nombre "Perejil")
 	(PVP 0.1))
 
+([ontologia_Class40000] of  Tinto
+
+	(Nombre "Vina Albali Tinto Reserva")
+	(PVP 2.99))
+
 ([ontologia_Class40003] of  Fruta
 
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Manzana")
-	(PVP 1.05))
+	(PVP 0.55))
 
 ([ontologia_Class40004] of  Postre
 
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
 	(Ingredientes [ontologia_Class30017])
 	(Nombre "Kiwi")
 	(PVP 0.0)
@@ -1150,7 +1189,7 @@
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Chorizo")
-	(PVP 1.0))
+	(PVP 0.2))
 
 ([ontologia_Class40006] of  Derivado
 
@@ -1158,17 +1197,18 @@
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Queso parmesano")
-	(PVP 2.0))
+	(PVP 1.0))
 
 ([ontologia_Class40007] of  Condimento
 
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Salsa rosa")
-	(PVP 0.5))
+	(PVP 0.25))
 
 ([ontologia_Class40008] of  Primero
 
+	(AptoCena TRUE)
 	(Bebida_Menu [ontologia_Class39])
 	(Ingredientes
 		[ontologia_Class30027]
@@ -1194,7 +1234,7 @@
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Judias")
-	(PVP 1.0))
+	(PVP 0.8))
 
 ([ontologia_Class40010] of  Segundo
 
@@ -1224,17 +1264,19 @@
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Panceta")
-	(PVP 1.5))
+	(PVP 0.75))
 
 ([ontologia_Class40012] of  Carne
 
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Morcilla")
-	(PVP 2.5))
+	(PVP 0.9))
 
 ([ontologia_Class40013] of  Postre
 
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
 	(Bebida_Menu [ontologia_Class57])
 	(Ingredientes
 		[ontologia_Class50]
@@ -1260,6 +1302,8 @@
 
 ([ontologia_Class40014] of  Postre
 
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
 	(Bebida_Menu [ontologia_Class57])
 	(Ingredientes
 		[ontologia_Class50]
@@ -1289,7 +1333,7 @@
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Guisantes")
-	(PVP 0.8))
+	(PVP 0.4))
 
 ([ontologia_Class40016] of  Verdura
 
@@ -1303,10 +1347,12 @@
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Mayonesa")
-	(PVP 1.0))
+	(PVP 0.5))
 
 ([ontologia_Class40018] of  Segundo
 
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
 	(Bebida_Menu [ontologia_Class57])
 	(Ingredientes
 		[ontologia_Class40016]
@@ -1334,7 +1380,7 @@
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Atún en lata")
-	(PVP 2.0))
+	(PVP 0.5))
 
 ([ontologia_Class41] of  Grasas
 
@@ -1342,14 +1388,14 @@
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Mantequilla")
-	(PVP 0.75))
+	(PVP 0.5))
 
 ([ontologia_Class42] of  Condimento
 
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Esencia de vainilla")
-	(PVP 1.0))
+	(PVP 0.5))
 
 ([ontologia_Class43] of  Derivado
 
@@ -1357,7 +1403,7 @@
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Queso philadelphia")
-	(PVP 0.8))
+	(PVP 0.4))
 
 ([ontologia_Class44] of  Condimento
 
@@ -1365,10 +1411,12 @@
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Nata")
-	(PVP 1.5))
+	(PVP 0.4))
 
 ([ontologia_Class46] of  Postre
 
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
 	(Ingredientes
 		[ontologia_Class52]
 		[ontologia_Class55]
@@ -1396,8 +1444,30 @@
 	(Nombre "Leche de vaca")
 	(PVP 0.25))
 
+([ontologia_Class50001] of  Tinto
+
+	(Nombre "Marques del Cerro")
+	(PVP 3.99))
+
+([ontologia_Class50002] of  Tinto
+
+	(Nombre "Garnacha tintorera, Syrah y Monastrell")
+	(PVP 5.25))
+
+([ontologia_Class50003] of  Tinto
+
+	(Nombre "Fincas St Martin")
+	(PVP 6.9))
+
+([ontologia_Class50004] of  Tinto
+
+	(Nombre "Vina Izadi")
+	(PVP 8.9))
+
 ([ontologia_Class50005] of  Postre
 
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
 	(Ingredientes [ontologia_Class10002])
 	(Nombre "Melon")
 	(PVP 0.0)
@@ -1405,6 +1475,8 @@
 
 ([ontologia_Class50006] of  Postre
 
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
 	(Ingredientes
 		[ontologia_Class30011]
 		[ontologia_Class52]
@@ -1419,12 +1491,16 @@
 
 ([ontologia_Class50007] of  Postre
 
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
 	(Ingredientes [ontologia_Class10032])
 	(Nombre "Naranja")
 	(Racion Normal))
 
 ([ontologia_Class50008] of  Postre
 
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
 	(Ingredientes [ontologia_Class10033])
 	(Nombre "Pomelo")
 	(Racion Normal))
@@ -1443,6 +1519,8 @@
 
 ([ontologia_Class50010] of  Postre
 
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
 	(Ingredientes
 		[ontologia_Class52]
 		[ontologia_Class50]
@@ -1455,6 +1533,9 @@
 
 ([ontologia_Class50011] of  Segundo
 
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
+	(Caliente TRUE)
 	(Ingredientes
 		[ontologia_Class30006]
 		[ontologia_Class4]
@@ -1466,6 +1547,9 @@
 
 ([ontologia_Class50012] of  Segundo
 
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
+	(Caliente TRUE)
 	(Ingredientes
 		[ontologia_Class20014]
 		[ontologia_Class30006])
@@ -1475,6 +1559,8 @@
 
 ([ontologia_Class50013] of  Segundo
 
+	(AptoCena TRUE)
+	(Caliente TRUE)
 	(Ingredientes
 		[ontologia_Class41]
 		[ontologia_Class10032]
@@ -1492,7 +1578,7 @@
 	(Mes_Final_Temporada 1)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Pato")
-	(PVP 3.0))
+	(PVP 1.5))
 
 ([ontologia_Class50018] of  Derivado
 
@@ -1503,6 +1589,8 @@
 
 ([ontologia_Class50022] of  Primero
 
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
 	(Ingredientes
 		[ontologia_Class20014]
 		[ontologia_Class30006])
@@ -1512,6 +1600,7 @@
 
 ([ontologia_Class50023] of  Primero
 
+	(AptoCena TRUE)
 	(Ingredientes
 		[ontologia_Class10031]
 		[ontologia_Class30028]
@@ -1529,6 +1618,8 @@
 
 ([ontologia_Class50024] of  Primero
 
+	(AptoCena FALSE)
+	(AptoNinos TRUE)
 	(Ingredientes
 		[ontologia_Class30011]
 		[ontologia_Class10012]
@@ -1547,21 +1638,21 @@
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Azucar")
-	(PVP 0.3))
+	(PVP 0.12))
 
 ([ontologia_Class54] of  Condimento
 
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Vainilla")
-	(PVP 2.0))
+	(PVP 0.8))
 
 ([ontologia_Class55] of  Condimento
 
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Canela")
-	(PVP 1.2))
+	(PVP 0.6))
 
 ([ontologia_Class56] of  Condimento
 
@@ -1576,6 +1667,8 @@
 
 ([ontologia_Class58] of  Postre
 
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
 	(Ingredientes
 		[ontologia_Class52]
 		[ontologia_Class59]
@@ -1605,11 +1698,121 @@
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Gelatina en polvo")
-	(PVP 0.4))
+	(PVP 0.2))
 
 ([ontologia_Class60] of  Condimento
 
 	(Mes_Final_Temporada 12)
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Mermelada de fresa")
-	(PVP 2.35))
+	(PVP 0.7))
+
+([ontologia_Class60005] of  Tinto
+
+	(Nombre "Cathar Roble Ribera del Duero")
+	(PVP 9.0))
+
+([ontologia_Class60006] of  Tinto
+
+	(Nombre "Vina Alberdi Tinto Crianza")
+	(PVP 11.9))
+
+([ontologia_Class60007] of  Tinto
+
+	(Nombre "Vina Real Cuvee Especial Reserva")
+	(PVP 15.0))
+
+([ontologia_Class60008] of  Tinto
+
+	(Nombre "Baron de Ley")
+	(PVP 18.25))
+
+([ontologia_Class60009] of  Blanco
+
+	(Nombre "Pluvium")
+	(PVP 1.35))
+
+([ontologia_Class60010] of  Blanco
+
+	(Nombre "Castelo de Rueda")
+	(PVP 4.76))
+
+([ontologia_Class60011] of  Blanco
+
+	(Nombre "Montespina Sauvignon")
+	(PVP 5.0))
+
+([ontologia_Class60012] of  Blanco
+
+	(Nombre "Pilas Bonas")
+	(PVP 6.25))
+
+([ontologia_Class60013] of  Blanco
+
+	(Nombre "Condes de Albarei Albarino")
+	(PVP 8.2))
+
+([ontologia_Class60014] of  Blanco
+
+	(Nombre "Naia")
+	(PVP 9.4))
+
+([ontologia_Class60015] of  Blanco
+
+	(Nombre "Dominio de Tares, Cepas Viejas")
+	(PVP 12.95))
+
+([ontologia_Class60016] of  Blanco
+
+	(Nombre "Vina Godeval")
+	(PVP 14.5))
+
+([ontologia_Class60017] of  Blanco
+
+	(Nombre "Abadia Retuerta Seleccion Especial")
+	(PVP 18.9))
+
+([ontologia_Class60018] of  Cava
+
+	(Nombre "Rene Barbier Petillan")
+	(PVP 2.2))
+
+([ontologia_Class60019] of  Cava
+
+	(Nombre "Mas Fontallada Brut Nature")
+	(PVP 4.25))
+
+([ontologia_Class60020] of  Cava
+
+	(Nombre "Alberte Ribeiro")
+	(PVP 5.6))
+
+([ontologia_Class60021] of  Cava
+
+	(Nombre "Peralada Brut Reserva")
+	(PVP 6.29))
+
+([ontologia_Class60022] of  Cava
+
+	(Nombre "Anna Codorniu Brut Nature")
+	(PVP 8.0))
+
+([ontologia_Class60023] of  Cava
+
+	(Nombre "Babel")
+	(PVP 9.0))
+
+([ontologia_Class60024] of  Cava
+
+	(Nombre "Conde de Haro")
+	(PVP 12.0))
+
+([ontologia_Class60025] of  Cava
+
+	(Nombre "Cuvee Maria del Mar Gran Reserva")
+	(PVP 15.0))
+
+([ontologia_Class60026] of  Cava
+
+	(Nombre "Gramona Imperial")
+	(PVP 18.0))
