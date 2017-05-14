@@ -7,15 +7,121 @@
 (defclass %3ACLIPS_TOP_LEVEL_SLOT_CLASS "Fake class to save top-level slot information"
 	(is-a USER)
 	(role abstract)
+	(single-slot Tipo_Evento_Familiar
+		(type SYMBOL)
+		(allowed-values Boda Bautizo)
+		(default Boda)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot Caliente
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Cantidad
+		(type SYMBOL)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Relacion_Menu_Evento
+		(type INSTANCE)
+;+		(allowed-classes Evento)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot ontologia_Class40001
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot Ingredientes
+		(type INSTANCE)
+;+		(allowed-classes Ingrediente)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(single-slot Lactosa
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Mes_Final_Temporada
+		(type INTEGER)
+		(range 1 12)
+		(default 1)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot Tipo_Evento_Congreso
+		(type SYMBOL)
+		(allowed-values Cena Comida)
+		(default Comida)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot Origen
+		(type SYMBOL)
+		(allowed-values Japonesa Italiana Espa%C3%B1a)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot PVP
+		(type FLOAT)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Relacion_Menu_Segundo
+		(type INSTANCE)
+;+		(allowed-classes Segundo)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot Platos_Compatibles
+		(type INSTANCE)
+;+		(allowed-classes Plato)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(single-slot Racion
+		(type SYMBOL)
+		(allowed-values Normal Abundante Peque%C3%B1a)
+		(default Normal)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(single-slot Bebida_Menu
 		(type INSTANCE)
 ;+		(allowed-classes Bebida)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot Fecha_Celebracion
+	(single-slot Mes_Inicio_Temporada
 		(type INTEGER)
 		(range 1 12)
+		(default 1)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot Relacion_Menu_Primero
+		(type INSTANCE)
+;+		(allowed-classes Primero)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot Vegetariano
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Gluten
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Numero_Comensales
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot AptoNinos
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot NombreAlergia
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot Relacion_Menu_Postre
+		(type INSTANCE)
+;+		(allowed-classes Postre)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot Estilo
 		(type SYMBOL)
@@ -26,137 +132,31 @@
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot Mes_Inicio_Temporada
-		(type INTEGER)
-		(range 1 12)
-		(default 1)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot Relacion_Menu_Postre
-		(type INSTANCE)
-;+		(allowed-classes Postre)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot Mes_Final_Temporada
-		(type INTEGER)
-		(range 1 12)
-		(default 1)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot Origen
-		(type SYMBOL)
-		(allowed-values Japonesa Italiana Espa%C3%B1a)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Cantidad
-		(type SYMBOL)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Racion
-		(type SYMBOL)
-		(allowed-values Normal Abundante Peque%C3%B1a)
-		(default Normal)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot Platos_Compatibles
-		(type INSTANCE)
-;+		(allowed-classes Plato)
-		(cardinality 1 ?VARIABLE)
-		(create-accessor read-write))
-	(single-slot AptoNinos
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Gluten
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot PVP
-		(type FLOAT)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Tipo_Evento_Familiar
-		(type SYMBOL)
-		(allowed-values Boda Bautizo)
-		(default Boda)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot ontologia_Class40001
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot NombreAlergia
-		(type STRING)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(single-slot Relacion_Menu_Bebida
 		(type INSTANCE)
 ;+		(allowed-classes Bebida)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot Caliente
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
+	(single-slot Fecha_Celebracion
+		(type INTEGER)
+		(range 1 12)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Tipo_Evento_Congreso
-		(type SYMBOL)
-		(allowed-values Cena Comida)
-		(default Comida)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot Relacion_Menu_Primero
-		(type INSTANCE)
-;+		(allowed-classes Primero)
-;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot AptoCena
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Vegetariano
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Relacion_Menu_Segundo
-		(type INSTANCE)
-;+		(allowed-classes Segundo)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot Numero_Comensales
-		(type INTEGER)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Lactosa
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot Ingredientes
-		(type INSTANCE)
-;+		(allowed-classes Ingrediente)
-		(cardinality 1 ?VARIABLE)
-		(create-accessor read-write))
-	(single-slot Relacion_Menu_Evento
-		(type INSTANCE)
-;+		(allowed-classes Evento)
-;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
 (defclass Bebida
 	(is-a USER)
 	(role concrete)
-	(single-slot Nombre
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(single-slot PVP
 		(type FLOAT)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Nombre
+		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
@@ -179,12 +179,12 @@
 (defclass Evento
 	(is-a USER)
 	(role concrete)
-	(single-slot Nombre
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(single-slot Numero_Comensales
 		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Nombre
+		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot Fecha_Celebracion
@@ -216,9 +216,19 @@
 (defclass Plato
 	(is-a USER)
 	(role concrete)
-	(single-slot Origen
+	(multislot Ingredientes
+		(type INSTANCE)
+;+		(allowed-classes Ingrediente)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(single-slot Vegetariano
 		(type SYMBOL)
-		(allowed-values Japonesa Italiana Espa%C3%B1a)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot AptoNinos
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot Racion
@@ -227,19 +237,23 @@
 		(default Normal)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(single-slot Origen
+		(type SYMBOL)
+		(allowed-values Japonesa Italiana Espa%C3%B1a)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Caliente
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(single-slot Bebida_Menu
 		(type INSTANCE)
 ;+		(allowed-classes Bebida)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot AptoCena
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Vegetariano
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
+	(single-slot PVP
+		(type FLOAT)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot Estilo
@@ -251,29 +265,15 @@
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(single-slot AptoCena
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(multislot Platos_Compatibles
 		(type INSTANCE)
 ;+		(allowed-classes Plato)
 		(cardinality 1 ?VARIABLE)
-		(create-accessor read-write))
-	(single-slot Caliente
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot Ingredientes
-		(type INSTANCE)
-;+		(allowed-classes Ingrediente)
-		(cardinality 1 ?VARIABLE)
-		(create-accessor read-write))
-	(single-slot AptoNinos
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot PVP
-		(type FLOAT)
-;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
 (defclass Primero
@@ -291,8 +291,13 @@
 (defclass Ingrediente
 	(is-a USER)
 	(role concrete)
-	(single-slot Nombre
-		(type STRING)
+	(single-slot PVP
+		(type FLOAT)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Gluten
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot Lactosa
@@ -300,22 +305,17 @@
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot Mes_Inicio_Temporada
+	(single-slot Nombre
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Mes_Final_Temporada
 		(type INTEGER)
 		(range 1 12)
 		(default 1)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot Gluten
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot PVP
-		(type FLOAT)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Mes_Final_Temporada
+	(single-slot Mes_Inicio_Temporada
 		(type INTEGER)
 		(range 1 12)
 		(default 1)
@@ -365,18 +365,19 @@
 (defclass Menu
 	(is-a USER)
 	(role concrete)
-	(single-slot Nombre
-		(type STRING)
-;+		(cardinality 0 1)
+	(single-slot Relacion_Menu_Primero
+		(type INSTANCE)
+;+		(allowed-classes Primero)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot Relacion_Menu_Segundo
 		(type INSTANCE)
 ;+		(allowed-classes Segundo)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot Relacion_Menu_Bebida
+	(single-slot Relacion_Menu_Postre
 		(type INSTANCE)
-;+		(allowed-classes Bebida)
+;+		(allowed-classes Postre)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot Relacion_Menu_Evento
@@ -384,16 +385,17 @@
 ;+		(allowed-classes Evento)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot Relacion_Menu_Primero
-		(type INSTANCE)
-;+		(allowed-classes Primero)
-;+		(cardinality 1 1)
+	(single-slot Nombre
+		(type STRING)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot Relacion_Menu_Postre
+	(single-slot Relacion_Menu_Bebida
 		(type INSTANCE)
-;+		(allowed-classes Postre)
+;+		(allowed-classes Bebida)
 ;+		(cardinality 1 1)
 		(create-accessor read-write)))
+
+
 ; Fri May 05 01:04:46 CEST 2017
 ;
 ;+ (version "3.5")
@@ -404,6 +406,7 @@
 	([ontologia_Class0] of  Primero
 
 		(AptoCena TRUE)
+		(Bebida_Menu [ontologia_Class57])
 		(Estilo Moderno)
 		(Ingredientes
 			[ontologia_Class29]
@@ -478,6 +481,7 @@
 
 	([ontologia_Class10004] of  Segundo
 
+		(Bebida_Menu [ontologia_Class57])
 		(Caliente FALSE)
 		(Estilo Sibarita)
 		(Ingredientes
@@ -696,7 +700,8 @@
 	([ontologia_Class17] of  Primero
 
 		(AptoCena TRUE)
-		(Estilo Moderno)
+		(Bebida_Menu [ontologia_Class57])
+		(Estilo Tradicional)
 		(Ingredientes
 			[ontologia_Class1]
 			[ontologia_Class2]
@@ -709,7 +714,7 @@
 			[ontologia_Class37]
 			[ontologia_Class28]
 			[ontologia_Class36])
-		(PVP 1.0)
+		(PVP 2.0)
 		(Racion Normal)
 		(Vegetariano TRUE))
 
@@ -731,6 +736,7 @@
 
 		(AptoCena TRUE)
 		(AptoNinos TRUE)
+		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
 		(Estilo Clasico)
 		(Ingredientes
@@ -801,12 +807,14 @@
 			[ontologia_Class20005]
 			[ontologia_Class37]
 			[ontologia_Class36])
-		(PVP 2.0)
-		(Racion Normal))
+		(PVP 1.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
 
 	([ontologia_Class20005] of  Segundo
 
 		(AptoCena TRUE)
+		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
 		(Estilo Moderno)
 		(Ingredientes
@@ -818,12 +826,13 @@
 		(Platos_Compatibles
 			[ontologia_Class17]
 			[ontologia_Class28])
-		(PVP 5.0)
+		(PVP 7.0)
 		(Racion Abundante))
 
 	([ontologia_Class20006] of  Primero
 
 		(AptoCena TRUE)
+		(Bebida_Menu [ontologia_Class57])
 		(Estilo Sibarita)
 		(Ingredientes
 			[ontologia_Class10021]
@@ -839,6 +848,7 @@
 	([ontologia_Class20007] of  Segundo
 
 		(AptoCena TRUE)
+		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
 		(Estilo Sibarita)
 		(Ingredientes
@@ -852,7 +862,7 @@
 		(Platos_Compatibles
 			[ontologia_Class20006]
 			[ontologia_Class0])
-		(PVP 8.0)
+		(PVP 9.0)
 		(Racion Normal))
 
 	([ontologia_Class20008] of  Condimento
@@ -864,6 +874,7 @@
 
 	([ontologia_Class20009] of  Segundo
 
+		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
 		(Estilo Clasico)
 		(Ingredientes
@@ -874,7 +885,8 @@
 			[ontologia_Class24]
 			[ontologia_Class10026]
 			[ontologia_Class15]
-			[ontologia_Class20011])
+			[ontologia_Class20011]
+			[ontologia_Class70001])
 		(Nombre "Asadura de cordero")
 		(Platos_Compatibles
 			[ontologia_Class10004]
@@ -908,6 +920,7 @@
 	([ontologia_Class20013] of  Primero
 
 		(AptoCena TRUE)
+		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
 		(Estilo Moderno)
 		(Ingredientes
@@ -926,7 +939,7 @@
 			[ontologia_Class37]
 			[ontologia_Class20007]
 			[ontologia_Class36])
-		(PVP 6.0)
+		(PVP 3.0)
 		(Racion Normal))
 
 	([ontologia_Class20014] of  Carne
@@ -947,8 +960,9 @@
 	([ontologia_Class20016] of  Primero
 
 		(AptoCena TRUE)
+		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
-		(Estilo Moderno)
+		(Estilo Clasico)
 		(Ingredientes
 			[ontologia_Class10030]
 			[ontologia_Class15]
@@ -968,7 +982,7 @@
 			[ontologia_Class20005]
 			[ontologia_Class20007]
 			[ontologia_Class36])
-		(PVP 2.0)
+		(PVP 5.5)
 		(Racion Abundante))
 
 	([ontologia_Class22] of  Verdura
@@ -1009,6 +1023,7 @@
 	([ontologia_Class28] of  Primero
 
 		(AptoCena TRUE)
+		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
 		(Estilo Tradicional)
 		(Ingredientes
@@ -1023,7 +1038,7 @@
 		(Platos_Compatibles
 			[ontologia_Class17]
 			[ontologia_Class0])
-		(PVP 3.0)
+		(PVP 1.2)
 		(Racion Normal))
 
 	([ontologia_Class29] of  Pescado
@@ -1062,11 +1077,11 @@
 		(Caliente TRUE)
 		(Estilo Clasico)
 		(Ingredientes
-			[ontologia_Class30011]
 			[ontologia_Class50]
-			[ontologia_Class41]
 			[ontologia_Class30000]
-			[ontologia_Class35])
+			[ontologia_Class35]
+			[ontologia_Class70078]
+			[ontologia_Class70074])
 		(Nombre "Crepes de Nutella")
 		(PVP 0.3)
 		(Racion Normal)
@@ -1076,9 +1091,11 @@
 
 		(AptoCena TRUE)
 		(AptoNinos TRUE)
+		(Bebida_Menu [ontologia_Class57])
+		(Estilo Clasico)
 		(Ingredientes [ontologia_Class10001])
-		(Nombre "Sandia")
-		(PVP 0.0)
+		(Nombre "Bol de Sandia")
+		(PVP 0.5)
 		(Racion Normal)
 		(Vegetariano TRUE))
 
@@ -1093,6 +1110,7 @@
 	([ontologia_Class30004] of  Segundo
 
 		(AptoNinos TRUE)
+		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
 		(Estilo Clasico)
 		(Ingredientes
@@ -1137,7 +1155,7 @@
 			[ontologia_Class0]
 			[ontologia_Class20009]
 			[ontologia_Class37])
-		(PVP 4.0)
+		(PVP 1.25)
 		(Racion Abundante)
 		(Vegetariano TRUE))
 
@@ -1178,13 +1196,13 @@
 		(Caliente FALSE)
 		(Estilo Moderno)
 		(Ingredientes
-			[ontologia_Class30011]
 			[ontologia_Class30012]
 			[ontologia_Class30013]
 			[ontologia_Class30014]
 			[ontologia_Class15]
 			[ontologia_Class30015]
-			[ontologia_Class35])
+			[ontologia_Class35]
+			[ontologia_Class70078])
 		(Nombre "Muffins salados de pavo con queso Cheedar")
 		(Platos_Compatibles
 			[ontologia_Class20016]
@@ -1193,7 +1211,7 @@
 			[ontologia_Class10004]
 			[ontologia_Class20005]
 			[ontologia_Class20007])
-		(PVP 5.0)
+		(PVP 1.1)
 		(Racion Peque%C3%B1a))
 
 	([ontologia_Class30011] of  Cereal
@@ -1240,7 +1258,7 @@
 		(AptoCena TRUE)
 		(AptoNinos TRUE)
 		(Bebida_Menu [ontologia_Class57])
-		(Estilo Moderno)
+		(Estilo Clasico)
 		(Ingredientes
 			[ontologia_Class30017]
 			[ontologia_Class52]
@@ -1255,6 +1273,7 @@
 			[ontologia_Class10004]
 			[ontologia_Class20007]
 			[ontologia_Class36])
+		(PVP 1.15)
 		(Racion Normal)
 		(Vegetariano TRUE))
 
@@ -1307,16 +1326,17 @@
 
 		(AptoNinos TRUE)
 		(Bebida_Menu [ontologia_Class57])
+		(Estilo Tradicional)
 		(Ingredientes
 			[ontologia_Class30018]
-			[ontologia_Class41]
 			[ontologia_Class44]
 			[ontologia_Class50]
 			[ontologia_Class30019]
 			[ontologia_Class30008]
 			[ontologia_Class30020]
 			[ontologia_Class30021]
-			[ontologia_Class30022])
+			[ontologia_Class30022]
+			[ontologia_Class70074])
 		(Nombre "Tarta de tres chocolates")
 		(Platos_Compatibles
 			[ontologia_Class20013]
@@ -1326,7 +1346,7 @@
 			[ontologia_Class20005]
 			[ontologia_Class37]
 			[ontologia_Class36])
-		(PVP 4.0)
+		(PVP 3.4)
 		(Racion Normal)
 		(Vegetariano TRUE))
 
@@ -1351,7 +1371,7 @@
 			[ontologia_Class35]
 			[ontologia_Class30024])
 		(Nombre "Salmorejo cordoves")
-		(PVP 2.0)
+		(PVP 17.0)
 		(Racion Normal))
 
 	([ontologia_Class30027] of  Fruta
@@ -1378,6 +1398,7 @@
 	([ontologia_Class30030] of  Primero
 
 		(AptoCena TRUE)
+		(Bebida_Menu [ontologia_Class57])
 		(Caliente FALSE)
 		(Estilo Sibarita)
 		(Ingredientes
@@ -1497,7 +1518,9 @@
 	([ontologia_Class36] of  Segundo
 
 		(AptoCena TRUE)
+		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
+		(Estilo Tradicional)
 		(Ingredientes
 			[ontologia_Class29]
 			[ontologia_Class22]
@@ -1521,6 +1544,7 @@
 
 		(AptoCena TRUE)
 		(AptoNinos TRUE)
+		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
 		(Estilo Clasico)
 		(Ingredientes
@@ -1574,9 +1598,11 @@
 
 		(AptoCena TRUE)
 		(AptoNinos TRUE)
+		(Bebida_Menu [ontologia_Class57])
+		(Estilo Clasico)
 		(Ingredientes [ontologia_Class30017])
-		(Nombre "Kiwi")
-		(PVP 0.0)
+		(Nombre "Bol de Kiwis")
+		(PVP 0.5)
 		(Racion Normal)
 		(Vegetariano TRUE))
 
@@ -1606,6 +1632,7 @@
 	([ontologia_Class40008] of  Primero
 
 		(AptoCena TRUE)
+		(Bebida_Menu [ontologia_Class57])
 		(Estilo Clasico)
 		(Ingredientes
 			[ontologia_Class30027]
@@ -1635,6 +1662,7 @@
 
 	([ontologia_Class40010] of  Segundo
 
+		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
 		(Estilo Tradicional)
 		(Ingredientes
@@ -1654,6 +1682,7 @@
 			[ontologia_Class30004]
 			[ontologia_Class37]
 			[ontologia_Class36])
+		(PVP 2.45)
 		(Racion Normal)
 		(Vegetariano FALSE))
 
@@ -1683,7 +1712,7 @@
 			[ontologia_Class54]
 			[ontologia_Class10009]
 			[ontologia_Class52]
-			[ontologia_Class30011])
+			[ontologia_Class70078])
 		(Nombre "Natillas caseras")
 		(Platos_Compatibles
 			[ontologia_Class28]
@@ -1695,7 +1724,7 @@
 			[ontologia_Class30004]
 			[ontologia_Class37]
 			[ontologia_Class36])
-		(PVP 2.0)
+		(PVP 1.25)
 		(Racion Normal)
 		(Vegetariano TRUE))
 
@@ -1704,14 +1733,14 @@
 		(AptoCena TRUE)
 		(AptoNinos TRUE)
 		(Bebida_Menu [ontologia_Class57])
-		(Estilo Tradicional)
+		(Estilo Clasico)
 		(Ingredientes
 			[ontologia_Class50]
-			[ontologia_Class10027]
 			[ontologia_Class10009]
 			[ontologia_Class52]
 			[ontologia_Class55]
-			[ontologia_Class41])
+			[ontologia_Class70054]
+			[ontologia_Class70074])
 		(Nombre "Arroz con leche casero")
 		(Origen Espa%C3%B1a)
 		(Platos_Compatibles
@@ -1725,7 +1754,7 @@
 			[ontologia_Class30004]
 			[ontologia_Class37]
 			[ontologia_Class36])
-		(PVP 2.0)
+		(PVP 1.25)
 		(Racion Normal)
 		(Vegetariano TRUE))
 
@@ -1774,7 +1803,7 @@
 			[ontologia_Class30004]
 			[ontologia_Class37]
 			[ontologia_Class36])
-		(PVP 2.0)
+		(PVP 9.0)
 		(Racion Normal))
 
 	([ontologia_Class40019] of  Pescado
@@ -1819,7 +1848,8 @@
 
 		(AptoCena TRUE)
 		(AptoNinos TRUE)
-		(Estilo Clasico)
+		(Bebida_Menu [ontologia_Class57])
+		(Estilo Tradicional)
 		(Ingredientes
 			[ontologia_Class52]
 			[ontologia_Class55]
@@ -1847,6 +1877,21 @@
 		(Nombre "Leche de vaca")
 		(PVP 0.25))
 
+	([ontologia_Class50000] of  Primero
+
+		(Bebida_Menu [ontologia_Class57])
+		(Estilo Moderno)
+		(Ingredientes
+			[ontologia_Class22]
+			[ontologia_Class44]
+			[ontologia_Class35]
+			[ontologia_Class10026]
+			[ontologia_Class30032])
+		(Nombre "Crema de hongos y setas al tomillo")
+		(PVP 2.3)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
 	([ontologia_Class50001] of  Tinto
 
 		(Nombre "Marques del Cerro")
@@ -1871,23 +1916,27 @@
 
 		(AptoCena TRUE)
 		(AptoNinos TRUE)
+		(Bebida_Menu [ontologia_Class57])
+		(Estilo Clasico)
 		(Ingredientes [ontologia_Class10002])
-		(Nombre "Melon")
-		(PVP 0.0)
-		(Racion Normal))
+		(Nombre "Bol de Melon")
+		(PVP 0.5)
+		(Racion Normal)
+		(Vegetariano TRUE))
 
 	([ontologia_Class50006] of  Postre
 
 		(AptoCena TRUE)
 		(AptoNinos TRUE)
-		(Estilo Tradicional)
+		(Bebida_Menu [ontologia_Class57])
+		(Estilo Moderno)
 		(Ingredientes
-			[ontologia_Class30011]
 			[ontologia_Class52]
 			[ontologia_Class32]
 			[ontologia_Class30012]
 			[ontologia_Class30008]
-			[ontologia_Class30000])
+			[ontologia_Class30000]
+			[ontologia_Class70078])
 		(Nombre "Dorayakis caseros de chocolate")
 		(Origen Japonesa)
 		(PVP 0.4)
@@ -1898,35 +1947,46 @@
 
 		(AptoCena TRUE)
 		(AptoNinos TRUE)
+		(Bebida_Menu [ontologia_Class57])
+		(Estilo Clasico)
 		(Ingredientes [ontologia_Class10032])
-		(Nombre "Naranja")
-		(Racion Normal))
+		(Nombre "Bol de Naranjas")
+		(PVP 0.5)
+		(Racion Normal)
+		(Vegetariano TRUE))
 
 	([ontologia_Class50008] of  Postre
 
 		(AptoCena TRUE)
 		(AptoNinos TRUE)
+		(Bebida_Menu [ontologia_Class57])
+		(Estilo Clasico)
 		(Ingredientes [ontologia_Class10033])
-		(Nombre "Pomelo")
-		(Racion Normal))
+		(Nombre "Bol de Pomelos")
+		(PVP 0.5)
+		(Racion Normal)
+		(Vegetariano TRUE))
 
 	([ontologia_Class50009] of  Postre
 
+		(Bebida_Menu [ontologia_Class57])
 		(Estilo Tradicional)
 		(Ingredientes
 			[ontologia_Class52]
 			[ontologia_Class10009]
-			[ontologia_Class41]
 			[ontologia_Class55]
-			[ontologia_Class3])
+			[ontologia_Class3]
+			[ontologia_Class70074])
 		(Nombre "Tarta de Santiago")
-		(PVP 14.0)
-		(Racion Normal))
+		(PVP 1.8)
+		(Racion Normal)
+		(Vegetariano TRUE))
 
 	([ontologia_Class50010] of  Postre
 
 		(AptoCena TRUE)
 		(AptoNinos TRUE)
+		(Bebida_Menu [ontologia_Class57])
 		(Estilo Tradicional)
 		(Ingredientes
 			[ontologia_Class52]
@@ -1936,8 +1996,9 @@
 			[ontologia_Class54])
 		(Nombre "Crema catalana")
 		(Origen Espa%C3%B1a)
-		(PVP 4.0)
-		(Racion Normal))
+		(PVP 2.95)
+		(Racion Normal)
+		(Vegetariano TRUE))
 
 	([ontologia_Class50011] of  Segundo
 
@@ -1951,27 +2012,29 @@
 			[ontologia_Class20002]
 			[ontologia_Class20014])
 		(Nombre "Mini Hamburguesa rellena de queso Cabrales")
-		(PVP 0.0)
+		(PVP 1.0)
 		(Racion Normal))
 
 	([ontologia_Class50012] of  Segundo
 
 		(AptoCena TRUE)
 		(AptoNinos TRUE)
+		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
 		(Estilo Clasico)
 		(Ingredientes
 			[ontologia_Class20014]
 			[ontologia_Class30006])
 		(Nombre "Hamburguesa")
-		(PVP 0.0)
+		(PVP 1.0)
 		(Racion Normal))
 
 	([ontologia_Class50013] of  Segundo
 
 		(AptoCena TRUE)
+		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
-		(Estilo Clasico)
+		(Estilo Tradicional)
 		(Ingredientes
 			[ontologia_Class41]
 			[ontologia_Class10032]
@@ -1981,7 +2044,7 @@
 			[ontologia_Class22]
 			[ontologia_Class50014])
 		(Nombre "Pato a la naranja")
-		(PVP 13.0)
+		(PVP 14.0)
 		(Racion Normal))
 
 	([ontologia_Class50014] of  Carne
@@ -2002,17 +2065,19 @@
 
 		(AptoCena TRUE)
 		(AptoNinos TRUE)
+		(Bebida_Menu [ontologia_Class57])
 		(Estilo Clasico)
 		(Ingredientes
 			[ontologia_Class20014]
 			[ontologia_Class30006])
 		(Nombre "Hamburgesa")
-		(PVP 0.0)
+		(PVP 1.0)
 		(Racion Normal))
 
 	([ontologia_Class50023] of  Primero
 
 		(AptoCena TRUE)
+		(Bebida_Menu [ontologia_Class57])
 		(Estilo Sibarita)
 		(Ingredientes
 			[ontologia_Class10031]
@@ -2033,18 +2098,18 @@
 
 		(AptoCena FALSE)
 		(AptoNinos TRUE)
+		(Bebida_Menu [ontologia_Class57])
 		(Estilo Clasico)
 		(Ingredientes
-			[ontologia_Class30011]
 			[ontologia_Class10012]
 			[ontologia_Class20002]
 			[ontologia_Class35]
 			[ontologia_Class20008]
 			[ontologia_Class30014]
 			[ontologia_Class38]
-			[ontologia_Class4])
+			[ontologia_Class70078])
 		(Nombre "Pizza de Carne")
-		(PVP 12.0)
+		(PVP 7.75)
 		(Racion Normal))
 
 	([ontologia_Class52] of  Condimento
@@ -2084,15 +2149,16 @@
 
 		(AptoCena TRUE)
 		(AptoNinos TRUE)
+		(Bebida_Menu [ontologia_Class57])
 		(Estilo Clasico)
 		(Ingredientes
 			[ontologia_Class52]
 			[ontologia_Class59]
-			[ontologia_Class41]
 			[ontologia_Class60]
 			[ontologia_Class44]
 			[ontologia_Class43]
-			[ontologia_Class54])
+			[ontologia_Class54]
+			[ontologia_Class70074])
 		(Nombre "Tarta de queso")
 		(Platos_Compatibles
 			[ontologia_Class20013]
@@ -2122,6 +2188,38 @@
 		(Mes_Inicio_Temporada 1)
 		(Nombre "Mermelada de fresa")
 		(PVP 0.7))
+
+	([ontologia_Class60001] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Caldo de pollo")
+		(PVP 1.2))
+
+	([ontologia_Class60002] of  Primero
+
+		(Bebida_Menu [ontologia_Class57])
+		(Estilo Sibarita)
+		(Ingredientes
+			[ontologia_Class15]
+			[ontologia_Class60003]
+			[ontologia_Class70005]
+			[ontologia_Class20]
+			[ontologia_Class70008]
+			[ontologia_Class20002]
+			[ontologia_Class70006]
+			[ontologia_Class70007])
+		(Nombre "Crema de coliflor con gambones y piñones al aroma de trufa")
+		(PVP 3.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class60003] of  Verdura
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Coliflor")
+		(PVP 0.51))
 
 	([ontologia_Class60005] of  Tinto
 
@@ -2242,6 +2340,822 @@
 
 		(Nombre "Cerveza")
 		(PVP 1.2))
+
+	([ontologia_Class70001] of  Carne
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Cordero")
+		(PVP 7.2))
+
+	([ontologia_Class70005] of  Verdura
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Trufa")
+		(PVP 4.5))
+
+	([ontologia_Class70006] of  Frutos_secos
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Pinones")
+		(PVP 0.4))
+
+	([ontologia_Class70007] of  Marisco
+
+		(Mes_Final_Temporada 1)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Gambones")
+		(PVP 4.5))
+
+	([ontologia_Class70008] of  Condimento
+
+		(Mes_Final_Temporada 1)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Caldo de ave")
+		(PVP 1.2))
+
+	([ontologia_Class70010] of  Primero
+
+		(Bebida_Menu [ontologia_Class57])
+		(Estilo Sibarita)
+		(Ingredientes
+			[ontologia_Class70012]
+			[ontologia_Class70011]
+			[ontologia_Class20]
+			[ontologia_Class35]
+			[ontologia_Class56]
+			[ontologia_Class15]
+			[ontologia_Class70013])
+		(Nombre "Humus de garbanzos")
+		(PVP 13.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class70011] of  Verdura
+
+		(Mes_Final_Temporada 1)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Garbanzos")
+		(PVP 0.62))
+
+	([ontologia_Class70012] of  Cereal
+
+		(Gluten TRUE)
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Comino")
+		(PVP 0.71))
+
+	([ontologia_Class70013] of  Derivado
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Huevos de codorniz")
+		(PVP 2.3))
+
+	([ontologia_Class70014] of  Primero
+
+		(Bebida_Menu [ontologia_Class57])
+		(Estilo Moderno)
+		(Ingredientes
+			[ontologia_Class30015]
+			[ontologia_Class35]
+			[ontologia_Class15]
+			[ontologia_Class70016]
+			[ontologia_Class70015])
+		(Nombre "Crema de pepino y yogur")
+		(PVP 1.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class70015] of  Verdura
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Pepino")
+		(PVP 0.23))
+
+	([ontologia_Class70016] of  Condimento
+
+		(Mes_Final_Temporada 1)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Hoja de menta")
+		(PVP 0.1))
+
+	([ontologia_Class70017] of  Primero
+
+		(Bebida_Menu [ontologia_Class57])
+		(Estilo Moderno)
+		(Ingredientes
+			[ontologia_Class70018]
+			[ontologia_Class40]
+			[ontologia_Class35]
+			[ontologia_Class70019]
+			[ontologia_Class70020]
+			[ontologia_Class43])
+		(Nombre "Crema fria de remolacha")
+		(PVP 1.2)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class70018] of  Verdura
+
+		(Mes_Final_Temporada 1)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Remolacha")
+		(PVP 0.2))
+
+	([ontologia_Class70019] of  Condimento
+
+		(Mes_Final_Temporada 1)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Zumo de tomate")
+		(PVP 0.65))
+
+	([ontologia_Class70020] of  Verdura
+
+		(Mes_Final_Temporada 1)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Apio")
+		(PVP 0.1))
+
+	([ontologia_Class70021] of  Marisco
+
+		(Mes_Final_Temporada 1)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Bogavante")
+		(PVP 9.5))
+
+	([ontologia_Class70022] of  Primero
+
+		(Bebida_Menu [ontologia_Class57])
+		(Estilo Sibarita)
+		(Ingredientes
+			[ontologia_Class70021]
+			[ontologia_Class10031]
+			[ontologia_Class30035]
+			[ontologia_Class15]
+			[ontologia_Class34]
+			[ontologia_Class1])
+		(Nombre "Ensalada de bogavante")
+		(PVP 7.9)
+		(Racion Normal))
+
+	([ontologia_Class70024] of  Verdura
+
+		(Mes_Final_Temporada 1)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Espinacas")
+		(PVP 0.45))
+
+	([ontologia_Class70025] of  Verdura
+
+		(Mes_Final_Temporada 1)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Trompetas de la muerte")
+		(PVP 1.75))
+
+	([ontologia_Class70026] of  Verdura
+
+		(Mes_Final_Temporada 1)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Perrechicos")
+		(PVP 1.65))
+
+	([ontologia_Class70028] of  Primero
+
+		(Bebida_Menu [ontologia_Class57])
+		(Estilo Clasico)
+		(Ingredientes
+			[ontologia_Class70011]
+			[ontologia_Class70026]
+			[ontologia_Class30032]
+			[ontologia_Class70025]
+			[ontologia_Class30029]
+			[ontologia_Class22]
+			[ontologia_Class20]
+			[ontologia_Class20011]
+			[ontologia_Class24]
+			[ontologia_Class35]
+			[ontologia_Class10026])
+		(Nombre "Garbanzos con setas variadas")
+		(PVP 6.75)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class70029] of  Primero
+
+		(Bebida_Menu [ontologia_Class57])
+		(Estilo Tradicional)
+		(Ingredientes
+			[ontologia_Class70030]
+			[ontologia_Class70032]
+			[ontologia_Class40005]
+			[ontologia_Class70031]
+			[ontologia_Class70034]
+			[ontologia_Class70035]
+			[ontologia_Class40012]
+			[ontologia_Class70033]
+			[ontologia_Class70036]
+			[ontologia_Class30028]
+			[ontologia_Class20])
+		(Nombre "Cocido Montanes")
+		(PVP 7.2)
+		(Racion Normal))
+
+	([ontologia_Class70030] of  Verdura
+
+		(Mes_Final_Temporada 1)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Alubias blancas")
+		(PVP 0.65))
+
+	([ontologia_Class70031] of  Carne
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Costilla adobada de cerdo")
+		(PVP 4.3))
+
+	([ontologia_Class70032] of  Carne
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Carne de cerdo")
+		(PVP 1.65))
+
+	([ontologia_Class70033] of  Carne
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Oreja de cerdo")
+		(PVP 3.6))
+
+	([ontologia_Class70034] of  Carne
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Lonchas gordas de panceta")
+		(PVP 1.25))
+
+	([ontologia_Class70035] of  Carne
+
+		(Mes_Final_Temporada 1)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Manitas de cerdo")
+		(PVP 2.56))
+
+	([ontologia_Class70036] of  Verdura
+
+		(Mes_Final_Temporada 1)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Col")
+		(PVP 0.25))
+
+	([ontologia_Class70037] of  Carne
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Carrilleras de cerdo")
+		(PVP 11.2))
+
+	([ontologia_Class70038] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Vino tinto")
+		(PVP 5.2))
+
+	([ontologia_Class70039] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Pimiento choricero")
+		(PVP 0.56))
+
+	([ontologia_Class70040] of  Segundo
+
+		(Bebida_Menu [ontologia_Class57])
+		(Estilo Tradicional)
+		(Ingredientes
+			[ontologia_Class70037]
+			[ontologia_Class22]
+			[ontologia_Class10020]
+			[ontologia_Class26]
+			[ontologia_Class20]
+			[ontologia_Class60001]
+			[ontologia_Class20011]
+			[ontologia_Class70039]
+			[ontologia_Class35]
+			[ontologia_Class10026]
+			[ontologia_Class70038])
+		(Nombre "Carrilleras de cerdo guisadas")
+		(PVP 2.85)
+		(Racion Normal))
+
+	([ontologia_Class70041] of  Segundo
+
+		(Bebida_Menu [ontologia_Class57])
+		(Estilo Sibarita)
+		(Ingredientes
+			[ontologia_Class70042]
+			[ontologia_Class70047]
+			[ontologia_Class70045]
+			[ontologia_Class35]
+			[ontologia_Class30008]
+			[ontologia_Class70043]
+			[ontologia_Class70048]
+			[ontologia_Class52])
+		(Nombre "Sushi de buey de mar con gildasbuew")
+		(PVP 6.5)
+		(Racion Normal))
+
+	([ontologia_Class70042] of  Pescado
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Buey de mar")
+		(PVP 12.35))
+
+	([ontologia_Class70043] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Vinagre de arroz")
+		(PVP 0.95))
+
+	([ontologia_Class70045] of  Verdura
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Algas nori")
+		(PVP 1.25))
+
+	([ontologia_Class70047] of  Pescado
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Gildas")
+		(PVP 4.25))
+
+	([ontologia_Class70048] of  Cereal
+
+		(Mes_Final_Temporada 1)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Arroz de sushi")
+		(PVP 2.5))
+
+	([ontologia_Class70049] of  Marisco
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Navajas")
+		(PVP 17.8))
+
+	([ontologia_Class70050] of  Segundo
+
+		(Bebida_Menu [ontologia_Class57])
+		(Estilo Sibarita)
+		(Ingredientes
+			[ontologia_Class70049]
+			[ontologia_Class20]
+			[ontologia_Class40]
+			[ontologia_Class56]
+			[ontologia_Class15])
+		(Nombre "Navajas a la plancha")
+		(PVP 5.0)
+		(Racion Normal))
+
+	([ontologia_Class70051] of  Segundo
+
+		(Bebida_Menu [ontologia_Class57])
+		(Estilo Moderno)
+		(Ingredientes
+			[ontologia_Class22]
+			[ontologia_Class70024]
+			[ontologia_Class10027]
+			[ontologia_Class30008]
+			[ontologia_Class35])
+		(Nombre "Risotto de espinacas")
+		(PVP 1.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class70052] of  Marisco
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Cigalas")
+		(PVP 14.6))
+
+	([ontologia_Class70053] of  Segundo
+
+		(Bebida_Menu [ontologia_Class57])
+		(Estilo Sibarita)
+		(Ingredientes
+			[ontologia_Class70052]
+			[ontologia_Class22]
+			[ontologia_Class70054]
+			[ontologia_Class10005]
+			[ontologia_Class70055]
+			[ontologia_Class20])
+		(Nombre "Rissoto de cigalas")
+		(PVP 3.5)
+		(Racion Normal))
+
+	([ontologia_Class70054] of  Cereal
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Arroz sin gluten")
+		(PVP 0.8))
+
+	([ontologia_Class70055] of  Verdura
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Perejil")
+		(PVP 0.1))
+
+	([ontologia_Class70056] of  Condimento
+
+		(Mes_Final_Temporada 1)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Fume de pesacdo")
+		(PVP 3.45))
+
+	([ontologia_Class70057] of  Segundo
+
+		(Bebida_Menu [ontologia_Class57])
+		(Estilo Sibarita)
+		(Ingredientes
+			[ontologia_Class70058]
+			[ontologia_Class35]
+			[ontologia_Class70059])
+		(Nombre "Paletilla de cordero lechal macerada en Salsa Teriyaki")
+		(PVP 3.0)
+		(Racion Normal))
+
+	([ontologia_Class70058] of  Carne
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Paletilla de lechal")
+		(PVP 8.5))
+
+	([ontologia_Class70059] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Salsa teriyaki")
+		(PVP 2.7))
+
+	([ontologia_Class70061] of  Cereal
+
+		(Mes_Final_Temporada 1)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Espaguetis")
+		(PVP 2.3))
+
+	([ontologia_Class70062] of  Segundo
+
+		(Bebida_Menu [ontologia_Class57])
+		(Estilo Moderno)
+		(Ingredientes
+			[ontologia_Class20]
+			[ontologia_Class60001]
+			[ontologia_Class10010]
+			[ontologia_Class35]
+			[ontologia_Class20010]
+			[ontologia_Class50018]
+			[ontologia_Class22]
+			[ontologia_Class10005]
+			[ontologia_Class38]
+			[ontologia_Class70063])
+		(Nombre "Pollo en pepitoria")
+		(PVP 2.7)
+		(Racion Normal))
+
+	([ontologia_Class70063] of  Frutos_secos
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Almendras")
+		(PVP 0.4))
+
+	([ontologia_Class70064] of  Postre
+
+		(Bebida_Menu [ontologia_Class57])
+		(Estilo Moderno)
+		(Ingredientes
+			[ontologia_Class20003]
+			[ontologia_Class30017]
+			[ontologia_Class70067]
+			[ontologia_Class40003]
+			[ontologia_Class70065]
+			[ontologia_Class70068]
+			[ontologia_Class70066])
+		(Nombre "Macedonia de frutas con zumo de mango")
+		(PVP 0.9)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class70065] of  Fruta
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Melocoton")
+		(PVP 0.7))
+
+	([ontologia_Class70066] of  Fruta
+
+		(Mes_Final_Temporada 1)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Platano")
+		(PVP 1.1))
+
+	([ontologia_Class70067] of  Fruta
+
+		(Mes_Final_Temporada 1)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Mango")
+		(PVP 1.1))
+
+	([ontologia_Class70068] of  Fruta
+
+		(Mes_Final_Temporada 1)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Pera")
+		(PVP 0.5))
+
+	([ontologia_Class70069] of  Postre
+
+		(Bebida_Menu [ontologia_Class57])
+		(Estilo Moderno)
+		(Ingredientes
+			[ontologia_Class30022]
+			[ontologia_Class50]
+			[ontologia_Class50018]
+			[ontologia_Class52]
+			[ontologia_Class70066]
+			[ontologia_Class60])
+		(Nombre "Mousse de chocolate con Platano y mermelada de frutos rojos")
+		(PVP 1.2)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class70070] of  Derivado
+
+		(Gluten FALSE)
+		(Lactosa TRUE)
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Queso mascarpone")
+		(PVP 1.2))
+
+	([ontologia_Class70071] of  Postre
+
+		(Bebida_Menu [ontologia_Class57])
+		(Estilo Moderno)
+		(Ingredientes
+			[ontologia_Class50018]
+			[ontologia_Class70070]
+			[ontologia_Class70072]
+			[ontologia_Class50]
+			[ontologia_Class52])
+		(Nombre "Flan de queso mascarpone")
+		(PVP 2.3)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class70072] of  Derivado
+
+		(Lactosa TRUE)
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Leche condensada")
+		(PVP 0.25))
+
+	([ontologia_Class70073] of  Postre
+
+		(Bebida_Menu [ontologia_Class57])
+		(Estilo Sibarita)
+		(Ingredientes
+			[ontologia_Class70074]
+			[ontologia_Class70075]
+			[ontologia_Class30008]
+			[ontologia_Class52]
+			[ontologia_Class70079]
+			[ontologia_Class70077]
+			[ontologia_Class70080]
+			[ontologia_Class70076]
+			[ontologia_Class70081]
+			[ontologia_Class10032]
+			[ontologia_Class70078]
+			[ontologia_Class50018]
+			[ontologia_Class35]
+			[ontologia_Class3])
+		(Nombre "Pastel Gales")
+		(PVP 4.75)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class70074] of  Grasas
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Mantequilla sin gluten")
+		(PVP 0.7))
+
+	([ontologia_Class70075] of  Fruta
+
+		(Mes_Final_Temporada 1)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Uva")
+		(PVP 1.2))
+
+	([ontologia_Class70076] of  Condimento
+
+		(Mes_Final_Temporada 1)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Ron")
+		(PVP 1.3))
+
+	([ontologia_Class70077] of  Condimento
+
+		(Mes_Final_Temporada 1)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Cafe soluble")
+		(PVP 0.4))
+
+	([ontologia_Class70078] of  Cereal
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Harina sin gluten")
+		(PVP 0.8))
+
+	([ontologia_Class70079] of  Condimento
+
+		(Mes_Final_Temporada 1)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Bicarbonato de sodio")
+		(PVP 0.75))
+
+	([ontologia_Class70080] of  Condimento
+
+		(Mes_Final_Temporada 1)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Especias para pastel")
+		(PVP 0.9))
+
+	([ontologia_Class70081] of  Fruta
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Frutas desecadas")
+		(PVP 2.56))
+
+	([ontologia_Class70084] of  Postre
+
+		(Bebida_Menu [ontologia_Class57])
+		(Estilo Tradicional)
+		(Ingredientes
+			[ontologia_Class52]
+			[ontologia_Class30020]
+			[ontologia_Class50018]
+			[ontologia_Class54]
+			[ontologia_Class70070]
+			[ontologia_Class10016]
+			[ontologia_Class70063]
+			[ontologia_Class70086]
+			[ontologia_Class70085])
+		(Nombre "Tarta Mont Blanc")
+		(PVP 3.5)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class70085] of  Frutos_secos
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Castanas")
+		(PVP 1.4))
+
+	([ontologia_Class70086] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Crema de leche")
+		(PVP 1.1))
+
+	([ontologia_Class70087] of  Postre
+
+		(Bebida_Menu [ontologia_Class57])
+		(Estilo Sibarita)
+		(Ingredientes
+			[ontologia_Class52]
+			[ontologia_Class30020]
+			[ontologia_Class70089]
+			[ontologia_Class56]
+			[ontologia_Class50018]
+			[ontologia_Class70090]
+			[ontologia_Class70092]
+			[ontologia_Class70091]
+			[ontologia_Class70078]
+			[ontologia_Class10009]
+			[ontologia_Class70074])
+		(Nombre "Sablee de Cardamomo, Crema Limon e interior de Yogur y Chocolate Blanco")
+		(PVP 2.5)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class70089] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Gelatina")
+		(PVP 1.2))
+
+	([ontologia_Class70090] of  Derivado
+
+		(Lactosa TRUE)
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Yogur griego")
+		(PVP 1.3))
+
+	([ontologia_Class70091] of  Verdura
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Vainas de cardomomo")
+		(PVP 1.1))
+
+	([ontologia_Class70092] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Cremor tartaro")
+		(PVP 2.5))
+
+	([ontologia_Class70093] of  Postre
+
+		(Bebida_Menu [ontologia_Class57])
+		(Estilo Sibarita)
+		(Ingredientes
+			[ontologia_Class70095]
+			[ontologia_Class70094]
+			[ontologia_Class70096]
+			[ontologia_Class20003])
+		(Nombre "Stilt Fisherman Indulgence")
+		(PVP 5.6)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class70094] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Crema irlandesa")
+		(PVP 2.3))
+
+	([ontologia_Class70095] of  Cereal
+
+		(Gluten TRUE)
+		(Mes_Final_Temporada 1)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Pan de oro")
+		(PVP 3.1))
+
+	([ontologia_Class70096] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Salsa de champapana")
+		(PVP 5.3))
+
+	([ontologia_Class70097] of  Postre
+
+		(Bebida_Menu [ontologia_Class57])
+		(Estilo Sibarita)
+		(Ingredientes
+			[ontologia_Class70074]
+			[ontologia_Class30021]
+			[ontologia_Class70098])
+		(Nombre "Macarons Haute Couture")
+		(PVP 6.7)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class70098] of  Grasas
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Merengue")
+		(PVP 1.2))
 )
 
 ;                   ======================================================================
@@ -2321,9 +3235,6 @@
 	(slot Puntuacion (type INTEGER) (create-accessor read-write) (default 0))
 )
 
-(defclass BebidaConcreto (is-a USER) (role concrete)
-	(slot Vino (type INSTANCE)(create-accessor read-write))
-)
 (defclass PlatoAbstracto (is-a USER) (role concrete)
 	(slot Precio (type FLOAT) (create-accessor read-write) (default 0.0))
 	(slot Categoria (type SYMBOL) (allowed-values Bajo Medio Alto) (create-accessor read-write))
@@ -2753,7 +3664,7 @@
 ;                   ======================================================================
 
 ;;;nuevo
-(defmessage-handler MAIN::BebidaConcreto vino-categoria-correcta (?bebida ?categoria)
+(defmessage-handler MAIN::Vino vino-categoria-correcta (?bebida ?categoria)
 	(bind ?precio (send ?bebida get-Precio))
 	(bind ?correcto FALSE)
 	(if (and(eq ?categoria Bajo)(> ?precio 0)(< ?precio 6))
@@ -2767,7 +3678,7 @@
 	?correcto
 )
 
-(defmessage-handler MAIN::BebidaConcreto vino-subcategoria-correcta (?bebida ?categoria ?subcategoria)
+(defmessage-handler MAIN::Vino vino-subcategoria-correcta (?bebida ?categoria ?subcategoria)
 	(bind ?precio (send ?bebida get-Precio))
 	(bind ?correcto FALSE)
 	(if(eq ?categoria Bajo)
@@ -2807,7 +3718,7 @@
 )
 
 ;se llamara por cada menu
-(defmessage-handler MAIN::BebidaConcreto generar-vino (?tipoVino ?categoria ?subcategoria)
+(defmessage-handler MAIN::Vino generar-vino (?tipoVino ?categoria ?subcategoria)
 	(bind ?listaBebidas (find-all-instances ((?inst Bebida)) TRUE))
 	(loop-for-count (?i 1 (length$ ?listaBebidas)) do
 		(bind ?bebida (nth$ ?i ?listaBebidas))
@@ -3281,6 +4192,7 @@
 	(Entrada (vino ?vino))
 	(test (eq ?vino TRUE))
 	(not (generarVinoBajo))
+	(final)
 	=>
 	(bind ?menu (send (instance-address * [menuAbstractoBarato]) get-Menu))
 	(bind ?categoria (send (instance-address * [menuAbstractoBarato]) get-Categoria))
@@ -3290,7 +4202,7 @@
 		then(bind ?tipoVino Tinto)
 		else(bind ?tipoVino Blanco)
 	)
-	(bind ?vinoBajo (make-instance vinoMenuBajo of BebidaConcreto))
+	(bind ?vinoBajo (make-instance vinoMenuBajo of Vino))
 	(send ?vinoBajo generar-vino ?tipoVino ?categoria Bajo)
 	(assert (generarVinoBajo))
 )
@@ -3300,6 +4212,7 @@
 	(Entrada (vino ?vino))
 	(test (eq ?vino TRUE))
 	(not (generarVinoMedio))
+	(final)
 	=>
 	(bind ?menu (send (instance-address * [menuAbstractoMedio]) get-Menu))
 	(bind ?categoria (send (instance-address * [menuAbstractoMedio]) get-Categoria))
@@ -3309,7 +4222,7 @@
 		then(bind ?tipoVino Tinto)
 		else(bind ?tipoVino Blanco)
 	)
-	(bind ?vinoMedio (make-instance vinoMenuMedio of BebidaConcreto))
+	(bind ?vinoMedio (make-instance vinoMenuMedio of Vino))
 	(send ?vinoMedio generar-vino ?tipoVino ?categoria Medio)
 	(assert (generarVinoMedio))
 )
@@ -3319,6 +4232,7 @@
 	(Entrada (vino ?vino))
 	(test (eq ?vino TRUE))
 	(not (generarVinoAlto))
+	(final)
 	=>
 	(bind ?menu (send (instance-address * [menuAbstractoAlto]) get-Menu))
 	(bind ?categoria (send (instance-address * [menuAbstractoAlto]) get-Categoria))
@@ -3328,7 +4242,7 @@
 		then(bind ?tipoVino Tinto)
 		else(bind ?tipoVino Blanco)
 	)
-	(bind ?vinoAlto (make-instance vinoMenuAlto of BebidaConcreto))
+	(bind ?vinoAlto (make-instance vinoMenuAlto of Vino))
 	(send ?vinoAlto generar-vino ?tipoVino ?categoria Alto)
 	(assert (generarVinoAlto))
 )
@@ -3389,6 +4303,18 @@
 
 	(assert (vinosImprimidos))
 )
+
+;(defrule  solucionConcreta::imprimirBebidasInfantiles
+	;(Entrada (ninos ?ninos))
+	;(test (eq ?ninos TRUE))
+	;(not (ninos))
+	;(generarMenuBajo)
+	;(generarMenuMedio)
+	;(generarMenuAlto)
+	;=>
+	;(printout t "Zumos, refrescos variados" crlf)
+	;(assert (ninos))
+;)
 
 (defrule solucionConcreta::imprimirResultado
 	(generarMenuBajo)
