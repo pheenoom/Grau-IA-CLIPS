@@ -3718,21 +3718,24 @@
 )
 
 ;se llamara por cada menu
+; ESTA FUNCION DIJISTE QUE NO DEBERIA SER UN HANDLER SINO UNA FUNCION NORMAL Y CORRIENTE
 (defmessage-handler MAIN::Vino generar-vino (?tipoVino ?categoria ?subcategoria)
 	(bind ?listaBebidas (find-all-instances ((?inst Bebida)) TRUE))
+	(bind ?candidato (nth$ 1 ?listaBebidas))
 	(loop-for-count (?i 1 (length$ ?listaBebidas)) do
 		(bind ?bebida (nth$ ?i ?listaBebidas))
 		(bind ?tipoBebida (class (instance-address * ?bebida)))
+		(bind ?correcto FALSE)
 		(if (eq ?tipoBebida ?tipoVino) ; vino es del tipo de vino ?tipoVino
-			then (bind ?correcto (send vino-categoria-correcta ?bebida ?categoria))
-			else(if (eq ?correcto TRUE) ; vino es de la categoria ?categoria
-				then(bind ?correcto (send vino-subcategoria-correcta ?bebida ?categoria ?subcategoria))
-				else(if (eq ?correcto TRUE)
-						then(bind ?candidato ?bebida)
-					)
-				)
+			then (bind ?correcto (send vino-categoria-correcta ?bebida ?categoria ?subcatego))
+			else (if (eq ?correcto TRUE) ; vino es de la categoria ?categoria
+						then (bind ?correcto (send vino-subcategoria-correcta ?bebida ?categoria ?subcategoria))
+						else (if (eq ?correcto TRUE)
+							 then(bind ?candidato ?bebida)
+						)
 			)
 		)
+	)
 	?candidato
 )
 
@@ -4196,8 +4199,8 @@
 	=>
 	(bind ?menu (send (instance-address * [menuAbstractoBarato]) get-Menu))
 	(bind ?categoria (send (instance-address * [menuAbstractoBarato]) get-Categoria))
-	(bind ?segundo (send ?menu get-Relacion_Menu_Segundo))
-	(bind ?ingredientePrincipal (send ?menu EncontrarIngredientePrincipal ?segundo))
+	(bind ?segundo (send (instance-address * ?menu) get-Relacion_Menu_Segundo))
+	(bind ?ingredientePrincipal (send (instance-address * ?menu) EncontrarIngredientePrincipal ?segundo))
 	(if (eq ?ingredientePrincipal Carne)
 		then(bind ?tipoVino Tinto)
 		else(bind ?tipoVino Blanco)
@@ -4216,8 +4219,8 @@
 	=>
 	(bind ?menu (send (instance-address * [menuAbstractoMedio]) get-Menu))
 	(bind ?categoria (send (instance-address * [menuAbstractoMedio]) get-Categoria))
-	(bind ?segundo (send ?menu get-Relacion_Menu_Segundo))
-	(bind ?ingredientePrincipal (send ?menu EncontrarIngredientePrincipal ?segundo))
+	(bind ?segundo (send (instance-address * ?menu) get-Relacion_Menu_Segundo))
+	(bind ?ingredientePrincipal (send (instance-address * ?menu) EncontrarIngredientePrincipal ?segundo))
 	(if (eq ?ingredientePrincipal Carne)
 		then(bind ?tipoVino Tinto)
 		else(bind ?tipoVino Blanco)
@@ -4236,8 +4239,8 @@
 	=>
 	(bind ?menu (send (instance-address * [menuAbstractoAlto]) get-Menu))
 	(bind ?categoria (send (instance-address * [menuAbstractoAlto]) get-Categoria))
-	(bind ?segundo (send ?menu get-Relacion_Menu_Segundo))
-	(bind ?ingredientePrincipal (send ?menu EncontrarIngredientePrincipal ?segundo))
+	(bind ?segundo (send (instance-address * ?menu) get-Relacion_Menu_Segundo))
+	(bind ?ingredientePrincipal (send (instance-address * ?menu) EncontrarIngredientePrincipal ?segundo))
 	(if (eq ?ingredientePrincipal Carne)
 		then(bind ?tipoVino Tinto)
 		else(bind ?tipoVino Blanco)
@@ -4268,6 +4271,7 @@
 	(send ?menuAbstracto generar-menu Medio ?categoria)
 	(assert (generarMenuMedio))
 )
+
 (defrule solucionConcreta::generar-menu-alto ""
 	(ProblemaAbstracto (presupuesto ?categoria))
 	(not (generarMenuAlto))
@@ -4278,6 +4282,7 @@
 	(send ?menuAbstracto generar-menu Alto ?categoria)
 	(assert (generarMenuAlto))
 )
+
 (defrule solucionConcreta::imprimirVinos
 	(Entrada (vino ?vino))
 	(test (eq ?vino TRUE))
