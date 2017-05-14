@@ -1,4 +1,4 @@
-; Sun May 14 19:37:46 CEST 2017
+; Sun May 14 19:57:33 CEST 2017
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -1794,6 +1794,7 @@
 	(AptoCena TRUE)
 	(AptoNinos TRUE)
 	(Caliente TRUE)
+	(Estilo Moderno)
 	(Ingredientes
 		[ontologia_Class30006]
 		[ontologia_Class50018]
@@ -2778,6 +2779,7 @@
 	(AptoCena TRUE)
 	(AptoNinos TRUE)
 	(Caliente TRUE)
+	(Estilo Moderno)
 	(Ingredientes
 		[ontologia_Class44]
 		[ontologia_Class30011]
@@ -2795,6 +2797,7 @@
 	(AptoCena TRUE)
 	(AptoNinos FALSE)
 	(Caliente TRUE)
+	(Estilo Tradicional)
 	(Ingredientes
 		[ontologia_Class80003]
 		[ontologia_Class22]
@@ -2807,6 +2810,7 @@
 		[ontologia_Class35]
 		[ontologia_Class10010])
 	(Nombre "Berenjenas al Horno")
+	(Origen Italiana)
 	(PVP 8.0)
 	(Racion Normal)
 	(Vegetariano TRUE))
@@ -2903,3 +2907,35 @@
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Masa fresca sin gluten")
 	(PVP 1.2))
+
+([ontologia_Class80013] of  Postre
+
+	(AptoCena TRUE)
+	(Caliente TRUE)
+	(Estilo Tradicional)
+	(Ingredientes
+		[ontologia_Class30011]
+		[ontologia_Class41]
+		[ontologia_Class70038]
+		[ontologia_Class30007]
+		[ontologia_Class70094])
+	(Nombre "Cannoli")
+	(Origen Italiana)
+	(PVP 6.5)
+	(Racion Normal)
+	(Vegetariano TRUE))
+
+([ontologia_Class80014] of  Postre
+
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
+	(Estilo Sibarita)
+	(Ingredientes
+		[ontologia_Class30011]
+		[ontologia_Class52]
+		[ontologia_Class50018]
+		[ontologia_Class42])
+	(Nombre "Macarons")
+	(PVP 20.0)
+	(Racion Normal)
+	(Vegetariano TRUE))
