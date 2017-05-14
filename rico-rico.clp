@@ -3324,7 +3324,7 @@
 			[ontologia_Class70094])
 		(Nombre "Cannoli")
 		(Origen Italiana)
-		(PVP 6.5)
+		(PVP 2.5)
 		(Racion Normal)
 		(Vegetariano TRUE))
 
@@ -3343,6 +3343,324 @@
 		(Racion Normal)
 		(Vegetariano TRUE))
 
+	([ontologia_Class80015] of  Primero
+
+		(AptoCena TRUE)
+		(AptoNinos TRUE)
+		(Caliente TRUE)
+		(Estilo Clasico)
+		(Ingredientes
+			[ontologia_Class30028]
+			[ontologia_Class10011]
+			[ontologia_Class44])
+		(Nombre "Patatas campesinas")
+		(PVP 6.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class80016] of  Postre
+
+		(AptoCena TRUE)
+		(AptoNinos TRUE)
+		(Estilo Moderno)
+		(Ingredientes
+			[ontologia_Class10002]
+			[ontologia_Class70065]
+			[ontologia_Class10016]
+			[ontologia_Class56]
+			[ontologia_Class52]
+			[ontologia_Class30008])
+		(Nombre "Copa de melon y melocoton")
+		(PVP 1.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class80017] of  Postre
+
+		(AptoCena TRUE)
+		(Caliente FALSE)
+		(Ingredientes
+			[ontologia_Class54]
+			[ontologia_Class50018]
+			[ontologia_Class52]
+			[ontologia_Class41])
+		(Nombre "Martin di-frazcco")
+		(PVP 7.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class80018] of  Primero
+
+		(AptoCena TRUE)
+		(Estilo Sibarita)
+		(Ingredientes
+			[ontologia_Class80019]
+			[ontologia_Class80020])
+		(Nombre "Caviar vegetal y kaki")
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class80019] of  Pescado
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Falsas huevas de salmon")
+		(PVP 10.0))
+
+	([ontologia_Class80020] of  Fruta
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Kaki")
+		(PVP 3.0))
+
+	([ontologia_Class80021] of  Primero
+
+		(AptoCena TRUE)
+		(Caliente TRUE)
+		(Estilo Sibarita)
+		(Ingredientes
+			[ontologia_Class50018]
+			[ontologia_Class80023]
+			[ontologia_Class80022])
+		(Nombre "Huevo a 65º, maiz y trufa negra")
+		(PVP 16.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class80022] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Trufa negra")
+		(PVP 10.0))
+
+	([ontologia_Class80023] of  Cereal
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Maiz")
+		(PVP 0.5))
+
+	([ontologia_Class80024] of  Postre
+
+		(AptoCena TRUE)
+		(AptoNinos TRUE)
+		(Caliente TRUE)
+		(Ingredientes
+			[ontologia_Class70078]
+			[ontologia_Class30012]
+			[ontologia_Class35]
+			[ontologia_Class10017]
+			[ontologia_Class52]
+			[ontologia_Class55])
+		(Nombre "Tarta de calabaza")
+		(PVP 6.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class80026] of  Segundo
+
+		(AptoCena TRUE)
+		(AptoNinos TRUE)
+		(Caliente TRUE)
+		(Estilo Clasico)
+		(Ingredientes
+			[ontologia_Class10027]
+			[ontologia_Class15]
+			[ontologia_Class22]
+			[ontologia_Class26]
+			[ontologia_Class10020]
+			[ontologia_Class50018]
+			[ontologia_Class34])
+		(Nombre "Arroz chino frito")
+		(Origen China)
+		(PVP 0.1)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class80027] of  Segundo
+
+		(AptoCena TRUE)
+		(AptoNinos FALSE)
+		(Caliente TRUE)
+		(Estilo Moderno)
+		(Ingredientes
+			[ontologia_Class15]
+			[ontologia_Class10019]
+			[ontologia_Class22]
+			[ontologia_Class20]
+			[ontologia_Class10030]
+			[ontologia_Class30029]
+			[ontologia_Class30015])
+		(Nombre "Boniato con lentejas al curry")
+		(PVP 2.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class80028] of  Segundo
+
+		(AptoCena TRUE)
+		(AptoNinos TRUE)
+		(Caliente TRUE)
+		(Estilo Clasico)
+		(Ingredientes
+			[ontologia_Class30028]
+			[ontologia_Class30013]
+			[ontologia_Class4]
+			[ontologia_Class40006]
+			[ontologia_Class70070])
+		(Nombre "Horneado de patatas a los cuatro quesos")
+		(PVP 3.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class80029] of  Segundo
+
+		(AptoCena TRUE)
+		(AptoNinos TRUE)
+		(Caliente TRUE)
+		(Estilo Clasico)
+		(Ingredientes
+			[ontologia_Class15]
+			[ontologia_Class22]
+			[ontologia_Class70078]
+			[ontologia_Class50]
+			[ontologia_Class41]
+			[ontologia_Class10017]
+			[ontologia_Class10023]
+			[ontologia_Class30]
+			[ontologia_Class40006]
+			[ontologia_Class40]
+			[ontologia_Class3])
+		(Nombre "Gratinado de verduras")
+		(PVP 5.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class80030] of  Segundo
+
+		(AptoCena TRUE)
+		(AptoNinos TRUE)
+		(Caliente TRUE)
+		(Estilo Moderno)
+		(Ingredientes
+			[ontologia_Class10003]
+			[ontologia_Class2]
+			[ontologia_Class80031])
+		(Nombre "Tallarines de calabacin con cubierta de tomate funghi")
+		(PVP 13.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class80031] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Champinon")
+		(PVP 1.0))
+
+	([ontologia_Class80032] of  Segundo
+
+		(AptoCena TRUE)
+		(AptoNinos TRUE)
+		(Estilo Tradicional)
+		(Ingredientes
+			[ontologia_Class10003]
+			[ontologia_Class80003]
+			[ontologia_Class2]
+			[ontologia_Class40]
+			[ontologia_Class4])
+		(Nombre "Calabazitas a la italiana")
+		(Origen Italiana)
+		(PVP 16.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class80033] of  Segundo
+
+		(AptoCena TRUE)
+		(Estilo Moderno)
+		(Ingredientes
+			[ontologia_Class60003]
+			[ontologia_Class20]
+			[ontologia_Class56]
+			[ontologia_Class15]
+			[ontologia_Class35]
+			[ontologia_Class10010]
+			[ontologia_Class70015]
+			[ontologia_Class40]
+			[ontologia_Class80034]
+			[ontologia_Class10011])
+		(Nombre "Tabule de coliflor")
+		(PVP 20.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class80034] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Menta")
+		(PVP 0.4))
+
+	([ontologia_Class80035] of  Segundo
+
+		(AptoCena TRUE)
+		(Caliente TRUE)
+		(Estilo Sibarita)
+		(Ingredientes
+			[ontologia_Class30028]
+			[ontologia_Class40009]
+			[ontologia_Class26]
+			[ontologia_Class70025]
+			[ontologia_Class40015]
+			[ontologia_Class20]
+			[ontologia_Class15]
+			[ontologia_Class35])
+		(Nombre "La menestra en la patata")
+		(PVP 21.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class80036] of  Segundo
+
+		(AptoCena TRUE)
+		(Caliente TRUE)
+		(Estilo Sibarita)
+		(Ingredientes
+			[ontologia_Class80037]
+			[ontologia_Class80038]
+			[ontologia_Class80039]
+			[ontologia_Class10010]
+			[ontologia_Class24]
+			[ontologia_Class35])
+		(Nombre "Curry de piña con raita de remolacha")
+		(PVP 25.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class80037] of  Fruta
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Piña")
+		(PVP 1.0))
+
+	([ontologia_Class80038] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Curry")
+		(PVP 0.5))
+
+	([ontologia_Class80039] of  Condimento
+
+		(Lactosa TRUE)
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Raita")
+		(PVP 3.0))
 )
 
 ;                   ======================================================================
@@ -3399,6 +3717,10 @@
 	(slot numAlergicosLactosa (type INTEGER) (default 0))
 )
 
+(deftemplate MAIN::Vegetarianos
+	(slot numVegetarianos (type INTEGER) (default 0))
+)
+
 (deftemplate MAIN::ProblemaAbstracto
     ; Presupuesto(bajo, medio, alto, muy alto) => ([10,20),[20,40),[40,80),>80)
     ; NumComensales(bajo, medio, alto, muy alto) => ([20,30),[30,50),[50,100),[100, 500))
@@ -3451,11 +3773,6 @@
 	;	)
 )
 
-(defmessage-handler MAIN::PlatoAbstracto imprimir-debug2 ()
-	(bind ?plato ?self:Plato)
-	(printout t (send ?plato get-Nombre) crlf)
-)
-
 (defmessage-handler MAIN::MenuAbstracto imprimir-debug ()
 	(printout t "------------------- Informacion del Menu  ----------------" crlf)
 	(bind ?menu ?self:Menu)
@@ -3477,20 +3794,6 @@
 	)
 	;(format t "%t Temporada Inicio: %d %n" ?self:Mes_Inicio_Temporada)
 	;(format t "%t Temporada Final: %d %n" ?self:Mes_Final_Temporada)
-)
-
-(defmessage-handler MAIN::Ingrediente imprimir-debug2 ()
-	(printout t ?self:Nombre)
-	(printout t ";")
-	(printout t ?self:PVP)
-	(printout t ";")
-	(printout t ?self:Lactosa)
-	(printout t ";")
-	(printout t ?self:Gluten)
-	(printout t ";")
-	(printout t ?self:Mes_Inicio_Temporada)
-	(printout t ";")
-	(printout t ?self:Mes_Final_Temporada crlf)
 )
 
 (defmessage-handler MAIN::Plato imprimir-debug ()
@@ -3690,6 +3993,21 @@
 	?lactosa
 )
 
+(defmessage-handler MAIN::PlatoAbstracto es-vegetariano ()
+	(bind ?listaIngredientes (send ?self:Plato get-Ingredientes))
+	(bind ?i 1)
+	(bind ?vegetariano TRUE)
+	(while (and (<= ?i (length$ ?listaIngredientes)) ?vegetariano) do
+		(bind ?ingrediente (nth$ ?i ?listaIngredientes))
+		(if (eq ?ingrediente Carne)
+			then (bind ?vegetariano FALSE)
+		)
+		(bind ?i (+ 1 ?i))
+	)
+
+	?vegetariano
+)
+
 (defmessage-handler MAIN::PlatoAbstracto calcula-puntuacion-temporada "" (?temporada)
 	(bind ?plato (send ?self get-Plato))
 
@@ -3785,7 +4103,6 @@
 	)
 )
 
-;Sandia inicio:5, final:9
 (defmessage-handler MAIN::Ingrediente es-ingrediente-temporada "" (?temporada)
     (if (eq ?temporada Primavera)
         then (if (and (<= ?self:Mes_Inicio_Temporada 5) (>= ?self:Mes_Final_Temporada 4))
@@ -3821,6 +4138,7 @@
 	(send ?menu imprimir)
 	(printout t "Precio menu : " ?self:Precio crlf)
 )
+
 
 (defmessage-handler MAIN::MenuAbstracto generar-menu-alergico (?tipoCategoria ?categoria ?alergia)
 	(bind ?indiceMaxPrimero 0)
@@ -3948,6 +4266,67 @@
 		(send (nth$ ?indiceMaxPostre ?listaPlatosAbstractos) get-Precio))))
 )
 
+
+(defmessage-handler MAIN::MenuAbstracto generar-menu-vegetariano (?tipoCategoria ?categoria)
+	(bind ?indiceMaxPrimero 0)
+	(bind ?indiceMaxSegundo 0)
+	(bind ?indiceMaxPostre 0)
+
+	(bind ?listaPlatosAbstractos (find-all-instances ((?inst PlatoAbstracto)) TRUE))
+	(loop-for-count (?i 1 (length$ ?listaPlatosAbstractos)) do
+		(bind ?platoAbstracto (nth$ ?i ?listaPlatosAbstractos))
+		(bind ?plato (send ?platoAbstracto get-Plato))
+		(bind ?tipoPlato (class (instance-address * ?plato)))
+
+		;Peta si no hay un plato de una subcategoria dada
+		;por lo cual tenemos que asegurarnos que haya almenos uno en la ontologia
+		(if (and (and(eq (send ?platoAbstracto get-SubCategoria) ?tipoCategoria)
+								 (eq (send ?platoAbstracto get-Categoria) ?categoria))
+						 (send ?plato get-Vegetariano)
+			  )
+			then (if (eq ?tipoPlato Primero)
+					then (if (= ?indiceMaxPrimero 0)
+						then (bind ?indiceMaxPrimero ?i)
+						else (if (< (send (nth$ ?indiceMaxPrimero ?listaPlatosAbstractos) get-Puntuacion)
+										 		(send ?platoAbstracto get-Puntuacion))
+								then (bind ?indiceMaxPrimero ?i)
+							)
+					)
+					else (if (eq ?tipoPlato Segundo)
+						then (if (= ?indiceMaxSegundo 0)
+							then (bind ?indiceMaxSegundo ?i)
+							else (if (< (send (nth$ ?indiceMaxSegundo ?listaPlatosAbstractos) get-Puntuacion)
+											 		(send ?platoAbstracto get-Puntuacion))
+									then (bind ?indiceMaxSegundo ?i)
+							)
+						)
+						else (if (= ?indiceMaxPostre 0)
+							then (bind ?indiceMaxPostre ?i)
+							else (if (< (send (nth$ ?indiceMaxPostre ?listaPlatosAbstractos) get-Puntuacion)
+													(send ?platoAbstracto get-Puntuacion))
+									then (bind ?indiceMaxPostre ?i)
+							)
+						)
+				  )
+			)
+		)
+	)
+
+	(if (or (or (= ?indiceMaxPrimero 0) (= ?indiceMaxSegundo 0)) (= ?indiceMaxPostre 0))
+		then (printout t "Hay un indice a 0 gg" crlf)
+	)
+
+	(bind ?menu (make-instance (sym-cat menu-MenuAbstracto- (gensym)) of Menu))
+	(send ?menu put-Relacion_Menu_Primero (send (nth$ ?indiceMaxPrimero ?listaPlatosAbstractos) get-Plato))
+	(send ?menu put-Relacion_Menu_Segundo (send (nth$ ?indiceMaxSegundo ?listaPlatosAbstractos) get-Plato))
+	(send ?menu put-Relacion_Menu_Postre  (send (nth$ ?indiceMaxPostre  ?listaPlatosAbstractos) get-Plato))
+	(send ?self put-Menu ?menu)
+	(send ?self put-Precio
+		(+ (send (nth$ ?indiceMaxPrimero ?listaPlatosAbstractos) get-Precio)
+		(+ (send (nth$ ?indiceMaxSegundo ?listaPlatosAbstractos) get-Precio)
+		(send (nth$ ?indiceMaxPostre ?listaPlatosAbstractos) get-Precio))))
+)
+
 ;                   ======================================================================
 ;                   =========================     Handler Menu     =======================
 ;                   ======================================================================
@@ -4019,11 +4398,12 @@
 	)
 )
 
-(deffunction generar-menu (?categoria ?subCategoria ?numComensales ?numAlergicosGluten ?numAlergicosLactosa)
+(deffunction generar-menu (?categoria ?subCategoria ?numComensales ?numAlergicosGluten ?numAlergicosLactosa ?numVegetarianos)
 	(bind ?precioMenuNormal 0)
 	(bind ?precioMenuSinGluten 0)
 	(bind ?precioMenuSinLactosa 0)
-	(if (< (+ ?numAlergicosGluten ?numAlergicosLactosa) (* 0.5 ?numComensales))
+	(bind ?precioMenuVegetariano 0)
+	(if (< (+ ?numAlergicosGluten (+ ?numVegetarianos ?numAlergicosLactosa)) (* 0.5 ?numComensales))
 		then
 			(bind ?menu (make-instance (gensym) of MenuAbstracto))
 			(send ?menu generar-menu ?subCategoria ?categoria)
@@ -4031,6 +4411,15 @@
 			(printout t "Menu normal: " crlf)
 			(send ?menu imprimir)
 			(bind ?precioMenuNormal (send ?menu get-Precio))
+	)
+	(if (> ?numVegetarianos 0)
+		then
+			(bind ?menuVegetariano (make-instance (gensym) of MenuAbstracto))
+			(send ?menuVegetariano generar-menu-vegetariano ?subCategoria ?categoria)
+
+			(printout t "Menu vegetariano: " crlf)
+			(send ?menuVegetariano imprimir)
+			(bind ?precioMenuVegetariano (send ?menuVegetariano get-Precio))
 	)
 	(if (> ?numAlergicosGluten 0)
 		then
@@ -4051,7 +4440,7 @@
 			(bind ?precioMenuSinLactosa (send ?menuSinLactosa get-Precio))
 	)
 
-	(printout t "Precio total: " (+ ?precioMenuNormal (+ ?precioMenuSinGluten ?precioMenuSinLactosa)) crlf)
+	(printout t "Precio total: " (+ ?precioMenuNormal (+ ?precioMenuSinGluten (+ ?precioMenuVegetariano ?precioMenuSinLactosa))) crlf)
 )
 
 ;                   ======================================================================
@@ -4155,13 +4544,25 @@
 )
 
 (defrule recopilacion::pregunta-vegetarianos "Pregunta al cliente si acude gente vegetariana"
-    ?e <- (Entrada (vegetariano ?veg))
-    (test (eq ?veg UNDEF))
+		(not (PreguntarPorVegetarianos))
     =>
     (if (pregunta-binaria "¿Acudira gente vegetariana?")
-        then (modify ?e (vegetariano TRUE))
-        else (modify ?e (vegetariano FALSE))
+        then
+					(assert (Vegetarianos))
+					(assert (CuantosVegetarianosAsistiran))
     )
+		(assert (PreguntarPorVegetarianos))
+)
+
+(defrule recopilacion::preguntar-numero-vegetarianos "Pregunta al cliente cuantos vegetarianos asistiran"
+	(not (VegetarianosCompletado))
+	(CuantosVegetarianosAsistiran)
+	?e <- (Vegetarianos)
+	(Entrada (numComensales ?numComensales))
+	=>
+	(bind ?respuesta (pregunta-numerica-rango "¿Cuantas personas vegetarianas asistiran?" 0 ?numComensales))
+	(modify ?e (numVegetarianos ?respuesta))
+	(assert (VegetarianosCompletado))
 )
 
 (defrule recopilacion::pregunta-alergias "Pregunta al cliente si hay alergias a tener en cuenta"
@@ -4221,9 +4622,8 @@
     (Entrada (estilo ?estilo))
     (test (not (eq ?estilo UNDEF)))
 
-    (Entrada (vegetariano ?vegetariano))
-    (test (not (eq ?vegetariano UNDEF)))
-
+		(PreguntarPorVegetarianos)
+		(or (not (CuantosVegetarianosAsistiran)) (and (CuantosVegetarianosAsistiran) (VegetarianosCompletado)))
 		(HayAlergias?)
 		(or (not (QueTipoAlergias)) (and (QueTipoAlergias) (TipoAlergiasCompletado)))
     =>
@@ -4314,7 +4714,7 @@
 ;    (ProblemaAbstracto (complejidad ?complejidad))
 ;    (test (not (eq ?complejidad UNDEF)))
     =>
-	(focus solucionAbstracta)
+	 (focus solucionAbstracta)
 )
 
 ;                   ======================================================================
@@ -4335,6 +4735,7 @@
 		(send ?platoAbstracto calcula-puntuacion-complejidad ?numComensales)
 		(send ?platoAbstracto calcula-puntuacion-temporada ?temporada)
 		(send ?platoAbstracto calcula-puntuacion-estilo ?estilo)
+		(send ?platoAbstracto imprimir-debug)
 	)
 
 	(assert (MenuBarato))
@@ -4360,27 +4761,28 @@
 	(Entrada (numComensales ?numComensales))
 	(Alergias (numAlergicosGluten ?numAlergicosGluten))
 	(Alergias (numAlergicosLactosa ?numAlergicosLactosa))
+	(Vegetarianos (numVegetarianos ?numVegetarianos))
 	(ProblemaAbstracto (presupuesto ?categoria))
 	=>
 	(if (eq ?categoria MuyAlto) then
 	  (bind ?categoria Alto))
 
 	(if (eq ?categoria Bajo)
-		then (printout t "Se va crear un menu de categoria baja!")
+		then (printout t "Se va crear un menu de categoria baja!" crlf)
 		else (if (eq ?categoria Medio)
-			then (printout t "Se va crear un menu de categoria media!")
-			else (printout t "Se va crear un menu de categoria alta")
+			then (printout t "Se va crear un menu de categoria media!" crlf)
+			else (printout t "Se va crear un menu de categoria alta" crlf)
 		)
 	)
 
 	(printout t "====================  Menu Barato ===================== " crlf)
-	(generar-menu ?categoria Bajo ?numComensales ?numAlergicosGluten ?numAlergicosLactosa)
+	(generar-menu ?categoria Bajo ?numComensales ?numAlergicosGluten ?numAlergicosLactosa ?numVegetarianos)
 
 	(printout t "====================  Menu Medio ===================== " crlf)
-	(generar-menu ?categoria Medio ?numComensales ?numAlergicosGluten ?numAlergicosLactosa)
+	(generar-menu ?categoria Medio ?numComensales ?numAlergicosGluten ?numAlergicosLactosa ?numVegetarianos)
 
 	(printout t "====================  Menu Alto ===================== " crlf)
-	(generar-menu ?categoria Alto ?numComensales ?numAlergicosGluten ?numAlergicosLactosa)
+	(generar-menu ?categoria Alto ?numComensales ?numAlergicosGluten ?numAlergicosLactosa ?numVegetarianos)
 
 	(assert (final))
 )
