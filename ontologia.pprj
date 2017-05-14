@@ -1,4 +1,4 @@
-; Sat May 13 20:58:50 CEST 2017
+; Sun May 14 19:37:46 CEST 2017
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -20,19 +20,19 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[ontologia_ProjectKB_Class153]
-		[ontologia_ProjectKB_Class154]
-		[ontologia_ProjectKB_Class155]
-		[ontologia_ProjectKB_Class156]
-		[ontologia_ProjectKB_Class157]
-		[ontologia_ProjectKB_Class158]
-		[ontologia_ProjectKB_Class159]
-		[ontologia_ProjectKB_Class160]
-		[ontologia_ProjectKB_Class161]
-		[ontologia_ProjectKB_Class162]
-		[ontologia_ProjectKB_Class163]
-		[ontologia_ProjectKB_Class164]
-		[ontologia_ProjectKB_Class165]))
+		[ontologia_ProjectKB_Class10191]
+		[ontologia_ProjectKB_Class10192]
+		[ontologia_ProjectKB_Class10193]
+		[ontologia_ProjectKB_Class10194]
+		[ontologia_ProjectKB_Class10195]
+		[ontologia_ProjectKB_Class10196]
+		[ontologia_ProjectKB_Class10197]
+		[ontologia_ProjectKB_Class10198]
+		[ontologia_ProjectKB_Class10199]
+		[ontologia_ProjectKB_Class10200]
+		[ontologia_ProjectKB_Class10201]
+		[ontologia_ProjectKB_Class10202]
+		[ontologia_ProjectKB_Class10203]))
 
 ([CLSES_TAB] of  Widget
 
@@ -76,6 +76,9 @@
 	(is_hidden FALSE)
 	(widget_class_name "edu.stanford.smi.protege.widget.InstancesTab"))
 
+([KB_280425_Class3] of  Map
+)
+
 ([KB_517706_Class0] of  String
 
 	(name "factory_class_name")
@@ -84,9 +87,9 @@
 ([KB_517706_Class1] of  Map
 
 	(entries
-		[ontologia_ProjectKB_Class166]
-		[ontologia_ProjectKB_Class167]
-		[ontologia_ProjectKB_Class168]))
+		[ontologia_ProjectKB_Class10204]
+		[ontologia_ProjectKB_Class10205]
+		[ontologia_ProjectKB_Class10206]))
 
 ([KB_517706_Class100] of  String
 
@@ -180,113 +183,96 @@
 	(name "classes_file_name")
 	(string_value "ontologia.pont"))
 
-([KB_568731_Class3] of  Map
-)
-
 ([LAYOUT_PROPERTIES] of  Property_List
 
 	(name "layout properties")
 	(properties [VERTICAL_STRETCHER]))
 
-([ontologia_ProjectKB_Class153] of  String
+([ontologia_ProjectKB_Class10191] of  String
 
 	(name "Primero")
 	(string_value "Nombre"))
 
-([ontologia_ProjectKB_Class154] of  String
+([ontologia_ProjectKB_Class10192] of  String
 
 	(name "Congreso")
 	(string_value "Nombre"))
 
-([ontologia_ProjectKB_Class155] of  String
+([ontologia_ProjectKB_Class10193] of  String
 
 	(name "Segundo")
 	(string_value "Nombre"))
 
-([ontologia_ProjectKB_Class156] of  String
-
-	(name ":META-CLASS")
-	(string_value "%3ANAME"))
-
-([ontologia_ProjectKB_Class157] of  String
+([ontologia_ProjectKB_Class10194] of  String
 
 	(name ":PAL-CONSTRAINT")
 	(string_value "%3APAL-NAME"))
 
-([ontologia_ProjectKB_Class158] of  String
+([ontologia_ProjectKB_Class10195] of  String
+
+	(name ":META-CLASS")
+	(string_value "%3ANAME"))
+
+([ontologia_ProjectKB_Class10196] of  String
 
 	(name "Blanco")
 	(string_value "Nombre"))
 
-([ontologia_ProjectKB_Class159] of  String
+([ontologia_ProjectKB_Class10197] of  String
 
 	(name "Menu")
 	(string_value "Nombre"))
 
-([ontologia_ProjectKB_Class160] of  String
+([ontologia_ProjectKB_Class10198] of  String
 
 	(name "Bebida")
 	(string_value "Nombre"))
 
-([ontologia_ProjectKB_Class161] of  String
+([ontologia_ProjectKB_Class10199] of  String
 
 	(name ":INSTANCE-ANNOTATION")
 	(string_value "%3AANNOTATION-TEXT"))
 
-([ontologia_ProjectKB_Class162] of  String
+([ontologia_ProjectKB_Class10200] of  String
 
 	(name "Cava")
 	(string_value "Nombre"))
 
-([ontologia_ProjectKB_Class163] of  String
+([ontologia_ProjectKB_Class10201] of  String
 
 	(name "Postre")
 	(string_value "Nombre"))
 
-([ontologia_ProjectKB_Class164] of  String
+([ontologia_ProjectKB_Class10202] of  String
 
 	(name "Tinto")
 	(string_value "Nombre"))
 
-([ontologia_ProjectKB_Class165] of  String
+([ontologia_ProjectKB_Class10203] of  String
 
 	(name "Ingrediente")
 	(string_value "Nombre"))
 
-([ontologia_ProjectKB_Class166] of  Map_Entry
+([ontologia_ProjectKB_Class10204] of  Map_Entry
 
 	(key "add_name_on_instance_form")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
 
-([ontologia_ProjectKB_Class167] of  Map_Entry
+([ontologia_ProjectKB_Class10205] of  Map_Entry
 
 	(key "change_tracking_active")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
 
-([ontologia_ProjectKB_Class168] of  Map_Entry
+([ontologia_ProjectKB_Class10206] of  Map_Entry
 
 	(key "suppress_instance_counting")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
-
-([ontologia_ProjectKB_Class7] of  Widget
-
-	(height 120)
-	(is_hidden FALSE)
-	(name "Alergias")
-	(property_list [ontologia_ProjectKB_Class8])
-	(widget_class_name "edu.stanford.smi.protege.widget.ClsListWidget")
-	(width 200)
-	(x 200)
-	(y 180))
-
-([ontologia_ProjectKB_Class8] of  Property_List
-)
 
 ([option_instance] of  Options
 
@@ -703,11 +689,11 @@
 
 	(browser_slot_names [BROWSER_SLOT_NAMES])
 	(customized_instance_widgets
-		[INSTANCE_ANNOTATION_FORM_WIDGET]
-		[STANDARD_SLOT_FORM_WIDGET]
 		[STANDARD_FACET_FORM_WIDGET]
 		[PAL_FORM_WIDGET]
-		[STANDARD_CLASS_FORM_WIDGET])
+		[STANDARD_CLASS_FORM_WIDGET]
+		[INSTANCE_ANNOTATION_FORM_WIDGET]
+		[STANDARD_SLOT_FORM_WIDGET])
 	(default_cls_metaclass ":STANDARD-CLASS")
 	(default_facet_metaclass ":STANDARD-FACET")
 	(default_instance_widget_class_name "edu.stanford.smi.protege.widget.FormWidget")
