@@ -2626,6 +2626,16 @@
 )
 
 ;                   ======================================================================
+;                   ========================     Handler Bebida    =======================
+;                   ======================================================================
+
+(defmessage-handler MAIN::Bebida imprimir "Handler que imprime por la salida estandard la informacion basica de un vino" ()
+	(printout t "Nombre      : " ?self:Nombre crlf)
+	(printout t "Precio      :" ?self:PVP crlf)
+)
+
+
+;                   ======================================================================
 ;                   =====================     Handler Ingrediente     ====================
 ;                   ======================================================================
 
