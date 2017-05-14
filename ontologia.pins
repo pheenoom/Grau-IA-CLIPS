@@ -1,4 +1,4 @@
-; Sun May 14 19:57:33 CEST 2017
+; Sun May 14 20:17:34 CEST 2017
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -2937,5 +2937,51 @@
 		[ontologia_Class42])
 	(Nombre "Macarons")
 	(PVP 20.0)
+	(Racion Normal)
+	(Vegetariano TRUE))
+
+([ontologia_Class80015] of  Primero
+
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
+	(Caliente TRUE)
+	(Estilo Clasico)
+	(Ingredientes
+		[ontologia_Class30028]
+		[ontologia_Class10011]
+		[ontologia_Class44])
+	(Nombre "Patatas campesinas")
+	(PVP 6.0)
+	(Racion Normal)
+	(Vegetariano TRUE))
+
+([ontologia_Class80016] of  Postre
+
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
+	(Estilo Moderno)
+	(Ingredientes
+		[ontologia_Class10002]
+		[ontologia_Class70065]
+		[ontologia_Class10016]
+		[ontologia_Class56]
+		[ontologia_Class52]
+		[ontologia_Class30008])
+	(Nombre "Copa de melon y melocoton")
+	(PVP 1.0)
+	(Racion Normal)
+	(Vegetariano TRUE))
+
+([ontologia_Class80017] of  Postre
+
+	(AptoCena TRUE)
+	(Caliente FALSE)
+	(Ingredientes
+		[ontologia_Class54]
+		[ontologia_Class50018]
+		[ontologia_Class52]
+		[ontologia_Class41])
+	(Nombre "Martin di-frazcco")
+	(PVP 7.0)
 	(Racion Normal)
 	(Vegetariano TRUE))
