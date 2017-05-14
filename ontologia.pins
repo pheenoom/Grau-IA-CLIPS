@@ -1,4 +1,4 @@
-; Sun May 14 20:17:34 CEST 2017
+; Sun May 14 20:42:00 CEST 2017
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -2921,7 +2921,7 @@
 		[ontologia_Class70094])
 	(Nombre "Cannoli")
 	(Origen Italiana)
-	(PVP 6.5)
+	(PVP 2.5)
 	(Racion Normal)
 	(Vegetariano TRUE))
 
@@ -2985,3 +2985,81 @@
 	(PVP 7.0)
 	(Racion Normal)
 	(Vegetariano TRUE))
+
+([ontologia_Class80018] of  Primero
+
+	(AptoCena TRUE)
+	(Estilo Sibarita)
+	(Ingredientes
+		[ontologia_Class80019]
+		[ontologia_Class80020])
+	(Nombre "Caviar vegetal y kaki")
+	(Racion Normal)
+	(Vegetariano TRUE))
+
+([ontologia_Class80019] of  Pescado
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Falsas huevas de salmon")
+	(PVP 10.0))
+
+([ontologia_Class80020] of  Fruta
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Kaki")
+	(PVP 3.0))
+
+([ontologia_Class80021] of  Primero
+
+	(AptoCena TRUE)
+	(Caliente TRUE)
+	(Estilo Sibarita)
+	(Ingredientes
+		[ontologia_Class50018]
+		[ontologia_Class80023]
+		[ontologia_Class80022])
+	(Nombre "Huevo a 65º, maiz y trufa negra")
+	(PVP 16.0)
+	(Racion Normal)
+	(Vegetariano TRUE))
+
+([ontologia_Class80022] of  Condimento
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Trufa negra")
+	(PVP 10.0))
+
+([ontologia_Class80023] of  Cereal
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Maiz")
+	(PVP 0.5))
+
+([ontologia_Class80024] of  Postre
+
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
+	(Caliente TRUE)
+	(Ingredientes
+		[ontologia_Class70078]
+		[ontologia_Class80025]
+		[ontologia_Class30012]
+		[ontologia_Class35]
+		[ontologia_Class10017]
+		[ontologia_Class52]
+		[ontologia_Class55])
+	(Nombre "Tarta de calabaza")
+	(PVP 6.0)
+	(Racion Normal)
+	(Vegetariano TRUE))
+
+([ontologia_Class80025] of  Grasas
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Margarina sin lactosa")
+	(PVP 0.8))
