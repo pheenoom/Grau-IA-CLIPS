@@ -3710,15 +3710,10 @@
 	(slot comida (type SYMBOL) (allowed-values FALSE TRUE UNDEF) (default UNDEF))
 	(slot estilo (type SYMBOL) (allowed-values Sibarita Moderno Clasico Tradicional UNDEF) (default UNDEF))
 	(slot vegetariano (type SYMBOL) (allowed-values FALSE TRUE UNDEF) (default UNDEF))
-)
-
-(deftemplate MAIN::Alergias
 	(slot numAlergicosGluten (type INTEGER) (default 0))
 	(slot numAlergicosLactosa (type INTEGER) (default 0))
-)
-
-(deftemplate MAIN::Vegetarianos
 	(slot numVegetarianos (type INTEGER) (default 0))
+	(slot numGenteNormal (type INTEGER) (default 0))
 )
 
 (deftemplate MAIN::ProblemaAbstracto
@@ -3993,21 +3988,6 @@
 	?lactosa
 )
 
-(defmessage-handler MAIN::PlatoAbstracto es-vegetariano ()
-	(bind ?listaIngredientes (send ?self:Plato get-Ingredientes))
-	(bind ?i 1)
-	(bind ?vegetariano TRUE)
-	(while (and (<= ?i (length$ ?listaIngredientes)) ?vegetariano) do
-		(bind ?ingrediente (nth$ ?i ?listaIngredientes))
-		(if (eq ?ingrediente Carne)
-			then (bind ?vegetariano FALSE)
-		)
-		(bind ?i (+ 1 ?i))
-	)
-
-	?vegetariano
-)
-
 (defmessage-handler MAIN::PlatoAbstracto calcula-puntuacion-temporada "" (?temporada)
 	(bind ?plato (send ?self get-Plato))
 
@@ -4057,6 +4037,40 @@
 	(send ?self put-Puntuacion (+ ?puntuacion (send ?self get-Puntuacion)))
 	(bind ?descripcion (str-cat "+" (str-cat ?puntuacion (str-cat " --> " ?descripcion))))
 	(slot-insert$ ?self DescripcionPuntos (+ 1 (length$ ?self:DescripcionPuntos)) ?descripcion)
+)
+
+(defmessage-handler MAIN::PlatoAbstracto tiene-misma-categoria (?categoria)
+	(eq ?self:Categoria ?categoria)
+)
+
+(defmessage-handler MAIN::PlatoAbstracto tiene-misma-subCategoria (?subCategoria)
+	(eq ?self:SubCategoria ?subCategoria)
+)
+
+(defmessage-handler MAIN::PlatoAbstracto es-primero ()
+	(eq (class ?self:Plato) Primero)
+)
+
+(defmessage-handler MAIN::PlatoAbstracto es-segundo ()
+	(eq (class ?self:Plato) Segundo)
+)
+
+(defmessage-handler MAIN::PlatoAbstracto es-postre ()
+	(eq (class ?self:Plato) Postre)
+)
+
+(defmessage-handler MAIN::PlatoAbstracto es-vegetariano ()
+	(send ?self:Plato get-Vegetariano)
+)
+
+(defmessage-handler MAIN::PlatoAbstracto cumple-restriccion (?restriccion)
+	(or (and (eq ?restriccion Vegetariano) (send ?self es-vegetariano))
+			(or (and (eq ?restriccion Gluten) (not (send ?self tiene-gluten)))
+					(or (and (eq ?restriccion Lactosa) (not (send ?self tiene-lactosa)))
+							(eq ?restriccion Ninguna)
+					)
+			)
+	)
 )
 
 ;                   ======================================================================
@@ -4139,51 +4153,42 @@
 	(printout t "Precio menu : " ?self:Precio crlf)
 )
 
-
-(defmessage-handler MAIN::MenuAbstracto generar-menu-alergico (?tipoCategoria ?categoria ?alergia)
+(defmessage-handler MAIN::MenuAbstracto generar-menu (?categoria ?subCategoria ?restriccion)
 	(bind ?indiceMaxPrimero 0)
 	(bind ?indiceMaxSegundo 0)
 	(bind ?indiceMaxPostre 0)
 
 	(bind ?listaPlatosAbstractos (find-all-instances ((?inst PlatoAbstracto)) TRUE))
-
+	(printout t "QUE RESTRCICCION ES: " ?restriccion crlf)
 	(loop-for-count (?i 1 (length$ ?listaPlatosAbstractos)) do
 		(bind ?platoAbstracto (nth$ ?i ?listaPlatosAbstractos))
-		(bind ?plato (send ?platoAbstracto get-Plato))
-		(bind ?tipoPlato (class (instance-address * ?plato)))
 
-		(if (and (and (eq (send ?platoAbstracto get-SubCategoria) ?tipoCategoria)
-				          (eq (send ?platoAbstracto get-Categoria) ?categoria))
-						 (or (or  (and (eq ?alergia Gluten) (not (send ?platoAbstracto tiene-gluten)))
-									    (and (eq ?alergia Lactosa) (not (send ?platoAbstracto tiene-lactosa))))
-								 (eq ?alergia Ninguna)
-						 )
+		(if (and (send ?platoAbstracto tiene-misma-categoria ?categoria)
+						 (send ?platoAbstracto tiene-misma-subCategoria ?subCategoria))
+				then (if (send ?platoAbstracto cumple-restriccion ?restriccion)
+							then (if (send ?platoAbstracto es-primero)
+										then (if (= ?indiceMaxPrimero 0)
+													then (bind ?indiceMaxPrimero ?i)
+													else (if (< (send (nth$ ?indiceMaxPrimero ?listaPlatosAbstractos) get-Puntuacion)
+														    			(send ?platoAbstracto get-Puntuacion))
+																			then (bind ?indiceMaxPrimero ?i))
+										)
+										else (if (send ?platoAbstracto es-segundo)
+													then (if (= ?indiceMaxSegundo 0)
+																then (bind ?indiceMaxSegundo ?i)
+																else (if (< (send (nth$ ?indiceMaxSegundo ?listaPlatosAbstractos) get-Puntuacion)
+																 						(send ?platoAbstracto get-Puntuacion))
+																						then (bind ?indiceMaxSegundo ?i))
+													)
+													else (if (= ?indiceMaxPostre 0)
+																then (bind ?indiceMaxPostre ?i)
+																else (if (< (send (nth$ ?indiceMaxPostre ?listaPlatosAbstractos) get-Puntuacion)
+																						(send ?platoAbstracto get-Puntuacion))
+																						then (bind ?indiceMaxPostre ?i))
+													)
+									)
+							)
 				)
-			then (if (eq ?tipoPlato Primero)
-					then (if (= ?indiceMaxPrimero 0)
-						then (bind ?indiceMaxPrimero ?i)
-						else (if (< (send (nth$ ?indiceMaxPrimero ?listaPlatosAbstractos) get-Puntuacion)
-										 		(send ?platoAbstracto get-Puntuacion))
-								then (bind ?indiceMaxPrimero ?i)
-							)
-					)
-					else (if (eq ?tipoPlato Segundo)
-						then (if (= ?indiceMaxSegundo 0)
-							then (bind ?indiceMaxSegundo ?i)
-							else (if (< (send (nth$ ?indiceMaxSegundo ?listaPlatosAbstractos) get-Puntuacion)
-											 		(send ?platoAbstracto get-Puntuacion))
-									then (bind ?indiceMaxSegundo ?i)
-							)
-						)
-						else (if (= ?indiceMaxPostre 0)
-							then (bind ?indiceMaxPostre ?i)
-							else (if (< (send (nth$ ?indiceMaxPostre ?listaPlatosAbstractos) get-Puntuacion)
-													(send ?platoAbstracto get-Puntuacion))
-									then (bind ?indiceMaxPostre ?i)
-							)
-						)
-				  )
-			)
 		)
 	)
 
@@ -4195,125 +4200,6 @@
 	)
 	(if (= ?indiceMaxPostre 0)
 		then (printout t "Faltan postres!!!!! " crlf)
-	)
-
-	(bind ?menu (make-instance (sym-cat menu-MenuAbstracto- (gensym)) of Menu))
-	(send ?menu put-Relacion_Menu_Primero (send (nth$ ?indiceMaxPrimero ?listaPlatosAbstractos) get-Plato))
-	(send ?menu put-Relacion_Menu_Segundo (send (nth$ ?indiceMaxSegundo ?listaPlatosAbstractos) get-Plato))
-	(send ?menu put-Relacion_Menu_Postre  (send (nth$ ?indiceMaxPostre  ?listaPlatosAbstractos) get-Plato))
-	(send ?self put-Menu ?menu)
-	(send ?self put-Precio
-		(+ (send (nth$ ?indiceMaxPrimero ?listaPlatosAbstractos) get-Precio)
-		(+ (send (nth$ ?indiceMaxSegundo ?listaPlatosAbstractos) get-Precio)
-		(send (nth$ ?indiceMaxPostre ?listaPlatosAbstractos) get-Precio))))
-)
-
-(defmessage-handler MAIN::MenuAbstracto generar-menu (?tipoCategoria ?categoria)
-	(bind ?indiceMaxPrimero 0)
-	(bind ?indiceMaxSegundo 0)
-	(bind ?indiceMaxPostre 0)
-
-	(bind ?listaPlatosAbstractos (find-all-instances ((?inst PlatoAbstracto)) TRUE))
-	(loop-for-count (?i 1 (length$ ?listaPlatosAbstractos)) do
-		(bind ?platoAbstracto (nth$ ?i ?listaPlatosAbstractos))
-		(bind ?plato (send ?platoAbstracto get-Plato))
-		(bind ?tipoPlato (class (instance-address * ?plato)))
-
-		;Peta si no hay un plato de una subcategoria dada
-		;por lo cual tenemos que asegurarnos que haya almenos uno en la ontologia
-		(if (and(eq (send ?platoAbstracto get-SubCategoria) ?tipoCategoria)
-				(eq (send ?platoAbstracto get-Categoria) ?categoria))
-			then (if (eq ?tipoPlato Primero)
-					then (if (= ?indiceMaxPrimero 0)
-						then (bind ?indiceMaxPrimero ?i)
-						else (if (< (send (nth$ ?indiceMaxPrimero ?listaPlatosAbstractos) get-Puntuacion)
-										 		(send ?platoAbstracto get-Puntuacion))
-								then (bind ?indiceMaxPrimero ?i)
-							)
-					)
-					else (if (eq ?tipoPlato Segundo)
-						then (if (= ?indiceMaxSegundo 0)
-							then (bind ?indiceMaxSegundo ?i)
-							else (if (< (send (nth$ ?indiceMaxSegundo ?listaPlatosAbstractos) get-Puntuacion)
-											 		(send ?platoAbstracto get-Puntuacion))
-									then (bind ?indiceMaxSegundo ?i)
-							)
-						)
-						else (if (= ?indiceMaxPostre 0)
-							then (bind ?indiceMaxPostre ?i)
-							else (if (< (send (nth$ ?indiceMaxPostre ?listaPlatosAbstractos) get-Puntuacion)
-													(send ?platoAbstracto get-Puntuacion))
-									then (bind ?indiceMaxPostre ?i)
-							)
-						)
-				  )
-			)
-		)
-	)
-
-	(if (or (or (= ?indiceMaxPrimero 0) (= ?indiceMaxSegundo 0)) (= ?indiceMaxPostre 0))
-		then (printout t "Hay un indice a 0 gg" crlf)
-	)
-
-	(bind ?menu (make-instance (sym-cat menu-MenuAbstracto- (gensym)) of Menu))
-	(send ?menu put-Relacion_Menu_Primero (send (nth$ ?indiceMaxPrimero ?listaPlatosAbstractos) get-Plato))
-	(send ?menu put-Relacion_Menu_Segundo (send (nth$ ?indiceMaxSegundo ?listaPlatosAbstractos) get-Plato))
-	(send ?menu put-Relacion_Menu_Postre  (send (nth$ ?indiceMaxPostre  ?listaPlatosAbstractos) get-Plato))
-	(send ?self put-Menu ?menu)
-	(send ?self put-Precio
-		(+ (send (nth$ ?indiceMaxPrimero ?listaPlatosAbstractos) get-Precio)
-		(+ (send (nth$ ?indiceMaxSegundo ?listaPlatosAbstractos) get-Precio)
-		(send (nth$ ?indiceMaxPostre ?listaPlatosAbstractos) get-Precio))))
-)
-
-
-(defmessage-handler MAIN::MenuAbstracto generar-menu-vegetariano (?tipoCategoria ?categoria)
-	(bind ?indiceMaxPrimero 0)
-	(bind ?indiceMaxSegundo 0)
-	(bind ?indiceMaxPostre 0)
-
-	(bind ?listaPlatosAbstractos (find-all-instances ((?inst PlatoAbstracto)) TRUE))
-	(loop-for-count (?i 1 (length$ ?listaPlatosAbstractos)) do
-		(bind ?platoAbstracto (nth$ ?i ?listaPlatosAbstractos))
-		(bind ?plato (send ?platoAbstracto get-Plato))
-		(bind ?tipoPlato (class (instance-address * ?plato)))
-
-		;Peta si no hay un plato de una subcategoria dada
-		;por lo cual tenemos que asegurarnos que haya almenos uno en la ontologia
-		(if (and (and(eq (send ?platoAbstracto get-SubCategoria) ?tipoCategoria)
-								 (eq (send ?platoAbstracto get-Categoria) ?categoria))
-						 (send ?plato get-Vegetariano)
-			  )
-			then (if (eq ?tipoPlato Primero)
-					then (if (= ?indiceMaxPrimero 0)
-						then (bind ?indiceMaxPrimero ?i)
-						else (if (< (send (nth$ ?indiceMaxPrimero ?listaPlatosAbstractos) get-Puntuacion)
-										 		(send ?platoAbstracto get-Puntuacion))
-								then (bind ?indiceMaxPrimero ?i)
-							)
-					)
-					else (if (eq ?tipoPlato Segundo)
-						then (if (= ?indiceMaxSegundo 0)
-							then (bind ?indiceMaxSegundo ?i)
-							else (if (< (send (nth$ ?indiceMaxSegundo ?listaPlatosAbstractos) get-Puntuacion)
-											 		(send ?platoAbstracto get-Puntuacion))
-									then (bind ?indiceMaxSegundo ?i)
-							)
-						)
-						else (if (= ?indiceMaxPostre 0)
-							then (bind ?indiceMaxPostre ?i)
-							else (if (< (send (nth$ ?indiceMaxPostre ?listaPlatosAbstractos) get-Puntuacion)
-													(send ?platoAbstracto get-Puntuacion))
-									then (bind ?indiceMaxPostre ?i)
-							)
-						)
-				  )
-			)
-		)
-	)
-
-	(if (or (or (= ?indiceMaxPrimero 0) (= ?indiceMaxSegundo 0)) (= ?indiceMaxPostre 0))
-		then (printout t "Hay un indice a 0 gg" crlf)
 	)
 
 	(bind ?menu (make-instance (sym-cat menu-MenuAbstracto- (gensym)) of Menu))
@@ -4406,7 +4292,7 @@
 	(if (< (+ ?numAlergicosGluten (+ ?numVegetarianos ?numAlergicosLactosa)) (* 0.5 ?numComensales))
 		then
 			(bind ?menu (make-instance (gensym) of MenuAbstracto))
-			(send ?menu generar-menu ?subCategoria ?categoria)
+			(send ?menu generar-menu ?categoria ?subCategoria Ninguna)
 
 			(printout t "Menu normal: " crlf)
 			(send ?menu imprimir)
@@ -4415,7 +4301,7 @@
 	(if (> ?numVegetarianos 0)
 		then
 			(bind ?menuVegetariano (make-instance (gensym) of MenuAbstracto))
-			(send ?menuVegetariano generar-menu-vegetariano ?subCategoria ?categoria)
+			(send ?menuVegetariano generar-menu ?categoria ?subCategoria Vegetariano)
 
 			(printout t "Menu vegetariano: " crlf)
 			(send ?menuVegetariano imprimir)
@@ -4424,7 +4310,7 @@
 	(if (> ?numAlergicosGluten 0)
 		then
 			(bind ?menuSinGluten (make-instance (gensym) of MenuAbstracto))
-			(send ?menuSinGluten generar-menu-alergico ?subCategoria ?categoria Gluten)
+			(send ?menuSinGluten generar-menu ?categoria ?subCategoria Gluten)
 
 			(printout t "Menu sin gluten: " crlf)
 			(send ?menuSinGluten imprimir)
@@ -4433,7 +4319,7 @@
 	(if (> ?numAlergicosLactosa 0)
 		then
 			(bind ?menuSinLactosa (make-instance (gensym) of MenuAbstracto))
-			(send ?menuSinLactosa generar-menu-alergico ?subCategoria ?categoria Lactosa)
+			(send ?menuSinLactosa generar-menu ?categoria ?subCategoria Lactosa)
 
 			(printout t "Menu sin lactosa: " crlf)
 			(send ?menuSinLactosa imprimir)
@@ -4522,7 +4408,7 @@
     (test (< ?comensales 0))
     =>
     (bind ?respuesta (pregunta-numerica-rango "¿Cuantos comensales sereis?" 20 500))
-    (modify ?e (numComensales ?respuesta))
+    (modify ?e (numComensales ?respuesta) (numGenteNormal ?respuesta))
 )
 
 (defrule recopilacion::establecer-presupuesto-maximo "Pregunta al cliente que presupuesto por menu"
@@ -4547,9 +4433,7 @@
 		(not (PreguntarPorVegetarianos))
     =>
     (if (pregunta-binaria "¿Acudira gente vegetariana?")
-        then
-					(assert (Vegetarianos))
-					(assert (CuantosVegetarianosAsistiran))
+        then (assert (CuantosVegetarianosAsistiran))
     )
 		(assert (PreguntarPorVegetarianos))
 )
@@ -4557,11 +4441,11 @@
 (defrule recopilacion::preguntar-numero-vegetarianos "Pregunta al cliente cuantos vegetarianos asistiran"
 	(not (VegetarianosCompletado))
 	(CuantosVegetarianosAsistiran)
-	?e <- (Vegetarianos)
-	(Entrada (numComensales ?numComensales))
+	?e <- (Entrada)
+	(Entrada (numGenteNormal ?numComensales))
 	=>
 	(bind ?respuesta (pregunta-numerica-rango "¿Cuantas personas vegetarianas asistiran?" 0 ?numComensales))
-	(modify ?e (numVegetarianos ?respuesta))
+	(modify ?e (numVegetarianos ?respuesta) (numGenteNormal (- ?numComensales ?respuesta)))
 	(assert (VegetarianosCompletado))
 )
 
@@ -4569,33 +4453,37 @@
 	(not (HayAlergias?))
 	=>
 	(if (pregunta-binaria "¿Hay alguna alergia a tener en cuenta a la hora de elegir menu?")
-		then
-			(assert (QueTipoAlergias))
+		then (assert (QueTipoAlergias))
 	)
 	(assert (HayAlergias?))
-	(assert (Alergias))
 )
 
 (defrule recopilacion::pregunta-que-tipo-alergias "Pregunta al cliente por el tipo de alergias"
 	?e <- (QueTipoAlergias)
 	(not (TipoAlergiasCompletado))
-	?alergias <- (Alergias)
-	(Entrada (numComensales ?numComensales))
+	?alergias <- (Entrada)
+	(Entrada (numGenteNormal ?numComensales))
+	(Entrada (numAlergicosGluten ?numAlergicosGluten))
+	(Entrada (numAlergicosLactosa ?numAlergicosLactosa))
 	=>
 	(retract ?e)
 	(assert (QueTipoAlergias))
 	(bind ?lista (create$ Lactosa Gluten Volver))
-	(bind ?respuesta (pregunta-lista ?lista))
-	(if (= ?respuesta (length$ ?lista))
+	(bind ?opcion (pregunta-lista ?lista))
+	(if (= ?opcion (length$ ?lista))
 		then (assert (TipoAlergiasCompletado))
 		else
-			(if (= ?respuesta 1)
-				then 	(bind ?respuesta (pregunta-numerica-rango "Cuantas personas son alergicas a la lactosa" 0 ?numComensales))
-							(modify ?alergias (numAlergicosLactosa ?respuesta))
+			(if (= ?opcion 1)
+				then
+							(bind ?numComensales (+ ?numComensales ?numAlergicosLactosa))
+							(bind ?respuesta (pregunta-numerica-rango "Cuantas personas son alergicas a la lactosa" 0 ?numComensales))
+							(modify ?alergias (numAlergicosLactosa ?respuesta) (numGenteNormal (- ?numComensales ?respuesta)))
 			)
-			(if (= ?respuesta 2)
-				then (bind ?respuesta (pregunta-numerica-rango "Cuantas personas son alergicas al gluten" 0 ?numComensales))
-					 	 (modify ?alergias (numAlergicosGluten ?respuesta))
+			(if (= ?opcion 2)
+				then
+						 (bind ?numComensales (+ ?numComensales ?numAlergicosGluten))
+				 		 (bind ?respuesta (pregunta-numerica-rango "Cuantas personas son alergicas al gluten" 0 ?numComensales))
+					 	 (modify ?alergias (numAlergicosGluten ?respuesta) (numGenteNormal (- ?numComensales ?respuesta)))
 			)
 	)
 )
@@ -4735,7 +4623,7 @@
 		(send ?platoAbstracto calcula-puntuacion-complejidad ?numComensales)
 		(send ?platoAbstracto calcula-puntuacion-temporada ?temporada)
 		(send ?platoAbstracto calcula-puntuacion-estilo ?estilo)
-		(send ?platoAbstracto imprimir-debug)
+		;(send ?platoAbstracto imprimir-debug)
 	)
 
 	(assert (MenuBarato))
@@ -4759,9 +4647,9 @@
 (defrule solucionConcreta::imprimirResultado
 	(not (final))
 	(Entrada (numComensales ?numComensales))
-	(Alergias (numAlergicosGluten ?numAlergicosGluten))
-	(Alergias (numAlergicosLactosa ?numAlergicosLactosa))
-	(Vegetarianos (numVegetarianos ?numVegetarianos))
+	(Entrada (numAlergicosGluten ?numAlergicosGluten))
+	(Entrada (numAlergicosLactosa ?numAlergicosLactosa))
+	(Entrada (numVegetarianos ?numVegetarianos))
 	(ProblemaAbstracto (presupuesto ?categoria))
 	=>
 	(if (eq ?categoria MuyAlto) then
