@@ -3227,6 +3227,14 @@
 ;                   =====================   Declaracion de clases   ======================
 ;                   ======================================================================
 
+(defclass VinoAbstracto (is-a USER) (role concrete)
+	(slot Vino (type INSTANCE) (create-accessor read-write))
+	(slot Nombre (type STRING) (create-accessor read-write))
+	(slot PVP (type FLOAT) (create-accessor read-write))
+	(slot Categoria (type SYMBOL) (allowed-values Bajo Medio Alto) (create-accessor read-write))
+	(slot SubCategoria (type SYMBOL) (allowed-values Bajo Medio Alto) (create-accessor read-write))
+)
+
 (defclass MenuAbstracto (is-a USER) (role concrete)
 	(slot Precio (type FLOAT) (create-accessor read-write) (default 0.0))
 	(slot Menu (type INSTANCE) (create-accessor read-write))
@@ -3251,14 +3259,6 @@
 
 
 
-(defmessage-handler MAIN::Vino imprimir-vino ()
-    (printout t "------------------- Recomendacion vino ----------------" crlf)
-    (bind ?nombre (send ?self get-Nombre))
-    (printout t "Nombre: " ?nombre crlf)
-    (bind ?precio (send ?self get-PVP))
-    (printout t "Precio: " ?precio crlf)
-)
-
 (defmessage-handler MAIN::PlatoAbstracto imprimir-debug ()
 	(printout t "------------------- Informacion del plato  ----------------" crlf)
 	(bind ?plato ?self:Plato)
@@ -3279,6 +3279,7 @@
 	(printout t "Sub-Categoria: " ?self:SubCategoria crlf)
 	(printout t "Puntuacion: " ?self:Puntuacion crlf)
 )
+
 (defmessage-handler MAIN::Ingrediente imprimir-debug ()
 	(format t "%s - " ?self:Nombre)
 	(bind ?lactosa ?self:Lactosa)
@@ -3294,6 +3295,7 @@
 	(format t "%t Temporada Inicio: %d %n" ?self:Mes_Inicio_Temporada)
 	(format t "%t Temporada Final: %d %n" ?self:Mes_Final_Temporada)
 )
+
 (defmessage-handler MAIN::Plato imprimir-debug ()
 	(format t "Nombre: %s" ?self:Nombre)
 	(printout t crlf)
@@ -3552,7 +3554,7 @@
 
 (defmessage-handler MAIN::Bebida imprimir "Handler que imprime por la salida estandard la informacion basica de un vino" ()
 	(printout t "Nombre      : " ?self:Nombre crlf)
-	(printout t "Precio      :" ?self:PVP crlf)
+	(printout t "Precio      : " ?self:PVP crlf)
 )
 
 
@@ -3670,96 +3672,52 @@
 )
 
 ;                   ======================================================================
-;                   ===================      Handler Bebida Concreto    ==================
+;                   ==================      Handler Bebida Abstracta    ==================
 ;                   ======================================================================
 
-;;;nuevo
-(defmessage-handler MAIN::Vino vino-categoria-correcta (?vino ?categoria)
-	(bind ?precio (send ?vino get-PVP))
-	(bind ?correcto FALSE)
-	(if (and(eq ?categoria Bajo)(> ?precio 0)(< ?precio 6))
-		then (bind ?correcto TRUE)
-		else(if (and(eq ?categoria Medio)(>= ?precio 6)(< ?precio 10))
-            then (bind ?correcto TRUE)
-            else(if (and(eq ?categoria Alto)(>= ?precio 10)(< ?precio 20))
-                then (bind ?correcto TRUE))
-		)
-    )
-	?correcto
+(defmessage-handler MAIN::VinoAbstracto calcula-sub-categoria "Handler que calcula la sub-categoria dado dos parametros" (?precioMedio ?precioAlto)
+	(bind ?precio (send ?self:Vino get-PVP))
+
+	(if (< ?precio ?precioMedio)
+      then (send ?self put-SubCategoria Bajo)
+      else (if (and (>= ?precio ?precioMedio) (< ?precio ?precioAlto))
+            then (send ?self put-SubCategoria Medio)
+            else (send ?self put-SubCategoria Alto)
+      )
+  )
 )
 
-(defmessage-handler MAIN::Vino vino-subcategoria-correcta (?categoria ?subcategoria)
-	(bind ?precio (send ?self get-PVP))
-	(bind ?correcto FALSE)
-	(if(eq ?categoria Bajo)
-		then(if (and(eq ?subcategoria Bajo)(< ?precio 3))
-			then (bind ?correcto TRUE)
-            else (if (and (eq ?subcategoria Medio)(>= ?precio 3)(< ?precio 5))
-                then (bind ?correcto TRUE)
-                else (if (and(eq ?subcategoria Alto)(>= ?precio 5)(< ?precio 6))
-                    then(bind ?correcto TRUE)
-                )
-                    
-            )
-		)
-		else (if(eq ?categoria Medio)
-            then(if (and(eq ?subcategoria Bajo)(>= ?precio 6)(< ?precio 7))
-                then (bind ?correcto TRUE)
-                else (if (and (eq ?subcategoria Medio)(>= ?precio 7)(< ?precio 9))
-                    then (bind ?correcto TRUE)
-                    else (if (and(eq ?subcategoria Alto)(>= ?precio 9)(< ?precio 10))
-                            then(bind ?correcto TRUE)
-                        
-                    )
-                )
-                
-            )
-            else (if(eq ?categoria Alto)
-                then(if (and(eq ?subcategoria Bajo)(>= ?precio 10)(< ?precio 13))
-                    then (bind ?correcto TRUE)
-                    else (if (and (eq ?subcategoria Medio)(>= ?precio 13)(< ?precio 16))
-                        then(bind ?correcto TRUE)
-                        else(if (and(eq ?subcategoria Alto)(>= ?precio 16)(< ?precio 20))
-                            then(bind ?correcto TRUE)
-                        )
-                    )
-                    
-                )
-            )
+(defmessage-handler MAIN::VinoAbstracto calcula-categoria "Handler que calcula la categoria" ()
+  (bind ?precio (send ?self:Vino get-PVP))
+  (if (< ?precio 6)
+        then (send ?self put-Categoria Bajo)
+             (send ?self calcula-sub-categoria 3.0 5.0)
+        else (if (and (>= ?precio 6) (< ?precio 10))
+              	then 	(send ?self put-Categoria Medio)
+                   		(send ?self calcula-sub-categoria 7.0 9.0)
+		            else 	(send ?self put-Categoria Alto)
+		                 	(send ?self calcula-sub-categoria 13.0 16.0)
         )
-	)
-	?correcto
+  )
 )
 
-(defmessage-handler MAIN::Vino generar-vino (?tipoVino ?categoria ?subcategoria)
-	(bind ?listaVinos (find-all-instances ((?inst Vino)) TRUE))
-	(bind ?candidato (nth$ 1 ?listaVinos))
-	(loop-for-count (?i 1 (length$ ?listaVinos)) do
-		(bind ?vino (nth$ ?i ?listaVinos))
-		(bind ?tipo (class (instance-address * ?vino)))
-
-		(bind ?correcto FALSE)
-		(if (eq ?tipo ?tipoVino) 
-			then 
-            (bind ?correcto (send ?vino vino-categoria-correcta ?vino ?categoria))
-            (if (eq ?correcto TRUE) 
-                then 
-                    (bind ?correcto (send ?vino vino-subcategoria-correcta ?categoria ?subcategoria))
-                    (if (eq ?correcto TRUE) 
-                        then 
-                        (bind ?candidato ?vino)
-                    )
-            )
-		)
-	)
-	(printout t "---------------------" crlf)
-	(send ?candidato imprimir-vino)
-	(printout t "---------------------" crlf)
-	?candidato
+(defmessage-handler MAIN::VinoAbstracto imprimir ()
+	(printout t "Nombre: " ?self:Nombre crlf)
+	(printout t "Precio: " ?self:PVP crlf)
 )
 
+;;;nuevo
+(defmessage-handler MAIN::VinoAbstracto categoria-correcta (?categoria)
+	(eq ?self:Categoria ?categoria)
+)
 
+(defmessage-handler MAIN::VinoAbstracto subcategoria-correcta (?subCategoria)
+	(eq ?self:SubCategoria ?subCategoria)
+)
 
+;                   ======================================================================
+;                   =========================     Handler Vino     =======================
+;                   ======================================================================
 
 ;                   ======================================================================
 ;                   =========================     Handler Menu     =======================
@@ -3776,10 +3734,12 @@
 
 ;;;nuevo
 (defmessage-handler MAIN::Menu EncontrarIngredientePrincipal (?segundo)
-	(bind $?listaIngredientes (send ?segundo get-Ingredientes))
-	(loop-for-count (?i 1 (length$ $?listaIngredientes)) do
+	(bind ?listaIngredientes (send ?segundo get-Ingredientes))
+
+	(loop-for-count (?i 1 (length$ ?listaIngredientes)) do
 		(bind ?ingrediente (nth$ ?i $?listaIngredientes))
 		(bind ?tipoIngrediente(class (instance-address * ?ingrediente)))
+
 		(if (eq ?tipoIngrediente Carne)
 			then(bind ?ingredientePrincipal Carne)
 			else (if (or (eq ?tipoIngrediente Marisco)(eq ?tipoIngrediente Pescado))
@@ -3788,6 +3748,7 @@
 			)
 		)
 	)
+
 	?ingredientePrincipal
 )
 
@@ -3840,6 +3801,41 @@
 	)
 )
 
+(deffunction calcular-vinos-abstractos "" ()
+	(bind ?listaVinos (find-all-instances ((?inst Vino)) TRUE))
+	(loop-for-count (?i 1 (length$ ?listaVinos)) do
+		(bind ?vino (nth$ ?i ?listaVinos))
+		(bind ?vinoAbstracto (make-instance (sym-cat vinoAbstracto- (gensym)) of VinoAbstracto))
+		(send ?vinoAbstracto put-Vino ?vino)
+		(send ?vinoAbstracto calcula-categoria)
+		(send ?vinoAbstracto put-Nombre (send ?vino get-Nombre))
+		(send ?vinoAbstracto put-PVP (send ?vino get-PVP))
+	)
+)
+
+(deffunction buscar-vino (?tipoVino ?categoria ?subCategoria)
+	(bind ?listaVinosAbstractos (find-all-instances ((?inst VinoAbstracto)) TRUE))
+	(bind ?candidato (nth$ 1 ?listaVinosAbstractos))
+
+	(bind ?i 1)
+	(bind ?correcto FALSE)
+	(while (and (<= ?i (length$ ?listaVinosAbstractos)) (not ?correcto)) do
+		(bind ?vinoAbstracto (nth$ ?i ?listaVinosAbstractos))
+		(bind ?vino (send ?vinoAbstracto get-Vino))
+		(bind ?tipo (class (instance-address * ?vino)))
+
+		(if (and (eq ?tipo ?tipoVino) (and (send ?vinoAbstracto categoria-correcta ?categoria)
+																			 (send ?vinoAbstracto subcategoria-correcta ?subCategoria)))
+			 then
+			 			(bind ?correcto TRUE)
+						(bind ?candidato ?vinoAbstracto)
+		)
+		(bind ?i (+ ?i 1))
+	)
+
+	?candidato
+)
+
 ;                   ======================================================================
 ;                   =======================  Declaracion de reglas =======================
 ;                   ======================================================================
@@ -3848,6 +3844,7 @@
     (declare (salience 10))
     =>
     (calcular-platos-abstractos)
+		(calcular-vinos-abstractos)
     (printout t "====================================================================" crlf)
     (printout t "=    Sistema de elaboracion de menus personalizados Rico Rico      =" crlf)
     (printout t "====================================================================" crlf)
@@ -4089,6 +4086,7 @@
 	;=>
 	;(printout t "num comensales vino " ?numComensalesVino crlf)
 ;)
+
 (defrule abstraccion::abstraer-presupuesto "Regla que nos permite abstraer del presupuesto propuesto por el usuario a unos valores abstractos"
     (not (ProblemaAbstracto))
     (Entrada (presupuestoMax ?presupuestoMax))
@@ -4164,8 +4162,6 @@
 
     (ProblemaAbstracto (temporada ?temporada))
     (test (not (eq ?temporada UNDEF)))
-
-
 ;    (ProblemaAbstracto (complejidad ?complejidad))
 ;    (test (not (eq ?complejidad UNDEF)))
     =>
@@ -4218,21 +4214,17 @@
 	(bind ?categoria (send (instance-address * [menuAbstractoBarato]) get-Categoria))
 	(bind ?segundo (send (instance-address * ?menu) get-Relacion_Menu_Segundo))
 	(bind ?ingredientePrincipal (send (instance-address * ?menu) EncontrarIngredientePrincipal ?segundo))
+
+	(bind ?tipoVino Blanco)
 	(if (eq ?ingredientePrincipal Carne)
-		then(bind ?tipoVino Tinto)
-		else(bind ?tipoVino Blanco)
+		then (bind ?tipoVino Tinto)
 	)
-	(bind ?vinoBajo (make-instance vinoMenuBajo of Vino))
-	;;
-	(bind ?candidato (send ?vinoBajo generar-vino ?tipoVino ?categoria Bajo))
+
+	(bind ?candidato (buscar-vino ?tipoVino ?categoria Bajo))
 	(printout t "---------------------" crlf)
-	(send ?candidato imprimir-vino)
+	(send (instance-address * ?candidato) imprimir)
 	(printout t "---------------------" crlf)
-	(bind ?nombre (send ?candidato get-Nombre))
-	(send ?vinoBajo put-Nombre ?nombre)
-	(bind ?precio (send ?candidato get-PVP))
-	(send ?vinoBajo put-PVP ?precio)
-	;;
+
 	(assert (generarVinoBajo))
 )
 
@@ -4247,21 +4239,18 @@
 	(bind ?categoria (send (instance-address * [menuAbstractoMedio]) get-Categoria))
 	(bind ?segundo (send (instance-address * ?menu) get-Relacion_Menu_Segundo))
 	(bind ?ingredientePrincipal (send (instance-address * ?menu) EncontrarIngredientePrincipal ?segundo))
+
+	(bind ?tipoVino Blanco)
 	(if (eq ?ingredientePrincipal Carne)
-		then(bind ?tipoVino Tinto)
-		else(bind ?tipoVino Blanco)
+		then (bind ?tipoVino Tinto)
 	)
-	(bind ?vinoMedio (make-instance vinoMenuMedio of Vino))
-	(send ?vinoMedio generar-vino ?tipoVino ?categoria Medio)
-	;;
-	(bind ?candidato (send ?vinoMedio generar-vino ?tipoVino ?categoria Bajo))
-	(bind ?nombre (send ?candidato get-Nombre))
-	(send ?vinoMedio put-Nombre ?nombre)
-	(bind ?precio (send ?candidato get-PVP))
-	(send ?vinoMedio put-PVP ?precio)
-	;;
-	;(printout t "generar-vino-medio" crlf)
-	;(send ?vinoMedio imprimir-vino)
+
+	(bind ?candidato (buscar-vino ?tipoVino ?categoria Medio))
+	(printout t "---------------------" crlf)
+	(send (instance-address * ?candidato) imprimir)
+	(printout t "---------------------" crlf)
+
+
 	(assert (generarVinoMedio))
 )
 
@@ -4272,25 +4261,21 @@
 	(not (generarVinoAlto))
 	(final)
 	=>
-	(bind ?menu (send (instance-address * [menuAbstractoAlto]) get-Menu))
-	(bind ?categoria (send (instance-address * [menuAbstractoAlto]) get-Categoria))
+	(bind ?menu (send (instance-address * [menuAbstractoMedio]) get-Menu))
+	(bind ?categoria (send (instance-address * [menuAbstractoMedio]) get-Categoria))
 	(bind ?segundo (send (instance-address * ?menu) get-Relacion_Menu_Segundo))
 	(bind ?ingredientePrincipal (send (instance-address * ?menu) EncontrarIngredientePrincipal ?segundo))
+
+	(bind ?tipoVino Blanco)
 	(if (eq ?ingredientePrincipal Carne)
-		then(bind ?tipoVino Tinto)
-		else(bind ?tipoVino Blanco)
+		then (bind ?tipoVino Tinto)
 	)
-	(bind ?vinoAlto (make-instance vinoMenuAlto of Vino))
-	(send ?vinoAlto generar-vino ?tipoVino ?categoria Alto)
-	;;
-	(bind ?candidato (send ?vinoAlto generar-vino ?tipoVino ?categoria Bajo))
-	(bind ?nombre (send ?candidato get-Nombre))
-	(send ?vinoAlto put-Nombre ?nombre)
-	(bind ?precio (send ?candidato get-PVP))
-	(send ?vinoAlto put-PVP ?precio)
-	;;
-	;(printout t "generar-vino-alto" crlf)
-	;(send ?vinoAlto imprimir-vino)
+
+	(bind ?candidato (buscar-vino ?tipoVino ?categoria Alto))
+	(printout t "---------------------" crlf)
+	(send (instance-address * ?candidato) imprimir)
+	(printout t "---------------------" crlf)
+
 	(assert (generarVinoAlto))
 )
 
@@ -4327,25 +4312,6 @@
 	(assert (generarMenuAlto))
 )
 
-(defrule solucionConcreta::imprimirVinos
-	(Entrada (vino ?vino))
-	(test (eq ?vino TRUE))
-	(generarVinoBajo)
-	(generarVinoMedio)
-	(generarVinoAlto)
-	(not (vinosImprimidos))
-	=>
-	;vino bajo
-	(send (instance-address * [vinoMenuBajo]) imprimir-vino)
-
-	;vino medio
-	(send (instance-address * [vinoMenuMedio]) imprimir-vino)
-
-	;vino alto
-	(send (instance-address * [vinoMenuAlto]) imprimir-vino)
-
-	(assert (vinosImprimidos))
-)
 
 ;(defrule  solucionConcreta::imprimirBebidasInfantiles
 	;(Entrada (ninos ?ninos))
