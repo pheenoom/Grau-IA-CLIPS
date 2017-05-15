@@ -3249,6 +3249,16 @@
 ;                   =================   Declaracion de handler DEUG   ===================
 ;                   ======================================================================
 
+
+
+(defmessage-handler MAIN::Vino imprimir-vino ()
+    (printout t "------------------- Recomendacion vino ----------------" crlf)
+    (bind ?nombre (send ?self get-Nombre))
+    (printout t "Nombre: " ?nombre crlf)
+    (bind ?precio (send ?self get-PVP))
+    (printout t "Precio: " ?precio crlf)
+)
+
 (defmessage-handler MAIN::PlatoAbstracto imprimir-debug ()
 	(printout t "------------------- Informacion del plato  ----------------" crlf)
 	(bind ?plato ?self:Plato)
@@ -3664,85 +3674,92 @@
 ;                   ======================================================================
 
 ;;;nuevo
-(defmessage-handler MAIN::Vino vino-categoria-correcta (?bebida ?categoria)
-	(bind ?precio (send ?bebida get-Precio))
+(defmessage-handler MAIN::Vino vino-categoria-correcta (?vino ?categoria)
+	(bind ?precio (send ?vino get-PVP))
 	(bind ?correcto FALSE)
 	(if (and(eq ?categoria Bajo)(> ?precio 0)(< ?precio 6))
-		then (bind ?correcto TRUE))
-
-	(if (and(eq ?categoria Medio)(>= ?precio 6)(< ?precio 10))
-		then (bind ?correcto TRUE))
-
-	(if (and(eq ?categoria Alto)(>= ?precio 10)(< ?precio 20))
-		then (bind ?correcto TRUE))
+		then (bind ?correcto TRUE)
+		else(if (and(eq ?categoria Medio)(>= ?precio 6)(< ?precio 10))
+            then (bind ?correcto TRUE)
+            else(if (and(eq ?categoria Alto)(>= ?precio 10)(< ?precio 20))
+                then (bind ?correcto TRUE))
+		)
+    )
 	?correcto
 )
 
-(defmessage-handler MAIN::Vino vino-subcategoria-correcta (?bebida ?categoria ?subcategoria)
-	(bind ?precio (send ?bebida get-Precio))
+(defmessage-handler MAIN::Vino vino-subcategoria-correcta (?categoria ?subcategoria)
+	(bind ?precio (send ?self get-PVP))
 	(bind ?correcto FALSE)
 	(if(eq ?categoria Bajo)
 		then(if (and(eq ?subcategoria Bajo)(< ?precio 3))
-			then(bind ?correcto TRUE)
-			else(if (and (eq ?subcategoria Medio)(>= ?precio 3)(< ?precio 5))
-				then(bind ?correcto TRUE)
-				else(if (and(eq ?subcategoria Alto)(>= ?precio 5)(< ?precio 6))
-					then(bind ?correcto TRUE)
-				)
-			)
+			then (bind ?correcto TRUE)
+            else (if (and (eq ?subcategoria Medio)(>= ?precio 3)(< ?precio 5))
+                then (bind ?correcto TRUE)
+                else (if (and(eq ?subcategoria Alto)(>= ?precio 5)(< ?precio 6))
+                    then(bind ?correcto TRUE)
+                )
+                    
+            )
 		)
-	)
-	(if(eq ?categoria Medio)
-		then(if (and(eq ?subcategoria Bajo)(>= ?precio 6)(< ?precio 7))
-			then(bind ?correcto TRUE)
-			else(if (and (eq ?subcategoria Medio)(>= ?precio 7)(< ?precio 9))
-				then(bind ?correcto TRUE)
-				else(if (and(eq ?subcategoria Alto)(>= ?precio 9)(< ?precio 10))
-					then(bind ?correcto TRUE)
-				)
-			)
-		)
-	)
-	(if(eq ?categoria Alto)
-		then(if (and(eq ?subcategoria Bajo)(>= ?precio 10)(< ?precio 13))
-			then(bind ?correcto TRUE)
-			else(if (and (eq ?subcategoria Medio)(>= ?precio 13)(< ?precio 16))
-				then(bind ?correcto TRUE)
-				else(if (and(eq ?subcategoria Alto)(>= ?precio 16)(< ?precio 20))
-					then(bind ?correcto TRUE)
-				)
-			)
-		)
+		else (if(eq ?categoria Medio)
+            then(if (and(eq ?subcategoria Bajo)(>= ?precio 6)(< ?precio 7))
+                then (bind ?correcto TRUE)
+                else (if (and (eq ?subcategoria Medio)(>= ?precio 7)(< ?precio 9))
+                    then (bind ?correcto TRUE)
+                    else (if (and(eq ?subcategoria Alto)(>= ?precio 9)(< ?precio 10))
+                            then(bind ?correcto TRUE)
+                        
+                    )
+                )
+                
+            )
+            else (if(eq ?categoria Alto)
+                then(if (and(eq ?subcategoria Bajo)(>= ?precio 10)(< ?precio 13))
+                    then (bind ?correcto TRUE)
+                    else (if (and (eq ?subcategoria Medio)(>= ?precio 13)(< ?precio 16))
+                        then(bind ?correcto TRUE)
+                        else(if (and(eq ?subcategoria Alto)(>= ?precio 16)(< ?precio 20))
+                            then(bind ?correcto TRUE)
+                        )
+                    )
+                    
+                )
+            )
+        )
 	)
 	?correcto
 )
 
-;se llamara por cada menu
-; ESTA FUNCION DIJISTE QUE NO DEBERIA SER UN HANDLER SINO UNA FUNCION NORMAL Y CORRIENTE
 (defmessage-handler MAIN::Vino generar-vino (?tipoVino ?categoria ?subcategoria)
-	(bind ?listaBebidas (find-all-instances ((?inst Bebida)) TRUE))
-	(bind ?candidato (nth$ 1 ?listaBebidas))
-	(loop-for-count (?i 1 (length$ ?listaBebidas)) do
-		(bind ?bebida (nth$ ?i ?listaBebidas))
-		(bind ?tipoBebida (class (instance-address * ?bebida)))
+	(bind ?listaVinos (find-all-instances ((?inst Vino)) TRUE))
+	(bind ?candidato (nth$ 1 ?listaVinos))
+	(loop-for-count (?i 1 (length$ ?listaVinos)) do
+		(bind ?vino (nth$ ?i ?listaVinos))
+		(bind ?tipo (class (instance-address * ?vino)))
+
 		(bind ?correcto FALSE)
-		(if (eq ?tipoBebida ?tipoVino) ; vino es del tipo de vino ?tipoVino
-			then (bind ?correcto (send vino-categoria-correcta ?bebida ?categoria ?subcatego))
-			else (if (eq ?correcto TRUE) ; vino es de la categoria ?categoria
-						then (bind ?correcto (send vino-subcategoria-correcta ?bebida ?categoria ?subcategoria))
-						else (if (eq ?correcto TRUE)
-							 then(bind ?candidato ?bebida)
-						)
-			)
+		(if (eq ?tipo ?tipoVino) 
+			then 
+            (bind ?correcto (send ?vino vino-categoria-correcta ?vino ?categoria))
+            (if (eq ?correcto TRUE) 
+                then 
+                    (bind ?correcto (send ?vino vino-subcategoria-correcta ?categoria ?subcategoria))
+                    (if (eq ?correcto TRUE) 
+                        then 
+                        (bind ?candidato ?vino)
+                    )
+            )
 		)
 	)
+	(printout t "---------------------" crlf)
+	(send ?candidato imprimir-vino)
+	(printout t "---------------------" crlf)
 	?candidato
 )
 
 
-;(deffunction generar-menu "" (?tipoCategoria ?nombreMenuAbstracto ?nombreMenu)
 
-;)
 
 ;                   ======================================================================
 ;                   =========================     Handler Menu     =======================
@@ -4206,7 +4223,16 @@
 		else(bind ?tipoVino Blanco)
 	)
 	(bind ?vinoBajo (make-instance vinoMenuBajo of Vino))
-	(send ?vinoBajo generar-vino ?tipoVino ?categoria Bajo)
+	;;
+	(bind ?candidato (send ?vinoBajo generar-vino ?tipoVino ?categoria Bajo))
+	(printout t "---------------------" crlf)
+	(send ?candidato imprimir-vino)
+	(printout t "---------------------" crlf)
+	(bind ?nombre (send ?candidato get-Nombre))
+	(send ?vinoBajo put-Nombre ?nombre)
+	(bind ?precio (send ?candidato get-PVP))
+	(send ?vinoBajo put-PVP ?precio)
+	;;
 	(assert (generarVinoBajo))
 )
 
@@ -4227,6 +4253,15 @@
 	)
 	(bind ?vinoMedio (make-instance vinoMenuMedio of Vino))
 	(send ?vinoMedio generar-vino ?tipoVino ?categoria Medio)
+	;;
+	(bind ?candidato (send ?vinoMedio generar-vino ?tipoVino ?categoria Bajo))
+	(bind ?nombre (send ?candidato get-Nombre))
+	(send ?vinoMedio put-Nombre ?nombre)
+	(bind ?precio (send ?candidato get-PVP))
+	(send ?vinoMedio put-PVP ?precio)
+	;;
+	;(printout t "generar-vino-medio" crlf)
+	;(send ?vinoMedio imprimir-vino)
 	(assert (generarVinoMedio))
 )
 
@@ -4247,6 +4282,15 @@
 	)
 	(bind ?vinoAlto (make-instance vinoMenuAlto of Vino))
 	(send ?vinoAlto generar-vino ?tipoVino ?categoria Alto)
+	;;
+	(bind ?candidato (send ?vinoAlto generar-vino ?tipoVino ?categoria Bajo))
+	(bind ?nombre (send ?candidato get-Nombre))
+	(send ?vinoAlto put-Nombre ?nombre)
+	(bind ?precio (send ?candidato get-PVP))
+	(send ?vinoAlto put-PVP ?precio)
+	;;
+	;(printout t "generar-vino-alto" crlf)
+	;(send ?vinoAlto imprimir-vino)
 	(assert (generarVinoAlto))
 )
 
@@ -4293,18 +4337,12 @@
 	=>
 	;vino bajo
 	(send (instance-address * [vinoMenuBajo]) imprimir-vino)
-	(bind ?precio (send (instance-address * [vinoMenuBajo]) get-Precio))
-	(printout t "Precio vino: " ?precio crlf)
 
 	;vino medio
 	(send (instance-address * [vinoMenuMedio]) imprimir-vino)
-	(bind ?precio (send (instance-address * [vinoMenuMedio]) get-Precio))
-	(printout t "Precio vino: " ?precio crlf)
 
 	;vino alto
 	(send (instance-address * [vinoMenuAlto]) imprimir-vino)
-	(bind ?precio (send (instance-address * [vinoMenuAlto]) get-Precio))
-	(printout t "Precio vino: " ?precio crlf)
 
 	(assert (vinosImprimidos))
 )
