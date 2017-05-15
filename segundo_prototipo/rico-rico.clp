@@ -3710,10 +3710,15 @@
 	(slot comida (type SYMBOL) (allowed-values FALSE TRUE UNDEF) (default UNDEF))
 	(slot estilo (type SYMBOL) (allowed-values Sibarita Moderno Clasico Tradicional UNDEF) (default UNDEF))
 	(slot vegetariano (type SYMBOL) (allowed-values FALSE TRUE UNDEF) (default UNDEF))
+)
+
+(deftemplate MAIN::Alergias
 	(slot numAlergicosGluten (type INTEGER) (default 0))
 	(slot numAlergicosLactosa (type INTEGER) (default 0))
+)
+
+(deftemplate MAIN::Vegetarianos
 	(slot numVegetarianos (type INTEGER) (default 0))
-	(slot numGenteNormal (type INTEGER) (default 0))
 )
 
 (deftemplate MAIN::ProblemaAbstracto
@@ -3986,6 +3991,21 @@
 	)
 
 	?lactosa
+)
+
+(defmessage-handler MAIN::PlatoAbstracto es-vegetariano ()
+	(bind ?listaIngredientes (send ?self:Plato get-Ingredientes))
+	(bind ?i 1)
+	(bind ?vegetariano TRUE)
+	(while (and (<= ?i (length$ ?listaIngredientes)) ?vegetariano) do
+		(bind ?ingrediente (nth$ ?i ?listaIngredientes))
+		(if (eq ?ingrediente Carne)
+			then (bind ?vegetariano FALSE)
+		)
+		(bind ?i (+ 1 ?i))
+	)
+
+	?vegetariano
 )
 
 (defmessage-handler MAIN::PlatoAbstracto calcula-puntuacion-temporada "" (?temporada)
@@ -4502,7 +4522,7 @@
     (test (< ?comensales 0))
     =>
     (bind ?respuesta (pregunta-numerica-rango "¿Cuantos comensales sereis?" 20 500))
-    (modify ?e (numComensales ?respuesta) (numGenteNormal ?respuesta))
+    (modify ?e (numComensales ?respuesta))
 )
 
 (defrule recopilacion::establecer-presupuesto-maximo "Pregunta al cliente que presupuesto por menu"
@@ -4527,7 +4547,9 @@
 		(not (PreguntarPorVegetarianos))
     =>
     (if (pregunta-binaria "¿Acudira gente vegetariana?")
-        then (assert (CuantosVegetarianosAsistiran))
+        then
+					(assert (Vegetarianos))
+					(assert (CuantosVegetarianosAsistiran))
     )
 		(assert (PreguntarPorVegetarianos))
 )
@@ -4535,11 +4557,11 @@
 (defrule recopilacion::preguntar-numero-vegetarianos "Pregunta al cliente cuantos vegetarianos asistiran"
 	(not (VegetarianosCompletado))
 	(CuantosVegetarianosAsistiran)
-	?e <- (Entrada)
-	(Entrada (numGenteNormal ?numComensales))
+	?e <- (Vegetarianos)
+	(Entrada (numComensales ?numComensales))
 	=>
 	(bind ?respuesta (pregunta-numerica-rango "¿Cuantas personas vegetarianas asistiran?" 0 ?numComensales))
-	(modify ?e (numVegetarianos ?respuesta) (numGenteNormal (- ?numComensales ?respuesta)))
+	(modify ?e (numVegetarianos ?respuesta))
 	(assert (VegetarianosCompletado))
 )
 
@@ -4547,18 +4569,18 @@
 	(not (HayAlergias?))
 	=>
 	(if (pregunta-binaria "¿Hay alguna alergia a tener en cuenta a la hora de elegir menu?")
-		then (assert (QueTipoAlergias))
+		then
+			(assert (QueTipoAlergias))
 	)
 	(assert (HayAlergias?))
+	(assert (Alergias))
 )
 
 (defrule recopilacion::pregunta-que-tipo-alergias "Pregunta al cliente por el tipo de alergias"
 	?e <- (QueTipoAlergias)
 	(not (TipoAlergiasCompletado))
-	?alergias <- (Entrada)
-	(Entrada (numGenteNormal ?numComensales))
-	(Entrada (numAlergicosGluten ?numAlergicosGluten))
-	(Entrada (numAlergicosLactosa ?numAlergicosLactosa))
+	?alergias <- (Alergias)
+	(Entrada (numComensales ?numComensales))
 	=>
 	(retract ?e)
 	(assert (QueTipoAlergias))
@@ -4568,16 +4590,12 @@
 		then (assert (TipoAlergiasCompletado))
 		else
 			(if (= ?respuesta 1)
-				then
-							(bind ?numComensales (+ ?numComensales ?numAlergicosLactosa))
-							(bind ?respuesta (pregunta-numerica-rango "Cuantas personas son alergicas a la lactosa" 0 ?numComensales))
-							(modify ?alergias (numAlergicosLactosa ?respuesta) (numGenteNormal (- ?numComensales ?respuesta)))
+				then 	(bind ?respuesta (pregunta-numerica-rango "Cuantas personas son alergicas a la lactosa" 0 ?numComensales))
+							(modify ?alergias (numAlergicosLactosa ?respuesta))
 			)
 			(if (= ?respuesta 2)
-				then
-						 (bind ?numComensales (+ ?numComensales ?numAlergicosGluten))
-				 		 (bind ?respuesta (pregunta-numerica-rango "Cuantas personas son alergicas al gluten" 0 ?numComensales))
-					 	 (modify ?alergias (numAlergicosGluten ?respuesta) (numGenteNormal (- ?numComensales ?respuesta)))
+				then (bind ?respuesta (pregunta-numerica-rango "Cuantas personas son alergicas al gluten" 0 ?numComensales))
+					 	 (modify ?alergias (numAlergicosGluten ?respuesta))
 			)
 	)
 )
@@ -4741,9 +4759,9 @@
 (defrule solucionConcreta::imprimirResultado
 	(not (final))
 	(Entrada (numComensales ?numComensales))
-	(Entrada (numAlergicosGluten ?numAlergicosGluten))
-	(Entrada (numAlergicosLactosa ?numAlergicosLactosa))
-	(Entrada (numVegetarianos ?numVegetarianos))
+	(Alergias (numAlergicosGluten ?numAlergicosGluten))
+	(Alergias (numAlergicosLactosa ?numAlergicosLactosa))
+	(Vegetarianos (numVegetarianos ?numVegetarianos))
 	(ProblemaAbstracto (presupuesto ?categoria))
 	=>
 	(if (eq ?categoria MuyAlto) then
