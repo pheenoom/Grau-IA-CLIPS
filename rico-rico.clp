@@ -4159,7 +4159,9 @@
 	(bind ?indiceMaxPostre 0)
 
 	(bind ?listaPlatosAbstractos (find-all-instances ((?inst PlatoAbstracto)) TRUE))
-	(printout t "QUE RESTRCICCION ES: " ?restriccion crlf)
+	;(printout t "QUE RESTRCICCION ES: " ?restriccion crlf)
+	
+	;Seleccionamos el primero con puntuacion maxima
 	(loop-for-count (?i 1 (length$ ?listaPlatosAbstractos)) do
 		(bind ?platoAbstracto (nth$ ?i ?listaPlatosAbstractos))
 
@@ -4173,24 +4175,48 @@
 														    			(send ?platoAbstracto get-Puntuacion))
 																			then (bind ?indiceMaxPrimero ?i))
 										)
-										else (if (send ?platoAbstracto es-segundo)
-													then (if (= ?indiceMaxSegundo 0)
-																then (bind ?indiceMaxSegundo ?i)
-																else (if (< (send (nth$ ?indiceMaxSegundo ?listaPlatosAbstractos) get-Puntuacion)
-																 						(send ?platoAbstracto get-Puntuacion))
-																						then (bind ?indiceMaxSegundo ?i))
-													)
-													else (if (= ?indiceMaxPostre 0)
-																then (bind ?indiceMaxPostre ?i)
-																else (if (< (send (nth$ ?indiceMaxPostre ?listaPlatosAbstractos) get-Puntuacion)
-																						(send ?platoAbstracto get-Puntuacion))
-																						then (bind ?indiceMaxPostre ?i))
-													)
-									)
+										)
 							)
+				)
+	)
+	;Actualizamos puntuaciones de los segundos
+	(loop-for-count (?i 1 (length$ ?listaPlatosAbstractos)) do
+		(bind ?platoAbstracto (nth$ ?i ?listaPlatosAbstractos))
+		(if (send ?platoAbstracto es-segundo)
+			then 
+				;Si el segundo es incompatible con el primero, le restamos 5 puntos
+				(if (member ?platoAbstracto (send (send (nth$ ?indiceMaxPrimero ?listaPlatosAbstractos) get-Plato) get-PlatosIncompatibles))
+					then
+						(send ?platoAbstracto put-Puntuacion (- 5 (send ?platoAbstracto get-Puntuacion)))
 				)
 		)
 	)
+	;Seleccionamos el segundo y el postre con puntuacion maxima
+	(loop-for-count (?i 1 (length$ ?listaPlatosAbstractos)) do
+		(bind ?platoAbstracto (nth$ ?i ?listaPlatosAbstractos))
+
+		(if (and (send ?platoAbstracto tiene-misma-categoria ?categoria)
+						 (send ?platoAbstracto tiene-misma-subCategoria ?subCategoria))
+				then (if (send ?platoAbstracto cumple-restriccion ?restriccion)
+							then (if (send ?platoAbstracto es-segundo)
+										then (if (= ?indiceMaxSegundo 0)
+													then (bind ?indiceMaxSegundo ?i)
+													else (if (< (send (nth$ ?indiceMaxSegundo ?listaPlatosAbstractos) get-Puntuacion)
+													 						(send ?platoAbstracto get-Puntuacion))
+																			then (bind ?indiceMaxSegundo ?i))
+										)
+										else (if (= ?indiceMaxPostre 0)
+													then (bind ?indiceMaxPostre ?i)
+													else (if (< (send (nth$ ?indiceMaxPostre ?listaPlatosAbstractos) get-Puntuacion)
+																			(send ?platoAbstracto get-Puntuacion))
+																			then (bind ?indiceMaxPostre ?i))
+										)
+									)
+					)
+
+				)
+	)
+
 
 	(if (= ?indiceMaxPrimero 0)
 		then (printout t "Faltan primeros!!!!! " crlf)
