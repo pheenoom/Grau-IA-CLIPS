@@ -1,4 +1,4 @@
-; Sun May 14 17:01:29 CEST 2017
+; Sun May 14 21:19:03 CEST 2017
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -15,10 +15,10 @@
 		[ontologia_Class10005]
 		[ontologia_Class31]
 		[ontologia_Class10007]
-		[ontologia_Class10008]
 		[ontologia_Class10009]
 		[ontologia_Class10010]
-		[ontologia_Class10011])
+		[ontologia_Class10011]
+		[ontologia_Class80012])
 	(Nombre "Tosta tibia de salmón en conserva con tartar de sus huevas")
 	(Platos_Compatibles [ontologia_Class17])
 	(PVP 6.0)
@@ -1044,13 +1044,13 @@
 	(Ingredientes
 		[ontologia_Class30032]
 		[ontologia_Class30034]
-		[ontologia_Class30006]
 		[ontologia_Class30035]
 		[ontologia_Class15]
 		[ontologia_Class30008]
 		[ontologia_Class10034]
 		[ontologia_Class24]
-		[ontologia_Class35])
+		[ontologia_Class35]
+		[ontologia_Class80011])
 	(Nombre "Gazpacho de setas")
 	(Platos_Compatibles
 		[ontologia_Class20013]
@@ -1789,6 +1789,23 @@
 	(Nombre "Mermelada de fresa")
 	(PVP 0.7))
 
+([ontologia_Class60000] of  Primero
+
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
+	(Caliente TRUE)
+	(Estilo Moderno)
+	(Ingredientes
+		[ontologia_Class30006]
+		[ontologia_Class50018]
+		[ontologia_Class50]
+		[ontologia_Class35]
+		[ontologia_Class15])
+	(Nombre "Cascarrollas del rio")
+	(PVP 1.0)
+	(Racion Normal)
+	(Vegetariano TRUE))
+
 ([ontologia_Class60001] of  Condimento
 
 	(Mes_Final_Temporada 12)
@@ -2335,9 +2352,9 @@
 	(Ingredientes
 		[ontologia_Class22]
 		[ontologia_Class70024]
-		[ontologia_Class10027]
 		[ontologia_Class30008]
-		[ontologia_Class35])
+		[ontologia_Class35]
+		[ontologia_Class70054])
 	(Nombre "Risotto de espinacas")
 	(PVP 1.0)
 	(Racion Normal)
@@ -2756,3 +2773,488 @@
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Merengue")
 	(PVP 1.2))
+
+([ontologia_Class80001] of  Primero
+
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
+	(Caliente TRUE)
+	(Estilo Moderno)
+	(Ingredientes
+		[ontologia_Class44]
+		[ontologia_Class30011]
+		[ontologia_Class50018]
+		[ontologia_Class52]
+		[ontologia_Class30012]
+		[ontologia_Class43])
+	(Nombre "Panecillos de nata")
+	(PVP 2.0)
+	(Racion Normal)
+	(Vegetariano TRUE))
+
+([ontologia_Class80002] of  Primero
+
+	(AptoCena TRUE)
+	(AptoNinos FALSE)
+	(Caliente TRUE)
+	(Estilo Tradicional)
+	(Ingredientes
+		[ontologia_Class80003]
+		[ontologia_Class22]
+		[ontologia_Class2]
+		[ontologia_Class15]
+		[ontologia_Class20]
+		[ontologia_Class10009]
+		[ontologia_Class40016]
+		[ontologia_Class30006]
+		[ontologia_Class35]
+		[ontologia_Class10010])
+	(Nombre "Berenjenas al Horno")
+	(Origen Italiana)
+	(PVP 8.0)
+	(Racion Normal)
+	(Vegetariano TRUE))
+
+([ontologia_Class80003] of  Verdura
+
+	(Mes_Final_Temporada 4)
+	(Mes_Inicio_Temporada 10)
+	(Nombre "Berenjena")
+	(PVP 0.2))
+
+([ontologia_Class80004] of  Postre
+
+	(AptoCena TRUE)
+	(Caliente TRUE)
+	(Ingredientes
+		[ontologia_Class32]
+		[ontologia_Class52]
+		[ontologia_Class80005]
+		[ontologia_Class30009])
+	(Nombre "Cerezas rostisadas")
+	(PVP 12.0)
+	(Racion Normal)
+	(Vegetariano TRUE))
+
+([ontologia_Class80005] of  Fruta
+
+	(Mes_Final_Temporada 8)
+	(Mes_Inicio_Temporada 5)
+	(Nombre "Cereza")
+	(PVP 1.1))
+
+([ontologia_Class80006] of  Postre
+
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
+	(Ingredientes
+		[ontologia_Class70066]
+		[ontologia_Class80007])
+	(Nombre "Helado de platano")
+	(PVP 3.0)
+	(Racion Normal)
+	(Vegetariano TRUE))
+
+([ontologia_Class80007] of  Derivado
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Dulce de leche")
+	(PVP 0.3))
+
+([ontologia_Class80008] of  Postre
+
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
+	(Caliente TRUE)
+	(Ingredientes
+		[ontologia_Class80009]
+		[ontologia_Class80010]
+		[ontologia_Class41]
+		[ontologia_Class30011]
+		[ontologia_Class52]
+		[ontologia_Class50018]
+		[ontologia_Class50])
+	(Nombre "Pastel de coco con guayaba")
+	(PVP 1.0)
+	(Racion Normal)
+	(Vegetariano TRUE))
+
+([ontologia_Class80009] of  Fruta
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Coco")
+	(PVP 2.0))
+
+([ontologia_Class80010] of  Fruta
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Guayaba")
+	(PVP 3.0))
+
+([ontologia_Class80011] of  Cereal
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Pan sin gluten")
+	(PVP 0.1))
+
+([ontologia_Class80012] of  Cereal
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Masa fresca sin gluten")
+	(PVP 1.2))
+
+([ontologia_Class80013] of  Postre
+
+	(AptoCena TRUE)
+	(Caliente TRUE)
+	(Estilo Tradicional)
+	(Ingredientes
+		[ontologia_Class30011]
+		[ontologia_Class41]
+		[ontologia_Class70038]
+		[ontologia_Class30007]
+		[ontologia_Class70094])
+	(Nombre "Cannoli")
+	(Origen Italiana)
+	(PVP 2.5)
+	(Racion Normal)
+	(Vegetariano TRUE))
+
+([ontologia_Class80014] of  Postre
+
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
+	(Estilo Sibarita)
+	(Ingredientes
+		[ontologia_Class30011]
+		[ontologia_Class52]
+		[ontologia_Class50018]
+		[ontologia_Class42])
+	(Nombre "Macarons")
+	(PVP 20.0)
+	(Racion Normal)
+	(Vegetariano TRUE))
+
+([ontologia_Class80015] of  Primero
+
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
+	(Caliente TRUE)
+	(Estilo Clasico)
+	(Ingredientes
+		[ontologia_Class30028]
+		[ontologia_Class10011]
+		[ontologia_Class44])
+	(Nombre "Patatas campesinas")
+	(PVP 6.0)
+	(Racion Normal)
+	(Vegetariano TRUE))
+
+([ontologia_Class80016] of  Postre
+
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
+	(Estilo Moderno)
+	(Ingredientes
+		[ontologia_Class10002]
+		[ontologia_Class70065]
+		[ontologia_Class10016]
+		[ontologia_Class56]
+		[ontologia_Class52]
+		[ontologia_Class30008])
+	(Nombre "Copa de melon y melocoton")
+	(PVP 1.0)
+	(Racion Normal)
+	(Vegetariano TRUE))
+
+([ontologia_Class80017] of  Postre
+
+	(AptoCena TRUE)
+	(Caliente FALSE)
+	(Ingredientes
+		[ontologia_Class54]
+		[ontologia_Class50018]
+		[ontologia_Class52]
+		[ontologia_Class41])
+	(Nombre "Martin di-frazcco")
+	(PVP 7.0)
+	(Racion Normal)
+	(Vegetariano TRUE))
+
+([ontologia_Class80018] of  Primero
+
+	(AptoCena TRUE)
+	(Estilo Sibarita)
+	(Ingredientes
+		[ontologia_Class80019]
+		[ontologia_Class80020])
+	(Nombre "Caviar vegetal y kaki")
+	(Racion Normal)
+	(Vegetariano TRUE))
+
+([ontologia_Class80019] of  Pescado
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Falsas huevas de salmon")
+	(PVP 10.0))
+
+([ontologia_Class80020] of  Fruta
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Kaki")
+	(PVP 3.0))
+
+([ontologia_Class80021] of  Primero
+
+	(AptoCena TRUE)
+	(Caliente TRUE)
+	(Estilo Sibarita)
+	(Ingredientes
+		[ontologia_Class50018]
+		[ontologia_Class80023]
+		[ontologia_Class80022])
+	(Nombre "Huevo a 65º, maiz y trufa negra")
+	(PVP 16.0)
+	(Racion Normal)
+	(Vegetariano TRUE))
+
+([ontologia_Class80022] of  Condimento
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Trufa negra")
+	(PVP 10.0))
+
+([ontologia_Class80023] of  Cereal
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Maiz")
+	(PVP 0.5))
+
+([ontologia_Class80024] of  Postre
+
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
+	(Caliente TRUE)
+	(Ingredientes
+		[ontologia_Class70078]
+		[ontologia_Class30012]
+		[ontologia_Class35]
+		[ontologia_Class10017]
+		[ontologia_Class52]
+		[ontologia_Class55])
+	(Nombre "Tarta de calabaza")
+	(PVP 6.0)
+	(Racion Normal)
+	(Vegetariano TRUE))
+
+([ontologia_Class80026] of  Segundo
+
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
+	(Caliente TRUE)
+	(Estilo Clasico)
+	(Ingredientes
+		[ontologia_Class10027]
+		[ontologia_Class15]
+		[ontologia_Class22]
+		[ontologia_Class26]
+		[ontologia_Class10020]
+		[ontologia_Class50018]
+		[ontologia_Class34])
+	(Nombre "Arroz chino frito")
+	(Origen China)
+	(PVP 0.1)
+	(Racion Normal)
+	(Vegetariano TRUE))
+
+([ontologia_Class80027] of  Segundo
+
+	(AptoCena TRUE)
+	(AptoNinos FALSE)
+	(Caliente TRUE)
+	(Estilo Moderno)
+	(Ingredientes
+		[ontologia_Class15]
+		[ontologia_Class10019]
+		[ontologia_Class22]
+		[ontologia_Class20]
+		[ontologia_Class10030]
+		[ontologia_Class30029]
+		[ontologia_Class30015])
+	(Nombre "Boniato con lentejas al curry")
+	(PVP 2.0)
+	(Racion Normal)
+	(Vegetariano TRUE))
+
+([ontologia_Class80028] of  Segundo
+
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
+	(Caliente TRUE)
+	(Estilo Clasico)
+	(Ingredientes
+		[ontologia_Class30028]
+		[ontologia_Class30013]
+		[ontologia_Class4]
+		[ontologia_Class40006]
+		[ontologia_Class70070])
+	(Nombre "Horneado de patatas a los cuatro quesos")
+	(PVP 3.0)
+	(Racion Normal)
+	(Vegetariano TRUE))
+
+([ontologia_Class80029] of  Segundo
+
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
+	(Caliente TRUE)
+	(Estilo Clasico)
+	(Ingredientes
+		[ontologia_Class15]
+		[ontologia_Class22]
+		[ontologia_Class70078]
+		[ontologia_Class50]
+		[ontologia_Class41]
+		[ontologia_Class10017]
+		[ontologia_Class10023]
+		[ontologia_Class30]
+		[ontologia_Class40006]
+		[ontologia_Class40]
+		[ontologia_Class3])
+	(Nombre "Gratinado de verduras")
+	(PVP 5.0)
+	(Racion Normal)
+	(Vegetariano TRUE))
+
+([ontologia_Class80030] of  Segundo
+
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
+	(Caliente TRUE)
+	(Estilo Moderno)
+	(Ingredientes
+		[ontologia_Class10003]
+		[ontologia_Class2]
+		[ontologia_Class80031])
+	(Nombre "Tallarines de calabacin con cubierta de tomate funghi")
+	(PVP 13.0)
+	(Racion Normal)
+	(Vegetariano TRUE))
+
+([ontologia_Class80031] of  Condimento
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Champinon")
+	(PVP 1.0))
+
+([ontologia_Class80032] of  Segundo
+
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
+	(Estilo Tradicional)
+	(Ingredientes
+		[ontologia_Class10003]
+		[ontologia_Class80003]
+		[ontologia_Class2]
+		[ontologia_Class40]
+		[ontologia_Class4])
+	(Nombre "Calabazitas a la italiana")
+	(Origen Italiana)
+	(PVP 16.0)
+	(Racion Normal)
+	(Vegetariano TRUE))
+
+([ontologia_Class80033] of  Segundo
+
+	(AptoCena TRUE)
+	(Estilo Moderno)
+	(Ingredientes
+		[ontologia_Class60003]
+		[ontologia_Class20]
+		[ontologia_Class56]
+		[ontologia_Class15]
+		[ontologia_Class35]
+		[ontologia_Class10010]
+		[ontologia_Class70015]
+		[ontologia_Class40]
+		[ontologia_Class80034]
+		[ontologia_Class10011])
+	(Nombre "Tabule de coliflor")
+	(PVP 20.0)
+	(Racion Normal)
+	(Vegetariano TRUE))
+
+([ontologia_Class80034] of  Condimento
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Menta")
+	(PVP 0.4))
+
+([ontologia_Class80035] of  Segundo
+
+	(AptoCena TRUE)
+	(Caliente TRUE)
+	(Estilo Sibarita)
+	(Ingredientes
+		[ontologia_Class30028]
+		[ontologia_Class40009]
+		[ontologia_Class26]
+		[ontologia_Class70025]
+		[ontologia_Class40015]
+		[ontologia_Class20]
+		[ontologia_Class15]
+		[ontologia_Class35])
+	(Nombre "La menestra en la patata")
+	(PVP 21.0)
+	(Racion Normal)
+	(Vegetariano TRUE))
+
+([ontologia_Class80036] of  Segundo
+
+	(AptoCena TRUE)
+	(Caliente TRUE)
+	(Estilo Sibarita)
+	(Ingredientes
+		[ontologia_Class80037]
+		[ontologia_Class80038]
+		[ontologia_Class80039]
+		[ontologia_Class10010]
+		[ontologia_Class24]
+		[ontologia_Class35])
+	(Nombre "Curry de piña con raita de remolacha")
+	(PVP 25.0)
+	(Racion Normal)
+	(Vegetariano TRUE))
+
+([ontologia_Class80037] of  Fruta
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Piña")
+	(PVP 1.0))
+
+([ontologia_Class80038] of  Condimento
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Curry")
+	(PVP 0.5))
+
+([ontologia_Class80039] of  Condimento
+
+	(Lactosa TRUE)
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Raita")
+	(PVP 3.0))

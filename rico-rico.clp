@@ -7,81 +7,23 @@
 (defclass %3ACLIPS_TOP_LEVEL_SLOT_CLASS "Fake class to save top-level slot information"
 	(is-a USER)
 	(role abstract)
-	(single-slot Tipo_Evento_Familiar
-		(type SYMBOL)
-		(allowed-values Boda Bautizo)
-		(default Boda)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot Caliente
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Cantidad
-		(type SYMBOL)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Relacion_Menu_Evento
-		(type INSTANCE)
-;+		(allowed-classes Evento)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot ontologia_Class40001
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot Ingredientes
-		(type INSTANCE)
-;+		(allowed-classes Ingrediente)
-		(cardinality 1 ?VARIABLE)
-		(create-accessor read-write))
-	(single-slot Lactosa
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Mes_Final_Temporada
-		(type INTEGER)
-		(range 1 12)
-		(default 1)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot Tipo_Evento_Congreso
-		(type SYMBOL)
-		(allowed-values Cena Comida)
-		(default Comida)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot Origen
-		(type SYMBOL)
-		(allowed-values Japonesa Italiana Espa%C3%B1a)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot PVP
-		(type FLOAT)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Relacion_Menu_Segundo
-		(type INSTANCE)
-;+		(allowed-classes Segundo)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(multislot Platos_Compatibles
-		(type INSTANCE)
-;+		(allowed-classes Plato)
-		(cardinality 1 ?VARIABLE)
-		(create-accessor read-write))
-	(single-slot Racion
-		(type SYMBOL)
-		(allowed-values Normal Abundante Peque%C3%B1a)
-		(default Normal)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(single-slot Bebida_Menu
 		(type INSTANCE)
 ;+		(allowed-classes Bebida)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Fecha_Celebracion
+		(type INTEGER)
+		(range 1 12)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Nombre
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Estilo
+		(type SYMBOL)
+		(allowed-values Moderno Tradicional Clasico Sibarita)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot Mes_Inicio_Temporada
@@ -90,12 +32,38 @@
 		(default 1)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot Relacion_Menu_Primero
+	(single-slot Relacion_Menu_Postre
 		(type INSTANCE)
-;+		(allowed-classes Primero)
+;+		(allowed-classes Postre)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot Vegetariano
+	(single-slot Mes_Final_Temporada
+		(type INTEGER)
+		(range 1 12)
+		(default 1)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot Origen
+		(type SYMBOL)
+		(allowed-values Japonesa Italiana Espa%C3%B1a China)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Cantidad
+		(type SYMBOL)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Racion
+		(type SYMBOL)
+		(allowed-values Normal Abundante Peque%C3%B1a)
+		(default Normal)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot Platos_Compatibles
+		(type INSTANCE)
+;+		(allowed-classes Plato)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(single-slot AptoNinos
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
@@ -105,11 +73,17 @@
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot Numero_Comensales
-		(type INTEGER)
+	(single-slot PVP
+		(type FLOAT)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot AptoNinos
+	(single-slot Tipo_Evento_Familiar
+		(type SYMBOL)
+		(allowed-values Boda Bautizo)
+		(default Boda)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot ontologia_Class40001
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
@@ -118,45 +92,71 @@
 		(type STRING)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot Relacion_Menu_Postre
-		(type INSTANCE)
-;+		(allowed-classes Postre)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot Estilo
-		(type SYMBOL)
-		(allowed-values Moderno Tradicional Clasico Sibarita)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Nombre
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(single-slot Relacion_Menu_Bebida
 		(type INSTANCE)
 ;+		(allowed-classes Bebida)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot Fecha_Celebracion
-		(type INTEGER)
-		(range 1 12)
+	(single-slot Caliente
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Tipo_Evento_Congreso
+		(type SYMBOL)
+		(allowed-values Cena Comida)
+		(default Comida)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot Relacion_Menu_Primero
+		(type INSTANCE)
+;+		(allowed-classes Primero)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot AptoCena
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Vegetariano
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Relacion_Menu_Segundo
+		(type INSTANCE)
+;+		(allowed-classes Segundo)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot Numero_Comensales
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Lactosa
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot Ingredientes
+		(type INSTANCE)
+;+		(allowed-classes Ingrediente)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(single-slot Relacion_Menu_Evento
+		(type INSTANCE)
+;+		(allowed-classes Evento)
+;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
 (defclass Bebida
 	(is-a USER)
 	(role concrete)
-	(single-slot PVP
-		(type FLOAT)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(single-slot Nombre
 		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot PVP
+		(type FLOAT)
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
@@ -179,12 +179,12 @@
 (defclass Evento
 	(is-a USER)
 	(role concrete)
-	(single-slot Numero_Comensales
-		(type INTEGER)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(single-slot Nombre
 		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Numero_Comensales
+		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot Fecha_Celebracion
@@ -216,19 +216,9 @@
 (defclass Plato
 	(is-a USER)
 	(role concrete)
-	(multislot Ingredientes
-		(type INSTANCE)
-;+		(allowed-classes Ingrediente)
-		(cardinality 1 ?VARIABLE)
-		(create-accessor read-write))
-	(single-slot Vegetariano
+	(single-slot Origen
 		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot AptoNinos
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
+		(allowed-values Japonesa Italiana Espa%C3%B1a China)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot Racion
@@ -237,32 +227,9 @@
 		(default Normal)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot Origen
-		(type SYMBOL)
-		(allowed-values Japonesa Italiana Espa%C3%B1a)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Caliente
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(single-slot Bebida_Menu
 		(type INSTANCE)
 ;+		(allowed-classes Bebida)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot PVP
-		(type FLOAT)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Estilo
-		(type SYMBOL)
-		(allowed-values Moderno Tradicional Clasico Sibarita)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Nombre
-		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot AptoCena
@@ -270,10 +237,43 @@
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(single-slot Vegetariano
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Nombre
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Estilo
+		(type SYMBOL)
+		(allowed-values Moderno Tradicional Clasico Sibarita)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(multislot Platos_Compatibles
 		(type INSTANCE)
 ;+		(allowed-classes Plato)
 		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(single-slot Caliente
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot Ingredientes
+		(type INSTANCE)
+;+		(allowed-classes Ingrediente)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(single-slot AptoNinos
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot PVP
+		(type FLOAT)
+;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
 (defclass Primero
@@ -291,13 +291,8 @@
 (defclass Ingrediente
 	(is-a USER)
 	(role concrete)
-	(single-slot PVP
-		(type FLOAT)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Gluten
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
+	(single-slot Nombre
+		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot Lactosa
@@ -305,17 +300,22 @@
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot Nombre
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Mes_Final_Temporada
+	(single-slot Mes_Inicio_Temporada
 		(type INTEGER)
 		(range 1 12)
 		(default 1)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot Mes_Inicio_Temporada
+	(single-slot Gluten
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot PVP
+		(type FLOAT)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Mes_Final_Temporada
 		(type INTEGER)
 		(range 1 12)
 		(default 1)
@@ -365,19 +365,18 @@
 (defclass Menu
 	(is-a USER)
 	(role concrete)
-	(single-slot Relacion_Menu_Primero
-		(type INSTANCE)
-;+		(allowed-classes Primero)
-;+		(cardinality 1 1)
+	(single-slot Nombre
+		(type STRING)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot Relacion_Menu_Segundo
 		(type INSTANCE)
 ;+		(allowed-classes Segundo)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot Relacion_Menu_Postre
+	(single-slot Relacion_Menu_Bebida
 		(type INSTANCE)
-;+		(allowed-classes Postre)
+;+		(allowed-classes Bebida)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot Relacion_Menu_Evento
@@ -385,16 +384,16 @@
 ;+		(allowed-classes Evento)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot Nombre
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Relacion_Menu_Bebida
+	(single-slot Relacion_Menu_Primero
 		(type INSTANCE)
-;+		(allowed-classes Bebida)
+;+		(allowed-classes Primero)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot Relacion_Menu_Postre
+		(type INSTANCE)
+;+		(allowed-classes Postre)
 ;+		(cardinality 1 1)
 		(create-accessor read-write)))
-
 
 ; Fri May 05 01:04:46 CEST 2017
 ;
@@ -415,10 +414,10 @@
 			[ontologia_Class10005]
 			[ontologia_Class31]
 			[ontologia_Class10007]
-			[ontologia_Class10008]
 			[ontologia_Class10009]
 			[ontologia_Class10010]
-			[ontologia_Class10011])
+			[ontologia_Class10011]
+			[ontologia_Class80012])
 		(Nombre "Tosta tibia de salmón en conserva con tartar de sus huevas")
 		(Platos_Compatibles [ontologia_Class17])
 		(PVP 6.0)
@@ -1444,13 +1443,13 @@
 		(Ingredientes
 			[ontologia_Class30032]
 			[ontologia_Class30034]
-			[ontologia_Class30006]
 			[ontologia_Class30035]
 			[ontologia_Class15]
 			[ontologia_Class30008]
 			[ontologia_Class10034]
 			[ontologia_Class24]
-			[ontologia_Class35])
+			[ontologia_Class35]
+			[ontologia_Class80011])
 		(Nombre "Gazpacho de setas")
 		(Platos_Compatibles
 			[ontologia_Class20013]
@@ -2189,6 +2188,23 @@
 		(Nombre "Mermelada de fresa")
 		(PVP 0.7))
 
+	([ontologia_Class60000] of  Primero
+
+		(AptoCena TRUE)
+		(AptoNinos TRUE)
+		(Caliente TRUE)
+		(Estilo Moderno)
+		(Ingredientes
+			[ontologia_Class30006]
+			[ontologia_Class50018]
+			[ontologia_Class50]
+			[ontologia_Class35]
+			[ontologia_Class15])
+		(Nombre "Cascarrollas del rio")
+		(PVP 1.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
 	([ontologia_Class60001] of  Condimento
 
 		(Mes_Final_Temporada 12)
@@ -2735,9 +2751,9 @@
 		(Ingredientes
 			[ontologia_Class22]
 			[ontologia_Class70024]
-			[ontologia_Class10027]
 			[ontologia_Class30008]
-			[ontologia_Class35])
+			[ontologia_Class35]
+			[ontologia_Class70054])
 		(Nombre "Risotto de espinacas")
 		(PVP 1.0)
 		(Racion Normal)
@@ -3156,6 +3172,492 @@
 		(Mes_Inicio_Temporada 1)
 		(Nombre "Merengue")
 		(PVP 1.2))
+
+	([ontologia_Class80001] of  Primero
+
+		(AptoCena TRUE)
+		(AptoNinos TRUE)
+		(Caliente TRUE)
+		(Estilo Moderno)
+		(Ingredientes
+			[ontologia_Class44]
+			[ontologia_Class30011]
+			[ontologia_Class50018]
+			[ontologia_Class52]
+			[ontologia_Class30012]
+			[ontologia_Class43])
+		(Nombre "Panecillos de nata")
+		(PVP 2.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class80002] of  Primero
+
+		(AptoCena TRUE)
+		(AptoNinos FALSE)
+		(Caliente TRUE)
+		(Estilo Tradicional)
+		(Ingredientes
+			[ontologia_Class80003]
+			[ontologia_Class22]
+			[ontologia_Class2]
+			[ontologia_Class15]
+			[ontologia_Class20]
+			[ontologia_Class10009]
+			[ontologia_Class40016]
+			[ontologia_Class30006]
+			[ontologia_Class35]
+			[ontologia_Class10010])
+		(Nombre "Berenjenas al Horno")
+		(Origen Italiana)
+		(PVP 8.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class80003] of  Verdura
+
+		(Mes_Final_Temporada 4)
+		(Mes_Inicio_Temporada 10)
+		(Nombre "Berenjena")
+		(PVP 0.2))
+
+	([ontologia_Class80004] of  Postre
+
+		(AptoCena TRUE)
+		(Caliente TRUE)
+		(Ingredientes
+			[ontologia_Class32]
+			[ontologia_Class52]
+			[ontologia_Class80005]
+			[ontologia_Class30009])
+		(Nombre "Cerezas rostisadas")
+		(PVP 12.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class80005] of  Fruta
+
+		(Mes_Final_Temporada 8)
+		(Mes_Inicio_Temporada 5)
+		(Nombre "Cereza")
+		(PVP 1.1))
+
+	([ontologia_Class80006] of  Postre
+
+		(AptoCena TRUE)
+		(AptoNinos TRUE)
+		(Ingredientes
+			[ontologia_Class70066]
+			[ontologia_Class80007])
+		(Nombre "Helado de platano")
+		(PVP 3.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class80007] of  Derivado
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Dulce de leche")
+		(PVP 0.3))
+
+	([ontologia_Class80008] of  Postre
+
+		(AptoCena TRUE)
+		(AptoNinos TRUE)
+		(Caliente TRUE)
+		(Ingredientes
+			[ontologia_Class80009]
+			[ontologia_Class80010]
+			[ontologia_Class41]
+			[ontologia_Class30011]
+			[ontologia_Class52]
+			[ontologia_Class50018]
+			[ontologia_Class50])
+		(Nombre "Pastel de coco con guayaba")
+		(PVP 1.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class80009] of  Fruta
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Coco")
+		(PVP 2.0))
+
+	([ontologia_Class80010] of  Fruta
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Guayaba")
+		(PVP 3.0))
+
+	([ontologia_Class80011] of  Cereal
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Pan sin gluten")
+		(PVP 0.1))
+
+	([ontologia_Class80012] of  Cereal
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Masa fresca sin gluten")
+		(PVP 1.2))
+
+	([ontologia_Class80013] of  Postre
+
+		(AptoCena TRUE)
+		(Caliente TRUE)
+		(Estilo Tradicional)
+		(Ingredientes
+			[ontologia_Class30011]
+			[ontologia_Class41]
+			[ontologia_Class70038]
+			[ontologia_Class30007]
+			[ontologia_Class70094])
+		(Nombre "Cannoli")
+		(Origen Italiana)
+		(PVP 2.5)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class80014] of  Postre
+
+		(AptoCena TRUE)
+		(AptoNinos TRUE)
+		(Estilo Sibarita)
+		(Ingredientes
+			[ontologia_Class30011]
+			[ontologia_Class52]
+			[ontologia_Class50018]
+			[ontologia_Class42])
+		(Nombre "Macarons")
+		(PVP 20.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class80015] of  Primero
+
+		(AptoCena TRUE)
+		(AptoNinos TRUE)
+		(Caliente TRUE)
+		(Estilo Clasico)
+		(Ingredientes
+			[ontologia_Class30028]
+			[ontologia_Class10011]
+			[ontologia_Class44])
+		(Nombre "Patatas campesinas")
+		(PVP 6.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class80016] of  Postre
+
+		(AptoCena TRUE)
+		(AptoNinos TRUE)
+		(Estilo Moderno)
+		(Ingredientes
+			[ontologia_Class10002]
+			[ontologia_Class70065]
+			[ontologia_Class10016]
+			[ontologia_Class56]
+			[ontologia_Class52]
+			[ontologia_Class30008])
+		(Nombre "Copa de melon y melocoton")
+		(PVP 1.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class80017] of  Postre
+
+		(AptoCena TRUE)
+		(Caliente FALSE)
+		(Ingredientes
+			[ontologia_Class54]
+			[ontologia_Class50018]
+			[ontologia_Class52]
+			[ontologia_Class41])
+		(Nombre "Martin di-frazcco")
+		(PVP 7.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class80018] of  Primero
+
+		(AptoCena TRUE)
+		(Estilo Sibarita)
+		(Ingredientes
+			[ontologia_Class80019]
+			[ontologia_Class80020])
+		(Nombre "Caviar vegetal y kaki")
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class80019] of  Pescado
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Falsas huevas de salmon")
+		(PVP 10.0))
+
+	([ontologia_Class80020] of  Fruta
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Kaki")
+		(PVP 3.0))
+
+	([ontologia_Class80021] of  Primero
+
+		(AptoCena TRUE)
+		(Caliente TRUE)
+		(Estilo Sibarita)
+		(Ingredientes
+			[ontologia_Class50018]
+			[ontologia_Class80023]
+			[ontologia_Class80022])
+		(Nombre "Huevo a 65º, maiz y trufa negra")
+		(PVP 16.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class80022] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Trufa negra")
+		(PVP 10.0))
+
+	([ontologia_Class80023] of  Cereal
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Maiz")
+		(PVP 0.5))
+
+	([ontologia_Class80024] of  Postre
+
+		(AptoCena TRUE)
+		(AptoNinos TRUE)
+		(Caliente TRUE)
+		(Ingredientes
+			[ontologia_Class70078]
+			[ontologia_Class30012]
+			[ontologia_Class35]
+			[ontologia_Class10017]
+			[ontologia_Class52]
+			[ontologia_Class55])
+		(Nombre "Tarta de calabaza")
+		(PVP 6.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class80026] of  Segundo
+
+		(AptoCena TRUE)
+		(AptoNinos TRUE)
+		(Caliente TRUE)
+		(Estilo Clasico)
+		(Ingredientes
+			[ontologia_Class10027]
+			[ontologia_Class15]
+			[ontologia_Class22]
+			[ontologia_Class26]
+			[ontologia_Class10020]
+			[ontologia_Class50018]
+			[ontologia_Class34])
+		(Nombre "Arroz chino frito")
+		(Origen China)
+		(PVP 0.1)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class80027] of  Segundo
+
+		(AptoCena TRUE)
+		(AptoNinos FALSE)
+		(Caliente TRUE)
+		(Estilo Moderno)
+		(Ingredientes
+			[ontologia_Class15]
+			[ontologia_Class10019]
+			[ontologia_Class22]
+			[ontologia_Class20]
+			[ontologia_Class10030]
+			[ontologia_Class30029]
+			[ontologia_Class30015])
+		(Nombre "Boniato con lentejas al curry")
+		(PVP 2.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class80028] of  Segundo
+
+		(AptoCena TRUE)
+		(AptoNinos TRUE)
+		(Caliente TRUE)
+		(Estilo Clasico)
+		(Ingredientes
+			[ontologia_Class30028]
+			[ontologia_Class30013]
+			[ontologia_Class4]
+			[ontologia_Class40006]
+			[ontologia_Class70070])
+		(Nombre "Horneado de patatas a los cuatro quesos")
+		(PVP 3.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class80029] of  Segundo
+
+		(AptoCena TRUE)
+		(AptoNinos TRUE)
+		(Caliente TRUE)
+		(Estilo Clasico)
+		(Ingredientes
+			[ontologia_Class15]
+			[ontologia_Class22]
+			[ontologia_Class70078]
+			[ontologia_Class50]
+			[ontologia_Class41]
+			[ontologia_Class10017]
+			[ontologia_Class10023]
+			[ontologia_Class30]
+			[ontologia_Class40006]
+			[ontologia_Class40]
+			[ontologia_Class3])
+		(Nombre "Gratinado de verduras")
+		(PVP 5.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class80030] of  Segundo
+
+		(AptoCena TRUE)
+		(AptoNinos TRUE)
+		(Caliente TRUE)
+		(Estilo Moderno)
+		(Ingredientes
+			[ontologia_Class10003]
+			[ontologia_Class2]
+			[ontologia_Class80031])
+		(Nombre "Tallarines de calabacin con cubierta de tomate funghi")
+		(PVP 13.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class80031] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Champinon")
+		(PVP 1.0))
+
+	([ontologia_Class80032] of  Segundo
+
+		(AptoCena TRUE)
+		(AptoNinos TRUE)
+		(Estilo Tradicional)
+		(Ingredientes
+			[ontologia_Class10003]
+			[ontologia_Class80003]
+			[ontologia_Class2]
+			[ontologia_Class40]
+			[ontologia_Class4])
+		(Nombre "Calabazitas a la italiana")
+		(Origen Italiana)
+		(PVP 16.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class80033] of  Segundo
+
+		(AptoCena TRUE)
+		(Estilo Moderno)
+		(Ingredientes
+			[ontologia_Class60003]
+			[ontologia_Class20]
+			[ontologia_Class56]
+			[ontologia_Class15]
+			[ontologia_Class35]
+			[ontologia_Class10010]
+			[ontologia_Class70015]
+			[ontologia_Class40]
+			[ontologia_Class80034]
+			[ontologia_Class10011])
+		(Nombre "Tabule de coliflor")
+		(PVP 20.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class80034] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Menta")
+		(PVP 0.4))
+
+	([ontologia_Class80035] of  Segundo
+
+		(AptoCena TRUE)
+		(Caliente TRUE)
+		(Estilo Sibarita)
+		(Ingredientes
+			[ontologia_Class30028]
+			[ontologia_Class40009]
+			[ontologia_Class26]
+			[ontologia_Class70025]
+			[ontologia_Class40015]
+			[ontologia_Class20]
+			[ontologia_Class15]
+			[ontologia_Class35])
+		(Nombre "La menestra en la patata")
+		(PVP 21.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class80036] of  Segundo
+
+		(AptoCena TRUE)
+		(Caliente TRUE)
+		(Estilo Sibarita)
+		(Ingredientes
+			[ontologia_Class80037]
+			[ontologia_Class80038]
+			[ontologia_Class80039]
+			[ontologia_Class10010]
+			[ontologia_Class24]
+			[ontologia_Class35])
+		(Nombre "Curry de piña con raita de remolacha")
+		(PVP 25.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class80037] of  Fruta
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Piña")
+		(PVP 1.0))
+
+	([ontologia_Class80038] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Curry")
+		(PVP 0.5))
+
+	([ontologia_Class80039] of  Condimento
+
+		(Lactosa TRUE)
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Raita")
+		(PVP 3.0))
+
 )
 
 ;                   ======================================================================
@@ -3201,6 +3703,7 @@
 	(slot presupuestoMax (type INTEGER) (default -1))
 	(slot tipoEvento (type SYMBOL) (allowed-values Boda Comunion Bautizo Congreso UNDEF) (default UNDEF))
 	(slot vino (type SYMBOL) (allowed-values FALSE TRUE UNDEF) (default UNDEF)) ;;;nuevo
+	(slot alcohol (type SYMBOL) (allowed-values FALSE TRUE UNDEF) (default UNDEF)) ;;;nuevo
 	(slot numComensalesVino (type FLOAT) (default -1.0)) ;;;nuevo
 	(slot ninos (type SYMBOL) (allowed-values FALSE TRUE UNDEF) (default UNDEF)) ;;;nuevo
 	(slot numComensalesNinos (type INTEGER) (default -1));;; nuevo
@@ -3552,10 +4055,13 @@
 ;                   ========================     Handler Bebida    =======================
 ;                   ======================================================================
 
-(defmessage-handler MAIN::Bebida imprimir "Handler que imprime por la salida estandard la informacion basica de un vino" ()
+
+(defmessage-handler MAIN::Bebida imprimir "" ()
 	(printout t "Nombre      : " ?self:Nombre crlf)
 	(printout t "Precio      : " ?self:PVP crlf)
 )
+
+
 
 
 ;                   ======================================================================
@@ -3701,9 +4207,23 @@
   )
 )
 
-(defmessage-handler MAIN::VinoAbstracto imprimir ()
+(defmessage-handler MAIN::VinoAbstracto imprimir (?numComensalesVino ?numComensales)
 	(printout t "Nombre: " ?self:Nombre crlf)
 	(printout t "Precio: " ?self:PVP crlf)
+	(bind ?num (div ?numComensalesVino 4))
+	(bind ?precio (* ?num ?self:PVP))
+	(if (eq ?num 1)
+		then  (if (< ?numComensalesVino 4)
+						then (bind ?copa (/ ?self:PVP ?numComensalesVino))
+								 (format t "Precio de una copa para %d comensales: %f %n" ?numComensalesVino ?copa)
+						else (format t "Precio de %d botella para %d comensales: %f %n" ?num ?numComensalesVino ?precio )
+					)
+		else 	(if (eq ?num 0)
+				then (bind ?copa (/ ?self:PVP ?numComensalesVino))
+						 (format t "Precio de una copa para %d comensales: %f %n" ?numComensalesVino ?copa)
+				else (format t "Precio de %d botellas para %d comensales: %f %n" ?num ?numComensalesVino ?precio )
+		)
+	)
 )
 
 ;;;nuevo
@@ -3786,7 +4306,7 @@
 
 (deffunction pregunta-binaria "Preguntas con respuestas sí o no" (?pregunta)
    (bind ?respuesta (pregunta-general ?pregunta si no s n))
-   (if (or (eq ?respuesta yes) (eq ?respuesta s))
+   (if (or (eq ?respuesta yes) (eq ?respuesta s) (eq ?respuesta si))
        then TRUE
        else FALSE)
 )
@@ -3969,10 +4489,45 @@
 		(bind ?num (pregunta-numerica-rango "¿Cuantos?" 1 (- ?numComensales 2)))
 		(modify ?e (numComensalesNinos ?num))
 )
+
+;;;nuevo
+(defrule recopilacion::pregunta-alcohol "Pregunta si se quiere incluir alcohol en el menu si es un congreso"
+		?e <- (Entrada (alcohol ?alcohol))
+		(test (eq ?alcohol UNDEF))
+		=>
+		(if (pregunta-binaria "¿Se quieren incluir bebidas alcoholicas en el menu?")
+        then (modify ?e (alcohol TRUE))
+        else (modify ?e (alcohol FALSE))
+    )
+
+)
+
+(defrule recopilacion::Desactiva-vinos "Pone vinos a false"
+		?e <- (Entrada (vino ?vino))
+		(test (eq ?vino UNDEF))
+		(Entrada (alcohol ?alcohol))
+		(test (eq ?alcohol FALSE))
+		=>
+		(modify ?e (vino FALSE))
+)
+
+(defrule recopilacion::Desactiva-numComensales-vino "Pone comensales que beberan vino a 0"
+		?e <- (Entrada (numComensalesVino ?numComensalesVino))
+		(test (eq ?numComensalesVino -1))
+		(Entrada (alcohol ?alcohol))
+		(test (eq ?alcohol FALSE))
+		(Entrada (vino ?vino))
+		(test (eq ?vino FALSE))
+		=>
+		(modify ?e (numComensalesVino 0.0))
+)
+
 ;;;nuevo
 (defrule recopilacion::pregunta-vino "Pregunta si se quiere incluir vino en el menu"
 		?e <- (Entrada (vino ?vino))
 		(test (eq ?vino UNDEF))
+		(Entrada (alcohol ?alcohol))
+		(test (eq ?alcohol TRUE))
 		=>
 		(if (pregunta-binaria "¿Se quiere incluir vino en el menu?")
         then (modify ?e (vino TRUE))
@@ -4042,6 +4597,9 @@
 
     (Entrada (tipoEvento ?tipoEvento))
     (test (not (eq ?tipoEvento UNDEF)))
+
+		(Entrada (alcohol ?alcohol))
+		(test (not (eq ?alcohol UNDEF)))
 
 		(Entrada (vino ?vino))
     (test (not (eq ?vino UNDEF)))
@@ -4206,6 +4764,8 @@
 ;;;nuevo
 (defrule  solucionConcreta::generar-vino-bajo "genera el vino para el menu bajo"
 	(Entrada (vino ?vino))
+	(Entrada (numComensalesVino ?numComensalesVino))
+	(Entrada (numComensales ?numComensales))
 	(test (eq ?vino TRUE))
 	(not (generarVinoBajo))
 	(final)
@@ -4221,9 +4781,10 @@
 	)
 
 	(bind ?candidato (buscar-vino ?tipoVino ?categoria Bajo))
-	(printout t "---------------------" crlf)
-	(send (instance-address * ?candidato) imprimir)
-	(printout t "---------------------" crlf)
+	(printout t crlf)
+	(printout t "====================  Recomendacion vino menu economico ===================== " crlf)
+	(printout t crlf)
+	(send (instance-address * ?candidato) imprimir ?numComensalesVino ?numComensales)
 
 	(assert (generarVinoBajo))
 )
@@ -4231,6 +4792,8 @@
 ;;;nuevo
 (defrule  solucionConcreta::generar-vino-medio "genera el vino para el menu medio"
 	(Entrada (vino ?vino))
+	(Entrada (numComensalesVino ?numComensalesVino))
+	(Entrada (numComensales ?numComensales))
 	(test (eq ?vino TRUE))
 	(not (generarVinoMedio))
 	(final)
@@ -4246,9 +4809,10 @@
 	)
 
 	(bind ?candidato (buscar-vino ?tipoVino ?categoria Medio))
-	(printout t "---------------------" crlf)
-	(send (instance-address * ?candidato) imprimir)
-	(printout t "---------------------" crlf)
+	(printout t crlf)
+	(printout t "====================  Recomendacion vino menu medio ===================== " crlf)
+	(printout t crlf)
+	(send (instance-address * ?candidato) imprimir ?numComensalesVino ?numComensales)
 
 
 	(assert (generarVinoMedio))
@@ -4257,6 +4821,8 @@
 ;;;nuevo
 (defrule  solucionConcreta::generar-vino-alto "genera el vino para el menu alto"
 	(Entrada (vino ?vino))
+	(Entrada (numComensalesVino ?numComensalesVino))
+	(Entrada (numComensales ?numComensales))
 	(test (eq ?vino TRUE))
 	(not (generarVinoAlto))
 	(final)
@@ -4272,11 +4838,51 @@
 	)
 
 	(bind ?candidato (buscar-vino ?tipoVino ?categoria Alto))
-	(printout t "---------------------" crlf)
-	(send (instance-address * ?candidato) imprimir)
-	(printout t "---------------------" crlf)
+	(printout t crlf)
+	(printout t "====================  Recomendacion vino menu alto ===================== " crlf)
+	(printout t crlf)
+	(send (instance-address * ?candidato) imprimir ?numComensalesVino ?numComensales)
 
 	(assert (generarVinoAlto))
+)
+
+(defrule solucionConcreta::generar-cerveza "imprime la cerveza"
+	(Entrada (numComensales ?numComensales))
+	(Entrada (numComensalesVino ?numComensalesVino))
+	(Entrada (numComensalesNinos ?numComensalesNinos))
+	(Entrada (tipoEvento ?tipoEvento))
+	(Entrada (alcohol ?alcohol))
+	(test (< ?numComensalesVino (- ?numComensales ?numComensalesNinos))) ;ponemos cerveza si alguien no bebe vino
+	(test (eq ?alcohol TRUE))
+	(final)
+	(not (cerveza))
+	=>
+	(printout t crlf)
+	(printout t "====================  Otras bebidas ===================== " crlf)
+	(printout t "Precio cerveza: 1.2" crlf)
+	(bind ?num (- ?numComensales ?numComensalesVino ?numComensalesNinos))
+	(bind ?precio (* ?num 1.2))
+	(format t "Precio para %d comensales: %f %n" ?num ?precio)
+	(assert (cerveza))
+)
+
+(defrule  solucionConcreta::generar-bebida-infantil "genera las bebidas infantiles"
+	(Entrada (ninos ?ninos))
+	(Entrada (numComensalesNinos ?numComensalesNinos))
+	(Entrada (numComensalesVino ?numComensalesVino))
+	(Entrada (numComensales ?numComensales))
+	(Entrada (alcohol ?alcohol))
+	(test (eq ?ninos TRUE))
+	(final)
+	=>
+	(printout t crlf)
+	(if (or (eq ?numComensalesVino (- ?numComensales ?numComensalesNinos))(eq ?alcohol FALSE))
+		then (printout t "====================  Otras bebidas ===================== " crlf)
+		(printout t crlf)
+	)
+	(printout t "Precio refresco o zumo: 0.8" crlf)
+	(bind ?precio (* ?numComensalesNinos 0.8))
+	(format t "Precio para %d comensales: %f %n" ?numComensalesNinos ?precio)
 )
 
 (defrule solucionConcreta::generar-menu-bajo ""
