@@ -1,4 +1,4 @@
-; Sun May 14 21:19:03 CEST 2017
+; Wed May 17 23:23:12 CEST 2017
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -7,94 +7,10 @@
 (defclass %3ACLIPS_TOP_LEVEL_SLOT_CLASS "Fake class to save top-level slot information"
 	(is-a USER)
 	(role abstract)
-	(single-slot Bebida_Menu
-		(type INSTANCE)
-;+		(allowed-classes Bebida)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Fecha_Celebracion
-		(type INTEGER)
-		(range 1 12)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Nombre
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Estilo
-		(type SYMBOL)
-		(allowed-values Moderno Tradicional Clasico Sibarita)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Mes_Inicio_Temporada
-		(type INTEGER)
-		(range 1 12)
-		(default 1)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot Relacion_Menu_Postre
-		(type INSTANCE)
-;+		(allowed-classes Postre)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot Mes_Final_Temporada
-		(type INTEGER)
-		(range 1 12)
-		(default 1)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot Origen
-		(type SYMBOL)
-		(allowed-values Japonesa Italiana Espa%C3%B1a China)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Cantidad
-		(type SYMBOL)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Racion
-		(type SYMBOL)
-		(allowed-values Normal Abundante Peque%C3%B1a)
-		(default Normal)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot Platos_Compatibles
-		(type INSTANCE)
-;+		(allowed-classes Plato)
-		(cardinality 1 ?VARIABLE)
-		(create-accessor read-write))
-	(single-slot AptoNinos
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Gluten
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot PVP
-		(type FLOAT)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(single-slot Tipo_Evento_Familiar
 		(type SYMBOL)
 		(allowed-values Boda Bautizo)
 		(default Boda)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot ontologia_Class40001
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot NombreAlergia
-		(type STRING)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot Relacion_Menu_Bebida
-		(type INSTANCE)
-;+		(allowed-classes Bebida)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot Caliente
@@ -102,37 +18,16 @@
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot Tipo_Evento_Congreso
+	(single-slot Cantidad
 		(type SYMBOL)
-		(allowed-values Cena Comida)
-		(default Comida)
-;+		(cardinality 1 1)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot Relacion_Menu_Primero
+	(single-slot Relacion_Menu_Evento
 		(type INSTANCE)
-;+		(allowed-classes Primero)
+;+		(allowed-classes Evento)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot AptoCena
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Vegetariano
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Relacion_Menu_Segundo
-		(type INSTANCE)
-;+		(allowed-classes Segundo)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot Numero_Comensales
-		(type INTEGER)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Lactosa
+	(single-slot ontologia_Class40001
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
@@ -142,21 +37,126 @@
 ;+		(allowed-classes Ingrediente)
 		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write))
-	(single-slot Relacion_Menu_Evento
-		(type INSTANCE)
-;+		(allowed-classes Evento)
+	(single-slot Lactosa
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Mes_Final_Temporada
+		(type INTEGER)
+		(range 1 12)
+		(default 1)
 ;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot Tipo_Evento_Congreso
+		(type SYMBOL)
+		(allowed-values Cena Comida)
+		(default Comida)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot Origen
+		(type SYMBOL)
+		(allowed-values Japonesa Italiana Espa%C3%B1a China)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot PVP
+		(type FLOAT)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Relacion_Menu_Segundo
+		(type INSTANCE)
+;+		(allowed-classes Segundo)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot Platos_Compatibles
+		(type INSTANCE)
+;+		(allowed-classes Plato)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(single-slot Racion
+		(type SYMBOL)
+		(allowed-values Normal Abundante Peque%C3%B1a)
+		(default Normal)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Bebida_Menu
+		(type INSTANCE)
+;+		(allowed-classes Bebida)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Mes_Inicio_Temporada
+		(type INTEGER)
+		(range 1 12)
+		(default 1)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot Relacion_Menu_Primero
+		(type INSTANCE)
+;+		(allowed-classes Primero)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot Vegetariano
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Gluten
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Numero_Comensales
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot AptoNinos
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot NombreAlergia
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot Relacion_Menu_Postre
+		(type INSTANCE)
+;+		(allowed-classes Postre)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot Estilo
+		(type SYMBOL)
+		(allowed-values Moderno Tradicional Clasico Sibarita)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Nombre
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Relacion_Menu_Bebida
+		(type INSTANCE)
+;+		(allowed-classes Bebida)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot Fecha_Celebracion
+		(type INTEGER)
+		(range 1 12)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot AptoCena
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
 (defclass Bebida
 	(is-a USER)
 	(role concrete)
-	(single-slot Nombre
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(single-slot PVP
 		(type FLOAT)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Nombre
+		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
@@ -179,12 +179,12 @@
 (defclass Evento
 	(is-a USER)
 	(role concrete)
-	(single-slot Nombre
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(single-slot Numero_Comensales
 		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Nombre
+		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot Fecha_Celebracion
@@ -216,9 +216,19 @@
 (defclass Plato
 	(is-a USER)
 	(role concrete)
-	(single-slot Origen
+	(multislot Ingredientes
+		(type INSTANCE)
+;+		(allowed-classes Ingrediente)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(single-slot Vegetariano
 		(type SYMBOL)
-		(allowed-values Japonesa Italiana Espa%C3%B1a China)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot AptoNinos
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot Racion
@@ -227,23 +237,23 @@
 		(default Normal)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(single-slot Origen
+		(type SYMBOL)
+		(allowed-values Japonesa Italiana Espa%C3%B1a China)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Caliente
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(single-slot Bebida_Menu
 		(type INSTANCE)
 ;+		(allowed-classes Bebida)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot AptoCena
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Vegetariano
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Nombre
-		(type STRING)
+	(single-slot PVP
+		(type FLOAT)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot Estilo
@@ -251,29 +261,19 @@
 		(allowed-values Moderno Tradicional Clasico Sibarita)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(single-slot Nombre
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot AptoCena
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(multislot Platos_Compatibles
 		(type INSTANCE)
 ;+		(allowed-classes Plato)
 		(cardinality 1 ?VARIABLE)
-		(create-accessor read-write))
-	(single-slot Caliente
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot Ingredientes
-		(type INSTANCE)
-;+		(allowed-classes Ingrediente)
-		(cardinality 1 ?VARIABLE)
-		(create-accessor read-write))
-	(single-slot AptoNinos
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot PVP
-		(type FLOAT)
-;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
 (defclass Primero
@@ -291,8 +291,13 @@
 (defclass Ingrediente
 	(is-a USER)
 	(role concrete)
-	(single-slot Nombre
-		(type STRING)
+	(single-slot PVP
+		(type FLOAT)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Gluten
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot Lactosa
@@ -300,22 +305,17 @@
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot Mes_Inicio_Temporada
+	(single-slot Nombre
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Mes_Final_Temporada
 		(type INTEGER)
 		(range 1 12)
 		(default 1)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot Gluten
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot PVP
-		(type FLOAT)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot Mes_Final_Temporada
+	(single-slot Mes_Inicio_Temporada
 		(type INTEGER)
 		(range 1 12)
 		(default 1)
@@ -365,18 +365,19 @@
 (defclass Menu
 	(is-a USER)
 	(role concrete)
-	(single-slot Nombre
-		(type STRING)
-;+		(cardinality 0 1)
+	(single-slot Relacion_Menu_Primero
+		(type INSTANCE)
+;+		(allowed-classes Primero)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot Relacion_Menu_Segundo
 		(type INSTANCE)
 ;+		(allowed-classes Segundo)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot Relacion_Menu_Bebida
+	(single-slot Relacion_Menu_Postre
 		(type INSTANCE)
-;+		(allowed-classes Bebida)
+;+		(allowed-classes Postre)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot Relacion_Menu_Evento
@@ -384,14 +385,13 @@
 ;+		(allowed-classes Evento)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot Relacion_Menu_Primero
-		(type INSTANCE)
-;+		(allowed-classes Primero)
-;+		(cardinality 1 1)
+	(single-slot Nombre
+		(type STRING)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot Relacion_Menu_Postre
+	(single-slot Relacion_Menu_Bebida
 		(type INSTANCE)
-;+		(allowed-classes Postre)
+;+		(allowed-classes Bebida)
 ;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
