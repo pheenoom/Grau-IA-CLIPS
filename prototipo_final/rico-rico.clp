@@ -3712,6 +3712,11 @@
 	(slot tipoEvento (type SYMBOL) (allowed-values Boda Comunion Bautizo Congreso UNDEF) (default UNDEF))
 	(slot bebidaPorPlato (type SYMBOL) (allowed-values FALSE TRUE UNDEF) (default UNDEF))
 	(slot mesEvento (type INTEGER) (default -1))
+	(slot vino (type SYMBOL) (allowed-values FALSE TRUE) (default FALSE)) ;;;nuevo
+	(slot alcohol (type SYMBOL) (allowed-values FALSE TRUE UNDEF) (default UNDEF)) ;;;nuevo
+	(slot numComensalesVino (type FLOAT) (default 0.0)) ;;;nuevo
+	(slot ninos (type SYMBOL) (allowed-values FALSE TRUE UNDEF) (default UNDEF)) ;;;nuevo
+	(slot numComensalesNinos (type INTEGER) (default 0));;; nuevo
 	(slot comida (type SYMBOL) (allowed-values FALSE TRUE UNDEF) (default UNDEF))
 	(slot estilo (type SYMBOL) (allowed-values Sibarita Moderno Clasico Tradicional UNDEF) (default UNDEF))
 	(slot vegetariano (type SYMBOL) (allowed-values FALSE TRUE UNDEF) (default UNDEF))
@@ -3722,10 +3727,6 @@
 )
 
 (deftemplate MAIN::ProblemaAbstracto
-    ; Presupuesto(bajo, medio, alto, muy alto) => ([10,20),[20,40),[40,80),>80)
-    ; NumComensales(bajo, medio, alto, muy alto) => ([20,30),[30,50),[50,100),[100, 500))
-    ; Complejidad(facil, normal, alto) => ([tradicional,sibarita], clasico, moderno)
-    ; Temporada(invierno, primavera, verano, otoño) => [12-3] [4-5] [6-9] [10-11]
     (slot presupuesto (type SYMBOL) (allowed-values Bajo Medio Alto MuyAlto UNDEF) (default UNDEF))
     (slot numComensales (type SYMBOL) (allowed-values Bajo Medio Alto MuyAlto UNDEF) (default UNDEF))
     (slot complejidad (type SYMBOL) (allowed-values Facil Normal Alto UNDEF) (default UNDEF))
@@ -3735,6 +3736,14 @@
 ;                   ======================================================================
 ;                   =====================   Declaracion de clases   ======================
 ;                   ======================================================================
+
+(defclass VinoAbstracto (is-a USER) (role concrete)
+	(slot Vino (type INSTANCE) (create-accessor read-write))
+	(slot Nombre (type STRING) (create-accessor read-write))
+	(slot PVP (type FLOAT) (create-accessor read-write))
+	(slot Categoria (type SYMBOL) (allowed-values Bajo Medio Alto) (create-accessor read-write))
+	(slot SubCategoria (type SYMBOL) (allowed-values Bajo Medio Alto) (create-accessor read-write))
+)
 
 (defclass MenuAbstracto (is-a USER) (role concrete)
 	(slot Precio (type FLOAT) (create-accessor read-write) (default 0.0))
@@ -3820,6 +3829,58 @@
 	)
 	(printout t ")" crlf)
 	(printout t crlf)
+)
+
+
+(defmessage-handler MAIN::Plato imprimir "Handler que imprime por la salida estandard la informacion basica de un plato" ()
+	(printout t "Nombre      : " ?self:Nombre crlf)
+	(printout t "Ingredientes: (")
+	(bind ?listaIngredientes ?self:Ingredientes)
+	(loop-for-count (?i 1 (- (length$ ?listaIngredientes) 1)) do
+		(bind ?ingrediente (nth$ ?i ?listaIngredientes))
+		(send ?ingrediente imprimir)
+		(printout t ",")
+	)
+  (send (nth$ (length$ ?listaIngredientes) ?listaIngredientes) imprimir)
+	(printout t ")" crlf)
+)
+
+(defmessage-handler MAIN::Ingrediente imprimir "Handler que imprime el nombre del ingrediente" ()
+	(printout t ?self:Nombre)
+)
+
+(defmessage-handler MAIN::MenuAbstracto imprimir "Handler que imprime la informacion basica de un menu y su precio" ()
+	(bind ?menu ?self:Menu)
+	(send ?menu imprimir)
+	(printout t "Precio menu : " ?self:Precio crlf)
+)
+
+(defmessage-handler MAIN::Menu imprimir ()
+	(printout t "--- Primer plato  ---" crlf)
+	(send ?self:Relacion_Menu_Primero imprimir)
+	(printout t "--- Segundo plato ---" crlf)
+	(send ?self:Relacion_Menu_Segundo imprimir)
+	(printout t "--- Postre        ---" crlf)
+	(send ?self:Relacion_Menu_Postre imprimir)
+)
+
+(defmessage-handler MAIN::VinoAbstracto imprimir (?numComensalesVino ?numComensales)
+	(printout t "Nombre: " ?self:Nombre crlf)
+	(printout t "Precio: " ?self:PVP crlf)
+	(bind ?num (div ?numComensalesVino 4))
+	(bind ?precio (* ?num ?self:PVP))
+	(if (eq ?num 1)
+		then  (if (< ?numComensalesVino 4)
+						then (bind ?copa (/ ?self:PVP ?numComensalesVino))
+								 (format t "Precio de una copa para %d comensales: %f %n" ?numComensalesVino ?copa)
+						else (format t "Precio de %d botella para %d comensales: %f %n" ?num ?numComensalesVino ?precio )
+					)
+		else 	(if (eq ?num 0)
+				then (bind ?copa (/ ?self:PVP ?numComensalesVino))
+						 (format t "Precio de una copa para %d comensales: %f %n" ?numComensalesVino ?copa)
+				else (format t "Precio de %d botellas para %d comensales: %f %n" ?num ?numComensalesVino ?precio )
+		)
+	)
 )
 
 ;                   ======================================================================
@@ -4132,7 +4193,8 @@
 ;                   ======================================================================
 
 (defmessage-handler MAIN::Plato calcula-precio "Handler que calcula el precio de un plato en base a recorrer y
-                                                sumar el precio de todos los ingredientes que lo compone" ()
+    sumar el precio de todos los ingredientes que lo compone y el precio de elaboracion" ()
+
     (bind ?listaIngredientes ?self:Ingredientes)
     (bind ?precioPlato ?self:PVP)
     (loop-for-count (?i 1 (length$ $?listaIngredientes)) do
@@ -4143,69 +4205,50 @@
     ?precioPlato
 )
 
-(defmessage-handler MAIN::Plato imprimir "Handler que imprime por la salida estandard la informacion basica de un plato" ()
-	(printout t "Nombre      : " ?self:Nombre crlf)
-	(printout t "Ingredientes: (")
-	(bind ?listaIngredientes ?self:Ingredientes)
-	(loop-for-count (?i 1 (- (length$ ?listaIngredientes) 1)) do
-		(bind ?ingrediente (nth$ ?i ?listaIngredientes))
-		(send ?ingrediente imprimir)
-		(printout t ",")
-	)
-  (send (nth$ (length$ ?listaIngredientes) ?listaIngredientes) imprimir)
-	(printout t ")" crlf)
-)
-
 ;                   ======================================================================
 ;                   =====================     Handler Ingrediente     ====================
 ;                   ======================================================================
 
-(defmessage-handler MAIN::Ingrediente imprimir "Handler que imprime el nombre del ingrediente" ()
-	(printout t ?self:Nombre)
-)
 
-(defmessage-handler MAIN::Ingrediente es-ingrediente-temporal "" ()
+(defmessage-handler MAIN::Ingrediente es-ingrediente-temporal "Handler que nos dice si el ingrediente
+	es temporal y falso en caso que no lo sea" ()
+
 	(if (or (not (eq ?self:Mes_Inicio_Temporada 1)) (not (eq ?self:Mes_Final_Temporada 12)))
 		then TRUE
 		else FALSE
 	)
 )
 
-(defmessage-handler MAIN::Ingrediente es-ingrediente-temporada "" (?temporada)
-    (if (eq ?temporada Primavera)
-        then (if (and (<= ?self:Mes_Inicio_Temporada 5) (>= ?self:Mes_Final_Temporada 4))
-                then TRUE
-                else FALSE
-        )
-        else (if (eq ?temporada Verano)
-            then (if (and (<= ?self:Mes_Inicio_Temporada 9) (>= ?self:Mes_Final_Temporada 6))
-                then TRUE
-                else FALSE
-            )
-            else (if (eq ?temporada Otono)
-                then (if (and (<= ?self:Mes_Inicio_Temporada 11) (>= ?self:Mes_Final_Temporada 10))
-                    then TRUE
-                    else FALSE
-                )
-                else (if (or (and (<= ?self:Mes_Inicio_Temporada 3) (>= ?self:Mes_Final_Temporada 1))
-                             (or  (=  ?self:Mes_Inicio_Temporada 12) (= ?self:Mes_Final_Temporada 12)))
-                    then TRUE
-                    else FALSE
-                )
-            )
-        )
-    )
+(defmessage-handler MAIN::Ingrediente es-ingrediente-temporada "Handler que devuelve cierto si el
+	ingredientes es de tempoarada y falso en caso que no lo sea" (?temporada)
+  (if (eq ?temporada Primavera)
+      then (if (and (<= ?self:Mes_Inicio_Temporada 5) (>= ?self:Mes_Final_Temporada 4))
+              then TRUE
+              else FALSE
+      )
+      else (if (eq ?temporada Verano)
+          then (if (and (<= ?self:Mes_Inicio_Temporada 9) (>= ?self:Mes_Final_Temporada 6))
+              then TRUE
+              else FALSE
+          )
+          else (if (eq ?temporada Otono)
+              then (if (and (<= ?self:Mes_Inicio_Temporada 11) (>= ?self:Mes_Final_Temporada 10))
+                  then TRUE
+                  else FALSE
+              )
+              else (if (or (and (<= ?self:Mes_Inicio_Temporada 3) (>= ?self:Mes_Final_Temporada 1))
+                           (or  (=  ?self:Mes_Inicio_Temporada 12) (= ?self:Mes_Final_Temporada 12)))
+                  then TRUE
+                  else FALSE
+              )
+          )
+      )
+  )
 )
 
 ;                   ======================================================================
 ;                   ===================      Handler Menu Abstracto     ==================
 ;                   ======================================================================
-
-(defmessage-handler MAIN::MenuAbstracto imprimir "Handler que imprime la informacion basica de un menu y su precio" ()
-	(bind ?menu ?self:Menu)
-	(send ?menu imprimir)
-	(printout t "Precio menu : " ?self:Precio crlf)
-)
 
 (defmessage-handler MAIN::MenuAbstracto generar-menu (?categoria ?subCategoria ?restriccion)
 	(bind ?indiceMaxPrimero 0)
@@ -4268,17 +4311,55 @@
 )
 
 ;                   ======================================================================
+;                   ==================       Handler Vino Abstracto     ==================
+;                   ======================================================================
+
+(defmessage-handler MAIN::VinoAbstracto calcula-sub-categoria "Handler que calcula la sub-categoria
+	dado dos parametros: Bajo  -> [0...precioMedio)
+                       Medio -> [precioMedio...precioAlto)
+                       Alto  -> [precioAlto...Inf)" (?precioMedio ?precioAlto)
+
+	(bind ?precio (send ?self:Vino get-PVP))
+	(if (< ?precio ?precioMedio)
+      then (send ?self put-SubCategoria Bajo)
+      else (if (and (>= ?precio ?precioMedio) (< ?precio ?precioAlto))
+            then (send ?self put-SubCategoria Medio)
+            else (send ?self put-SubCategoria Alto)
+      )
+  )
+)
+
+(defmessage-handler MAIN::VinoAbstracto calcula-categoria "Handler que calcula la categoria y su
+	sub-categoria en base al precio del plato" ()
+
+  (bind ?precio (send ?self:Vino get-PVP))
+  (if (< ?precio 6)
+        then (send ?self put-Categoria Bajo)
+             (send ?self calcula-sub-categoria 3.0 5.0)
+        else (if (and (>= ?precio 6) (< ?precio 10))
+              	then 	(send ?self put-Categoria Medio)
+                   		(send ?self calcula-sub-categoria 7.0 9.0)
+		            else 	(send ?self put-Categoria Alto)
+		                 	(send ?self calcula-sub-categoria 13.0 16.0)
+        )
+  )
+)
+
+(defmessage-handler MAIN::VinoAbstracto categoria-correcta "Handler que nos devuelve cierto si
+	el plato tiene la misma categoria que la pasada por parametro y falso en caso contrario" (?categoria)
+	(eq ?self:Categoria ?categoria)
+)
+
+(defmessage-handler MAIN::VinoAbstracto subcategoria-correcta "Handler que nos devuelve cierto si
+	el plato tiene la misma sub-categoria que la pasada por parametro y falso en caso contrario" (?subCategoria)
+	(eq ?self:SubCategoria ?subCategoria)
+)
+
+;                   ======================================================================
 ;                   =========================     Handler Menu     =======================
 ;                   ======================================================================
 
-(defmessage-handler MAIN::Menu imprimir ()
-	(printout t "--- Primer plato  ---" crlf)
-	(send ?self:Relacion_Menu_Primero imprimir)
-	(printout t "--- Segundo plato ---" crlf)
-	(send ?self:Relacion_Menu_Segundo imprimir)
-	(printout t "--- Postre        ---" crlf)
-	(send ?self:Relacion_Menu_Postre imprimir)
-)
+
 
 ;                   ======================================================================
 ;                   =====================  Declaracion de funciones ======================
