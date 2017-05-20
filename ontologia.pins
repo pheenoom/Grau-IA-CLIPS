@@ -1,4 +1,4 @@
-; Sat May 20 17:45:34 CEST 2017
+; Sat May 20 21:02:08 CEST 2017
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -773,6 +773,308 @@
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Comino")
 	(PVP 0.2))
+
+([ontologia_Class110001] of  Carne
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Buey")
+	(PVP 5.0))
+
+([ontologia_Class110002] of  Verdura
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Brecol")
+	(PVP 1.2))
+
+([ontologia_Class110003] of  Segundo
+
+	(AptoCena TRUE)
+	(Caliente TRUE)
+	(Complejidad Medio)
+	(Estilo Sibarita)
+	(Ingredientes
+		[ontologia_Class34]
+		[ontologia_Class31]
+		[ontologia_Class110002]
+		[ontologia_Class26]
+		[ontologia_Class100034]
+		[ontologia_Class70024]
+		[ontologia_Class90005]
+		[ontologia_Class110001])
+	(Nombre "Buey macerado con verduras")
+	(Origen China)
+	(PVP 2.0)
+	(Racion Normal))
+
+([ontologia_Class110004] of  Verdura
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Albahaca")
+	(PVP 0.9))
+
+([ontologia_Class110005] of  Segundo
+
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
+	(Bebida_Menu [ontologia_Class57])
+	(Complejidad Alto)
+	(Estilo Moderno)
+	(Ingredientes
+		[ontologia_Class30007]
+		[ontologia_Class90005]
+		[ontologia_Class40017]
+		[ontologia_Class44]
+		[ontologia_Class33]
+		[ontologia_Class90010]
+		[ontologia_Class70015]
+		[ontologia_Class70055]
+		[ontologia_Class26]
+		[ontologia_Class10010]
+		[ontologia_Class35]
+		[ontologia_Class80034]
+		[ontologia_Class110004])
+	(Nombre "Ensalada de pollo a la lima en cestitas de fideos")
+	(Origen China)
+	(PVP 2.0)
+	(Racion Normal))
+
+([ontologia_Class110007] of  Segundo
+
+	(Bebida_Menu [ontologia_Class57])
+	(Complejidad Alto)
+	(Estilo Tradicional)
+	(Ingredientes
+		[ontologia_Class34]
+		[ontologia_Class70001]
+		[ontologia_Class26]
+		[ontologia_Class22]
+		[ontologia_Class10010]
+		[ontologia_Class35]
+		[ontologia_Class33]
+		[ontologia_Class30008]
+		[ontologia_Class10027])
+	(Nombre "Arroz con cordero al estilo xinjiang")
+	(Origen China)
+	(PVP 3.0)
+	(Racion Normal))
+
+([ontologia_Class110008] of  Segundo
+
+	(Bebida_Menu [ontologia_Class57])
+	(Complejidad Alto)
+	(Estilo Tradicional)
+	(Ingredientes
+		[ontologia_Class100035]
+		[ontologia_Class22]
+		[ontologia_Class70055]
+		[ontologia_Class25]
+		[ontologia_Class15]
+		[ontologia_Class20]
+		[ontologia_Class10034]
+		[ontologia_Class10010]
+		[ontologia_Class20010]
+		[ontologia_Class30031]
+		[ontologia_Class100021])
+	(Nombre "Calamares rellenos con mariscos")
+	(Origen China)
+	(PVP 3.0)
+	(Racion Normal))
+
+([ontologia_Class110009] of  Segundo
+
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
+	(Caliente TRUE)
+	(Complejidad Bajo)
+	(Estilo Tradicional)
+	(Ingredientes
+		[ontologia_Class70015]
+		[ontologia_Class15]
+		[ontologia_Class90045]
+		[ontologia_Class20]
+		[ontologia_Class30008]
+		[ontologia_Class90024]
+		[ontologia_Class31]
+		[ontologia_Class110010])
+	(Nombre "Sopa de fideos y champinones")
+	(Origen China)
+	(PVP 1.0)
+	(Racion Normal))
+
+([ontologia_Class110010] of  Verdura
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Champinones")
+	(PVP 0.5))
+
+([ontologia_Class110011] of  Segundo
+
+	(AptoCena TRUE)
+	(Caliente TRUE)
+	(Complejidad Bajo)
+	(Estilo Tradicional)
+	(Ingredientes
+		[ontologia_Class34]
+		[ontologia_Class22]
+		[ontologia_Class20]
+		[ontologia_Class33]
+		[ontologia_Class30028]
+		[ontologia_Class30]
+		[ontologia_Class100006]
+		[ontologia_Class35]
+		[ontologia_Class30029])
+	(Nombre "Curry de cebolla, patata y pimiento rojo")
+	(Origen China)
+	(PVP 1.0)
+	(Racion Normal)
+	(Vegetariano TRUE))
+
+([ontologia_Class110012] of  Segundo
+
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
+	(Caliente TRUE)
+	(Complejidad Bajo)
+	(Estilo Tradicional)
+	(Ingredientes
+		[ontologia_Class20014]
+		[ontologia_Class10005]
+		[ontologia_Class22]
+		[ontologia_Class26]
+		[ontologia_Class31]
+		[ontologia_Class34])
+	(Nombre "Rollitos especiales de carne y verdura")
+	(Origen China)
+	(PVP 0.0)
+	(Racion Normal))
+
+([ontologia_Class110013] of  Marisco
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Vieria")
+	(PVP 7.8))
+
+([ontologia_Class110014] of  Segundo
+
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
+	(Caliente TRUE)
+	(Complejidad Alto)
+	(Estilo Moderno)
+	(Ingredientes
+		[ontologia_Class110013]
+		[ontologia_Class35]
+		[ontologia_Class110015]
+		[ontologia_Class26]
+		[ontologia_Class33]
+		[ontologia_Class100014]
+		[ontologia_Class20010]
+		[ontologia_Class60001]
+		[ontologia_Class34]
+		[ontologia_Class110016])
+	(Nombre "Vieiras salteadas con esparragos")
+	(Origen China)
+	(PVP 4.5)
+	(Racion Normal))
+
+([ontologia_Class110015] of  Verdura
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Esparragos")
+	(PVP 1.2))
+
+([ontologia_Class110016] of  Verdura
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Bambu fresco")
+	(PVP 3.0))
+
+([ontologia_Class110017] of  Pescado
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Solomillo de atun rojo")
+	(PVP 10.0))
+
+([ontologia_Class110018] of  Condimento
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Tabasco")
+	(PVP 0.9))
+
+([ontologia_Class110019] of  Segundo
+
+	(Complejidad Alto)
+	(Estilo Moderno)
+	(Ingredientes
+		[ontologia_Class110017]
+		[ontologia_Class22]
+		[ontologia_Class31]
+		[ontologia_Class90012]
+		[ontologia_Class110018]
+		[ontologia_Class10010]
+		[ontologia_Class110020])
+	(Nombre "Tartar de atun rojo con mango y pepino de mar")
+	(Origen China)
+	(PVP 4.0)
+	(Racion Normal))
+
+([ontologia_Class110020] of  Pescado
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Pepino de mar")
+	(PVP 10.0))
+
+([ontologia_Class110021] of  Marisco
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Cangrejo")
+	(PVP 2.5))
+
+([ontologia_Class110022] of  Pescado
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Aleta de tiburon")
+	(PVP 20.0))
+
+([ontologia_Class110023] of  Segundo
+
+	(AptoCena TRUE)
+	(Bebida_Menu [ontologia_Class57])
+	(Caliente TRUE)
+	(Complejidad Medio)
+	(Estilo Sibarita)
+	(Ingredientes
+		[ontologia_Class110022]
+		[ontologia_Class110021]
+		[ontologia_Class90010]
+		[ontologia_Class30032]
+		[ontologia_Class60001]
+		[ontologia_Class50018]
+		[ontologia_Class31]
+		[ontologia_Class33]
+		[ontologia_Class20]
+		[ontologia_Class10010])
+	(Nombre "Sopa de aleta de tiburon")
+	(Origen China)
+	(PVP 3.0)
+	(Racion Normal))
+
+([ontologia_Class110024] of  Pescado
+
+	(Mes_Final_Temporada 1)
+	(Mes_Inicio_Temporada 1))
 
 ([ontologia_Class15] of  Grasas
 
@@ -3925,6 +4227,26 @@
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Raita")
 	(PVP 3.0))
+
+([ontologia_Class90000] of  Segundo
+
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
+	(Bebida_Menu [ontologia_Class57])
+	(Caliente TRUE)
+	(Complejidad Bajo)
+	(Estilo Clasico)
+	(Ingredientes
+		[ontologia_Class10027]
+		[ontologia_Class50018]
+		[ontologia_Class10031]
+		[ontologia_Class90045]
+		[ontologia_Class35]
+		[ontologia_Class34])
+	(Nombre "Arroz frito con carne de cerdo y gambas")
+	(Origen China)
+	(PVP 1.0)
+	(Racion Normal))
 
 ([ontologia_Class90001] of  Condimento
 
