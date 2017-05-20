@@ -1,4 +1,4 @@
-; Sat May 20 17:45:34 CEST 2017
+; Sat May 20 18:26:46 CEST 2017
 ;
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -61,7 +61,7 @@
 		(create-accessor read-write))
 	(single-slot Origen
 		(type SYMBOL)
-		(allowed-values Japonesa Italiana Espa%C3%B1a China)
+		(allowed-values Japonesa Italiana Espana China Ninguna)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot PVP
@@ -254,7 +254,7 @@
 		(create-accessor read-write))
 	(single-slot Origen
 		(type SYMBOL)
-		(allowed-values Japonesa Italiana Espa%C3%B1a China)
+		(allowed-values Japonesa Italiana Espana China Ninguna)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot Caliente
@@ -409,13 +409,8 @@
 	(is-a USER)
 	(role concrete))
 
-; Fri May 05 01:04:46 CEST 2017
-;
-;+ (version "3.5")
-;+ (build "Build 663")
-
 (definstances instances
-	; Sat May 20 17:45:34 CEST 2017
+	; Sat May 20 18:26:46 CEST 2017
 	;
 	;+ (version "3.5")
 	;+ (build "Build 663")
@@ -438,6 +433,7 @@
 			[ontologia_Class10011]
 			[ontologia_Class80012])
 		(Nombre "Tosta tibia de salmón en conserva con tartar de sus huevas")
+		(Origen Ninguna)
 		(Platos_Incompatibles [ontologia_Class36])
 		(PVP 6.0)
 		(Racion Normal))
@@ -461,6 +457,7 @@
 			[ontologia_Class10001]
 			[ontologia_Class52])
 		(Nombre "Sopa fría de sandía con bolas de melón")
+		(Origen Ninguna)
 		(Platos_Incompatibles
 			[ontologia_Class20013]
 			[ontologia_Class28]
@@ -903,6 +900,7 @@
 			[ontologia_Class10016]
 			[ontologia_Class10017])
 		(Nombre "Carpaccio de presa de cerdo duroc")
+		(Origen Italiana)
 		(Platos_Incompatibles [ontologia_Class17])
 		(PVP 8.0)
 		(Racion Peque%C3%B1a)
@@ -1219,6 +1217,7 @@
 			[ontologia_Class3]
 			[ontologia_Class4])
 		(Nombre "Ensalada de queso de cabra y nueces")
+		(Origen Ninguna)
 		(Platos_Incompatibles [ontologia_Class40018])
 		(PVP 2.0)
 		(Racion Normal)
@@ -1259,7 +1258,7 @@
 			[ontologia_Class50]
 			[ontologia_Class35])
 		(Nombre "Canelones caseros")
-		(Origen Espa%C3%B1a)
+		(Origen Italiana)
 		(Platos_Incompatibles
 			[ontologia_Class17]
 			[ontologia_Class30025]
@@ -1305,6 +1304,7 @@
 			[ontologia_Class35]
 			[ontologia_Class15])
 		(Nombre "Gazpacho de fresas")
+		(Origen Espana)
 		(Platos_Incompatibles
 			[ontologia_Class20013]
 			[ontologia_Class28]
@@ -1333,6 +1333,7 @@
 			[ontologia_Class10019]
 			[ontologia_Class10020])
 		(Nombre "Cochinillo con puré de boniato ahumado y pimiento verde frito")
+		(Origen Espana)
 		(Platos_Incompatibles
 			[ontologia_Class17]
 			[ontologia_Class28])
@@ -1371,6 +1372,7 @@
 			[ontologia_Class26]
 			[ontologia_Class10025])
 		(Nombre "Pudding de cabracho con salsa de erizos de mar")
+		(Origen Ninguna)
 		(Platos_Incompatibles
 			[ontologia_Class20006]
 			[ontologia_Class0])
@@ -1401,7 +1403,7 @@
 			[ontologia_Class20011]
 			[ontologia_Class70001])
 		(Nombre "Asadura de cordero")
-		(Origen Espa%C3%B1a)
+		(Origen Espana)
 		(Platos_Incompatibles
 			[ontologia_Class10004]
 			[ontologia_Class17]
@@ -1448,6 +1450,7 @@
 			[ontologia_Class20015]
 			[ontologia_Class35])
 		(Nombre "Arroz al cava")
+		(Origen Ninguna)
 		(Platos_Incompatibles
 			[ontologia_Class80026]
 			[ontologia_Class70051]
@@ -1491,6 +1494,7 @@
 			[ontologia_Class20011]
 			[ontologia_Class10026])
 		(Nombre "Ensalada con gambas cítricos y comino")
+		(Origen Ninguna)
 		(Platos_Incompatibles
 			[ontologia_Class80026]
 			[ontologia_Class40018]
@@ -1550,7 +1554,7 @@
 			[ontologia_Class20]
 			[ontologia_Class22])
 		(Nombre "Carne guisada")
-		(Origen Espa%C3%B1a)
+		(Origen Italiana)
 		(PVP 1.2)
 		(Racion Normal))
 
@@ -1597,6 +1601,7 @@
 			[ontologia_Class70078]
 			[ontologia_Class70074])
 		(Nombre "Crepes de Nutella")
+		(Origen Ninguna)
 		(PVP 0.3)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -1610,6 +1615,7 @@
 		(Estilo Clasico)
 		(Ingredientes [ontologia_Class10001])
 		(Nombre "Bol de Sandia")
+		(Origen Ninguna)
 		(PVP 0.5)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -1636,7 +1642,7 @@
 			[ontologia_Class20008]
 			[ontologia_Class40006])
 		(Nombre "Macarrones gratinados con chorizo")
-		(Origen Espa%C3%B1a)
+		(Origen Espana)
 		(Platos_Incompatibles
 			[ontologia_Class20000]
 			[ontologia_Class37]
@@ -1665,7 +1671,7 @@
 			[ontologia_Class10009]
 			[ontologia_Class30007])
 		(Nombre "Torrijas")
-		(Origen Espa%C3%B1a)
+		(Origen Espana)
 		(Platos_Incompatibles
 			[ontologia_Class20013]
 			[ontologia_Class28]
@@ -1722,6 +1728,7 @@
 			[ontologia_Class35]
 			[ontologia_Class70078])
 		(Nombre "Muffins salados de pavo con queso Cheedar")
+		(Origen Ninguna)
 		(Platos_Incompatibles
 			[ontologia_Class20016]
 			[ontologia_Class20006]
@@ -1784,6 +1791,7 @@
 			[ontologia_Class32]
 			[ontologia_Class30015])
 		(Nombre "Crema fría de kiwi")
+		(Origen Ninguna)
 		(Platos_Incompatibles
 			[ontologia_Class20013]
 			[ontologia_Class20016]
@@ -1858,6 +1866,7 @@
 			[ontologia_Class30022]
 			[ontologia_Class70074])
 		(Nombre "Tarta de tres chocolates")
+		(Origen Ninguna)
 		(Platos_Incompatibles
 			[ontologia_Class20013]
 			[ontologia_Class28]
@@ -1892,7 +1901,7 @@
 			[ontologia_Class35]
 			[ontologia_Class30024])
 		(Nombre "Salmorejo cordoves")
-		(Origen Espa%C3%B1a)
+		(Origen Japonesa)
 		(PVP 17.0)
 		(Racion Normal))
 
@@ -1936,6 +1945,7 @@
 			[ontologia_Class30029]
 			[ontologia_Class35])
 		(Nombre "Vichyssoise de aguacate y langostinos")
+		(Origen Ninguna)
 		(PVP 5.0)
 		(Racion Normal))
 
@@ -1970,6 +1980,7 @@
 			[ontologia_Class35]
 			[ontologia_Class80011])
 		(Nombre "Gazpacho de setas")
+		(Origen Ninguna)
 		(Platos_Incompatibles
 			[ontologia_Class20013]
 			[ontologia_Class28]
@@ -2050,6 +2061,7 @@
 			[ontologia_Class31]
 			[ontologia_Class35])
 		(Nombre "Salmon al horno")
+		(Origen Ninguna)
 		(Platos_Incompatibles
 			[ontologia_Class20013]
 			[ontologia_Class20016]
@@ -2074,7 +2086,7 @@
 			[ontologia_Class40]
 			[ontologia_Class35])
 		(Nombre "Pollo al ajillo")
-		(Origen Espa%C3%B1a)
+		(Origen Italiana)
 		(Platos_Incompatibles
 			[ontologia_Class20013]
 			[ontologia_Class20016])
@@ -2124,6 +2136,7 @@
 		(Estilo Clasico)
 		(Ingredientes [ontologia_Class30017])
 		(Nombre "Bol de Kiwis")
+		(Origen Ninguna)
 		(PVP 0.5)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -2164,6 +2177,7 @@
 			[ontologia_Class22]
 			[ontologia_Class1])
 		(Nombre "Coctel de gambas")
+		(Origen Ninguna)
 		(Platos_Incompatibles
 			[ontologia_Class40018]
 			[ontologia_Class70050]
@@ -2192,7 +2206,7 @@
 			[ontologia_Class40011]
 			[ontologia_Class35])
 		(Nombre "Judias con chorizo y panceta")
-		(Origen Espa%C3%B1a)
+		(Origen Espana)
 		(Platos_Incompatibles
 			[ontologia_Class20013]
 			[ontologia_Class40008]
@@ -2235,6 +2249,7 @@
 			[ontologia_Class52]
 			[ontologia_Class70078])
 		(Nombre "Natillas caseras")
+		(Origen Espana)
 		(Platos_Incompatibles
 			[ontologia_Class28]
 			[ontologia_Class40008]
@@ -2264,7 +2279,7 @@
 			[ontologia_Class70054]
 			[ontologia_Class70074])
 		(Nombre "Arroz con leche casero")
-		(Origen Espa%C3%B1a)
+		(Origen Espana)
 		(Platos_Incompatibles
 			[ontologia_Class28]
 			[ontologia_Class40008]
@@ -2315,6 +2330,7 @@
 			[ontologia_Class26]
 			[ontologia_Class40019])
 		(Nombre "Ensaladilla rusa")
+		(Origen Ninguna)
 		(Platos_Incompatibles
 			[ontologia_Class28]
 			[ontologia_Class40008]
@@ -2381,6 +2397,7 @@
 			[ontologia_Class54]
 			[ontologia_Class56])
 		(Nombre "Flan de Huevo")
+		(Origen Espana)
 		(Platos_Incompatibles
 			[ontologia_Class20013]
 			[ontologia_Class20009]
@@ -2413,6 +2430,7 @@
 			[ontologia_Class10026]
 			[ontologia_Class30032])
 		(Nombre "Crema de hongos y setas al tomillo")
+		(Origen Ninguna)
 		(PVP 2.3)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -2446,6 +2464,7 @@
 		(Estilo Clasico)
 		(Ingredientes [ontologia_Class10002])
 		(Nombre "Bol de Melon")
+		(Origen Ninguna)
 		(PVP 0.5)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -2479,6 +2498,7 @@
 		(Estilo Clasico)
 		(Ingredientes [ontologia_Class10032])
 		(Nombre "Bol de Naranjas")
+		(Origen Ninguna)
 		(PVP 0.5)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -2492,6 +2512,7 @@
 		(Estilo Clasico)
 		(Ingredientes [ontologia_Class10033])
 		(Nombre "Bol de Pomelos")
+		(Origen Ninguna)
 		(PVP 0.5)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -2508,7 +2529,7 @@
 			[ontologia_Class3]
 			[ontologia_Class70074])
 		(Nombre "Tarta de Santiago")
-		(Origen Espa%C3%B1a)
+		(Origen Espana)
 		(PVP 1.8)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -2527,7 +2548,7 @@
 			[ontologia_Class10009]
 			[ontologia_Class54])
 		(Nombre "Crema catalana")
-		(Origen Espa%C3%B1a)
+		(Origen Espana)
 		(PVP 2.95)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -2546,6 +2567,7 @@
 			[ontologia_Class20002]
 			[ontologia_Class20014])
 		(Nombre "Mini Hamburguesa rellena de queso Cabrales")
+		(Origen Ninguna)
 		(PVP 1.0)
 		(Racion Normal))
 
@@ -2561,6 +2583,7 @@
 			[ontologia_Class20014]
 			[ontologia_Class30006])
 		(Nombre "Hamburguesa")
+		(Origen Ninguna)
 		(PVP 1.0)
 		(Racion Normal))
 
@@ -2580,6 +2603,7 @@
 			[ontologia_Class22]
 			[ontologia_Class50014])
 		(Nombre "Pato a la naranja")
+		(Origen Espana)
 		(PVP 14.0)
 		(Racion Normal))
 
@@ -2608,6 +2632,7 @@
 			[ontologia_Class20014]
 			[ontologia_Class30006])
 		(Nombre "Hamburgesa")
+		(Origen Ninguna)
 		(Platos_Incompatibles
 			[ontologia_Class20000]
 			[ontologia_Class50012]
@@ -2634,7 +2659,7 @@
 			[ontologia_Class2]
 			[ontologia_Class54])
 		(Nombre "Leon come gambas")
-		(Origen Espa%C3%B1a)
+		(Origen Japonesa)
 		(PVP 80.0)
 		(Racion Normal))
 
@@ -2654,7 +2679,7 @@
 			[ontologia_Class38]
 			[ontologia_Class70078])
 		(Nombre "Pizza de Carne")
-		(Origen Espa%C3%B1a)
+		(Origen Espana)
 		(Platos_Incompatibles
 			[ontologia_Class20009]
 			[ontologia_Class20000]
@@ -2719,6 +2744,7 @@
 			[ontologia_Class54]
 			[ontologia_Class70074])
 		(Nombre "Tarta de queso")
+		(Origen Ninguna)
 		(Platos_Incompatibles
 			[ontologia_Class20013]
 			[ontologia_Class20009]
@@ -2763,6 +2789,7 @@
 			[ontologia_Class35]
 			[ontologia_Class15])
 		(Nombre "Cascarrollas del rio")
+		(Origen Ninguna)
 		(Platos_Incompatibles
 			[ontologia_Class50012]
 			[ontologia_Class50011])
@@ -2792,6 +2819,7 @@
 			[ontologia_Class70006]
 			[ontologia_Class70007])
 		(Nombre "Crema de coliflor con gambones y piñones al aroma de trufa")
+		(Origen Ninguna)
 		(Platos_Incompatibles
 			[ontologia_Class70050]
 			[ontologia_Class80033])
@@ -2980,6 +3008,7 @@
 			[ontologia_Class15]
 			[ontologia_Class70013])
 		(Nombre "Humus de garbanzos")
+		(Origen Ninguna)
 		(PVP 13.0)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -3018,6 +3047,7 @@
 			[ontologia_Class70016]
 			[ontologia_Class70015])
 		(Nombre "Crema de pepino y yogur")
+		(Origen Ninguna)
 		(PVP 1.0)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -3049,6 +3079,7 @@
 			[ontologia_Class70020]
 			[ontologia_Class43])
 		(Nombre "Crema fria de remolacha")
+		(Origen Espana)
 		(PVP 1.2)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -3094,6 +3125,7 @@
 			[ontologia_Class34]
 			[ontologia_Class1])
 		(Nombre "Ensalada de bogavante")
+		(Origen Espana)
 		(Platos_Incompatibles
 			[ontologia_Class40018]
 			[ontologia_Class70050])
@@ -3139,6 +3171,7 @@
 			[ontologia_Class35]
 			[ontologia_Class10026])
 		(Nombre "Garbanzos con setas variadas")
+		(Origen Ninguna)
 		(PVP 6.75)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -3161,6 +3194,7 @@
 			[ontologia_Class30028]
 			[ontologia_Class20])
 		(Nombre "Cocido Montanes")
+		(Origen Espana)
 		(Platos_Incompatibles
 			[ontologia_Class20009]
 			[ontologia_Class10004]
@@ -3265,7 +3299,7 @@
 			[ontologia_Class10026]
 			[ontologia_Class70038])
 		(Nombre "Carrilleras de cerdo guisadas")
-		(Origen Espa%C3%B1a)
+		(Origen Italiana)
 		(PVP 2.85)
 		(Racion Normal))
 
@@ -3342,7 +3376,7 @@
 			[ontologia_Class56]
 			[ontologia_Class15])
 		(Nombre "Navajas a la plancha")
-		(Origen Espa%C3%B1a)
+		(Origen Espana)
 		(PVP 5.0)
 		(Racion Normal))
 
@@ -3460,6 +3494,7 @@
 			[ontologia_Class38]
 			[ontologia_Class70063])
 		(Nombre "Pollo en pepitoria")
+		(Origen Ninguna)
 		(PVP 2.7)
 		(Racion Normal))
 
@@ -3484,6 +3519,7 @@
 			[ontologia_Class70068]
 			[ontologia_Class70066])
 		(Nombre "Macedonia de frutas con zumo de mango")
+		(Origen Ninguna)
 		(PVP 0.9)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -3529,6 +3565,7 @@
 			[ontologia_Class70066]
 			[ontologia_Class60])
 		(Nombre "Mousse de chocolate con Platano y mermelada de frutos rojos")
+		(Origen Ninguna)
 		(PVP 1.2)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -3554,6 +3591,7 @@
 			[ontologia_Class50]
 			[ontologia_Class52])
 		(Nombre "Flan de queso mascarpone")
+		(Origen Espana)
 		(PVP 2.3)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -3587,6 +3625,7 @@
 			[ontologia_Class35]
 			[ontologia_Class3])
 		(Nombre "Pastel Gales")
+		(Origen Ninguna)
 		(PVP 4.75)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -3663,7 +3702,7 @@
 			[ontologia_Class70086]
 			[ontologia_Class70085])
 		(Nombre "Tarta Mont Blanc")
-		(Origen Espa%C3%B1a)
+		(Origen Espana)
 		(PVP 3.5)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -3700,6 +3739,7 @@
 			[ontologia_Class10009]
 			[ontologia_Class70074])
 		(Nombre "Sablee de Cardamomo, Crema Limon e interior de Yogur y Chocolate Blanco")
+		(Origen Ninguna)
 		(PVP 2.5)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -3744,6 +3784,7 @@
 			[ontologia_Class70096]
 			[ontologia_Class20003])
 		(Nombre "Stilt Fisherman Indulgence")
+		(Origen Ninguna)
 		(PVP 5.6)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -3815,6 +3856,7 @@
 			[ontologia_Class30012]
 			[ontologia_Class43])
 		(Nombre "Panecillos de nata")
+		(Origen Ninguna)
 		(PVP 2.0)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -3865,6 +3907,7 @@
 			[ontologia_Class80005]
 			[ontologia_Class30009])
 		(Nombre "Cerezas rostisadas")
+		(Origen Ninguna)
 		(PVP 12.0)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -3887,6 +3930,7 @@
 			[ontologia_Class70066]
 			[ontologia_Class80007])
 		(Nombre "Helado de platano")
+		(Origen Ninguna)
 		(PVP 3.0)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -3915,6 +3959,7 @@
 			[ontologia_Class50018]
 			[ontologia_Class50])
 		(Nombre "Pastel de coco con guayaba")
+		(Origen Ninguna)
 		(PVP 1.0)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -3997,7 +4042,7 @@
 			[ontologia_Class10011]
 			[ontologia_Class44])
 		(Nombre "Patatas campesinas")
-		(Origen Espa%C3%B1a)
+		(Origen Espana)
 		(Platos_Incompatibles
 			[ontologia_Class80027]
 			[ontologia_Class20005]
@@ -4024,6 +4069,7 @@
 			[ontologia_Class52]
 			[ontologia_Class30008])
 		(Nombre "Copa de melon y melocoton")
+		(Origen Ninguna)
 		(PVP 1.0)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -4041,6 +4087,7 @@
 			[ontologia_Class52]
 			[ontologia_Class41])
 		(Nombre "Martin di-frazcco")
+		(Origen Italiana)
 		(PVP 7.0)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -4055,6 +4102,7 @@
 			[ontologia_Class80019]
 			[ontologia_Class80020])
 		(Nombre "Caviar vegetal y kaki")
+		(Origen Ninguna)
 		(Racion Normal)
 		(Vegetariano TRUE))
 
@@ -4084,6 +4132,7 @@
 			[ontologia_Class80023]
 			[ontologia_Class80022])
 		(Nombre "Huevo a 65º, maiz y trufa negra")
+		(Origen Espana)
 		(PVP 16.0)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -4118,6 +4167,7 @@
 			[ontologia_Class52]
 			[ontologia_Class55])
 		(Nombre "Tarta de calabaza")
+		(Origen Espana)
 		(PVP 6.0)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -4161,6 +4211,7 @@
 			[ontologia_Class30029]
 			[ontologia_Class30015])
 		(Nombre "Boniato con lentejas al curry")
+		(Origen Ninguna)
 		(PVP 2.0)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -4180,6 +4231,7 @@
 			[ontologia_Class40006]
 			[ontologia_Class70070])
 		(Nombre "Horneado de patatas a los cuatro quesos")
+		(Origen Ninguna)
 		(PVP 3.0)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -4205,6 +4257,7 @@
 			[ontologia_Class40]
 			[ontologia_Class3])
 		(Nombre "Gratinado de verduras")
+		(Origen Ninguna)
 		(PVP 5.0)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -4222,6 +4275,7 @@
 			[ontologia_Class2]
 			[ontologia_Class80031])
 		(Nombre "Tallarines de calabacin con cubierta de tomate funghi")
+		(Origen Ninguna)
 		(PVP 13.0)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -4270,6 +4324,7 @@
 			[ontologia_Class80034]
 			[ontologia_Class10011])
 		(Nombre "Tabule de coliflor")
+		(Origen Ninguna)
 		(PVP 20.0)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -4298,6 +4353,7 @@
 			[ontologia_Class15]
 			[ontologia_Class35])
 		(Nombre "La menestra en la patata")
+		(Origen Ninguna)
 		(PVP 21.0)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -4317,6 +4373,7 @@
 			[ontologia_Class24]
 			[ontologia_Class35])
 		(Nombre "Curry de piña con raita de remolacha")
+		(Origen Ninguna)
 		(PVP 25.0)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -4823,7 +4880,6 @@
 		(Origen Japonesa)
 		(PVP 6.0)
 		(Racion Normal))
-
 )
 
 ;                   ======================================================================
@@ -4874,6 +4930,7 @@
 	(slot numAlergicosLactosa (type INTEGER) (default 0))
 	(slot numVegetarianos (type INTEGER) (default 0))
 	(slot numGenteNormal (type INTEGER) (default 0))
+	(slot origen (type SYMBOL) (allowed-values Ninguna Japonesa China Espana Italiana))
 )
 
 (deftemplate MAIN::ProblemaAbstracto
@@ -4917,6 +4974,8 @@
 
 (defmessage-handler MAIN::PlatoAbstracto imprimir-excel ()
 	(printout t (send ?self:Plato get-Nombre))
+	(printout t ";")
+	(printout t (send ?self:Plato get-Origen))
 	(printout t ";")
 	(printout t ?self:Precio)
 	(printout t ";")
@@ -5242,6 +5301,28 @@
 
 	(send ?self put-Puntuacion (+ ?puntos (send ?self get-Puntuacion)))
 	(bind ?descripcion (str-cat "+" (str-cat ?puntos (str-cat " --> " ?descripcion))))
+	(slot-insert$ ?self DescripcionPuntos (+ 1 (length$ ?self:DescripcionPuntos)) ?descripcion)
+)
+
+(defmessage-handler MAIN::PlatoAbstracto calcula-puntuacion-origen (?origen)
+	(bind ?plato (send ?self get-Plato))
+	(bind ?puntuacion 0)
+	(bind ?descripcion "No tiene puntuacion por origen")
+
+	(if (eq (send ?plato get-Origen) ?origen)
+		then
+			(bind ?puntuacion 5)
+			(bind ?descripcion "El origen del plato coincide con el origen del cliente")
+		else
+			(if (eq ?origen Ninguna)
+				then
+					(bind ?puntuacion 1)
+					(bind ?descripcion "El cliente no eligio ningun origen concreto")
+			)
+	)
+
+	(send ?self put-Puntuacion (+ ?puntuacion (send ?self get-Puntuacion)))
+	(bind ?descripcion (str-cat "+" (str-cat ?puntuacion (str-cat " --> " ?descripcion))))
 	(slot-insert$ ?self DescripcionPuntos (+ 1 (length$ ?self:DescripcionPuntos)) ?descripcion)
 )
 
@@ -5917,6 +5998,27 @@
 		(assert (Pregunta-Estilo-Comida))
 )
 
+(defrule recopilacion::pregunta-pais-comida "Pregunta al cliente el pais de origne de la comida"
+	(not (Pregunta-Pais-Comida))
+	?e <- (Entrada)
+	=>
+	(bind ?respuesta (pregunta-general "¿Desea que la comida de alguna procedencia en concreto? (E)spanola/(I)taliana/(J)aponesa/(C)hina/(N)inguna" e i j c n))
+	(if (eq ?respuesta e)
+		then (modify ?e (origen Espana))
+		else (if (eq ?respuesta i)
+			then (modify ?e (origen Italiana))
+			else (if (eq ?respuesta j)
+				then (modify ?e (origen Japonesa))
+				else (if (eq ?respuesta c)
+					then (modify ?e (origen China))
+					else (modify ?e (origen Ninguna))
+				)
+			)
+		)
+	)
+	(assert (Pregunta-Pais-Comida))
+)
+
 (defrule recopilacion::mes-evento "Pregunta al cliente en que mes se realiza el evento"
 		(not (Pregunta-Mes-Evento))
 		?e <- (Entrada)
@@ -6082,6 +6184,7 @@
 	(Pregunta-Numero-Comensales)
 	(Pregunta-Presupuesto-Max)
 	(Pregunta-Ninos)
+	(Pregunta-Pais-Comida)
 	(or (not (Pregunta-Comensales-Ninos)) (and (Pregunta-Comensales-Ninos) (Pregunta-Ninos-Completada)))
 	(Preguntar-Alcohol)
 	(or (not (Pregunta-Vino)) (and (Pregunta-Vino) (Pregunta-Vino-Completada)))
@@ -6175,6 +6278,7 @@
 	(ProblemaAbstracto (temporada ?temporada))
 	(Entrada (estilo ?estilo))
 	(Entrada (comida ?comida))
+	(Entrada (origen ?origen))
 	=>
 	(bind ?listaPlatosAbstractos (find-all-instances ((?inst PlatoAbstracto)) TRUE))
 	(loop-for-count (?i 1 (length$ ?listaPlatosAbstractos)) do
@@ -6184,6 +6288,7 @@
 		(send ?platoAbstracto calcula-puntuacion-temporada ?temporada)
 		(send ?platoAbstracto calcula-puntuacion-estilo ?estilo)
 		(send ?platoAbstracto calcula-puntuacion-comida ?comida)
+		(send ?platoAbstracto calcula-puntuacion-origen ?origen)
 	)
 
 	(focus solucionConcreta)
