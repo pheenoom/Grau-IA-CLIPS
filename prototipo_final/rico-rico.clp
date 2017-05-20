@@ -3707,19 +3707,19 @@
 ;                   ======================================================================
 
 (deftemplate MAIN::Entrada
-	(slot numComensales (type INTEGER) (default -1))
-	(slot presupuestoMax (type INTEGER) (default -1))
-	(slot tipoEvento (type SYMBOL) (allowed-values Boda Comunion Bautizo Congreso UNDEF) (default UNDEF))
-	(slot bebidaPorPlato (type SYMBOL) (allowed-values FALSE TRUE UNDEF) (default UNDEF))
-	(slot mesEvento (type INTEGER) (default -1))
+	(slot numComensales (type INTEGER) (default 0))
+	(slot presupuestoMax (type INTEGER) (default 0))
+	(slot tipoEvento (type SYMBOL) (allowed-values Boda Comunion Bautizo Congreso))
+	(slot bebidaPorPlato (type SYMBOL) (allowed-values FALSE TRUE))
+	(slot mesEvento (type INTEGER) (default 0))
 	(slot vino (type SYMBOL) (allowed-values FALSE TRUE) (default FALSE)) ;;;nuevo
-	(slot alcohol (type SYMBOL) (allowed-values FALSE TRUE UNDEF) (default UNDEF)) ;;;nuevo
+	(slot alcohol (type SYMBOL) (allowed-values FALSE TRUE)) ;;;nuevo
 	(slot numComensalesVino (type FLOAT) (default 0.0)) ;;;nuevo
-	(slot ninos (type SYMBOL) (allowed-values FALSE TRUE UNDEF) (default UNDEF)) ;;;nuevo
+	(slot ninos (type SYMBOL) (allowed-values FALSE TRUE) (default FALSE)) ;;;nuevo
 	(slot numComensalesNinos (type INTEGER) (default 0));;; nuevo
-	(slot comida (type SYMBOL) (allowed-values FALSE TRUE UNDEF) (default UNDEF))
-	(slot estilo (type SYMBOL) (allowed-values Sibarita Moderno Clasico Tradicional UNDEF) (default UNDEF))
-	(slot vegetariano (type SYMBOL) (allowed-values FALSE TRUE UNDEF) (default UNDEF))
+	(slot comida (type SYMBOL) (allowed-values FALSE TRUE))
+	(slot estilo (type SYMBOL) (allowed-values Sibarita Moderno Clasico Tradicional))
+	(slot vegetariano (type SYMBOL) (allowed-values FALSE TRUE))
 	(slot numAlergicosGluten (type INTEGER) (default 0))
 	(slot numAlergicosLactosa (type INTEGER) (default 0))
 	(slot numVegetarianos (type INTEGER) (default 0))
@@ -3727,10 +3727,10 @@
 )
 
 (deftemplate MAIN::ProblemaAbstracto
-    (slot presupuesto (type SYMBOL) (allowed-values Bajo Medio Alto MuyAlto UNDEF) (default UNDEF))
-    (slot numComensales (type SYMBOL) (allowed-values Bajo Medio Alto MuyAlto UNDEF) (default UNDEF))
-    (slot complejidad (type SYMBOL) (allowed-values Facil Normal Alto UNDEF) (default UNDEF))
-    (slot temporada (type SYMBOL) (allowed-values Invierno Primavera Verano Otono UNDEF) (default UNDEF))
+    (slot presupuesto (type SYMBOL) (allowed-values Bajo Medio Alto MuyAlto))
+    (slot numComensales (type SYMBOL) (allowed-values Bajo Medio Alto MuyAlto))
+    (slot complejidad (type SYMBOL) (allowed-values Facil Normal Alto))
+    (slot temporada (type SYMBOL) (allowed-values Invierno Primavera Verano Otono))
 )
 
 ;                   ======================================================================
@@ -4359,57 +4359,89 @@
 ;                   =========================     Handler Menu     =======================
 ;                   ======================================================================
 
+(defmessage-handler MAIN::Menu EncontrarIngredientePrincipal "Handler que nos devuelve cual es el
+	ingrediente principal del segundo plato de un menu" ()
 
+	(bind ?listaIngredientes (send ?self:Relacion_Menu_Segundo get-Ingredientes))
+	(bind ?ingredientePrincipal Carne)
+
+	(loop-for-count (?i 1 (length$ ?listaIngredientes)) do
+		(bind ?ingrediente (nth$ ?i $?listaIngredientes))
+		(bind ?tipoIngrediente(class (instance-address * ?ingrediente)))
+		(if (or (eq ?tipoIngrediente Marisco) (eq ?tipoIngrediente Pescado))
+			then (bind ?ingredientePrincipal Pescado)
+			else (bind ?ingredientePrincipal Vegetal)
+		)
+	)
+
+	?ingredientePrincipal
+)
 
 ;                   ======================================================================
 ;                   =====================  Declaracion de funciones ======================
 ;                   ======================================================================
 
 (deffunction pregunta-general "Funcion para formular preguntas generales" (?pregunta $?respuestas-validas)
-  (format t "%s: " ?pregunta)
+  (printout t ?pregunta)
+	(printout t " ")
   (bind ?respuesta (read))
-  (while (not (member (lowcase ?respuesta) ?respuestas-validas)) do
-      (format t "%s: " ?pregunta)
-      (bind ?respuesta (read)))
+
+	(while (not (member (lowcase ?respuesta) ?respuestas-validas)) do
+      (printout t ?pregunta)
+      (bind ?respuesta (read))
+	)
+
   ?respuesta
 )
 
-(deffunction pregunta-numerica-rango "Funcion para formular preguntas numericas que esten comprendidas entre un intervalo" (?pregunta ?min ?max)
+(deffunction pregunta-numerica-rango "Funcion para formular preguntas numericas que esten
+	comprendidas entre un intervalo" (?pregunta ?min ?max)
+
   (format t "%s [%d, %d]: " ?pregunta ?min ?max)
   (bind ?respuesta (read))
   (while (not (and (>= ?respuesta ?min) (<= ?respuesta ?max))) do
       (format t "%s [%d, %d]: " ?pregunta ?min ?max)
-      (bind ?respuesta (read)))
+      (bind ?respuesta (read))
+	)
+
   ?respuesta
 )
 
-(deffunction pregunta-numerica-min "Funcion para formular preguntas numericas con valor minimo" (?pregunta ?min)
+(deffunction pregunta-numerica-min "Funcion para formular preguntas numericas con valor
+	minimo" (?pregunta ?min)
+
   (format t "%s (Valor minimo es: %d): " ?pregunta ?min)
   (bind ?respuesta (read))
   (while (not (>= ?respuesta ?min)) do
       (format t "%s (Valor minimo es: %d): " ?pregunta ?min)
-      (bind ?respuesta (read)))
+      (bind ?respuesta (read))
+	)
+
   ?respuesta
 )
 
-(deffunction pregunta-binaria "Preguntas con respuestas sí o no" (?pregunta)
+(deffunction pregunta-binaria "Funcion para formular preguntas con respuestas binaria" (?pregunta)
    (bind ?respuesta (pregunta-general ?pregunta si no s n))
    (if (or (eq ?respuesta yes) (eq ?respuesta s))
        then TRUE
-       else FALSE)
+       else FALSE
+	 )
 )
 
-(deffunction pregunta-lista "Funcion para preguntar y recibir como respuesta un valor entre el rango disponible de valores" (?lista)
+(deffunction pregunta-lista "Funcion para preguntar y recibir como respuesta un valor entre el rango
+	disponible de valores" (?lista)
+
 	(format t "Opciones: %n---------------------------%n")
 	(loop-for-count (?i 1 (length$ ?lista)) do
 		(bind ?opcion (str-cat ?i (str-cat ".- " (nth$ ?i ?lista))))
 		(printout t ?opcion crlf)
 	)
+
 	(bind ?respuesta (pregunta-numerica-rango "Escribe una de las opciones del menu: " 1 (length$ ?lista)))
 	?respuesta
 )
 
-(deffunction calcular-platos-abstractos "" ()
+(deffunction calcular-platos-abstractos "Funcion que genera y inicializa los platos abstracto" ()
 	(bind ?platos (find-all-instances ((?inst Plato)) TRUE))
 	(loop-for-count (?i 1 (length$ ?platos)) do
 		(bind ?plato (nth$ ?i ?platos))
@@ -4419,11 +4451,52 @@
 	)
 )
 
-(deffunction generar-menu (?categoria ?subCategoria ?numComensales ?numAlergicosGluten ?numAlergicosLactosa ?numVegetarianos)
+(deffunction calcular-vinos-abstractos "Funcion que genera y inicializa los vinos abstractos" ()
+	(bind ?listaVinos (find-all-instances ((?inst Vino)) TRUE))
+	(loop-for-count (?i 1 (length$ ?listaVinos)) do
+		(bind ?vino (nth$ ?i ?listaVinos))
+		(bind ?vinoAbstracto (make-instance (sym-cat vinoAbstracto- (gensym)) of VinoAbstracto))
+		(send ?vinoAbstracto put-Vino ?vino)
+		(send ?vinoAbstracto calcula-categoria)
+		(send ?vinoAbstracto put-Nombre (send ?vino get-Nombre))
+		(send ?vinoAbstracto put-PVP (send ?vino get-PVP))
+	)
+)
+
+(deffunction buscar-vino (?tipoVino ?categoria ?subCategoria ?numComensalesVino ?numComensales)
+	(bind ?listaVinosAbstractos (find-all-instances ((?inst VinoAbstracto)) TRUE))
+	(bind ?candidato (nth$ 1 ?listaVinosAbstractos))
+
+	(bind ?i 1)
+	(bind ?correcto FALSE)
+	(while (and (<= ?i (length$ ?listaVinosAbstractos)) (not ?correcto)) do
+		(bind ?vinoAbstracto (nth$ ?i ?listaVinosAbstractos))
+		(bind ?vino (send ?vinoAbstracto get-Vino))
+		(bind ?tipo (class (instance-address * ?vino)))
+
+		(if (and (eq ?tipo ?tipoVino) (and (send ?vinoAbstracto categoria-correcta ?categoria)
+																			 (send ?vinoAbstracto subcategoria-correcta ?subCategoria)))
+			 then
+			 			(bind ?correcto TRUE)
+						(bind ?candidato ?vinoAbstracto)
+		)
+		(bind ?i (+ ?i 1))
+	)
+
+	(send ?candidato imprimir ?numComensalesVino ?numComensales)
+)
+
+(deffunction generar-menu (?categoria ?subCategoria ?numComensales ?numAlergicosGluten ?numAlergicosLactosa ?numVegetarianos ?numComensalesVino ?siQuiereVino)
 	(bind ?precioMenuNormal 0)
 	(bind ?precioMenuSinGluten 0)
 	(bind ?precioMenuSinLactosa 0)
 	(bind ?precioMenuVegetariano 0)
+
+	(printout t "Numero de comensales: " ?numComensales crlf)
+	(printout t "Numero vegetarianos: " ?numVegetarianos crlf)
+	(printout t "Numero de gluten: " ?numAlergicosGluten crlf)
+	(printout t "Numero de alergicos lactosa: " ?numAlergicosLactosa crlf)
+
 	(if (< (+ ?numAlergicosGluten (+ ?numVegetarianos ?numAlergicosLactosa)) (* 0.5 ?numComensales))
 		then
 			(bind ?menu (make-instance (gensym) of MenuAbstracto))
@@ -4431,8 +4504,21 @@
 
 			(printout t "Menu normal: " crlf)
 			(send ?menu imprimir)
-			(bind ?precioMenuNormal (send ?menu get-Precio))
+			(bind ?precioMenuNormal (* ?numComensales (send ?menu get-Precio)))
+
+			(if ?siQuiereVino
+				then
+					(bind ?ingredientePrincipal (send (send ?menu get-Menu) EncontrarIngredientePrincipal))
+					(bind ?tipoVino Blanco)
+
+					(if (eq ?ingredientePrincipal Carne)
+						then (bind ?tipoVino Tinto)
+					)
+
+					(buscar-vino ?tipoVino ?categoria ?subCategoria ?numComensalesVino ?numComensales)
+			)
 	)
+
 	(if (> ?numVegetarianos 0)
 		then
 			(bind ?menuVegetariano (make-instance (gensym) of MenuAbstracto))
@@ -4440,7 +4526,19 @@
 
 			(printout t "Menu vegetariano: " crlf)
 			(send ?menuVegetariano imprimir)
-			(bind ?precioMenuVegetariano (send ?menuVegetariano get-Precio))
+			(bind ?precioMenuVegetariano (* ?numVegetarianos (send ?menuVegetariano get-Precio)))
+
+			(if ?siQuiereVino
+				then
+					(bind ?ingredientePrincipal (send (send ?menuVegetariano get-Menu) EncontrarIngredientePrincipal))
+					(bind ?tipoVino Blanco)
+
+					(if (eq ?ingredientePrincipal Carne)
+						then (bind ?tipoVino Tinto)
+					)
+
+					(buscar-vino ?tipoVino ?categoria ?subCategoria ?numComensalesVino ?numComensales)
+			)
 	)
 	(if (> ?numAlergicosGluten 0)
 		then
@@ -4450,6 +4548,19 @@
 			(printout t "Menu sin gluten: " crlf)
 			(send ?menuSinGluten imprimir)
 			(bind ?precioMenuSinGluten (send ?menuSinGluten get-Precio))
+
+			(if ?siQuiereVino
+				then
+					(bind ?ingredientePrincipal (send (send ?menuSinGluten get-Menu) EncontrarIngredientePrincipal))
+					(bind ?tipoVino Blanco)
+
+					(if (eq ?ingredientePrincipal Carne)
+						then (bind ?tipoVino Tinto)
+					)
+
+
+					(buscar-vino ?tipoVino ?categoria ?subCategoria ?numComensalesVino ?numComensales)
+			)
 	)
 	(if (> ?numAlergicosLactosa 0)
 		then
@@ -4459,10 +4570,25 @@
 			(printout t "Menu sin lactosa: " crlf)
 			(send ?menuSinLactosa imprimir)
 			(bind ?precioMenuSinLactosa (send ?menuSinLactosa get-Precio))
+
+			(if ?siQuiereVino
+				then
+					(bind ?ingredientePrincipal (send (send ?menuSinLactosa get-Menu) EncontrarIngredientePrincipal))
+					(bind ?tipoVino Blanco)
+
+					(if (eq ?ingredientePrincipal Carne)
+						then (bind ?tipoVino Tinto)
+					)
+
+
+					(buscar-vino ?tipoVino ?categoria ?subCategoria ?numComensalesVino ?numComensales)
+			)
 	)
 
 	(printout t "Precio total: " (+ ?precioMenuNormal (+ ?precioMenuSinGluten (+ ?precioMenuVegetariano ?precioMenuSinLactosa))) crlf)
 )
+
+
 
 ;                   ======================================================================
 ;                   =======================  Declaracion de reglas =======================
@@ -4472,6 +4598,7 @@
     (declare (salience 10))
     =>
     (calcular-platos-abstractos)
+		(calcular-vinos-abstractos)
     (printout t "====================================================================" crlf)
     (printout t "=    Sistema de elaboracion de menus personalizados Rico Rico      =" crlf)
     (printout t "====================================================================" crlf)
@@ -4489,7 +4616,7 @@
 (defrule recopilacion::pregunta-familiar-congreso "Pregunta al cliente que tipo de evento se va a realizar"
     (not (Entrada))
     =>
-    (bind ?respuesta (pregunta-general "¿Que tipo de evento se va a celebrar? (B)oda/Co(m)union/B(a)utizo/(C)ongreso" b m a c))
+    (bind ?respuesta (pregunta-general "¿Que tipo de evento se va a celebrar? (B)oda/Co(m)union/B(a)utizo/(C)ongreso?" b m a c))
     (if (eq ?respuesta b)
         then (assert (Entrada (tipoEvento Boda)))
         else (if (eq ?respuesta m)
@@ -4503,19 +4630,20 @@
 )
 
 (defrule recopilacion::comida-cena "Pregunta al cliente si el evento sera una cena o una comida"
-    ?e <- (Entrada (comida ?comida))
-    (test (eq ?comida UNDEF))
+		(not (Pregunta-Comida-Cena))
+		?e <- (Entrada)
     =>
     (bind ?respuesta (pregunta-general "¿Sera una comida o una cena? (C)omida/C(e)na" c e))
     (if (eq ?respuesta e)
         then (modify ?e (comida FALSE))
         else (modify ?e (comida TRUE))
     )
+		(assert (Pregunta-Comida-Cena))
 )
 
 (defrule recopilacion::pregunta-estilo-comida "Pregunta al cliente el estilo de la comida"
-    ?e <- (Entrada (estilo ?est))
-    (test (eq ?est UNDEF))
+		(not (Pregunta-Estilo-Comida))
+		?e <- (Entrada)
     =>
     (bind ?respuesta (pregunta-general "¿Que estilo de comida quiere en el menu? (S)ibarita/(M)oderno/(T)radicional/(C)lasico" s m t c))
     (if (eq ?respuesta t)
@@ -4528,85 +4656,151 @@
             )
         )
     )
+		(assert (Pregunta-Estilo-Comida))
 )
 
 (defrule recopilacion::mes-evento "Pregunta al cliente en que mes se realiza el evento"
-    ?e <- (Entrada (mesEvento ?mes))
-    (test (< ?mes 0))
+		(not (Pregunta-Mes-Evento))
+		?e <- (Entrada)
     =>
     (bind ?respuesta (pregunta-numerica-rango "¿En que mes se celebrara el evento ?" 1 12))
     (modify ?e (mesEvento ?respuesta))
+		(assert (Pregunta-Mes-Evento))
 )
 
 (defrule recopilacion::numero-comensales "Pregunta al cliente el numero de comensales"
-    ?e <- (Entrada (numComensales ?comensales))
-    (test (< ?comensales 0))
+		(not (Pregunta-Numero-Comensales))
+		?e <- (Entrada)
     =>
     (bind ?respuesta (pregunta-numerica-rango "¿Cuantos comensales sereis?" 20 500))
     (modify ?e (numComensales ?respuesta) (numGenteNormal ?respuesta))
+		(assert (Pregunta-Numero-Comensales))
+)
+
+(defrule recopilacion::pregunta-ninos "Pregunta al cliente si acurian menores al evento"
+		(not (Pregunta-Ninos))
+		?e <- (Entrada (tipoEvento ?tipoEvento))
+		=>
+		(if (and (not (eq ?tipoEvento Congreso)) (pregunta-binaria "¿Acudiran menores al evento?"))
+        then
+					(assert (Pregunta-Comensales-Ninos))
+					(modify ?e (ninos TRUE))
+    )
+		(assert (Pregunta-Ninos))
+)
+
+(defrule recopilacion::pregunta-comensales-ninos "Pregunta al cliente cuantos menores acudiran"
+		(Pregunta-Comensales-Ninos)
+		(not (Pregunta-Ninos-Completada))
+		?e <- (Entrada (numComensales ?numComensales))
+    =>
+		(bind ?num (pregunta-numerica-rango "¿Cuantos ninos asistiran?" 1 (- ?numComensales 2)))
+		(modify ?e (numComensalesNinos ?num))
+		(assert (Pregunta-Ninos-Completada))
 )
 
 (defrule recopilacion::establecer-presupuesto-maximo "Pregunta al cliente que presupuesto por menu"
-    ?e <- (Entrada (presupuestoMax ?max))
-    (test (< ?max 0))
+		(not (Pregunta-Presupuesto-Max))
+		?e <- (Entrada)
     =>
     (bind ?presupuesto (pregunta-numerica-min "¿Cual el preuspuesto del menu por persona?" 10))
     (modify ?e (presupuestoMax ?presupuesto))
+		(assert (Pregunta-Presupuesto-Max))
 )
 
-(defrule recopilacion::pregunta-bebida-plato "Pregunta al cliente si quiere una bebida por plato"
-    ?e <- (Entrada (bebidaPorPlato ?bebida))
-    (test (eq ?bebida UNDEF))
-    =>
-    (if (pregunta-binaria "¿Incluir en cada plato una bebida?")
-        then (modify ?e (bebidaPorPlato TRUE))
-        else (modify ?e (bebidaPorPlato FALSE))
+(defrule recopilacion::pregunta-alcohol "Pregunta al cliente si quiere incluir bebidas alcoholicas
+	en el menu"
+
+	(not (Preguntar-Alcohol))
+	?e <- (Entrada)
+	=>
+	(if (pregunta-binaria "¿Se quieren incluir bebidas alcoholicas en el menu?")
+      then
+				(assert (Preguntar-Vino))
+				(modify ?e (alcohol TRUE))
+      else (modify ?e (alcohol FALSE))
+  )
+	(assert (Preguntar-Alcohol))
+)
+
+(defrule recopilacion::pregunta-vino "Pregunta al cliente si se quiere incluir vino en el menu"
+		(Preguntar-Vino)
+		(not (Pregunta-Vino-Completada))
+		?e <- (Entrada)
+		=>
+		(if (pregunta-binaria "¿Se quiere incluir vino en el menu?")
+        then
+					(assert (Pregunta-Comensales-Vino))
+					(modify ?e (vino TRUE))
+        else (modify ?e (vino FALSE))
     )
+		(assert (Pregunta-Vino-Completada))
+)
+
+(defrule recopilacion::pregunta-comensales-vino "Pregunta al cliente cuantos van a beber vino"
+		(Pregunta-Comensales-Vino)
+		(not (Pregunta-Comensales-Vino-Completada))
+
+		?e <- (Entrada (numComensales ?numComensales))
+		(Entrada (numComensalesNinos ?numComensalesNinos))
+    =>
+    (bind ?respuesta (pregunta-general "¿Cuantos beberan vino? (A)lgunos (M)itad (Ma)yoria (T)odos" a m ma t))
+		(if (eq ?respuesta a) ;;;25%
+				then (modify ?e (numComensalesVino (* 0.25 (- ?numComensales ?numComensalesNinos))))
+				else (if (eq ?respuesta m);;;50%
+						then (modify ?e (numComensalesVino (* 0.5 (- ?numComensales ?numComensalesNinos))))
+						else (if (eq ?respuesta ma) ;;;75%
+								then (modify ?e (numComensalesVino (* 0.75 (- ?numComensales ?numComensalesNinos))))
+								else (modify ?e (numComensalesVino (- ?numComensales ?numComensalesNinos))) ;;;100%
+						)
+				)
+		)
+
+		(assert (Pregunta-Comensales-Vino-Completada))
 )
 
 (defrule recopilacion::pregunta-vegetarianos "Pregunta al cliente si acude gente vegetariana"
-		(not (PreguntarPorVegetarianos))
+		(not (Pregunta-Vegetarianos))
     =>
     (if (pregunta-binaria "¿Acudira gente vegetariana?")
-        then (assert (CuantosVegetarianosAsistiran))
+        then (assert (Pregunta-Comensales-Vegetarianos))
     )
-		(assert (PreguntarPorVegetarianos))
+		(assert (Pregunta-Vegetarianos))
 )
 
-(defrule recopilacion::preguntar-numero-vegetarianos "Pregunta al cliente cuantos vegetarianos asistiran"
-	(not (VegetarianosCompletado))
-	(CuantosVegetarianosAsistiran)
-	?e <- (Entrada)
-	(Entrada (numGenteNormal ?numComensales))
+(defrule recopilacion::pregunta-comensales-vegetarianos "Pregunta al cliente cuantos vegetarianos asistiran"
+	(Pregunta-Comensales-Vegetarianos)
+	(not (Pregunta-Comensales-Vegetarianos-Completada))
+	?e <- (Entrada (numGenteNormal ?numComensales))
 	=>
 	(bind ?respuesta (pregunta-numerica-rango "¿Cuantas personas vegetarianas asistiran?" 0 ?numComensales))
 	(modify ?e (numVegetarianos ?respuesta) (numGenteNormal (- ?numComensales ?respuesta)))
-	(assert (VegetarianosCompletado))
+	(assert (Pregunta-Comensales-Vegetarianos-Completada))
 )
 
 (defrule recopilacion::pregunta-alergias "Pregunta al cliente si hay alergias a tener en cuenta"
-	(not (HayAlergias?))
+	(not (Pregunta-Alergias))
 	=>
 	(if (pregunta-binaria "¿Hay alguna alergia a tener en cuenta a la hora de elegir menu?")
-		then (assert (QueTipoAlergias))
+		then (assert (Pregunta-Tipo-Alergias))
 	)
-	(assert (HayAlergias?))
+	(assert (Pregunta-Alergias))
 )
 
-(defrule recopilacion::pregunta-que-tipo-alergias "Pregunta al cliente por el tipo de alergias"
-	?e <- (QueTipoAlergias)
-	(not (TipoAlergiasCompletado))
+(defrule recopilacion::pregunta-tipo-alergias "Pregunta al cliente por el tipo de alergias"
+	?e <- (Pregunta-Tipo-Alergias)
+	(not (Pregunta-Tipo-Alergias-Completada))
 	?alergias <- (Entrada)
 	(Entrada (numGenteNormal ?numComensales))
 	(Entrada (numAlergicosGluten ?numAlergicosGluten))
 	(Entrada (numAlergicosLactosa ?numAlergicosLactosa))
 	=>
 	(retract ?e)
-	(assert (QueTipoAlergias))
+	(assert (Pregunta-Tipo-Alergias))
 	(bind ?lista (create$ Lactosa Gluten Volver))
 	(bind ?opcion (pregunta-lista ?lista))
 	(if (= ?opcion (length$ ?lista))
-		then (assert (TipoAlergiasCompletado))
+		then (assert (Pregunta-Tipo-Alergias-Completada))
 		else
 			(if (= ?opcion 1)
 				then
@@ -4624,88 +4818,85 @@
 )
 
 (defrule recopilacion::entrada-completada "Regla que comprueba que todas las preguntas han sido respondidas"
-    (Entrada (numComensales ?numComensales))
-    (test (>= ?numComensales 0))
-
-    (Entrada (presupuestoMax ?presupuestoMax))
-    (test (>= ?presupuestoMax 0))
-
-    (Entrada (tipoEvento ?tipoEvento))
-    (test (not (eq ?tipoEvento UNDEF)))
-
-    (Entrada (bebidaPorPlato ?bebidaPorPlato))
-    (test (not (eq ?bebidaPorPlato UNDEF)))
-
-    (Entrada (mesEvento ?mesEvento))
-    (test (>= ?mesEvento 0))
-
-    (Entrada (comida ?comida))
-    (test (not (eq ?comida UNDEF)))
-
-    (Entrada (estilo ?estilo))
-    (test (not (eq ?estilo UNDEF)))
-
-		(PreguntarPorVegetarianos)
-		(or (not (CuantosVegetarianosAsistiran)) (and (CuantosVegetarianosAsistiran) (VegetarianosCompletado)))
-		(HayAlergias?)
-		(or (not (QueTipoAlergias)) (and (QueTipoAlergias) (TipoAlergiasCompletado)))
-    =>
-	  (focus abstraccion)
+	(Pregunta-Comida-Cena)
+	(Pregunta-Estilo-Comida)
+	(Pregunta-Mes-Evento)
+	(Pregunta-Numero-Comensales)
+	(Pregunta-Presupuesto-Max)
+	(Pregunta-Ninos)
+	(or (not (Pregunta-Comensales-Ninos)) (and (Pregunta-Comensales-Ninos) (Pregunta-Ninos-Completada)))
+	(Preguntar-Alcohol)
+	(or (not (Pregunta-Vino)) (and (Pregunta-Vino) (Pregunta-Vino-Completada)))
+	(or (not (Pregunta-Comensales-Vino)) (and (Pregunta-Comensales-Vino) (Pregunta-Comensales-Vino-Completada)))
+	(Pregunta-Vegetarianos)
+	(or (not (Pregunta-Comensales-Vegetarianos)) (and (Pregunta-Comensales-Vegetarianos) (Pregunta-Comensales-Vegetarianos-Completada)))
+	(Pregunta-Alergias)
+	(or (not (Pregunta-Tipo-Alergias)) (and (Pregunta-Tipo-Alergias) (Pregunta-Tipo-Alergias-Completada)))
+  =>
+  (focus abstraccion)
 )
 
 ;                   ======================================================================
 ;                   ======================  Modulo de abstraccion   ======================
 ;                   ======================================================================
 
-(defrule abstraccion::abstraer-presupuesto "Regla que nos permite abstraer del presupuesto propuesto por el usuario a unos valores abstractos"
-    (not (ProblemaAbstracto))
-    (Entrada (presupuestoMax ?presupuestoMax))
-    =>
-    (if  (< ?presupuestoMax 25)
-        then (assert (ProblemaAbstracto (presupuesto Bajo)))
-        else (if (< ?presupuestoMax 49)
-            then (assert (ProblemaAbstracto (presupuesto Medio)))
-            else (if (< ?presupuestoMax 81)
-                then (assert (ProblemaAbstracto (presupuesto Alto)))
-                else (assert (ProblemaAbstracto (presupuesto MuyAlto)))
-            )
-        )
-    )
+(defrule abstraccion::abstraer-presupuesto "Regla que nos permite abstraer del presupuesto propuesto por
+	el usuario a unos valores abstractos"
+
+	(not (ProblemaAbstracto))
+  (Entrada (presupuestoMax ?presupuestoMax))
+  =>
+  (if  (< ?presupuestoMax 25)
+      then (assert (ProblemaAbstracto (presupuesto Bajo)))
+      else (if (< ?presupuestoMax 49)
+          then (assert (ProblemaAbstracto (presupuesto Medio)))
+          else (if (< ?presupuestoMax 81)
+              then (assert (ProblemaAbstracto (presupuesto Alto)))
+              else (assert (ProblemaAbstracto (presupuesto MuyAlto)))
+          )
+      )
+  )
 )
 
-(defrule abstraccion::abstraer-comensales "Regla que nos permite abstraer el numero de comensales propuesto por el usuario a unos valores abstractos"
-	?e <- (ProblemaAbstracto (numComensales ?num))
-	(test (eq ?num UNDEF))
+(defrule abstraccion::abstraer-comensales "Regla que nos permite abstraer el numero de comensales
+	propuesto por el usuario a unos valores abstractos"
+
+	(not (abstraccion-comensales))
+	?e <- (ProblemaAbstracto)
 	(Entrada (numComensales ?numComensales))
 	=>
-    (if (< ?numComensales 30)
-        then (modify ?e (numComensales Bajo))
-        else (if (< ?numComensales 50)
-            then (modify ?e (numComensales Medio))
-            else (if (< ?numComensales 100)
-                then (modify ?e (numComensales Alto))
-                else (modify ?e (numComensales MuyAlto))
-            )
-        )
-    )
+  (if (< ?numComensales 30)
+      then (modify ?e (numComensales Bajo))
+      else (if (< ?numComensales 50)
+          then (modify ?e (numComensales Medio))
+          else (if (< ?numComensales 100)
+              then (modify ?e (numComensales Alto))
+              else (modify ?e (numComensales MuyAlto))
+          )
+      )
+  )
+	(assert (abstraccion-comensales))
 )
 
 
-(defrule abstraccion::abstraer-temporada "Regla que nos permite abstraer el mes del evento propuesto por el usuario a unos valores abstractos"
-    ?e <- (ProblemaAbstracto (temporada ?temporada))
-    (test (eq ?temporada UNDEF))
-    (Entrada (mesEvento ?mesEvento))
-    =>
-    (if (and (>= ?mesEvento 4) (<= ?mesEvento 5))
-        then (modify ?e (temporada Primavera))
-        else (if (and (>= ?mesEvento 6) (< ?mesEvento 9))
-            then (modify ?e (temporada Verano))
-            else (if (and (>= ?mesEvento 10) (< ?mesEvento 11))
-                then (modify ?e (temporada Otono))
-                else (modify ?e (temporada Invierno))
-            )
-        )
-    )
+(defrule abstraccion::abstraer-temporada "Regla que nos permite abstraer el mes del evento propuesto por
+	el usuario a unos valores abstractos"
+
+	(not (abstraccion-temporada))
+	?e <- (ProblemaAbstracto)
+  (Entrada (mesEvento ?mesEvento))
+  =>
+  (if (and (>= ?mesEvento 4) (<= ?mesEvento 5))
+      then (modify ?e (temporada Primavera))
+      else (if (and (>= ?mesEvento 6) (< ?mesEvento 9))
+          then (modify ?e (temporada Verano))
+          else (if (and (>= ?mesEvento 10) (< ?mesEvento 11))
+              then (modify ?e (temporada Otono))
+              else (modify ?e (temporada Invierno))
+          )
+      )
+  )
+	(assert (abstraccion-temporada))
 )
 
 ;(defrule abstraccion::abstraer-complejidad "Regla que nos permite abstraer el estilo propuesto por el usuario a unos valores abstractos"
@@ -4724,27 +4915,17 @@
 ;)
 
 (defrule abstraccion::abstraccion-completada "Regla que comprueba que todas las preguntas han sido respondidas"
-    (ProblemaAbstracto (presupuesto ?presupuesto))
-    (test (not (eq ?presupuesto UNDEF)))
-
-    (ProblemaAbstracto (numComensales ?numComensales))
-    (test (not (eq ?numComensales UNDEF)))
-
-    (ProblemaAbstracto (temporada ?temporada))
-    (test (not (eq ?temporada UNDEF)))
-
-
-;    (ProblemaAbstracto (complejidad ?complejidad))
-;    (test (not (eq ?complejidad UNDEF)))
-    =>
-	 (focus solucionAbstracta)
+	(abstraccion-comensales)
+	(abstraccion-temporada)
+  =>
+ 	(focus solucionConcreta)
 )
 
 ;                   ======================================================================
-;                   ===================  Modulo de solucion abstracta   ==================
+;                   ===================   Modulo de solucion concreta   ==================
 ;                   ======================================================================
 
-(defrule solucionAbstracta::calcular-puntuaciones ""
+(defrule solucionConcreta::calcular-puntuaciones ""
 	(initial-fact)
 	(ProblemaAbstracto (presupuesto ?presupuesto))
 	(ProblemaAbstracto (numComensales ?numComensales))
@@ -4765,26 +4946,17 @@
 	(focus solucionConcreta)
 )
 
-;                   ======================================================================
-;                   ===================   Modulo de solucion concreta   ==================
-;                   ======================================================================
-
-;(deftemplate MAIN::MenuBarato
-;	(slot menuPrincipal (type INSTANCE))
-;	(slot menuSinGluten (type INSTANCE))
-;	(slot menuSinLactosa (type INSTANCE))
-;	(slot generadoMenuSinGluten (type SYMBOL) (allowed-values FALSE TRUE) (default FALSE))
-;	(slot generadoMenuSinLactosa (type SYMBOL) (allowed-values FALSE TRUE) (default FALSE))
-;	(slot generadoMenuNormal (type SYMBOL) (allowed-values FALSE TRUE) (default FALSE))
-;)
-
-
 (defrule solucionConcreta::imprimirResultado
 	(not (final))
 	(Entrada (numComensales ?numComensales))
 	(Entrada (numAlergicosGluten ?numAlergicosGluten))
 	(Entrada (numAlergicosLactosa ?numAlergicosLactosa))
 	(Entrada (numVegetarianos ?numVegetarianos))
+	(Entrada (numComensalesNinos ?numComensalesNinos))
+	(Entrada (vino ?siQuiereVino))
+	(Entrada (ninos ?ninos))
+	(Entrada (alcohol ?alcohol))
+	(Entrada (numComensalesVino ?numComensalesVino))
 	(ProblemaAbstracto (presupuesto ?categoria))
 	=>
 	(if (eq ?categoria MuyAlto) then
@@ -4799,13 +4971,29 @@
 	)
 
 	(printout t "====================  Menu Barato ===================== " crlf)
-	(generar-menu ?categoria Bajo ?numComensales ?numAlergicosGluten ?numAlergicosLactosa ?numVegetarianos)
+	(generar-menu ?categoria Bajo ?numComensales ?numAlergicosGluten ?numAlergicosLactosa ?numVegetarianos ?numComensalesVino ?siQuiereVino)
 
 	(printout t "====================  Menu Medio ===================== " crlf)
-	(generar-menu ?categoria Medio ?numComensales ?numAlergicosGluten ?numAlergicosLactosa ?numVegetarianos)
+	(generar-menu ?categoria Medio ?numComensales ?numAlergicosGluten ?numAlergicosLactosa ?numVegetarianos ?numComensalesVino ?siQuiereVino)
 
 	(printout t "====================  Menu Alto ===================== " crlf)
-	(generar-menu ?categoria Alto ?numComensales ?numAlergicosGluten ?numAlergicosLactosa ?numVegetarianos)
+	(generar-menu ?categoria Alto ?numComensales ?numAlergicosGluten ?numAlergicosLactosa ?numVegetarianos ?numComensalesVino ?siQuiereVino)
+
+	(printout t crlf)
+	(printout t "====================  Otras bebidas ===================== " crlf)
+	(if  (and ?alcohol (< ?numComensalesVino (- ?numComensales ?numComensalesNinos)))
+		then
+			(printout t "Precio cerveza: 1.2" crlf)
+			(bind ?num (- ?numComensales ?numComensalesVino ?numComensalesNinos))
+			(bind ?precio (* ?num 1.2))
+			(format t "Precio para %d comensales: %f %n" ?num ?precio)
+	)
+	(if ?ninos
+		then
+			(printout t "Precio refresco o zumo: 0.8" crlf)
+			(bind ?precio (* ?numComensalesNinos 0.8))
+			(format t "Precio para %d ninos: %f %n" ?numComensalesNinos ?precio)
+	)
 
 	(assert (final))
 )

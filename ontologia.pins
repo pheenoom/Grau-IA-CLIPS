@@ -1,4 +1,4 @@
-; Wed May 17 00:16:36 CEST 2017
+; Sat May 20 01:59:13 CEST 2017
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -57,12 +57,185 @@
 	(Racion Normal)
 	(Vegetariano TRUE))
 
+([ontologia_Class100001] of  Frutos_secos
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Pinones")
+	(PVP 2.0))
+
+([ontologia_Class100002] of  Segundo
+
+	(AptoNinos TRUE)
+	(Bebida_Menu [ontologia_Class57])
+	(Caliente TRUE)
+	(Estilo Clasico)
+	(Ingredientes
+		[ontologia_Class30003]
+		[ontologia_Class80000]
+		[ontologia_Class10011]
+		[ontologia_Class60003]
+		[ontologia_Class40006]
+		[ontologia_Class10010]
+		[ontologia_Class35]
+		[ontologia_Class15])
+	(Nombre "Penne con cavioli e salsiccia (macarrones con colifror y salsichas)")
+	(Origen Italiana)
+	(PVP 3.0)
+	(Racion Normal))
+
+([ontologia_Class100004] of  Verdura
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Alcachofa")
+	(PVP 0.85))
+
+([ontologia_Class100005] of  Pescado
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Sepia")
+	(PVP 2.5))
+
+([ontologia_Class100006] of  Condimento
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Guindilla")
+	(PVP 0.7))
+
+([ontologia_Class100007] of  Condimento
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Brandy")
+	(PVP 0.9))
+
+([ontologia_Class100008] of  Condimento
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Caldo de pescado")
+	(PVP 1.5))
+
+([ontologia_Class100009] of  Segundo
+
+	(AptoCena TRUE)
+	(Caliente TRUE)
+	(Estilo Moderno)
+	(Ingredientes
+		[ontologia_Class100004]
+		[ontologia_Class100005]
+		[ontologia_Class100007]
+		[ontologia_Class100006]
+		[ontologia_Class40]
+		[ontologia_Class35]
+		[ontologia_Class15]
+		[ontologia_Class100008]
+		[ontologia_Class20])
+	(Nombre "Carciofi e seppie (alcachofas con sepia)")
+	(Origen Italiana)
+	(PVP 2.0)
+	(Racion Normal))
+
 ([ontologia_Class10001] of  Fruta
 
 	(Mes_Final_Temporada 9)
 	(Mes_Inicio_Temporada 5)
 	(Nombre "Sandia")
 	(PVP 0.5))
+
+([ontologia_Class100011] of  Cereal
+
+	(Gluten TRUE)
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Pasta gigantoni")
+	(PVP 1.5))
+
+([ontologia_Class100012] of  Cereal
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Pasta gigantoni sin gluten")
+	(PVP 1.5))
+
+([ontologia_Class100013] of  Segundo
+
+	(AptoNinos TRUE)
+	(Bebida_Menu [ontologia_Class57])
+	(Caliente TRUE)
+	(Estilo Moderno)
+	(Ingredientes
+		[ontologia_Class10003]
+		[ontologia_Class90037]
+		[ontologia_Class100011]
+		[ontologia_Class10010]
+		[ontologia_Class35]
+		[ontologia_Class10026]
+		[ontologia_Class15])
+	(Nombre "Gigantoni con zucchine e salmone (pasta con calabacín y salmón)")
+	(Origen Italiana)
+	(PVP 0.3)
+	(Racion Normal))
+
+([ontologia_Class100014] of  Condimento
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Pimienta blanca")
+	(PVP 0.2))
+
+([ontologia_Class100015] of  Verdura
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Radicchio rojo")
+	(PVP 1.0))
+
+([ontologia_Class100016] of  Derivado
+
+	(Lactosa TRUE)
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Queso taleggio")
+	(PVP 1.2))
+
+([ontologia_Class100017] of  Segundo
+
+	(AptoCena TRUE)
+	(Bebida_Menu [ontologia_Class57])
+	(Caliente TRUE)
+	(Estilo Tradicional)
+	(Ingredientes
+		[ontologia_Class10027]
+		[ontologia_Class30029]
+		[ontologia_Class100016]
+		[ontologia_Class100015]
+		[ontologia_Class10011]
+		[ontologia_Class100014]
+		[ontologia_Class35]
+		[ontologia_Class15])
+	(Nombre "Risotto de radicchio y queso")
+	(Origen Italiana)
+	(PVP 1.0)
+	(Racion Normal))
+
+([ontologia_Class100018] of  Cereal
+
+	(Gluten TRUE)
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Pasta fresca Fusilli")
+	(PVP 2.0))
+
+([ontologia_Class100019] of  Cereal
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Pasta fresca Fusilli sin gluten")
+	(PVP 2.0))
 
 ([ontologia_Class10002] of  Fruta
 
@@ -71,6 +244,124 @@
 	(Nombre "Melon")
 	(PVP 0.75))
 
+([ontologia_Class100020] of  Marisco
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Almejas")
+	(PVP 2.0))
+
+([ontologia_Class100021] of  Marisco
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Mejillones")
+	(PVP 2.0))
+
+([ontologia_Class100022] of  Segundo
+
+	(AptoCena TRUE)
+	(Bebida_Menu [ontologia_Class57])
+	(Caliente TRUE)
+	(Estilo Sibarita)
+	(Ingredientes
+		[ontologia_Class100018]
+		[ontologia_Class100020]
+		[ontologia_Class100021]
+		[ontologia_Class2]
+		[ontologia_Class20]
+		[ontologia_Class100006]
+		[ontologia_Class40]
+		[ontologia_Class35]
+		[ontologia_Class20010])
+	(Nombre "Pasta Fusilli con frutos del mar")
+	(Origen Italiana)
+	(PVP 3.0)
+	(Racion Normal))
+
+([ontologia_Class100023] of  Derivado
+
+	(Lactosa TRUE)
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Queso ricotta")
+	(PVP 1.5))
+
+([ontologia_Class100024] of  Derivado
+
+	(Lactosa TRUE)
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Mozzarella")
+	(PVP 2.0))
+
+([ontologia_Class100025] of  Carne
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Jamon dulce")
+	(PVP 1.0))
+
+([ontologia_Class100026] of  Carne
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Capicola")
+	(PVP 1.5))
+
+([ontologia_Class100027] of  Segundo
+
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
+	(Bebida_Menu [ontologia_Class57])
+	(Caliente TRUE)
+	(Estilo Clasico)
+	(Ingredientes
+		[ontologia_Class50018]
+		[ontologia_Class100024]
+		[ontologia_Class100023]
+		[ontologia_Class40006]
+		[ontologia_Class100026]
+		[ontologia_Class100025]
+		[ontologia_Class80000]
+		[ontologia_Class30008]
+		[ontologia_Class10010]
+		[ontologia_Class35]
+		[ontologia_Class15]
+		[ontologia_Class10027]
+		[ontologia_Class10008])
+	(Nombre "Pizza rustica")
+	(Origen Italiana)
+	(PVP 2.5)
+	(Racion Normal))
+
+([ontologia_Class100028] of  Derivado
+
+	(Lactosa TRUE)
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Queso provolone")
+	(PVP 1.5))
+
+([ontologia_Class100029] of  Segundo
+
+	(AptoCena TRUE)
+	(Bebida_Menu [ontologia_Class57])
+	(Caliente TRUE)
+	(Estilo Moderno)
+	(Ingredientes
+		[ontologia_Class70007]
+		[ontologia_Class10010]
+		[ontologia_Class56]
+		[ontologia_Class40016]
+		[ontologia_Class10011]
+		[ontologia_Class35]
+		[ontologia_Class15])
+	(Nombre "Carpaccio di gamberoni (de gambones)")
+	(Origen Italiana)
+	(PVP 5.0)
+	(Racion Normal))
+
 ([ontologia_Class10003] of  Verdura
 
 	(Lactosa TRUE)
@@ -78,6 +369,97 @@
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Calabacín")
 	(PVP 0.8))
+
+([ontologia_Class100030] of  Pescado
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Bacalao fresco")
+	(PVP 7.0))
+
+([ontologia_Class100031] of  Segundo
+
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
+	(Bebida_Menu [ontologia_Class57])
+	(Caliente TRUE)
+	(Estilo Sibarita)
+	(Ingredientes
+		[ontologia_Class100030]
+		[ontologia_Class10011]
+		[ontologia_Class30011]
+		[ontologia_Class30006]
+		[ontologia_Class3]
+		[ontologia_Class35]
+		[ontologia_Class15])
+	(Nombre "Baccala alla cappuccina (bacalo al horno)")
+	(Origen Italiana)
+	(PVP 8.0)
+	(Racion Normal))
+
+([ontologia_Class100032] of  Carne
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Jarrete de ternera")
+	(PVP 8.0))
+
+([ontologia_Class100033] of  Segundo
+
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
+	(Bebida_Menu [ontologia_Class57])
+	(Caliente TRUE)
+	(Estilo Sibarita)
+	(Ingredientes
+		[ontologia_Class100032]
+		[ontologia_Class10009]
+		[ontologia_Class22]
+		[ontologia_Class20011]
+		[ontologia_Class44]
+		[ontologia_Class35]
+		[ontologia_Class15]
+		[ontologia_Class100034])
+	(Nombre "Stinco di vitello (jarrete de ternera al horno)")
+	(Origen Italiana)
+	(PVP 8.6)
+	(Racion Normal))
+
+([ontologia_Class100034] of  Condimento
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Caldo de carne")
+	(PVP 2.0))
+
+([ontologia_Class100035] of  Pescado
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Calamar")
+	(PVP 5.0))
+
+([ontologia_Class100036] of  Marisco
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Gamba roja")
+	(PVP 7.0))
+
+([ontologia_Class100037] of  Grasas
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Aceite de vadouvan")
+	(PVP 3.0))
+
+([ontologia_Class100039] of  Cereal
+
+	(Gluten TRUE)
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Pasta tagliatelle")
+	(PVP 1.5))
 
 ([ontologia_Class10004] of  Segundo
 
@@ -95,6 +477,98 @@
 	(PVP 8.0)
 	(Racion Peque%C3%B1a)
 	(Vegetariano FALSE))
+
+([ontologia_Class100040] of  Cereal
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Pasta tagliatelle sin gluten")
+	(PVP 1.5))
+
+([ontologia_Class100041] of  Segundo
+
+	(AptoCena TRUE)
+	(Bebida_Menu [ontologia_Class57])
+	(Caliente TRUE)
+	(Estilo Sibarita)
+	(Ingredientes
+		[ontologia_Class100039]
+		[ontologia_Class100036]
+		[ontologia_Class100035]
+		[ontologia_Class100037]
+		[ontologia_Class50]
+		[ontologia_Class30006]
+		[ontologia_Class20]
+		[ontologia_Class40])
+	(Nombre "Tagliatelle con hamburguesa de calamar y gamba roja y aceita vadouvan")
+	(Origen Italiana)
+	(PVP 5.0)
+	(Racion Normal))
+
+([ontologia_Class100042] of  Carne
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Rabillo de ternera")
+	(PVP 12.0))
+
+([ontologia_Class100043] of  Segundo
+
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
+	(Caliente TRUE)
+	(Estilo Moderno)
+	(Ingredientes
+		[ontologia_Class100042]
+		[ontologia_Class50018]
+		[ontologia_Class30006]
+		[ontologia_Class40006]
+		[ontologia_Class35]
+		[ontologia_Class20008]
+		[ontologia_Class22]
+		[ontologia_Class15]
+		[ontologia_Class80034])
+	(Nombre "Fianchetto o tasca di vitello ripieno (rabillo de ternera relleno)")
+	(Origen Italiana)
+	(PVP 10.5)
+	(Racion Normal))
+
+([ontologia_Class100044] of  Carne
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Solomillo de cerdo")
+	(PVP 10.0))
+
+([ontologia_Class100045] of  Carne
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Lomo de cerdo")
+	(PVP 3.0))
+
+([ontologia_Class100046] of  Segundo
+
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
+	(Bebida_Menu [ontologia_Class57])
+	(Caliente TRUE)
+	(Estilo Sibarita)
+	(Ingredientes
+		[ontologia_Class90020]
+		[ontologia_Class100045]
+		[ontologia_Class100044]
+		[ontologia_Class22]
+		[ontologia_Class10011]
+		[ontologia_Class40]
+		[ontologia_Class10010]
+		[ontologia_Class35]
+		[ontologia_Class15]
+		[ontologia_Class70038])
+	(Nombre "Fagottini di maiale e panceta al pinotero (medallones de solomillo)")
+	(Origen Italiana)
+	(PVP 9.0)
+	(Racion Normal))
 
 ([ontologia_Class10005] of  Verdura
 
@@ -533,6 +1007,7 @@
 	(Platos_Incompatibles
 		[ontologia_Class80026]
 		[ontologia_Class70051]
+		[ontologia_Class100017]
 		[ontologia_Class70053]
 		[ontologia_Class70041])
 	(PVP 3.0)
@@ -570,7 +1045,7 @@
 		[ontologia_Class26]
 		[ontologia_Class20011]
 		[ontologia_Class10026])
-	(Nombre "Ensalada con gambas, citricos y comino")
+	(Nombre "Ensalada con gambas cítricos y comino")
 	(Platos_Incompatibles
 		[ontologia_Class80026]
 		[ontologia_Class40018]
@@ -627,8 +1102,7 @@
 		[ontologia_Class26]
 		[ontologia_Class23]
 		[ontologia_Class20]
-		[ontologia_Class22]
-		[ontologia_Class70000])
+		[ontologia_Class22])
 	(Nombre "Carne guisada")
 	(Origen Espa%C3%B1a)
 	(PVP 1.2)
@@ -1963,12 +2437,10 @@
 	(Nombre "Cerveza")
 	(PVP 1.2))
 
-([ontologia_Class70000] of  Carne
+([ontologia_Class70000] of  Bebida
 
-	(Mes_Final_Temporada 12)
-	(Mes_Inicio_Temporada 1)
-	(Nombre "Carne de ternera")
-	(PVP 0.2))
+	(Nombre "Zumo")
+	(PVP 0.8))
 
 ([ontologia_Class70001] of  Carne
 
@@ -2029,7 +2501,7 @@
 	(Nombre "Garbanzos")
 	(PVP 0.62))
 
-([ontologia_Class70012] of  Cereal
+([ontologia_Class70012] of  Condimento
 
 	(Gluten TRUE)
 	(Mes_Final_Temporada 12)
@@ -2130,8 +2602,8 @@
 		[ontologia_Class1])
 	(Nombre "Ensalada de bogavante")
 	(Platos_Incompatibles
-		[ontologia_Class70050]
-		[ontologia_Class40018])
+		[ontologia_Class40018]
+		[ontologia_Class70050])
 	(PVP 7.9)
 	(Racion Normal))
 
@@ -2801,6 +3273,13 @@
 	(Nombre "Merengue")
 	(PVP 1.2))
 
+([ontologia_Class80000] of  Carne
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Salchichas de cerdo")
+	(PVP 1.0))
+
 ([ontologia_Class80001] of  Primero
 
 	(AptoCena TRUE)
@@ -3292,3 +3771,471 @@
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Raita")
 	(PVP 3.0))
+
+([ontologia_Class90001] of  Condimento
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Caldo dashi")
+	(PVP 1.25))
+
+([ontologia_Class90002] of  Condimento
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Mirin")
+	(PVP 0.5))
+
+([ontologia_Class90003] of  Condimento
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Miso  rojo")
+	(PVP 1.0))
+
+([ontologia_Class90004] of  Condimento
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Miso blanco")
+	(PVP 1.0))
+
+([ontologia_Class90005] of  Cereal
+
+	(Gluten TRUE)
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Fideos udon")
+	(PVP 0.5))
+
+([ontologia_Class90006] of  Cereal
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Fideos udon sin gluten")
+	(PVP 0.75))
+
+([ontologia_Class90007] of  Condimento
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Tofu")
+	(PVP 0.25))
+
+([ontologia_Class90008] of  Verdura
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Setas shimeji")
+	(PVP 1.0))
+
+([ontologia_Class90009] of  Primero
+
+	(AptoCena TRUE)
+	(AptoNinos FALSE)
+	(Bebida_Menu [ontologia_Class57])
+	(Caliente TRUE)
+	(Estilo Tradicional)
+	(Ingredientes
+		[ontologia_Class90001]
+		[ontologia_Class90002]
+		[ontologia_Class90003]
+		[ontologia_Class90004]
+		[ontologia_Class90005]
+		[ontologia_Class90007]
+		[ontologia_Class90008]
+		[ontologia_Class50018]
+		[ontologia_Class10011]
+		[ontologia_Class90010])
+	(Nombre "Miso nikomi udon")
+	(Origen Japonesa)
+	(PVP 1.2)
+	(Racion Normal))
+
+([ontologia_Class90010] of  Carne
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Pollo")
+	(PVP 0.25))
+
+([ontologia_Class90011] of  Primero
+
+	(AptoCena TRUE)
+	(Bebida_Menu [ontologia_Class57])
+	(Estilo Clasico)
+	(Ingredientes
+		[ontologia_Class70045]
+		[ontologia_Class1]
+		[ontologia_Class10023]
+		[ontologia_Class70015]
+		[ontologia_Class26]
+		[ontologia_Class70048]
+		[ontologia_Class90012]
+		[ontologia_Class90013])
+	(Nombre "Makis vegetarianos")
+	(Origen Japonesa)
+	(PVP 1.0)
+	(Racion Normal)
+	(Vegetariano TRUE))
+
+([ontologia_Class90012] of  Condimento
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Sesamo")
+	(PVP 0.1))
+
+([ontologia_Class90013] of  Verdura
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Aguacate")
+	(PVP 0.5))
+
+([ontologia_Class90014] of  Primero
+
+	(AptoCena TRUE)
+	(Bebida_Menu [ontologia_Class57])
+	(Caliente TRUE)
+	(Estilo Clasico)
+	(Ingredientes
+		[ontologia_Class90010]
+		[ontologia_Class70059]
+		[ontologia_Class80003])
+	(Nombre "Pollo teriyaki")
+	(Origen Japonesa)
+	(PVP 1.0)
+	(Racion Normal))
+
+([ontologia_Class90015] of  Primero
+
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
+	(Bebida_Menu [ontologia_Class57])
+	(Caliente TRUE)
+	(Estilo Clasico)
+	(Ingredientes
+		[ontologia_Class70032]
+		[ontologia_Class90016]
+		[ontologia_Class30011]
+		[ontologia_Class50018]
+		[ontologia_Class10010]
+		[ontologia_Class35])
+	(Nombre "Tonkatsu")
+	(Origen Japonesa)
+	(PVP 0.0)
+	(Racion Normal))
+
+([ontologia_Class90016] of  Condimento
+
+	(Gluten TRUE)
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Panko")
+	(PVP 0.0))
+
+([ontologia_Class90017] of  Verdura
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Repollo")
+	(PVP 0.23))
+
+([ontologia_Class90018] of  Condimento
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Jengibre rojo encurtido")
+	(PVP 0.1))
+
+([ontologia_Class90019] of  Condimento
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Tenkasu")
+	(PVP 0.1))
+
+([ontologia_Class90020] of  Carne
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Bacon")
+	(PVP 1.5))
+
+([ontologia_Class90021] of  Condimento
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Salsa okonomiyaki")
+	(PVP 1.0))
+
+([ontologia_Class90022] of  Condimento
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Mayonesa japonesa")
+	(PVP 1.0))
+
+([ontologia_Class90023] of  Primero
+
+	(AptoCena TRUE)
+	(Bebida_Menu [ontologia_Class57])
+	(Caliente TRUE)
+	(Estilo Moderno)
+	(Ingredientes
+		[ontologia_Class22]
+		[ontologia_Class90017]
+		[ontologia_Class90018]
+		[ontologia_Class90022]
+		[ontologia_Class90021]
+		[ontologia_Class10031]
+		[ontologia_Class90020]
+		[ontologia_Class30011]
+		[ontologia_Class30008]
+		[ontologia_Class50018])
+	(Nombre "Okonomiyaki")
+	(Origen Japonesa)
+	(PVP 3.0)
+	(Racion Normal))
+
+([ontologia_Class90024] of  Cereal
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Fideos de arroz")
+	(PVP 1.5))
+
+([ontologia_Class90025] of  Verdura
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Setas enoki")
+	(PVP 2.0))
+
+([ontologia_Class90026] of  Verdura
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Col china")
+	(PVP 0.6))
+
+([ontologia_Class90027] of  Condimento
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Salsa sukiyaki")
+	(PVP 2.0))
+
+([ontologia_Class90029] of  Segundo
+
+	(AptoCena TRUE)
+	(Bebida_Menu [ontologia_Class57])
+	(Caliente TRUE)
+	(Estilo Clasico)
+	(Ingredientes
+		[ontologia_Class90030]
+		[ontologia_Class90024]
+		[ontologia_Class90025]
+		[ontologia_Class90026]
+		[ontologia_Class10005]
+		[ontologia_Class90007]
+		[ontologia_Class50018]
+		[ontologia_Class90027]
+		[ontologia_Class90031])
+	(Nombre "Sukiyaki")
+	(Origen Japonesa)
+	(PVP 2.0)
+	(Racion Normal))
+
+([ontologia_Class90030] of  Carne
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Ternera")
+	(PVP 2.0))
+
+([ontologia_Class90031] of  Verdura
+
+	(Mes_Final_Temporada 2)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Setas shiitake")
+	(PVP 2.0))
+
+([ontologia_Class90032] of  Pescado
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Caballa fresca")
+	(PVP 5.0))
+
+([ontologia_Class90035] of  Segundo
+
+	(AptoCena TRUE)
+	(Bebida_Menu [ontologia_Class57])
+	(Caliente FALSE)
+	(Estilo Moderno)
+	(Ingredientes
+		[ontologia_Class90032]
+		[ontologia_Class70043]
+		[ontologia_Class35]
+		[ontologia_Class70048]
+		[ontologia_Class52])
+	(Nombre "Saba oshi sushi")
+	(Origen Japonesa)
+	(PVP 4.0)
+	(Racion Normal))
+
+([ontologia_Class90037] of  Pescado
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Salmón ahumado")
+	(PVP 2.5))
+
+([ontologia_Class90038] of  Segundo
+
+	(AptoCena TRUE)
+	(Bebida_Menu [ontologia_Class57])
+	(Estilo Moderno)
+	(Ingredientes
+		[ontologia_Class52]
+		[ontologia_Class35]
+		[ontologia_Class70043]
+		[ontologia_Class10022]
+		[ontologia_Class70048]
+		[ontologia_Class90037]
+		[ontologia_Class90039]
+		[ontologia_Class10031]
+		[ontologia_Class90013])
+	(Nombre "Temari sushi")
+	(Origen Japonesa)
+	(PVP 3.0)
+	(Racion Normal))
+
+([ontologia_Class90039] of  Pescado
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 9)
+	(Nombre "Salmon fresco")
+	(PVP 5.0))
+
+([ontologia_Class90040] of  Condimento
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Te verde")
+	(PVP 2.0))
+
+([ontologia_Class90041] of  Pescado
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Brema fresco")
+	(PVP 5.0))
+
+([ontologia_Class90042] of  Verdura
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Alga kombu")
+	(PVP 2.0))
+
+([ontologia_Class90043] of  Condimento
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Sake")
+	(PVP 1.0))
+
+([ontologia_Class90044] of  Primero
+
+	(AptoCena TRUE)
+	(Caliente TRUE)
+	(Estilo Sibarita)
+	(Ingredientes
+		[ontologia_Class90041]
+		[ontologia_Class40]
+		[ontologia_Class90043]
+		[ontologia_Class31]
+		[ontologia_Class90012]
+		[ontologia_Class90045]
+		[ontologia_Class90042]
+		[ontologia_Class70045]
+		[ontologia_Class90002]
+		[ontologia_Class10027]
+		[ontologia_Class10022]
+		[ontologia_Class90040]
+		[ontologia_Class30008])
+	(Nombre "Tai Chazuke")
+	(Origen Japonesa)
+	(PVP 6.0)
+	(Racion Normal))
+
+([ontologia_Class90045] of  Verdura
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Cebolleta")
+	(PVP 0.6))
+
+([ontologia_Class90046] of  Pescado
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Huevas de salmon")
+	(PVP 12.0))
+
+([ontologia_Class90047] of  Pescado
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Atun rojo fresco")
+	(PVP 5.0))
+
+([ontologia_Class90048] of  Pescado
+
+	(Mes_Final_Temporada 12)
+	(Mes_Inicio_Temporada 1)
+	(Nombre "Pez mantequilla fresco")
+	(PVP 4.0))
+
+([ontologia_Class90049] of  Segundo
+
+	(AptoCena TRUE)
+	(Estilo Moderno)
+	(Ingredientes
+		[ontologia_Class90047]
+		[ontologia_Class90046]
+		[ontologia_Class90032]
+		[ontologia_Class90048]
+		[ontologia_Class10031]
+		[ontologia_Class30031]
+		[ontologia_Class70045]
+		[ontologia_Class31]
+		[ontologia_Class90012]
+		[ontologia_Class33]
+		[ontologia_Class70048])
+	(Nombre "Kaisendon")
+	(Origen Japonesa)
+	(Racion Normal))
+
+([ontologia_Class90050] of  Primero
+
+	(AptoCena TRUE)
+	(Bebida_Menu [ontologia_Class57])
+	(Estilo Moderno)
+	(Ingredientes
+		[ontologia_Class70045]
+		[ontologia_Class70015]
+		[ontologia_Class33]
+		[ontologia_Class90046]
+		[ontologia_Class70048]
+		[ontologia_Class52]
+		[ontologia_Class35]
+		[ontologia_Class31]
+		[ontologia_Class70043])
+	(Nombre "Ikura gunkan")
+	(Origen Japonesa)
+	(PVP 6.0)
+	(Racion Normal))
