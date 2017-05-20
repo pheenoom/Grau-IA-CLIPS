@@ -1,4 +1,4 @@
-; Sat May 20 14:23:51 CEST 2017
+; Sat May 20 17:45:34 CEST 2017
 ;
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -117,6 +117,11 @@
 	(single-slot NombreAlergia
 		(type STRING)
 ;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot Complejidad
+		(type SYMBOL)
+		(allowed-values Bajo Medio Alto)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot Relacion_Menu_Postre
 		(type INSTANCE)
@@ -241,6 +246,11 @@
 		(type INSTANCE)
 ;+		(allowed-classes Plato)
 		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(single-slot Complejidad
+		(type SYMBOL)
+		(allowed-values Bajo Medio Alto)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot Origen
 		(type SYMBOL)
@@ -405,7 +415,7 @@
 ;+ (build "Build 663")
 
 (definstances instances
-	; Sat May 20 14:23:51 CEST 2017
+	; Sat May 20 17:45:34 CEST 2017
 	;
 	;+ (version "3.5")
 	;+ (build "Build 663")
@@ -414,6 +424,7 @@
 
 		(AptoCena TRUE)
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Alto)
 		(Estilo Moderno)
 		(Ingredientes
 			[ontologia_Class29]
@@ -443,6 +454,7 @@
 		(AptoCena TRUE)
 		(AptoNinos TRUE)
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Bajo)
 		(Estilo Moderno)
 		(Ingredientes
 			[ontologia_Class10002]
@@ -476,6 +488,7 @@
 		(AptoNinos TRUE)
 		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
+		(Complejidad Bajo)
 		(Estilo Clasico)
 		(Ingredientes
 			[ontologia_Class30003]
@@ -529,7 +542,9 @@
 	([ontologia_Class100009] of  Segundo
 
 		(AptoCena TRUE)
+		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
+		(Complejidad Alto)
 		(Estilo Moderno)
 		(Ingredientes
 			[ontologia_Class100004]
@@ -573,6 +588,7 @@
 		(AptoNinos TRUE)
 		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
+		(Complejidad Alto)
 		(Estilo Moderno)
 		(Ingredientes
 			[ontologia_Class10003]
@@ -614,6 +630,7 @@
 		(AptoCena TRUE)
 		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
+		(Complejidad Medio)
 		(Estilo Tradicional)
 		(Ingredientes
 			[ontologia_Class10027]
@@ -670,6 +687,7 @@
 		(AptoCena TRUE)
 		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
+		(Complejidad Medio)
 		(Estilo Sibarita)
 		(Ingredientes
 			[ontologia_Class100018]
@@ -722,6 +740,7 @@
 		(AptoNinos TRUE)
 		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
+		(Complejidad Alto)
 		(Estilo Clasico)
 		(Ingredientes
 			[ontologia_Class50018]
@@ -755,6 +774,7 @@
 		(AptoCena TRUE)
 		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
+		(Complejidad Alto)
 		(Estilo Moderno)
 		(Ingredientes
 			[ontologia_Class70007]
@@ -790,6 +810,7 @@
 		(AptoNinos TRUE)
 		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
+		(Complejidad Medio)
 		(Estilo Sibarita)
 		(Ingredientes
 			[ontologia_Class100030]
@@ -817,6 +838,7 @@
 		(AptoNinos TRUE)
 		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
+		(Complejidad Alto)
 		(Estilo Sibarita)
 		(Ingredientes
 			[ontologia_Class100032]
@@ -872,6 +894,7 @@
 
 		(Bebida_Menu [ontologia_Class57])
 		(Caliente FALSE)
+		(Complejidad Alto)
 		(Estilo Sibarita)
 		(Ingredientes
 			[ontologia_Class10012]
@@ -897,6 +920,7 @@
 		(AptoCena TRUE)
 		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
+		(Complejidad Medio)
 		(Estilo Sibarita)
 		(Ingredientes
 			[ontologia_Class100039]
@@ -923,7 +947,9 @@
 
 		(AptoCena TRUE)
 		(AptoNinos TRUE)
+		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
+		(Complejidad Alto)
 		(Estilo Moderno)
 		(Ingredientes
 			[ontologia_Class100042]
@@ -960,6 +986,7 @@
 		(AptoNinos TRUE)
 		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
+		(Complejidad Alto)
 		(Estilo Sibarita)
 		(Ingredientes
 			[ontologia_Class90020]
@@ -1182,6 +1209,7 @@
 
 		(AptoCena TRUE)
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Bajo)
 		(Estilo Tradicional)
 		(Ingredientes
 			[ontologia_Class1]
@@ -1216,6 +1244,7 @@
 		(AptoNinos TRUE)
 		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
+		(Complejidad Alto)
 		(Estilo Clasico)
 		(Ingredientes
 			[ontologia_Class20014]
@@ -1230,6 +1259,7 @@
 			[ontologia_Class50]
 			[ontologia_Class35])
 		(Nombre "Canelones caseros")
+		(Origen Espa%C3%B1a)
 		(Platos_Incompatibles
 			[ontologia_Class17]
 			[ontologia_Class30025]
@@ -1265,6 +1295,7 @@
 		(AptoCena TRUE)
 		(AptoNinos TRUE)
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Alto)
 		(Estilo Moderno)
 		(Ingredientes
 			[ontologia_Class20003]
@@ -1294,6 +1325,7 @@
 		(AptoCena TRUE)
 		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
+		(Complejidad Alto)
 		(Estilo Moderno)
 		(Ingredientes
 			[ontologia_Class10018]
@@ -1311,13 +1343,14 @@
 
 		(AptoCena TRUE)
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Alto)
 		(Estilo Sibarita)
 		(Ingredientes
 			[ontologia_Class10021]
 			[ontologia_Class10022]
 			[ontologia_Class10023]
 			[ontologia_Class33])
-		(Nombre "Tartar de atún con mayonesa de wasabi, jengibre encurtido y nabo japonés")
+		(Nombre "Tartar de atun con mayonesa de wasabi jengibre encurtido y nabo japones")
 		(Origen Japonesa)
 		(Platos_Incompatibles [ontologia_Class10004])
 		(PVP 6.0)
@@ -1328,6 +1361,7 @@
 		(AptoCena TRUE)
 		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
+		(Complejidad Alto)
 		(Estilo Sibarita)
 		(Ingredientes
 			[ontologia_Class10024]
@@ -1354,6 +1388,7 @@
 
 		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
+		(Complejidad Alto)
 		(Estilo Clasico)
 		(Ingredientes
 			[ontologia_Class22]
@@ -1366,6 +1401,7 @@
 			[ontologia_Class20011]
 			[ontologia_Class70001])
 		(Nombre "Asadura de cordero")
+		(Origen Espa%C3%B1a)
 		(Platos_Incompatibles
 			[ontologia_Class10004]
 			[ontologia_Class17]
@@ -1400,6 +1436,7 @@
 		(AptoCena TRUE)
 		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
+		(Complejidad Alto)
 		(Estilo Moderno)
 		(Ingredientes
 			[ontologia_Class10027]
@@ -1440,6 +1477,7 @@
 		(AptoCena TRUE)
 		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
+		(Complejidad Alto)
 		(Estilo Clasico)
 		(Ingredientes
 			[ontologia_Class10030]
@@ -1502,6 +1540,7 @@
 		(AptoCena TRUE)
 		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
+		(Complejidad Medio)
 		(Estilo Tradicional)
 		(Ingredientes
 			[ontologia_Class24]
@@ -1549,6 +1588,7 @@
 		(AptoNinos TRUE)
 		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
+		(Complejidad Bajo)
 		(Estilo Clasico)
 		(Ingredientes
 			[ontologia_Class50]
@@ -1566,6 +1606,7 @@
 		(AptoCena TRUE)
 		(AptoNinos TRUE)
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Bajo)
 		(Estilo Clasico)
 		(Ingredientes [ontologia_Class10001])
 		(Nombre "Bol de Sandia")
@@ -1586,6 +1627,7 @@
 		(AptoNinos TRUE)
 		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
+		(Complejidad Bajo)
 		(Estilo Clasico)
 		(Ingredientes
 			[ontologia_Class30003]
@@ -1610,6 +1652,7 @@
 
 		(AptoNinos TRUE)
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Alto)
 		(Estilo Tradicional)
 		(Ingredientes
 			[ontologia_Class30006]
@@ -1668,6 +1711,7 @@
 		(AptoNinos TRUE)
 		(Bebida_Menu [ontologia_Class57])
 		(Caliente FALSE)
+		(Complejidad Alto)
 		(Estilo Moderno)
 		(Ingredientes
 			[ontologia_Class30012]
@@ -1732,6 +1776,7 @@
 		(AptoCena TRUE)
 		(AptoNinos TRUE)
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Medio)
 		(Estilo Clasico)
 		(Ingredientes
 			[ontologia_Class30017]
@@ -1800,6 +1845,7 @@
 
 		(AptoNinos TRUE)
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Medio)
 		(Estilo Tradicional)
 		(Ingredientes
 			[ontologia_Class30018]
@@ -1835,6 +1881,7 @@
 
 		(AptoCena TRUE)
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Alto)
 		(Estilo Sibarita)
 		(Ingredientes
 			[ontologia_Class2]
@@ -1845,6 +1892,7 @@
 			[ontologia_Class35]
 			[ontologia_Class30024])
 		(Nombre "Salmorejo cordoves")
+		(Origen Espa%C3%B1a)
 		(PVP 17.0)
 		(Racion Normal))
 
@@ -1874,6 +1922,7 @@
 		(AptoCena TRUE)
 		(Bebida_Menu [ontologia_Class57])
 		(Caliente FALSE)
+		(Complejidad Alto)
 		(Estilo Sibarita)
 		(Ingredientes
 			[ontologia_Class30028]
@@ -1908,6 +1957,7 @@
 
 		(AptoCena TRUE)
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Alto)
 		(Estilo Moderno)
 		(Ingredientes
 			[ontologia_Class30032]
@@ -1988,6 +2038,7 @@
 		(AptoCena TRUE)
 		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
+		(Complejidad Bajo)
 		(Estilo Tradicional)
 		(Ingredientes
 			[ontologia_Class29]
@@ -2014,6 +2065,7 @@
 		(AptoNinos TRUE)
 		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
+		(Complejidad Bajo)
 		(Estilo Clasico)
 		(Ingredientes
 			[ontologia_Class38]
@@ -2022,6 +2074,7 @@
 			[ontologia_Class40]
 			[ontologia_Class35])
 		(Nombre "Pollo al ajillo")
+		(Origen Espa%C3%B1a)
 		(Platos_Incompatibles
 			[ontologia_Class20013]
 			[ontologia_Class20016])
@@ -2067,6 +2120,7 @@
 		(AptoCena TRUE)
 		(AptoNinos TRUE)
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Bajo)
 		(Estilo Clasico)
 		(Ingredientes [ontologia_Class30017])
 		(Nombre "Bol de Kiwis")
@@ -2101,6 +2155,7 @@
 
 		(AptoCena TRUE)
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Bajo)
 		(Estilo Clasico)
 		(Ingredientes
 			[ontologia_Class30027]
@@ -2128,6 +2183,7 @@
 
 		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
+		(Complejidad Medio)
 		(Estilo Tradicional)
 		(Ingredientes
 			[ontologia_Class40009]
@@ -2169,6 +2225,7 @@
 		(AptoCena TRUE)
 		(AptoNinos TRUE)
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Medio)
 		(Estilo Tradicional)
 		(Ingredientes
 			[ontologia_Class50]
@@ -2197,6 +2254,7 @@
 		(AptoCena TRUE)
 		(AptoNinos TRUE)
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Bajo)
 		(Estilo Clasico)
 		(Ingredientes
 			[ontologia_Class50]
@@ -2248,6 +2306,7 @@
 		(AptoCena TRUE)
 		(AptoNinos TRUE)
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Bajo)
 		(Estilo Clasico)
 		(Ingredientes
 			[ontologia_Class40016]
@@ -2313,6 +2372,7 @@
 		(AptoCena TRUE)
 		(AptoNinos TRUE)
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Medio)
 		(Estilo Tradicional)
 		(Ingredientes
 			[ontologia_Class52]
@@ -2344,6 +2404,7 @@
 	([ontologia_Class50000] of  Primero
 
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Medio)
 		(Estilo Moderno)
 		(Ingredientes
 			[ontologia_Class22]
@@ -2381,6 +2442,7 @@
 		(AptoCena TRUE)
 		(AptoNinos TRUE)
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Bajo)
 		(Estilo Clasico)
 		(Ingredientes [ontologia_Class10002])
 		(Nombre "Bol de Melon")
@@ -2393,6 +2455,7 @@
 		(AptoCena TRUE)
 		(AptoNinos TRUE)
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Bajo)
 		(Estilo Moderno)
 		(Ingredientes
 			[ontologia_Class52]
@@ -2412,6 +2475,7 @@
 		(AptoCena TRUE)
 		(AptoNinos TRUE)
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Bajo)
 		(Estilo Clasico)
 		(Ingredientes [ontologia_Class10032])
 		(Nombre "Bol de Naranjas")
@@ -2424,6 +2488,7 @@
 		(AptoCena TRUE)
 		(AptoNinos TRUE)
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Bajo)
 		(Estilo Clasico)
 		(Ingredientes [ontologia_Class10033])
 		(Nombre "Bol de Pomelos")
@@ -2434,6 +2499,7 @@
 	([ontologia_Class50009] of  Postre
 
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Medio)
 		(Estilo Tradicional)
 		(Ingredientes
 			[ontologia_Class52]
@@ -2442,6 +2508,7 @@
 			[ontologia_Class3]
 			[ontologia_Class70074])
 		(Nombre "Tarta de Santiago")
+		(Origen Espa%C3%B1a)
 		(PVP 1.8)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -2451,6 +2518,7 @@
 		(AptoCena TRUE)
 		(AptoNinos TRUE)
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Medio)
 		(Estilo Tradicional)
 		(Ingredientes
 			[ontologia_Class52]
@@ -2468,7 +2536,9 @@
 
 		(AptoCena TRUE)
 		(AptoNinos TRUE)
+		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
+		(Complejidad Alto)
 		(Estilo Moderno)
 		(Ingredientes
 			[ontologia_Class30006]
@@ -2485,6 +2555,7 @@
 		(AptoNinos TRUE)
 		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
+		(Complejidad Bajo)
 		(Estilo Clasico)
 		(Ingredientes
 			[ontologia_Class20014]
@@ -2498,6 +2569,7 @@
 		(AptoCena TRUE)
 		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
+		(Complejidad Alto)
 		(Estilo Tradicional)
 		(Ingredientes
 			[ontologia_Class41]
@@ -2530,6 +2602,7 @@
 		(AptoCena TRUE)
 		(AptoNinos TRUE)
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Bajo)
 		(Estilo Clasico)
 		(Ingredientes
 			[ontologia_Class20014]
@@ -2545,7 +2618,9 @@
 	([ontologia_Class50023] of  Primero
 
 		(AptoCena TRUE)
+		(AptoNinos FALSE)
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Alto)
 		(Estilo Sibarita)
 		(Ingredientes
 			[ontologia_Class10031]
@@ -2559,6 +2634,7 @@
 			[ontologia_Class2]
 			[ontologia_Class54])
 		(Nombre "Leon come gambas")
+		(Origen Espa%C3%B1a)
 		(PVP 80.0)
 		(Racion Normal))
 
@@ -2567,6 +2643,7 @@
 		(AptoCena FALSE)
 		(AptoNinos TRUE)
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Alto)
 		(Estilo Clasico)
 		(Ingredientes
 			[ontologia_Class10012]
@@ -2577,6 +2654,7 @@
 			[ontologia_Class38]
 			[ontologia_Class70078])
 		(Nombre "Pizza de Carne")
+		(Origen Espa%C3%B1a)
 		(Platos_Incompatibles
 			[ontologia_Class20009]
 			[ontologia_Class20000]
@@ -2590,7 +2668,7 @@
 			[ontologia_Class37]
 			[ontologia_Class70062])
 		(PVP 7.75)
-		(Racion Normal))
+		(Racion Abundante))
 
 	([ontologia_Class52] of  Condimento
 
@@ -2630,6 +2708,7 @@
 		(AptoCena TRUE)
 		(AptoNinos TRUE)
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Bajo)
 		(Estilo Clasico)
 		(Ingredientes
 			[ontologia_Class52]
@@ -2673,7 +2752,9 @@
 
 		(AptoCena TRUE)
 		(AptoNinos TRUE)
+		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
+		(Complejidad Alto)
 		(Estilo Moderno)
 		(Ingredientes
 			[ontologia_Class30006]
@@ -2699,6 +2780,7 @@
 	([ontologia_Class60002] of  Primero
 
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Alto)
 		(Estilo Sibarita)
 		(Ingredientes
 			[ontologia_Class15]
@@ -2887,6 +2969,7 @@
 	([ontologia_Class70010] of  Primero
 
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Alto)
 		(Estilo Sibarita)
 		(Ingredientes
 			[ontologia_Class70012]
@@ -2926,6 +3009,7 @@
 	([ontologia_Class70014] of  Primero
 
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Bajo)
 		(Estilo Moderno)
 		(Ingredientes
 			[ontologia_Class30015]
@@ -2955,6 +3039,7 @@
 	([ontologia_Class70017] of  Primero
 
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Medio)
 		(Estilo Moderno)
 		(Ingredientes
 			[ontologia_Class70018]
@@ -2999,6 +3084,7 @@
 	([ontologia_Class70022] of  Primero
 
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Alto)
 		(Estilo Sibarita)
 		(Ingredientes
 			[ontologia_Class70021]
@@ -3038,6 +3124,7 @@
 	([ontologia_Class70028] of  Primero
 
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Medio)
 		(Estilo Clasico)
 		(Ingredientes
 			[ontologia_Class70011]
@@ -3059,6 +3146,7 @@
 	([ontologia_Class70029] of  Primero
 
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Alto)
 		(Estilo Tradicional)
 		(Ingredientes
 			[ontologia_Class70030]
@@ -3161,6 +3249,8 @@
 	([ontologia_Class70040] of  Segundo
 
 		(Bebida_Menu [ontologia_Class57])
+		(Caliente TRUE)
+		(Complejidad Bajo)
 		(Estilo Tradicional)
 		(Ingredientes
 			[ontologia_Class70037]
@@ -3175,12 +3265,14 @@
 			[ontologia_Class10026]
 			[ontologia_Class70038])
 		(Nombre "Carrilleras de cerdo guisadas")
+		(Origen Espa%C3%B1a)
 		(PVP 2.85)
 		(Racion Normal))
 
 	([ontologia_Class70041] of  Segundo
 
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Alto)
 		(Estilo Sibarita)
 		(Ingredientes
 			[ontologia_Class70042]
@@ -3192,6 +3284,7 @@
 			[ontologia_Class70048]
 			[ontologia_Class52])
 		(Nombre "Sushi de buey de mar con gildasbuew")
+		(Origen Japonesa)
 		(PVP 6.5)
 		(Racion Normal))
 
@@ -3240,6 +3333,7 @@
 	([ontologia_Class70050] of  Segundo
 
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Bajo)
 		(Estilo Sibarita)
 		(Ingredientes
 			[ontologia_Class70049]
@@ -3248,12 +3342,14 @@
 			[ontologia_Class56]
 			[ontologia_Class15])
 		(Nombre "Navajas a la plancha")
+		(Origen Espa%C3%B1a)
 		(PVP 5.0)
 		(Racion Normal))
 
 	([ontologia_Class70051] of  Segundo
 
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Medio)
 		(Estilo Moderno)
 		(Ingredientes
 			[ontologia_Class22]
@@ -3262,6 +3358,7 @@
 			[ontologia_Class35]
 			[ontologia_Class70054])
 		(Nombre "Risotto de espinacas")
+		(Origen Italiana)
 		(PVP 1.0)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -3276,6 +3373,7 @@
 	([ontologia_Class70053] of  Segundo
 
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Medio)
 		(Estilo Sibarita)
 		(Ingredientes
 			[ontologia_Class70052]
@@ -3284,7 +3382,8 @@
 			[ontologia_Class10005]
 			[ontologia_Class70055]
 			[ontologia_Class20])
-		(Nombre "Rissoto de cigalas")
+		(Nombre "Risotto de cigalas")
+		(Origen Italiana)
 		(PVP 3.5)
 		(Racion Normal))
 
@@ -3312,12 +3411,14 @@
 	([ontologia_Class70057] of  Segundo
 
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Medio)
 		(Estilo Sibarita)
 		(Ingredientes
 			[ontologia_Class70058]
 			[ontologia_Class35]
 			[ontologia_Class70059])
 		(Nombre "Paletilla de cordero lechal macerada en Salsa Teriyaki")
+		(Origen Japonesa)
 		(PVP 3.0)
 		(Racion Normal))
 
@@ -3345,6 +3446,7 @@
 	([ontologia_Class70062] of  Segundo
 
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Alto)
 		(Estilo Moderno)
 		(Ingredientes
 			[ontologia_Class20]
@@ -3371,6 +3473,7 @@
 	([ontologia_Class70064] of  Postre
 
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Bajo)
 		(Estilo Moderno)
 		(Ingredientes
 			[ontologia_Class20003]
@@ -3416,6 +3519,7 @@
 	([ontologia_Class70069] of  Postre
 
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Alto)
 		(Estilo Moderno)
 		(Ingredientes
 			[ontologia_Class30022]
@@ -3441,6 +3545,7 @@
 	([ontologia_Class70071] of  Postre
 
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Medio)
 		(Estilo Moderno)
 		(Ingredientes
 			[ontologia_Class50018]
@@ -3464,6 +3569,7 @@
 	([ontologia_Class70073] of  Postre
 
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Alto)
 		(Estilo Sibarita)
 		(Ingredientes
 			[ontologia_Class70074]
@@ -3544,6 +3650,7 @@
 	([ontologia_Class70084] of  Postre
 
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Alto)
 		(Estilo Tradicional)
 		(Ingredientes
 			[ontologia_Class52]
@@ -3556,6 +3663,7 @@
 			[ontologia_Class70086]
 			[ontologia_Class70085])
 		(Nombre "Tarta Mont Blanc")
+		(Origen Espa%C3%B1a)
 		(PVP 3.5)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -3577,6 +3685,7 @@
 	([ontologia_Class70087] of  Postre
 
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Alto)
 		(Estilo Sibarita)
 		(Ingredientes
 			[ontologia_Class52]
@@ -3627,6 +3736,7 @@
 	([ontologia_Class70093] of  Postre
 
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Alto)
 		(Estilo Sibarita)
 		(Ingredientes
 			[ontologia_Class70095]
@@ -3663,12 +3773,14 @@
 	([ontologia_Class70097] of  Postre
 
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Alto)
 		(Estilo Sibarita)
 		(Ingredientes
 			[ontologia_Class70074]
 			[ontologia_Class30021]
 			[ontologia_Class70098])
 		(Nombre "Macarons Haute Couture")
+		(Origen Italiana)
 		(PVP 6.7)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -3691,7 +3803,9 @@
 
 		(AptoCena TRUE)
 		(AptoNinos TRUE)
+		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
+		(Complejidad Bajo)
 		(Estilo Moderno)
 		(Ingredientes
 			[ontologia_Class44]
@@ -3709,7 +3823,9 @@
 
 		(AptoCena TRUE)
 		(AptoNinos FALSE)
+		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
+		(Complejidad Bajo)
 		(Estilo Tradicional)
 		(Ingredientes
 			[ontologia_Class80003]
@@ -3739,7 +3855,10 @@
 	([ontologia_Class80004] of  Postre
 
 		(AptoCena TRUE)
+		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
+		(Complejidad Alto)
+		(Estilo Moderno)
 		(Ingredientes
 			[ontologia_Class32]
 			[ontologia_Class52]
@@ -3761,6 +3880,9 @@
 
 		(AptoCena TRUE)
 		(AptoNinos TRUE)
+		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Alto)
+		(Estilo Moderno)
 		(Ingredientes
 			[ontologia_Class70066]
 			[ontologia_Class80007])
@@ -3780,7 +3902,10 @@
 
 		(AptoCena TRUE)
 		(AptoNinos TRUE)
+		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
+		(Complejidad Medio)
+		(Estilo Clasico)
 		(Ingredientes
 			[ontologia_Class80009]
 			[ontologia_Class80010]
@@ -3825,7 +3950,9 @@
 	([ontologia_Class80013] of  Postre
 
 		(AptoCena TRUE)
+		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
+		(Complejidad Medio)
 		(Estilo Tradicional)
 		(Ingredientes
 			[ontologia_Class30011]
@@ -3843,6 +3970,8 @@
 
 		(AptoCena TRUE)
 		(AptoNinos TRUE)
+		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Alto)
 		(Estilo Sibarita)
 		(Ingredientes
 			[ontologia_Class30011]
@@ -3850,6 +3979,7 @@
 			[ontologia_Class50018]
 			[ontologia_Class42])
 		(Nombre "Macarons")
+		(Origen Italiana)
 		(PVP 20.0)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -3858,19 +3988,23 @@
 
 		(AptoCena TRUE)
 		(AptoNinos TRUE)
+		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
+		(Complejidad Medio)
 		(Estilo Clasico)
 		(Ingredientes
 			[ontologia_Class30028]
 			[ontologia_Class10011]
 			[ontologia_Class44])
 		(Nombre "Patatas campesinas")
+		(Origen Espa%C3%B1a)
 		(Platos_Incompatibles
 			[ontologia_Class80027]
 			[ontologia_Class20005]
 			[ontologia_Class40018]
 			[ontologia_Class80028]
-			[ontologia_Class80035])
+			[ontologia_Class80035]
+			[ontologia_Class80028])
 		(PVP 6.0)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -3879,6 +4013,8 @@
 
 		(AptoCena TRUE)
 		(AptoNinos TRUE)
+		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Bajo)
 		(Estilo Moderno)
 		(Ingredientes
 			[ontologia_Class10002]
@@ -3895,7 +4031,10 @@
 	([ontologia_Class80017] of  Postre
 
 		(AptoCena TRUE)
+		(Bebida_Menu [ontologia_Class57])
 		(Caliente FALSE)
+		(Complejidad Alto)
+		(Estilo Moderno)
 		(Ingredientes
 			[ontologia_Class54]
 			[ontologia_Class50018]
@@ -3909,6 +4048,8 @@
 	([ontologia_Class80018] of  Primero
 
 		(AptoCena TRUE)
+		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Bajo)
 		(Estilo Sibarita)
 		(Ingredientes
 			[ontologia_Class80019]
@@ -3934,7 +4075,9 @@
 	([ontologia_Class80021] of  Primero
 
 		(AptoCena TRUE)
+		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
+		(Complejidad Alto)
 		(Estilo Sibarita)
 		(Ingredientes
 			[ontologia_Class50018]
@@ -3963,7 +4106,10 @@
 
 		(AptoCena TRUE)
 		(AptoNinos TRUE)
+		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
+		(Complejidad Bajo)
+		(Estilo Clasico)
 		(Ingredientes
 			[ontologia_Class70078]
 			[ontologia_Class30012]
@@ -3980,7 +4126,9 @@
 
 		(AptoCena TRUE)
 		(AptoNinos TRUE)
+		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
+		(Complejidad Bajo)
 		(Estilo Clasico)
 		(Ingredientes
 			[ontologia_Class10027]
@@ -4000,7 +4148,9 @@
 
 		(AptoCena TRUE)
 		(AptoNinos FALSE)
+		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
+		(Complejidad Medio)
 		(Estilo Moderno)
 		(Ingredientes
 			[ontologia_Class15]
@@ -4019,7 +4169,9 @@
 
 		(AptoCena TRUE)
 		(AptoNinos TRUE)
+		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
+		(Complejidad Medio)
 		(Estilo Clasico)
 		(Ingredientes
 			[ontologia_Class30028]
@@ -4036,7 +4188,9 @@
 
 		(AptoCena TRUE)
 		(AptoNinos TRUE)
+		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
+		(Complejidad Bajo)
 		(Estilo Clasico)
 		(Ingredientes
 			[ontologia_Class15]
@@ -4059,7 +4213,9 @@
 
 		(AptoCena TRUE)
 		(AptoNinos TRUE)
+		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
+		(Complejidad Bajo)
 		(Estilo Moderno)
 		(Ingredientes
 			[ontologia_Class10003]
@@ -4081,6 +4237,8 @@
 
 		(AptoCena TRUE)
 		(AptoNinos TRUE)
+		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Bajo)
 		(Estilo Tradicional)
 		(Ingredientes
 			[ontologia_Class10003]
@@ -4097,6 +4255,8 @@
 	([ontologia_Class80033] of  Segundo
 
 		(AptoCena TRUE)
+		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Bajo)
 		(Estilo Moderno)
 		(Ingredientes
 			[ontologia_Class60003]
@@ -4124,7 +4284,9 @@
 	([ontologia_Class80035] of  Segundo
 
 		(AptoCena TRUE)
+		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
+		(Complejidad Alto)
 		(Estilo Sibarita)
 		(Ingredientes
 			[ontologia_Class30028]
@@ -4143,7 +4305,9 @@
 	([ontologia_Class80036] of  Segundo
 
 		(AptoCena TRUE)
+		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
+		(Complejidad Alto)
 		(Estilo Sibarita)
 		(Ingredientes
 			[ontologia_Class80037]
@@ -4242,6 +4406,7 @@
 		(AptoNinos FALSE)
 		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
+		(Complejidad Alto)
 		(Estilo Tradicional)
 		(Ingredientes
 			[ontologia_Class90001]
@@ -4270,6 +4435,7 @@
 
 		(AptoCena TRUE)
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Medio)
 		(Estilo Clasico)
 		(Ingredientes
 			[ontologia_Class70045]
@@ -4305,6 +4471,7 @@
 		(AptoCena TRUE)
 		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
+		(Complejidad Alto)
 		(Estilo Clasico)
 		(Ingredientes
 			[ontologia_Class90010]
@@ -4321,6 +4488,7 @@
 		(AptoNinos TRUE)
 		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
+		(Complejidad Alto)
 		(Estilo Clasico)
 		(Ingredientes
 			[ontologia_Class70032]
@@ -4389,6 +4557,7 @@
 		(AptoCena TRUE)
 		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
+		(Complejidad Alto)
 		(Estilo Moderno)
 		(Ingredientes
 			[ontologia_Class22]
@@ -4439,6 +4608,7 @@
 		(AptoCena TRUE)
 		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
+		(Complejidad Alto)
 		(Estilo Clasico)
 		(Ingredientes
 			[ontologia_Class90030]
@@ -4481,6 +4651,7 @@
 		(AptoCena TRUE)
 		(Bebida_Menu [ontologia_Class57])
 		(Caliente FALSE)
+		(Complejidad Alto)
 		(Estilo Moderno)
 		(Ingredientes
 			[ontologia_Class90032]
@@ -4504,6 +4675,7 @@
 
 		(AptoCena TRUE)
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Alto)
 		(Estilo Moderno)
 		(Ingredientes
 			[ontologia_Class52]
@@ -4558,7 +4730,9 @@
 	([ontologia_Class90044] of  Primero
 
 		(AptoCena TRUE)
+		(Bebida_Menu [ontologia_Class57])
 		(Caliente TRUE)
+		(Complejidad Alto)
 		(Estilo Sibarita)
 		(Ingredientes
 			[ontologia_Class90041]
@@ -4610,6 +4784,8 @@
 	([ontologia_Class90049] of  Segundo
 
 		(AptoCena TRUE)
+		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Alto)
 		(Estilo Moderno)
 		(Ingredientes
 			[ontologia_Class90047]
@@ -4631,6 +4807,7 @@
 
 		(AptoCena TRUE)
 		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Alto)
 		(Estilo Moderno)
 		(Ingredientes
 			[ontologia_Class70045]
@@ -4749,17 +4926,29 @@
 	(printout t ";")
 	(printout t ?self:Puntuacion)
 	(printout t ";")
+	(printout t ?self:Complejidad)
+	(printout t ";")
+	(if (send ?self:Plato get-Vegetariano)
+		then (printout t "Vegetariano")
+		else (printout t "No es vegetariano")
+	)
+	(printout t ";")
+	(if (send ?self:Plato get-AptoNinos)
+		then (printout t "Apto para nino")
+		else (printout t "No es apto para nino")
+	)
+	(printout t ";")
 	(if (send ?self:Plato get-AptoCena)
 		then (printout t "AptoCena")
 		else (printout t "AptoComida")
 	)
 	(printout t ";")
-	(if (eq ?self:Plato Primero)
+	(if (send ?self es-primero)
 		then
 			(printout t Primero)
 			(printout t ";")
 		else
-			(if (eq ?self:Plato Segundo)
+			(if (send ?self es-segundo)
 				then
 					(printout t Segundo)
 					(printout t ";")
@@ -4786,7 +4975,7 @@
 	(printout t "Categoria    : " ?self:Categoria crlf)
 	(printout t "Sub-Categoria: " ?self:SubCategoria crlf)
 	(printout t "Puntuacion   : " ?self:Puntuacion crlf)
-	;(printout t "Complejidad  : " ?self:Complejidad crlf)
+	(printout t "Complejidad  : " ?self:Complejidad crlf)
 	(printout t "Puntuaciones : " crlf)
 	(loop-for-count (?i 1 (length$ ?self:DescripcionPuntos)) do
 			(bind ?descripcion (nth$ ?i ?self:DescripcionPuntos))
@@ -4900,8 +5089,6 @@
 ;                   ======================================================================
 ;                   ====================   Declaracion de handler   ======================
 ;                   ======================================================================
-
-
 
 ;                   ======================================================================
 ;                   ===================   Handler Plato Abstracto   ======================
@@ -5135,12 +5322,12 @@
 
 	(if (and (not ?esComida) (send ?plato get-AptoCena))
 		then
-			(bind ?puntuacion 50)
+			(bind ?puntuacion 25)
 			(bind ?descripcion "Por ser un plato que es apto para cena")
 		else
 			(if (and ?esComida (not (send ?plato get-AptoCena)))
 				then
-					(bind ?puntuacion 50)
+					(bind ?puntuacion 2)
 					(bind ?descripcion "Por ser un plato que es apto para comer")
 			)
 	)
@@ -5518,6 +5705,7 @@
 		(bind ?platoAbstracto (make-instance (sym-cat platoAbstracto- (gensym)) of PlatoAbstracto))
 		(send ?platoAbstracto put-Plato ?plato)
 		(send ?platoAbstracto calcula-categoria)
+		(send ?platoAbstracto put-Complejidad (send ?plato get-Complejidad))
 	)
 )
 
@@ -5968,21 +6156,6 @@
   )
 	(assert (abstraccion-temporada))
 )
-
-;(defrule abstraccion::abstraer-complejidad "Regla que nos permite abstraer el estilo propuesto por el usuario a unos valores abstractos"
-;   ?e <- (ProblemaAbstracto (complejidad ?dificultad))
-;   (test (eq ?dificultad UNDEF))
-;    (Entrada (estilo ?estilo))
-;    ?plato <-(object(is-a Plato))
-;    =>
-;    (if (or (eq ?estilo Tradicional) (eq ?estilo Sibarita))
-;        then (modify ?e (complejidad Facil))
-;        else (if (eq ?estilo Clasico)
-;            then (modify ?e (complejidad Normal))
-;            else (modify ?e (complejidad Alto))
-;        )
-;    )
-;)
 
 (defrule abstraccion::abstraccion-completada "Regla que comprueba que todas las preguntas han sido respondidas"
 	(abstraccion-comensales)

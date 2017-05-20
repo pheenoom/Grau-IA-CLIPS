@@ -1,4 +1,4 @@
-; Sat May 20 01:59:13 CEST 2017
+; Sat May 20 17:33:53 CEST 2017
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -20,19 +20,19 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[ontologia_ProjectKB_Class152]
-		[ontologia_ProjectKB_Class153]
-		[ontologia_ProjectKB_Class154]
-		[ontologia_ProjectKB_Class155]
-		[ontologia_ProjectKB_Class156]
-		[ontologia_ProjectKB_Class157]
-		[ontologia_ProjectKB_Class158]
-		[ontologia_ProjectKB_Class159]
-		[ontologia_ProjectKB_Class160]
-		[ontologia_ProjectKB_Class161]
-		[ontologia_ProjectKB_Class162]
-		[ontologia_ProjectKB_Class163]
-		[ontologia_ProjectKB_Class164]))
+		[ontologia_ProjectKB_Class283]
+		[ontologia_ProjectKB_Class284]
+		[ontologia_ProjectKB_Class285]
+		[ontologia_ProjectKB_Class286]
+		[ontologia_ProjectKB_Class287]
+		[ontologia_ProjectKB_Class288]
+		[ontologia_ProjectKB_Class289]
+		[ontologia_ProjectKB_Class290]
+		[ontologia_ProjectKB_Class291]
+		[ontologia_ProjectKB_Class292]
+		[ontologia_ProjectKB_Class293]
+		[ontologia_ProjectKB_Class294]
+		[ontologia_ProjectKB_Class295]))
 
 ([CLSES_TAB] of  Widget
 
@@ -84,9 +84,9 @@
 ([KB_517706_Class1] of  Map
 
 	(entries
-		[ontologia_ProjectKB_Class165]
-		[ontologia_ProjectKB_Class166]
-		[ontologia_ProjectKB_Class167]))
+		[ontologia_ProjectKB_Class296]
+		[ontologia_ProjectKB_Class297]
+		[ontologia_ProjectKB_Class298]))
 
 ([KB_517706_Class100] of  String
 
@@ -180,7 +180,7 @@
 	(name "classes_file_name")
 	(string_value "ontologia.pont"))
 
-([KB_734132_Class3] of  Map
+([KB_915824_Class3] of  Map
 )
 
 ([LAYOUT_PROPERTIES] of  Property_List
@@ -188,86 +188,86 @@
 	(name "layout properties")
 	(properties [VERTICAL_STRETCHER]))
 
-([ontologia_ProjectKB_Class152] of  String
+([ontologia_ProjectKB_Class283] of  String
 
 	(name "Segundo")
 	(string_value "Nombre"))
 
-([ontologia_ProjectKB_Class153] of  String
+([ontologia_ProjectKB_Class284] of  String
 
 	(name "Congreso")
 	(string_value "Nombre"))
 
-([ontologia_ProjectKB_Class154] of  String
+([ontologia_ProjectKB_Class285] of  String
 
 	(name "Postre")
 	(string_value "Nombre"))
 
-([ontologia_ProjectKB_Class155] of  String
+([ontologia_ProjectKB_Class286] of  String
 
 	(name "Bebida")
 	(string_value "Nombre"))
 
-([ontologia_ProjectKB_Class156] of  String
+([ontologia_ProjectKB_Class287] of  String
 
 	(name "Cava")
 	(string_value "Nombre"))
 
-([ontologia_ProjectKB_Class157] of  String
+([ontologia_ProjectKB_Class288] of  String
 
 	(name "Menu")
 	(string_value "Nombre"))
 
-([ontologia_ProjectKB_Class158] of  String
+([ontologia_ProjectKB_Class289] of  String
 
 	(name "Tinto")
 	(string_value "Nombre"))
 
-([ontologia_ProjectKB_Class159] of  String
+([ontologia_ProjectKB_Class290] of  String
 
 	(name ":INSTANCE-ANNOTATION")
 	(string_value "%3AANNOTATION-TEXT"))
 
-([ontologia_ProjectKB_Class160] of  String
+([ontologia_ProjectKB_Class291] of  String
 
 	(name "Blanco")
 	(string_value "Nombre"))
 
-([ontologia_ProjectKB_Class161] of  String
+([ontologia_ProjectKB_Class292] of  String
 
 	(name "Primero")
 	(string_value "Nombre"))
 
-([ontologia_ProjectKB_Class162] of  String
+([ontologia_ProjectKB_Class293] of  String
 
 	(name ":PAL-CONSTRAINT")
 	(string_value "%3APAL-NAME"))
 
-([ontologia_ProjectKB_Class163] of  String
+([ontologia_ProjectKB_Class294] of  String
 
 	(name ":META-CLASS")
 	(string_value "%3ANAME"))
 
-([ontologia_ProjectKB_Class164] of  String
+([ontologia_ProjectKB_Class295] of  String
 
 	(name "Ingrediente")
 	(string_value "Nombre"))
 
-([ontologia_ProjectKB_Class165] of  Map_Entry
+([ontologia_ProjectKB_Class296] of  Map_Entry
 
 	(key "suppress_instance_counting")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
 
-([ontologia_ProjectKB_Class166] of  Map_Entry
+([ontologia_ProjectKB_Class297] of  Map_Entry
 
 	(key "add_name_on_instance_form")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
 
-([ontologia_ProjectKB_Class167] of  Map_Entry
+([ontologia_ProjectKB_Class298] of  Map_Entry
 
 	(key "change_tracking_active")
 	(key_class "java.lang.String")
