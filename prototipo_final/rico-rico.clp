@@ -5463,13 +5463,18 @@
 	(send ?self:Plato get-Vegetariano)
 )
 
+(defmessage-handler MAIN::PlatoAbstracto apto-ninos ()
+	(send ?self:Plato get-AptoNinos)
+)
+
 (defmessage-handler MAIN::PlatoAbstracto cumple-restriccion "Handler que nos devuelve cierto si el
 	plato cumple con alguna de las restricciones posibles, falso si no cumple con ninguna restriccion "(?restriccion)
 
 	(or (and (eq ?restriccion Vegetariano) (send ?self es-vegetariano))
 			(or (and (eq ?restriccion Gluten) (not (send ?self tiene-gluten)))
 					(or (and (eq ?restriccion Lactosa) (not (send ?self tiene-lactosa)))
-							(eq ?restriccion Ninguna)
+							(or (and (eq ?restriccion Ninos) (send ?self apto-ninos))
+									(eq ?restriccion Ninguna))
 					)
 			)
 	)
@@ -5578,7 +5583,7 @@
 
 	(bind $?listaIngredientes (send ?plato get-Ingredientes))
 	(format t "(" )
-	(loop-for-count (?i 1 (length$ ?listaIngredientes)) do
+	(loop-for-count (?i 1 (- (length$ ?listaIngredientes) 1)) do
 		(bind ?ingrediente (nth$ ?i ?listaIngredientes))
 
 		(bind ?nombreIngrediente (send ?ingrediente get-Nombre))
@@ -5586,14 +5591,29 @@
 		(if (> ?numeroCharacters 78)
 			then
 				(bind ?numeroCharacters (str-length ?espacios))
-				(printout t ?espacios crlf)
+				(printout t crlf)
+				(printout t ?espacios)
 		)
 		(printout t ?nombreIngrediente)
 		(printout t ",")
 		(bind ?numeroCharacters (+ 1 ?numeroCharacters))
 	)
-	(printout t ")" crlf)
-	(printout t crlf)
+	(bind ?ingrediente (send (nth$ (length ?listaIngredientes) ?listaIngredientes) get-Nombre))
+	(bind ?numeroCharacters (+ ?numeroCharacters (str-length ?ingrediente)))
+	(if (> ?numeroCharacters 78)
+		then
+			(bind ?numeroCharacters (str-length ?espacios))
+			(printout t crlf)
+			(printout t ?espacios)
+	)
+	(printout t ?ingrediente)
+	(printout t ")")
+	(bind ?numeroCharacters (+ ?numeroCharacters (str-length ?ingrediente)))
+	(loop-for-count (?i (+ 1 ?numeroCharacters) 77) do
+		(printout t " ")
+	)
+	(printout t "|*" crlf)
+	(printout t "*|                                                                            |*" crlf)
 )
 
 (defmessage-handler MAIN::MenuAbstracto tienen-primero-igual (?menu)
@@ -5899,12 +5919,14 @@
 	?candidato
 )
 
-(deffunction generar-menu (?categoria ?subCategoria ?numComensales ?numAlergicosGluten ?numAlergicosLactosa ?numVegetarianos ?numComensalesVino ?siQuiereVino)
+(deffunction generar-menu (?categoria ?subCategoria ?numComensales ?numAlergicosGluten ?numAlergicosLactosa ?numVegetarianos ?numComensalesVino ?siQuiereVino ?alcohol ?numComensalesNinos)
+
 	(bind ?numGenteConRestriccion (+ ?numAlergicosGluten (+ ?numVegetarianos ?numAlergicosLactosa)))
 	(bind ?menuGeneral (make-instance (gensym) of MenuAbstracto))
 	(bind ?menuVegetariano (make-instance (gensym) of MenuAbstracto))
 	(bind ?menuSinGluten (make-instance (gensym) of MenuAbstracto))
 	(bind ?menuSinLactosa (make-instance (gensym) of MenuAbstracto))
+	(bind ?menuNinos (make-instance (gensym) of MenuAbstracto))
 
 	(if (< ?numGenteConRestriccion (* 0.5 ?numComensales))
 		then (send ?menuGeneral generar-menu ?categoria ?subCategoria Ninguna)
@@ -5922,6 +5944,10 @@
 		then (send ?menuSinLactosa generar-menu ?categoria ?subCategoria Lactosa)
 	)
 
+	(if (> ?numComensalesNinos 0)
+		then (send ?menuNinos generar-menu ?categoria ?subCategoria Ninos)
+	)
+
 	(bind ?alternativaSinGluten FALSE)
 	(bind ?alternativaSinLactosa FALSE)
 	(bind ?alternativaGeneral FALSE)
@@ -5929,7 +5955,17 @@
 
 	(printout t "================================================================================" crlf)
 	(printout t "|                                                                              |" crlf)
-	(printout t "|                              Menu Economico                                  |" crlf)
+	(if (eq ?subCategoria Bajo)
+		then
+		(printout t "|                              Menu Economico                                  |" crlf)
+		else
+			(if (eq ?subCategoria Medio)
+				then
+				(printout t "|                              Menu Estandard                                  |" crlf)
+				else
+				(printout t "|                              Menu Caro                                       |" crlf)
+			)
+	)
 	(printout t "|                                Rico Rico                                     |" crlf)
 	(printout t "===============================================================================|" crlf)
 	(printout t "*|     __Entrante____________________________                                 |*" crlf)
@@ -5938,9 +5974,9 @@
 		(bind ?alternativaGeneral TRUE)
 	)
 	(if (> ?numVegetarianos 0)
-		then (if (or (not (< ?numGenteConRestriccion (* 0.5 ?numComensales))) (not (send ?menuVegetariano tienen-segundo-igual ?menuGeneral)))
+		then (if (or (not (< ?numGenteConRestriccion (* 0.5 ?numComensales))) (not (send ?menuVegetariano tienen-primero-igual ?menuGeneral)))
 			then
-				(printout t "            __Para vegetarianos_____________________                          |*" crlf)
+				(printout t "*|          __Para vegetarianos_____________________                          |*" crlf)
 				(send ?menuVegetariano imprimir-plato Primero)
 				(bind ?alternativaVegetariano TRUE)
 			)
@@ -5949,7 +5985,7 @@
 		then (if (or (not (< ?numGenteConRestriccion (* 0.5 ?numComensales))) (not (send ?menuSinGluten tienen-primero-igual ?menuGeneral)))
 			then (if (or (not (> ?numVegetarianos 0)) (not (send ?menuSinGluten tienen-primero-igual ?menuVegetariano)))
 				then
-					(printout t "            __Sin gluten______________________                                |*" crlf)
+					(printout t "*|          __Sin gluten______________________                                |*" crlf)
 					(send ?menuSinGluten imprimir-plato Primero)
 					(bind ?alternativaSinGluten)
 			)
@@ -5961,12 +5997,17 @@
 			then (if (or (not (> ?numVegetarianos 0)) (not (send ?menuSinLactosa tienen-primero-igual ?menuVegetariano)))
 				then (if (or (not (> ?numAlergicosGluten 0)) (not (send ?menuSinLactosa tienen-primero-igual ?menuSinGluten)))
 					then
-						(printout t "            __Sin lactosa______________________                               |*" crlf)
+						(printout t "*|          __Sin lactosa______________________                               |*" crlf)
 						(send ?menuSinLactosa imprimir-plato Primero)
 						(bind ?alternativaSinLactosa TRUE)
 				  )
 			  )
 		  )
+	)
+	(if (> ?numComensalesNinos 0)
+		then
+			(printout t "*|          __Plato ninos______________________                               |*" crlf)
+			(send ?menuNinos imprimir-plato Primero)
 	)
 
 	(printout t "*|                                                                            |*" crlf)
@@ -5976,6 +6017,7 @@
 	(bind ?precioVinoVegetariano 0)
 	(bind ?precioVinoSinGluten 0)
 	(bind ?precioVinoSinLactosa 0)
+	(bind ?totalVinos 0)
 
 	(if (< ?numGenteConRestriccion (* 0.5 ?numComensales)) ; imprimir menu normal
 		then (send ?menuGeneral imprimir-plato Segundo)
@@ -5990,8 +6032,9 @@
 
 				(bind ?vino (buscar-vino ?tipoVino ?categoria ?subCategoria))
 				(bind ?precioVinoGeneral (send ?vino get-PVP))
+				(bind ?totalVinos (+ 1 ?totalVinos))
 				(printout t "*|                                                                            |*" crlf)
-				(format   t "*|          Acompanado con una copa de %s (%s)                                 |*%n" (send ?vino get-Nombre) ?tipoVino)
+				(format   t "*|          Acompanado con una copa de %s (%s)                          |*%n" (send ?vino get-Nombre) ?tipoVino)
 				(printout t "*|                                                                            |*" crlf)
 		)
 		(bind ?alternativaGeneral TRUE)
@@ -6012,8 +6055,9 @@
 
 						(bind ?vino (buscar-vino ?tipoVino ?categoria ?subCategoria))
 						(bind ?precioVinoVegetariano (send ?vino get-PVP))
+						(bind ?totalVinos (+ 1 ?totalVinos))
 						(printout t "*|                                                                            |*" crlf)
-						(format   t "*|          Acompanado con una copa de %s (%s)                                  |*%n" (send ?vino get-Nombre) ?tipoVino)
+						(format   t "*|          Acompanado con una copa de %s (%s)                          |*%n" (send ?vino get-Nombre) ?tipoVino)
 						(printout t "*|                                                                            |*" crlf)
 				)
 				(bind ?alternativaVegetariano TRUE)
@@ -6037,8 +6081,9 @@
 
 							(bind ?vino (buscar-vino ?tipoVino ?categoria ?subCategoria))
 							(bind ?precioVinoSinGluten (send ?vino get-PVP))
+							(bind ?totalVinos (+ 1 ?totalVinos))
 							(printout t "*|                                                                            |*" crlf)
-							(format   t "*|          Acompanado con una copa de %s (%s)                                  |*%n" (send ?vino get-Nombre) ?tipoVino)
+							(format   t "*|          Acompanado con una copa de %s (%s)                          |*%n" (send ?vino get-Nombre) ?tipoVino)
 							(printout t "*|                                                                            |*" crlf)
 					)
 					(bind ?alternativaSinGluten TRUE)
@@ -6064,14 +6109,21 @@
 
 								(bind ?vino (buscar-vino ?tipoVino ?categoria ?subCategoria))
 								(bind ?precioVinoSinLactosa (send ?vino get-PVP))
+								(bind ?totalVinos (+ 1 ?totalVinos))
 								(printout t "*|                                                                            |*" crlf)
-								(format   t "*|          Acompanado con una copa de %s (%s)                                  |*%n" (send ?vino get-Nombre) ?tipoVino)
+								(format   t "*|          Acompanado con una copa de %s (%s)                          |*%n" (send ?vino get-Nombre) ?tipoVino)
 								(printout t "*|                                                                            |*" crlf)
 						)
 						(bind ?alternativaSinLactosa TRUE)
 				  )
 			  )
 		  )
+	)
+
+	(if (> ?numComensalesNinos 0)
+		then
+			(printout t "*|          __Plato ninos______________________                               |*" crlf)
+			(send ?menuNinos imprimir-plato Segundo)
 	)
 
 	(printout t "*|                                                                            |*" crlf)
@@ -6115,12 +6167,18 @@
 		  )
 	)
 
+	(if (> ?numComensalesNinos 0)
+		then
+			(printout t "*|          __Plato ninos______________________                               |*" crlf)
+			(send ?menuNinos imprimir-plato Postre)
+	)
+
 	(printout t "*|                                                                            |*" crlf)
 	(printout t "*|                                                                            |*" crlf)
 	(printout t "*|                        ----------------------                              |*" crlf)
 	(if ?alternativaGeneral
 		then
-			(format t "*|              Precio Menu              :         %.2f  (%d)                 |*%n" (send ?menuGeneral get-Precio) (- ?numComensales ?numGenteConRestriccion))
+			(format t "*|              Precio Menu              :         %.2f  (%d)                |*%n" (send ?menuGeneral get-Precio) (- ?numComensales ?numGenteConRestriccion))
 	)
 
 	(if ?alternativaVegetariano
@@ -6138,10 +6196,27 @@
 			(format t "*|              Precio Menu (sin lactosa):         %.2f  (%d)                 |*%n" (send ?menuSinLactosa get-Precio) ?numAlergicosLactosa)
 	)
 
+	(bind ?subtotal 0)
+	(if (> ?numComensalesVino 0)
+		then
+			(format t "*|              Precio Menu para ninos   :         %.2f  (%d)                 |*%n" (send ?menuNinos get-Precio) ?numComensalesNinos)
+			(bind ?subtotal (* ?numComensalesNinos (send ?menuNinos get-Precio)))
+	)
+
 	(if ?siQuiereVino
 		then
-			(bind ?precioVino 0)
+			(bind ?precioVino (/ (+ ?precioVinoGeneral
+												(+ ?precioVinoSinLactosa
+												(+ ?precioVinoVegetariano ?precioVinoSinGluten))) ?totalVinos))
+			(bind ?subtotal (+ ?subtotal ?precioVino))													
 			(format t "*|              Precio Vino              :         %.2f  (%d)                 |*%n" ?precioVino ?numComensalesVino)
+	)
+
+	(if  (and ?alcohol (< ?numComensalesVino (- ?numComensales ?numComensalesNinos)))
+		then
+			(bind ?totalCervezas (- ?numComensales ?numComensalesNinos))
+			(format t "*|              Precio cerveza           :         1.20  (%d)                 |*%n" ?totalCervezas)
+			(bind ?subtotal (+ ?subtotal (* 1.20 ?totalCervezas)))
 	)
 
 	(bind ?subtotal (+ (* (send ?menuGeneral get-Precio) (- ?numComensales ?numGenteConRestriccion))
@@ -6542,45 +6617,21 @@
 	(ProblemaAbstracto (presupuesto ?categoria))
 	=>
 	(if (eq ?categoria MuyAlto) then
-	  (bind ?categoria Alto))
-
-	(if (eq ?categoria Bajo)
-		then (printout t "Se va crear un menu de categoria baja!" crlf)
-		else (if (eq ?categoria Medio)
-			then (printout t "Se va crear un menu de categoria media!" crlf)
-			else (printout t "Se va crear un menu de categoria alta" crlf)
-		)
+	  (bind ?categoria Alto)
 	)
+
 	(bind ?listaPlatosAbstractos (find-all-instances ((?inst PlatoAbstracto)) TRUE))
 	(loop-for-count (?i 1 (length$ ?listaPlatosAbstractos)) do
 		(bind ?platoAbstracto (nth$ ?i ?listaPlatosAbstractos))
 		(send ?platoAbstracto imprimir-excel)
 	)
 
-	(printout t "====================  Menu Barato ===================== " crlf)
-	(generar-menu ?categoria Bajo ?numComensales ?numAlergicosGluten ?numAlergicosLactosa ?numVegetarianos ?numComensalesVino ?siQuiereVino)
-
-;	(printout t "====================  Menu Medio ===================== " crlf)
-;	(generar-menu ?categoria Medio ?numComensales ?numAlergicosGluten ?numAlergicosLactosa ?numVegetarianos ?numComensalesVino ?siQuiereVino)
-
-	;(printout t "====================  Menu Alto ===================== " crlf)
-	;(generar-menu ?categoria Alto ?numComensales ?numAlergicosGluten ?numAlergicosLactosa ?numVegetarianos ?numComensalesVino ?siQuiereVino)
-
-	;(printout t crlf)
-	;(printout t "====================  Otras bebidas ===================== " crlf)
-	;(if  (and ?alcohol (< ?numComensalesVino (- ?numComensales ?numComensalesNinos)))
-	;	then
-	;		(printout t "Precio cerveza: 1.2" crlf)
-	;		(bind ?num (- ?numComensales ?numComensalesVino ?numComensalesNinos))
-	;		(bind ?precio (* ?num 1.2))
-	;		(format t "Precio para %d comensales: %f %n" ?num ?precio)
-	;)
-	;(if ?ninos
-	;	then
-	;		(printout t "Precio refresco o zumo: 0.8" crlf)
-	;		(bind ?precio (* ?numComensalesNinos 0.8))
-	;		(format t "Precio para %d ninos: %f %n" ?numComensalesNinos ?precio)
-	;)
+	(generar-menu ?categoria Bajo ?numComensales ?numAlergicosGluten ?numAlergicosLactosa
+								?numVegetarianos ?numComensalesVino ?siQuiereVino ?alcohol ?numComensalesNinos)
+	(generar-menu ?categoria Medio ?numComensales ?numAlergicosGluten ?numAlergicosLactosa
+								?numVegetarianos ?numComensalesVino ?siQuiereVino ?alcohol ?numComensalesNinos)
+	(generar-menu ?categoria Alto ?numComensales ?numAlergicosGluten ?numAlergicosLactosa
+								?numVegetarianos ?numComensalesVino ?siQuiereVino ?alcohol ?numComensalesNinos)
 
 	(assert (final))
 )
