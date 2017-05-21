@@ -1,4 +1,4 @@
-; Sun May 21 14:45:53 CEST 2017
+; Sun May 21 23:06:53 CEST 2017
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -781,6 +781,27 @@
 	(Nombre "Comino")
 	(PVP 0.2))
 
+([ontologia_Class110000] of  Primero
+
+	(AptoCena TRUE)
+	(Bebida_Menu [ontologia_Class57])
+	(Complejidad Alto)
+	(Estilo Sibarita)
+	(Ingredientes
+		[ontologia_Class80003]
+		[ontologia_Class110002]
+		[ontologia_Class10017]
+		[ontologia_Class110010]
+		[ontologia_Class60003]
+		[ontologia_Class70024]
+		[ontologia_Class120002]
+		[ontologia_Class30032]
+		[ontologia_Class26])
+	(Nombre "Revuelto de verduras")
+	(PVP 5.0)
+	(Racion Normal)
+	(Vegetariano TRUE))
+
 ([ontologia_Class110001] of  Carne
 
 	(Mes_Final_Temporada 12)
@@ -1083,6 +1104,32 @@
 	(Mes_Final_Temporada 1)
 	(Mes_Inicio_Temporada 1))
 
+([ontologia_Class120000] of  Primero
+
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
+	(Bebida_Menu [ontologia_Class57])
+	(Caliente TRUE)
+	(Complejidad Alto)
+	(Estilo Tradicional)
+	(Ingredientes
+		[ontologia_Class100036]
+		[ontologia_Class35]
+		[ontologia_Class20]
+		[ontologia_Class100008]
+		[ontologia_Class10027]
+		[ontologia_Class90010]
+		[ontologia_Class30]
+		[ontologia_Class10020]
+		[ontologia_Class22]
+		[ontologia_Class100035]
+		[ontologia_Class100021])
+	(Nombre "Paella de marisco")
+	(Origen Espa%C3%B1a)
+	(PVP 6.0)
+	(Racion Normal)
+	(Vegetariano TRUE))
+
 ([ontologia_Class120001] of  Condimento
 
 	(Mes_Final_Temporada 12)
@@ -1129,6 +1176,81 @@
 	(Mes_Inicio_Temporada 1)
 	(Nombre "Leche de soja")
 	(PVP 2.0))
+
+([ontologia_Class130001] of  Postre
+
+	(AptoNinos TRUE)
+	(Bebida_Menu [ontologia_Class57])
+	(Complejidad Alto)
+	(Estilo Clasico)
+	(Ingredientes
+		[ontologia_Class10016]
+		[ontologia_Class20003]
+		[ontologia_Class30011]
+		[ontologia_Class30018]
+		[ontologia_Class15]
+		[ontologia_Class52]
+		[ontologia_Class44])
+	(Nombre "Tarta de fresa y frambuesa")
+	(PVP 5.0)
+	(Racion Normal)
+	(Vegetariano TRUE))
+
+([ontologia_Class130002] of  Primero
+
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
+	(Bebida_Menu [ontologia_Class57])
+	(Caliente TRUE)
+	(Complejidad Bajo)
+	(Estilo Sibarita)
+	(Ingredientes
+		[ontologia_Class110017]
+		[ontologia_Class30028])
+	(Nombre "Solomillo de atun rojo con patatas")
+	(PVP 2.0)
+	(Racion Normal))
+
+([ontologia_Class130003] of  Primero
+
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
+	(Bebida_Menu [ontologia_Class57])
+	(Caliente TRUE)
+	(Complejidad Bajo)
+	(Estilo Clasico)
+	(Ingredientes
+		[ontologia_Class110001]
+		[ontologia_Class90020]
+		[ontologia_Class100045]
+		[ontologia_Class40012]
+		[ontologia_Class100044]
+		[ontologia_Class90030]
+		[ontologia_Class15]
+		[ontologia_Class35])
+	(Nombre "Parrillada de carne")
+	(PVP 5.0)
+	(Racion Normal))
+
+([ontologia_Class130004] of  Primero
+
+	(AptoCena TRUE)
+	(AptoNinos TRUE)
+	(Caliente TRUE)
+	(Complejidad Medio)
+	(Estilo Tradicional)
+	(Ingredientes
+		[ontologia_Class10018]
+		[ontologia_Class80003]
+		[ontologia_Class110015]
+		[ontologia_Class30028]
+		[ontologia_Class26]
+		[ontologia_Class100004]
+		[ontologia_Class30])
+	(Nombre "Cochinillo acompañado de verduras")
+	(Origen Espa%C3%B1a)
+	(PVP 5.0)
+	(Racion Normal))
 
 ([ontologia_Class15] of  Grasas
 
