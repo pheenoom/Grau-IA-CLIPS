@@ -5987,7 +5987,7 @@
 				then
 					(printout t "*|          __Sin gluten______________________                                |*" crlf)
 					(send ?menuSinGluten imprimir-plato Primero)
-					(bind ?alternativaSinGluten)
+					(bind ?alternativaSinGluten TRUE)
 			)
 		)
 	)
