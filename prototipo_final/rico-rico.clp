@@ -5025,124 +5025,6 @@
 	(printout t crlf)
 )
 
-(defmessage-handler MAIN::PlatoAbstracto imprimir-debug ()
-	(printout t "------------------- Informacion del plato  ----------------" crlf)
-	(bind ?plato ?self:Plato)
-	;(printout t "Nombre Plato: " (send ?plato get-Nombre) crlf)
-	(send ?plato imprimir-debug)
-	(printout t "Precio       : " ?self:Precio crlf)
-	(printout t "Categoria    : " ?self:Categoria crlf)
-	(printout t "Sub-Categoria: " ?self:SubCategoria crlf)
-	(printout t "Puntuacion   : " ?self:Puntuacion crlf)
-	(printout t "Complejidad  : " ?self:Complejidad crlf)
-	(printout t "Puntuaciones : " crlf)
-	(loop-for-count (?i 1 (length$ ?self:DescripcionPuntos)) do
-			(bind ?descripcion (nth$ ?i ?self:DescripcionPuntos))
-			(printout t ?descripcion crlf)
-	)
-	(printout t crlf)
-	(printout t crlf)
-)
-
-(defmessage-handler MAIN::MenuAbstracto imprimir-debug ()
-	(printout t "------------------- Informacion del Menu  ----------------" crlf)
-	(bind ?menu ?self:Menu)
-	(send ?menu imprimir)
-	(printout t "Precio       : " ?self:Precio crlf)
-)
-
-(defmessage-handler MAIN::Ingrediente imprimir-debug ()
-	;(format t "%s - %n" ?self:Nombre)
-	(bind ?lactosa ?self:Lactosa)
-	(bind ?gluten ?self:Gluten)
-	(if (eq ?lactosa TRUE)
-		then (format t "%t Lactosa: Si %n")
-		else (format t "%t Lactosa: No %n")
-	)
-	(if (eq ?gluten TRUE)
-		then (format t "%t Gluten: Si %n")
-		else (format t "%t Gluten: No %n")
-	)
-	;(format t "%t Temporada Inicio: %d %n" ?self:Mes_Inicio_Temporada)
-	;(format t "%t Temporada Final: %d %n" ?self:Mes_Final_Temporada)
-)
-
-(defmessage-handler MAIN::Plato imprimir-debug ()
-	(format t "Nombre: %s" ?self:Nombre)
-	(printout t crlf)
-	;(bind ?vegetariano ?self:Vegetariano)
-	;(if (eq ?vegetariano TRUE)
-	;	then (format t "%t Es un plato vegetariano? Si %n")
-	;	else (format t "%t Es un plato vegetariano? No %n")
-	;)
-
-	;(bind ?caliente ?self:Caliente)
-	;(if (eq ?caliente TRUE)
-	;	then (format t "%t Es un plato caliente? Si %n")
-	;	else (format t "%t Es un plato caliente? No %n")
-	;)
-
-	(printout t "Ingredientes del plato: ")
-	(bind $?listaIngredientes ?self:Ingredientes)
-	(format t "(" )
-	(loop-for-count (?i 1 (length$ ?listaIngredientes)) do
-		(bind ?ingrediente (nth$ ?i ?listaIngredientes))
-		(send ?ingrediente imprimir-debug)
-	)
-	(printout t ")" crlf)
-	(printout t crlf)
-)
-
-
-
-
-(defmessage-handler MAIN::Ingrediente imprimir "Handler que imprime el nombre del ingrediente" ()
-	(printout t ?self:Nombre)
-)
-
-(defmessage-handler MAIN::MenuAbstracto imprimir "Handler que imprime la informacion basica de un menu y su precio" ()
-	(bind ?menu ?self:Menu)
-	(send ?menu imprimir)
-	(printout t "Precio menu : " ?self:Precio crlf)
-)
-
-
-(defmessage-handler MAIN::VinoAbstracto imprimir (?numComensalesVino ?numComensales)
-	(printout t "Nombre: " ?self:Nombre crlf)
-	(printout t "Precio: " ?self:PVP crlf)
-	(bind ?num (div ?numComensalesVino 4))
-	(bind ?precio (* ?num ?self:PVP))
-	(if (eq ?num 1)
-		then  (if (< ?numComensalesVino 4)
-						then (bind ?copa (/ ?self:PVP ?numComensalesVino))
-								 (format t "Precio de una copa para %d comensales: %f %n" ?numComensalesVino ?copa)
-						else (format t "Precio de %d botella para %d comensales: %f %n" ?num ?numComensalesVino ?precio )
-					)
-		else 	(if (eq ?num 0)
-				then (bind ?copa (/ ?self:PVP ?numComensalesVino))
-						 (format t "Precio de una copa para %d comensales: %f %n" ?numComensalesVino ?copa)
-				else (format t "Precio de %d botellas para %d comensales: %f %n" ?num ?numComensalesVino ?precio )
-		)
-	)
-)
-
-(defmessage-handler MAIN::VinoAbstracto imprimir-carta ()
-	(bind ?vino (send ?self get-Vino))
-	(bind ?tipo (class (instance-address * ?vino)))
-	(bind ?numChars 0)
-	(printout t "*|                                                                            |*" crlf)
-
-	(bind ?text (format   nil "*|          Acompanado con una copa de %s (%s)" (send ?self get-Nombre) ?tipo))
-	(printout t ?text)
-	(bind ?numeroCharacters (str-length ?text))
-	(loop-for-count (?i ?numeroCharacters 77) do
-		(printout t " ")
-	)
-	(printout t "|*" crlf)
-
-	(printout t "*|                                                                            |*" crlf)
-)
-
 ;                   ======================================================================
 ;                   ====================   Declaracion de handler   ======================
 ;                   ======================================================================
@@ -5250,16 +5132,23 @@
 (defmessage-handler MAIN::PlatoAbstracto calcula-puntuacion-estilo "Handler que modifica la
 	puntuacion de un plato abstracto en base al estilo elegido por el cliente" (?estilo)
 
+	(bind ?puntos 0)
+	(bind ?descripcion "No tiene ninguna bonificacion por estilo")
+
 	(if (eq ?estilo (send ?self:Plato get-Estilo))
-		then (send ?self put-Puntuacion (+ 1 (send ?self get-Puntuacion)))
+		then (bind ?puntos 1)
 	)
+
+	(send ?self put-Puntuacion (+ ?puntos (send ?self get-Puntuacion)))
+	(bind ?descripcion (str-cat "+" (str-cat ?puntos (str-cat " --> " ?descripcion))))
+	(slot-insert$ ?self DescripcionPuntos (+ 1 (length$ ?self:DescripcionPuntos)) ?descripcion)
 )
 
 (defmessage-handler MAIN::PlatoAbstracto calcula-puntuacion-complejidad "Handler que modifica la
 	puntuacion de un plato abstracto en base al numero de comensales" (?numComensales)
 
 	(bind ?puntos 0)
-	(bind ?descripcion "No tiene puntuacion a la hora de puntuar por el complejidad del plato")
+	(bind ?descripcion "No tiene ninguna bonificacion por complejidad")
 	(if (eq ?numComensales Medio)
 			then (if (eq ?self:Complejidad Medio)
 					then
@@ -5302,10 +5191,12 @@
 	(slot-insert$ ?self DescripcionPuntos (+ 1 (length$ ?self:DescripcionPuntos)) ?descripcion)
 )
 
-(defmessage-handler MAIN::PlatoAbstracto calcula-puntuacion-origen (?origen)
+(defmessage-handler MAIN::PlatoAbstracto calcula-puntuacion-origen "Handler que modifica la
+	puntuacion del plato en base a su origen" (?origen)
+
 	(bind ?plato (send ?self get-Plato))
 	(bind ?puntuacion 0)
-	(bind ?descripcion "No tiene puntuacion por origen")
+	(bind ?descripcion "No tiene ninguna bonificacion por origen")
 
 	(if (eq (send ?plato get-Origen) ?origen)
 		then
@@ -5331,7 +5222,7 @@
 
 	(bind ?plato (send ?self get-Plato))
 	(bind ?puntuacion 0)
-	(bind ?descripcion "No tiene puntuacion a la hora de puntuar por la temporada de los ingredientes")
+	(bind ?descripcion "No tiene bonificacion sobre la temporada")
 
 	(bind ?ingredientesTemporales 0)
 	(bind ?ingredientesTemporalesOk 0)
@@ -5397,7 +5288,7 @@
 
 	(bind ?plato (send ?self get-Plato))
 	(bind ?puntuacion 0)
-	(bind ?descripcion "No tiene puntuacion a la hora de puntuar por si un plato es apto para cena")
+	(bind ?descripcion "No tiene ninguna bonificacion por no ser un plato para cenar o comer elegido por el cliente")
 
 	(if (and (not ?esComida) (send ?plato get-AptoCena))
 		then
@@ -5514,7 +5405,9 @@
     ?precioPlato
 )
 
-(defmessage-handler MAIN::Plato imprimir "Handler que imprime por la salida estandard la informacion basica de un plato" ()
+(defmessage-handler MAIN::Plato imprimir "Handler que imprime por la salida estandard la informacion
+	basica de un plato" ()
+
 	(printout t "Nombre      : " ?self:Nombre crlf)
 	(printout t "Ingredientes: (")
 	(bind ?listaIngredientes ?self:Ingredientes)
@@ -5530,7 +5423,6 @@
 ;                   ======================================================================
 ;                   =====================     Handler Ingrediente     ====================
 ;                   ======================================================================
-
 
 (defmessage-handler MAIN::Ingrediente es-ingrediente-temporal "Handler que nos dice si el ingrediente
 	es temporal y falso en caso que no lo sea" ()
@@ -5572,7 +5464,9 @@
 ;                   ===================      Handler Menu Abstracto     ==================
 ;                   ======================================================================
 
-(defmessage-handler MAIN::MenuAbstracto imprimir-plato "" (?quePlato)
+(defmessage-handler MAIN::MenuAbstracto imprimir-plato "Handler que imprime la informacion de un
+	plato segun el parametro, el formato de salida es para ser compatible con la salida" (?quePlato)
+
 	(bind ?espacios "*|          ")
 	(printout t ?espacios)
 
@@ -5592,8 +5486,8 @@
 	(loop-for-count (?i (+ (str-length ?espacios) (str-length ?nombre)) 77) do
 		(printout t " ")
 	)
-	(printout t "|*" crlf)
 
+	(printout t "|*" crlf)
 	(printout t ?espacios)
 
 	(bind ?numeroCharacters (+ 1 (str-length ?espacios)))
@@ -5643,7 +5537,9 @@
 	(printout t "*|                                                                            |*" crlf)
 )
 
-(defmessage-handler MAIN::MenuAbstracto tienen-primero-igual (?menu)
+(defmessage-handler MAIN::MenuAbstracto tienen-primero-igual "Handler que devuelve cierto si el
+	menu implicito comparten primero con el menu pasado por parametro" (?menu)
+
 	(bind ?miPlato (send ?self:Menu get-Relacion_Menu_Primero))
 	(bind ?suPlato (send (send ?menu get-Menu) get-Relacion_Menu_Primero))
 
@@ -5653,7 +5549,9 @@
 	)
 )
 
-(defmessage-handler MAIN::MenuAbstracto tienen-segundo-igual (?menu)
+(defmessage-handler MAIN::MenuAbstracto tienen-segundo-igual "Handler que devuelve cierto si el
+	menu implicito comparten segundo con el menu pasado por parametro" (?menu)
+
 	(bind ?miPlato (send ?self:Menu get-Relacion_Menu_Segundo))
 	(bind ?suPlato (send (send ?menu get-Menu) get-Relacion_Menu_Segundo))
 
@@ -5663,7 +5561,8 @@
 	)
 )
 
-(defmessage-handler MAIN::MenuAbstracto tienen-postre-igual (?menu)
+(defmessage-handler MAIN::MenuAbstracto tienen-postre-igual "Handler que devuelve cierto si el
+	menu implicito comparten postre con el menu pasado por parametro" (?menu)
 	(bind ?miPlato (send ?self:Menu get-Relacion_Menu_Postre))
 	(bind ?suPlato (send (send ?menu get-Menu) get-Relacion_Menu_Postre))
 
@@ -5673,14 +5572,15 @@
 	)
 )
 
+(defmessage-handler MAIN::MenuAbstracto generar-menu "Handler que inicializa un menu en base a la
+	categoria y sub-categoria de los platos que lo componen asi como las restricciones a tener en
+	en consideracion" (?categoria ?subCategoria ?restriccion)
 
-(defmessage-handler MAIN::MenuAbstracto generar-menu (?categoria ?subCategoria ?restriccion)
 	(bind ?indiceMaxPrimero 0)
 	(bind ?indiceMaxSegundo 0)
 	(bind ?indiceMaxPostre 0)
 
 	(bind ?listaPlatosAbstractos (find-all-instances ((?inst PlatoAbstracto)) TRUE))
-	;(printout t "QUE RESTRCICCION ES: " ?restriccion crlf)
 
 	;Seleccionamos el primero con puntuacion maxima
 	(loop-for-count (?i 1 (length$ ?listaPlatosAbstractos)) do
@@ -5701,26 +5601,18 @@
 				)
 	)
 
-		;(printout t "Tipo de restriccion: " ?restriccion crlf)
-	(if (= ?indiceMaxPrimero 0)
-		then (printout t "Faltan primeros!!!!! " crlf)
-	)
-
-
 	;Actualizamos puntuaciones de los segundos
 	(loop-for-count (?i 1 (length$ ?listaPlatosAbstractos)) do
 		(bind ?platoAbstracto (nth$ ?i ?listaPlatosAbstractos))
 		(if (send ?platoAbstracto es-segundo)
 			then
-				;Si el segundo es incompatible con el primero, le restamos 5 puntos
 				(if (member (send ?platoAbstracto get-Plato) (send (send (nth$ ?indiceMaxPrimero ?listaPlatosAbstractos) get-Plato) get-Platos_Incompatibles))
 					then
 						(send ?platoAbstracto put-Puntuacion (- 5 (send ?platoAbstracto get-Puntuacion)))
-						;(printout t "Penalizado :" crlf)
-						;(send ?platoAbstracto imprimir-debug)
 				)
 		)
 	)
+
 	;Seleccionamos el segundo y el postre con puntuacion maxima
 	(loop-for-count (?i 1 (length$ ?listaPlatosAbstractos)) do
 		(bind ?platoAbstracto (nth$ ?i ?listaPlatosAbstractos))
@@ -5750,14 +5642,6 @@
 				)
 	)
 
-	(if (= ?indiceMaxSegundo 0)
-		then (printout t "Faltan segundos!!!!!! " crlf)
-	)
-	(if (= ?indiceMaxPostre 0)
-		then (printout t "Faltan postres!!!!! " crlf)
-	)
-
-
 	(bind ?menu (make-instance (sym-cat menu-MenuAbstracto- (gensym)) of Menu))
 	(send ?menu put-Relacion_Menu_Primero (send (nth$ ?indiceMaxPrimero ?listaPlatosAbstractos) get-Plato))
 	(send ?menu put-Relacion_Menu_Segundo (send (nth$ ?indiceMaxSegundo ?listaPlatosAbstractos) get-Plato))
@@ -5772,6 +5656,25 @@
 ;                   ======================================================================
 ;                   ==================       Handler Vino Abstracto     ==================
 ;                   ======================================================================
+
+
+(defmessage-handler MAIN::VinoAbstracto imprimir-carta "Handler que imprime la informacion del vino
+	por la salida estandard"()
+	(bind ?vino (send ?self get-Vino))
+	(bind ?tipo (class (instance-address * ?vino)))
+	(bind ?numChars 0)
+	(printout t "*|                                                                            |*" crlf)
+
+	(bind ?text (format   nil "*|          Acompanado con una copa de %s (%s)" (send ?self get-Nombre) ?tipo))
+	(printout t ?text)
+	(bind ?numeroCharacters (str-length ?text))
+	(loop-for-count (?i ?numeroCharacters 77) do
+		(printout t " ")
+	)
+	(printout t "|*" crlf)
+
+	(printout t "*|                                                                            |*" crlf)
+)
 
 (defmessage-handler MAIN::VinoAbstracto calcula-sub-categoria "Handler que calcula la sub-categoria
 	dado dos parametros: Bajo  -> [0...precioMedio)
@@ -5881,7 +5784,7 @@
 
 (deffunction pregunta-binaria "Funcion para formular preguntas con respuestas binaria" (?pregunta)
    (bind ?respuesta (pregunta-general ?pregunta si no s n))
-   (if (or (eq ?respuesta yes) (eq ?respuesta s))
+   (if (or (eq ?respuesta si) (eq ?respuesta s))
        then TRUE
        else FALSE
 	 )
@@ -5923,7 +5826,8 @@
 	)
 )
 
-(deffunction buscar-vino (?tipoVino ?categoria ?subCategoria)
+(deffunction buscar-vino "Funcion que devuelve el vino candidato que mejor se adapta a una categoria
+	y sub-categoria dada" (?tipoVino ?categoria ?subCategoria)
 	(bind ?listaVinosAbstractos (find-all-instances ((?inst VinoAbstracto)) TRUE))
 	(bind ?candidato (nth$ 1 ?listaVinosAbstractos))
 
@@ -5946,7 +5850,9 @@
 	?candidato
 )
 
-(deffunction generar-menu (?categoria ?subCategoria ?numComensales ?numAlergicosGluten ?numAlergicosLactosa ?numVegetarianos ?numComensalesVino ?siQuiereVino ?alcohol ?numComensalesNinos)
+(deffunction generar-menu "Funcion principal que genera la salida y genera los menus"
+	(?categoria ?subCategoria ?numComensales ?numAlergicosGluten ?numAlergicosLactosa
+	 ?numVegetarianos ?numComensalesVino ?siQuiereVino ?alcohol ?numComensalesNinos)
 
 	(bind ?numGenteConRestriccion (+ ?numAlergicosGluten (+ ?numVegetarianos ?numAlergicosLactosa)))
 	(bind ?menuGeneral (make-instance (gensym) of MenuAbstracto))
@@ -5995,11 +5901,13 @@
 	)
 	(printout t "|                                Rico Rico                                     |" crlf)
 	(printout t "===============================================================================|" crlf)
+
 	(printout t "*|     __Entrante___________________________________                          |*" crlf)
-	(if (< ?numGenteConRestriccion (* 0.5 ?numComensales)) ; imprimir menu normal
+	(if (< ?numGenteConRestriccion (* 0.5 ?numComensales))
 		then (send ?menuGeneral imprimir-plato Primero)
 		(bind ?alternativaGeneral TRUE)
 	)
+
 	(if (> ?numVegetarianos 0)
 		then (if (or (not (< ?numGenteConRestriccion (* 0.5 ?numComensales))) (not (send ?menuVegetariano tienen-primero-igual ?menuGeneral)))
 			then
@@ -6008,6 +5916,7 @@
 				(bind ?alternativaVegetariano TRUE)
 			)
 	)
+
 	(if (> ?numAlergicosGluten 0)
 		then (if (or (not (< ?numGenteConRestriccion (* 0.5 ?numComensales))) (not (send ?menuSinGluten tienen-primero-igual ?menuGeneral)))
 			then (if (or (not (> ?numVegetarianos 0)) (not (send ?menuSinGluten tienen-primero-igual ?menuVegetariano)))
@@ -6031,6 +5940,7 @@
 			  )
 		  )
 	)
+
 	(if (> ?numComensalesNinos 0)
 		then
 			(printout t "*|          --Para los ninos--                                                |*" crlf)
@@ -6064,6 +5974,7 @@
 		)
 		(bind ?alternativaGeneral TRUE)
 	)
+
 	(if (> ?numVegetarianos 0)
 		then (if (or (not (< ?numGenteConRestriccion (* 0.5 ?numComensales))) (not (send ?menuVegetariano tienen-segundo-igual ?menuGeneral)))
 			then
@@ -6195,39 +6106,55 @@
 	(printout t "*|                                                                            |*" crlf)
 	(printout t "*|                                                                            |*" crlf)
 	(printout t "*|                        ----------------------                              |*" crlf)
+	(bind ?subtotal 0)
 	(if ?alternativaGeneral
 		then
+			(bind ?subtotal (* (send ?menuGeneral get-Precio) (- ?numComensales ?numGenteConRestriccion)))
 			(format t "*|              Precio Menu              :         %05.2f  (%02d)                |*%n" (send ?menuGeneral get-Precio) (- ?numComensales ?numGenteConRestriccion))
+
 	)
 
 	(if ?alternativaVegetariano
 		then
+			(if (not ?alternativaGeneral)
+				then (bind ?numVegetarianos (+ ?numVegetarianos (* 0.33 (- ?numComensales ?numGenteConRestriccion))))
+			)
+			(bind ?subtotal (+ ?subtotal (* (send ?menuVegetariano get-Precio) ?numVegetarianos)))
 			(format t "*|              Precio Vegetariano       :         %05.2f  (%02d)                |*%n" (send ?menuVegetariano get-Precio) ?numVegetarianos)
 	)
 
 	(if ?alternativaSinGluten
 		then
+			(if (not ?alternativaGeneral)
+				then (bind ?numAlergicosGluten (+ ?numAlergicosGluten (* 0.33 (- ?numComensales ?numGenteConRestriccion))))
+			)
+			(bind ?subtotal (+ ?subtotal (* (send ?menuSinGluten get-Precio) ?numAlergicosGluten)))
 			(format t "*|              Precio Menu (sin gluten) :         %05.2f  (%02d)                |*%n" (send ?menuSinGluten get-Precio) ?numAlergicosGluten)
 	)
 
 	(if ?alternativaSinLactosa
 		then
+			(if (not ?alternativaGeneral)
+				then (bind ?numAlergicosLactosa (+ ?numAlergicosLactosa (* 0.33 (- ?numComensales ?numGenteConRestriccion))))
+			)
+			(bind ?subtotal (+ ?subtotal (* (send ?menuSinLactosa get-Precio) ?numAlergicosLactosa)))
 			(format t "*|              Precio Menu (sin lactosa):         %05.2f  (%02d)                |*%n" (send ?menuSinLactosa get-Precio) ?numAlergicosLactosa)
 	)
 
-	(bind ?subtotal 0)
-	(if (> ?numComensalesVino 0)
+	(if (> ?numComensalesNinos 0)
 		then
+			(bind ?subtotal (+ ?subtotal (+ (* ?numComensalesNinos (send ?menuNinos get-Precio))
+																			(* ?numComensalesNinos 0.80))))
 			(format t "*|              Precio Menu para ninos   :         %05.2f  (%02d)                |*%n" (send ?menuNinos get-Precio) ?numComensalesNinos)
-			(bind ?subtotal (* ?numComensalesNinos (send ?menuNinos get-Precio)))
+			(format t "*|              Precio zumos y refrescos :          0.80   (%02d)                |*%n" ?numComensalesNinos)
 	)
 
 	(if ?siQuiereVino
 		then
 			(bind ?precioVino (/ (+ ?precioVinoGeneral
-												(+ ?precioVinoSinLactosa
-												(+ ?precioVinoVegetariano ?precioVinoSinGluten))) ?totalVinos))
-			(bind ?subtotal (+ ?subtotal ?precioVino))													
+													    (+ ?precioVinoSinLactosa
+												         (+ ?precioVinoVegetariano ?precioVinoSinGluten))) ?totalVinos))
+			(bind ?subtotal (+ ?subtotal (* ?precioVino ?numComensalesVino)))
 			(format t "*|              Precio Vino              :         %05.2f  (%02d)                |*%n" ?precioVino ?numComensalesVino)
 	)
 
@@ -6238,18 +6165,13 @@
 			(bind ?subtotal (+ ?subtotal (* 1.20 ?totalCervezas)))
 	)
 
-	(bind ?subtotal (+ (* (send ?menuGeneral get-Precio) (- ?numComensales ?numGenteConRestriccion))
-									 (+ (* (send ?menuVegetariano get-Precio) ?numVegetarianos)
-									 		(+ (* (send ?menuSinGluten get-Precio) ?numAlergicosGluten)
-												 (+ (* (send ?menuSinLactosa get-Precio) ?numAlergicosLactosa)
-												 		(* ?precioVino ?numComensalesVino))))))
-
-
   (bind ?iva (* 0.21 ?subtotal))
 	(bind ?total (+ ?iva ?subtotal))
 	(format t "*|              Subtotal                 :         %06.2f                     |*%n" ?subtotal)
 	(format t "*|              IVA (21%%)                :         %06.2f                     |*%n" ?iva)
 	(format t "*|              Total                    :         %06.2f                     |*%n" ?total)
+	(printout t "*|                    El agua esta incluida en el menu                        |*" crlf)
+	(printout t "*|                        ----------------------                              |*" crlf)
 	(printout t "*|                                                                            |*" crlf)
 	(printout t "================================================================================" crlf)
 
@@ -6567,7 +6489,6 @@
 	(assert (abstraccion-comensales))
 )
 
-
 (defrule abstraccion::abstraer-temporada "Regla que nos permite abstraer el mes del evento propuesto por
 	el usuario a unos valores abstractos"
 
@@ -6599,7 +6520,7 @@
 ;                   ===================   Modulo de solucion concreta   ==================
 ;                   ======================================================================
 
-(defrule solucionConcreta::calcular-puntuaciones ""
+(defrule solucionConcreta::calcular-puntuaciones "Regla que calcula las puntuaciones de los platos"
 	(initial-fact)
 	(ProblemaAbstracto (presupuesto ?presupuesto))
 	(ProblemaAbstracto (numComensales ?numComensales))
@@ -6622,7 +6543,9 @@
 	(focus solucionConcreta)
 )
 
-(defrule solucionConcreta::imprimirResultado
+(defrule solucionConcreta::imprimirResultado "Imprime por pantalla los diferentes menus generados
+	dependiendo de las decisiones que toma el sbc"
+
 	(not (final))
 	(Entrada (numComensales ?numComensales))
 	(Entrada (numAlergicosGluten ?numAlergicosGluten))
@@ -6639,26 +6562,37 @@
 	  (bind ?categoria Alto)
 	)
 
-	;(bind ?listaPlatosAbstractos (find-all-instances ((?inst PlatoAbstracto)) TRUE))
-	;(loop-for-count (?i 1 (length$ ?listaPlatosAbstractos)) do
-	;	(bind ?platoAbstracto (nth$ ?i ?listaPlatosAbstractos))
-	;	(send ?platoAbstracto imprimir-excel)
-	;)
 	(printout t crlf)
-	(printout t "-------------" crlf)
 	(printout t crlf)
 	(generar-menu ?categoria Bajo ?numComensales ?numAlergicosGluten ?numAlergicosLactosa
 								?numVegetarianos ?numComensalesVino ?siQuiereVino ?alcohol ?numComensalesNinos)
 	(printout t crlf)
-	(printout t "-------------" crlf)
 	(printout t crlf)
 	(generar-menu ?categoria Medio ?numComensales ?numAlergicosGluten ?numAlergicosLactosa
 								?numVegetarianos ?numComensalesVino ?siQuiereVino ?alcohol ?numComensalesNinos)
 	(printout t crlf)
-	(printout t "-------------" crlf)
 	(printout t crlf)
 	(generar-menu ?categoria Alto ?numComensales ?numAlergicosGluten ?numAlergicosLactosa
 								?numVegetarianos ?numComensalesVino ?siQuiereVino ?alcohol ?numComensalesNinos)
-
 	(assert (final))
+)
+
+(defrule solucionConcreta::preguntar-excel "Pregunta al cliente si quiere que el programa imprima
+	por la salida estandard un excel con las puntuaciones y criterios tomados por el SBC"
+
+	(final)
+	(not (preguntar-excel))
+	=>
+	(if (pregunta-binaria "¿Quieres que el programa imprima por pantalla la decisiones que se tomaron para exportar en un excel?")
+		then
+			(printout t "COPIA Y PEGA EN UN EXCEL EL SIGUIENTE CONTENIDO: " crlf)
+			(printout t "================================================================" crlf)
+			(printout t "Nombre;Origen;Precio;Categoria;SubCategoria;Puntuacion;Complejidad;AptoVegetariano;AptoNinos;AptoCena;TipoPlato;DescripcionPuntos" crlf)
+			(bind ?listaPlatosAbstractos (find-all-instances ((?inst PlatoAbstracto)) TRUE))
+			(loop-for-count (?i 1 (length$ ?listaPlatosAbstractos)) do
+				(bind ?platoAbstracto (nth$ ?i ?listaPlatosAbstractos))
+				(send ?platoAbstracto imprimir-excel)
+			)
+	)
+	(assert (preguntar-excel))
 )
