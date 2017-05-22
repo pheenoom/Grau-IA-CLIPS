@@ -1,0 +1,17 @@
+(load rico-rico.clp)
+(reset)
+(run)
+a
+c
+m
+n
+1
+350
+s
+35
+19
+n
+s
+140
+n
+n

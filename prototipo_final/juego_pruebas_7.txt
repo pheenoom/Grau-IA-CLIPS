@@ -1,0 +1,4 @@
+(load rico-rico.clp)
+(reset)
+(run)
+

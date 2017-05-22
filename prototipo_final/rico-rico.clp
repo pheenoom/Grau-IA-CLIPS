@@ -1,4 +1,4 @@
-; Sat May 20 18:26:46 CEST 2017
+; Mon May 22 02:36:49 CEST 2017
 ;
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -61,7 +61,7 @@
 		(create-accessor read-write))
 	(single-slot Origen
 		(type SYMBOL)
-		(allowed-values Japonesa Italiana Espana China Ninguna)
+		(allowed-values Japonesa Italiana Espa%C3%B1a China)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot PVP
@@ -254,7 +254,7 @@
 		(create-accessor read-write))
 	(single-slot Origen
 		(type SYMBOL)
-		(allowed-values Japonesa Italiana Espana China Ninguna)
+		(allowed-values Japonesa Italiana Espa%C3%B1a China)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot Caliente
@@ -410,7 +410,7 @@
 	(role concrete))
 
 (definstances instances
-	; Sat May 20 18:26:46 CEST 2017
+	; Mon May 22 02:36:49 CEST 2017
 	;
 	;+ (version "3.5")
 	;+ (build "Build 663")
@@ -433,7 +433,6 @@
 			[ontologia_Class10011]
 			[ontologia_Class80012])
 		(Nombre "Tosta tibia de salmón en conserva con tartar de sus huevas")
-		(Origen Ninguna)
 		(Platos_Incompatibles [ontologia_Class36])
 		(PVP 6.0)
 		(Racion Normal))
@@ -457,7 +456,6 @@
 			[ontologia_Class10001]
 			[ontologia_Class52])
 		(Nombre "Sopa fría de sandía con bolas de melón")
-		(Origen Ninguna)
 		(Platos_Incompatibles
 			[ontologia_Class20013]
 			[ontologia_Class28]
@@ -472,6 +470,13 @@
 		(PVP 1.0)
 		(Racion Normal)
 		(Vegetariano TRUE))
+
+	([ontologia_Class100000] of  Cereal
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Harina de garbanzo")
+		(PVP 2.0))
 
 	([ontologia_Class100001] of  Frutos_secos
 
@@ -900,7 +905,6 @@
 			[ontologia_Class10016]
 			[ontologia_Class10017])
 		(Nombre "Carpaccio de presa de cerdo duroc")
-		(Origen Italiana)
 		(Platos_Incompatibles [ontologia_Class17])
 		(PVP 8.0)
 		(Racion Peque%C3%B1a)
@@ -1189,6 +1193,477 @@
 		(Nombre "Comino")
 		(PVP 0.2))
 
+	([ontologia_Class110000] of  Primero
+
+		(AptoCena TRUE)
+		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Alto)
+		(Estilo Sibarita)
+		(Ingredientes
+			[ontologia_Class80003]
+			[ontologia_Class110002]
+			[ontologia_Class10017]
+			[ontologia_Class110010]
+			[ontologia_Class60003]
+			[ontologia_Class70024]
+			[ontologia_Class120002]
+			[ontologia_Class30032]
+			[ontologia_Class26])
+		(Nombre "Revuelto de verduras")
+		(PVP 5.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class110001] of  Carne
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Buey")
+		(PVP 5.0))
+
+	([ontologia_Class110002] of  Verdura
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Brecol")
+		(PVP 1.2))
+
+	([ontologia_Class110003] of  Segundo
+
+		(AptoCena TRUE)
+		(Caliente TRUE)
+		(Complejidad Medio)
+		(Estilo Sibarita)
+		(Ingredientes
+			[ontologia_Class34]
+			[ontologia_Class31]
+			[ontologia_Class110002]
+			[ontologia_Class26]
+			[ontologia_Class100034]
+			[ontologia_Class70024]
+			[ontologia_Class90005]
+			[ontologia_Class110001])
+		(Nombre "Buey macerado con verduras")
+		(Origen China)
+		(PVP 2.0)
+		(Racion Normal))
+
+	([ontologia_Class110004] of  Verdura
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Albahaca")
+		(PVP 0.9))
+
+	([ontologia_Class110005] of  Segundo
+
+		(AptoCena TRUE)
+		(AptoNinos TRUE)
+		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Alto)
+		(Estilo Moderno)
+		(Ingredientes
+			[ontologia_Class30007]
+			[ontologia_Class90005]
+			[ontologia_Class40017]
+			[ontologia_Class44]
+			[ontologia_Class33]
+			[ontologia_Class90010]
+			[ontologia_Class70015]
+			[ontologia_Class70055]
+			[ontologia_Class26]
+			[ontologia_Class10010]
+			[ontologia_Class35]
+			[ontologia_Class80034]
+			[ontologia_Class110004])
+		(Nombre "Ensalada de pollo a la lima en cestitas de fideos")
+		(Origen China)
+		(PVP 2.0)
+		(Racion Normal))
+
+	([ontologia_Class110007] of  Segundo
+
+		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Alto)
+		(Estilo Tradicional)
+		(Ingredientes
+			[ontologia_Class34]
+			[ontologia_Class70001]
+			[ontologia_Class26]
+			[ontologia_Class22]
+			[ontologia_Class10010]
+			[ontologia_Class35]
+			[ontologia_Class33]
+			[ontologia_Class30008]
+			[ontologia_Class10027])
+		(Nombre "Arroz con cordero al estilo xinjiang")
+		(Origen China)
+		(PVP 3.0)
+		(Racion Normal))
+
+	([ontologia_Class110008] of  Segundo
+
+		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Alto)
+		(Estilo Tradicional)
+		(Ingredientes
+			[ontologia_Class100035]
+			[ontologia_Class22]
+			[ontologia_Class70055]
+			[ontologia_Class25]
+			[ontologia_Class15]
+			[ontologia_Class20]
+			[ontologia_Class10034]
+			[ontologia_Class10010]
+			[ontologia_Class20010]
+			[ontologia_Class30031]
+			[ontologia_Class100021])
+		(Nombre "Calamares rellenos con mariscos")
+		(Origen China)
+		(PVP 3.0)
+		(Racion Normal))
+
+	([ontologia_Class110009] of  Segundo
+
+		(AptoCena TRUE)
+		(AptoNinos TRUE)
+		(Caliente TRUE)
+		(Complejidad Bajo)
+		(Estilo Tradicional)
+		(Ingredientes
+			[ontologia_Class70015]
+			[ontologia_Class15]
+			[ontologia_Class90045]
+			[ontologia_Class20]
+			[ontologia_Class30008]
+			[ontologia_Class90024]
+			[ontologia_Class31]
+			[ontologia_Class110010])
+		(Nombre "Sopa de fideos y champinones")
+		(Origen China)
+		(PVP 1.0)
+		(Racion Normal))
+
+	([ontologia_Class110010] of  Verdura
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Champinones")
+		(PVP 0.5))
+
+	([ontologia_Class110011] of  Segundo
+
+		(AptoCena TRUE)
+		(Caliente TRUE)
+		(Complejidad Bajo)
+		(Estilo Tradicional)
+		(Ingredientes
+			[ontologia_Class34]
+			[ontologia_Class22]
+			[ontologia_Class20]
+			[ontologia_Class33]
+			[ontologia_Class30028]
+			[ontologia_Class30]
+			[ontologia_Class100006]
+			[ontologia_Class35]
+			[ontologia_Class30029])
+		(Nombre "Curry de cebolla, patata y pimiento rojo")
+		(Origen China)
+		(PVP 1.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class110012] of  Segundo
+
+		(AptoCena TRUE)
+		(AptoNinos TRUE)
+		(Caliente TRUE)
+		(Complejidad Bajo)
+		(Estilo Tradicional)
+		(Ingredientes
+			[ontologia_Class20014]
+			[ontologia_Class10005]
+			[ontologia_Class22]
+			[ontologia_Class26]
+			[ontologia_Class31]
+			[ontologia_Class34])
+		(Nombre "Rollitos especiales de carne y verdura")
+		(Origen China)
+		(PVP 0.0)
+		(Racion Normal))
+
+	([ontologia_Class110013] of  Marisco
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Vieria")
+		(PVP 7.8))
+
+	([ontologia_Class110014] of  Segundo
+
+		(AptoCena TRUE)
+		(AptoNinos TRUE)
+		(Caliente TRUE)
+		(Complejidad Alto)
+		(Estilo Moderno)
+		(Ingredientes
+			[ontologia_Class110013]
+			[ontologia_Class35]
+			[ontologia_Class110015]
+			[ontologia_Class26]
+			[ontologia_Class33]
+			[ontologia_Class100014]
+			[ontologia_Class20010]
+			[ontologia_Class60001]
+			[ontologia_Class34]
+			[ontologia_Class110016])
+		(Nombre "Vieiras salteadas con esparragos")
+		(Origen China)
+		(PVP 4.5)
+		(Racion Normal))
+
+	([ontologia_Class110015] of  Verdura
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Esparragos")
+		(PVP 1.2))
+
+	([ontologia_Class110016] of  Verdura
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Bambu fresco")
+		(PVP 3.0))
+
+	([ontologia_Class110017] of  Pescado
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Solomillo de atun rojo")
+		(PVP 10.0))
+
+	([ontologia_Class110018] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Tabasco")
+		(PVP 0.9))
+
+	([ontologia_Class110019] of  Segundo
+
+		(Complejidad Alto)
+		(Estilo Moderno)
+		(Ingredientes
+			[ontologia_Class110017]
+			[ontologia_Class22]
+			[ontologia_Class31]
+			[ontologia_Class90012]
+			[ontologia_Class110018]
+			[ontologia_Class10010]
+			[ontologia_Class110020])
+		(Nombre "Tartar de atun rojo con mango y pepino de mar")
+		(Origen China)
+		(PVP 4.0)
+		(Racion Normal))
+
+	([ontologia_Class110020] of  Pescado
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Pepino de mar")
+		(PVP 10.0))
+
+	([ontologia_Class110021] of  Marisco
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Cangrejo")
+		(PVP 2.5))
+
+	([ontologia_Class110022] of  Pescado
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Aleta de tiburon")
+		(PVP 20.0))
+
+	([ontologia_Class110023] of  Segundo
+
+		(AptoCena TRUE)
+		(Bebida_Menu [ontologia_Class57])
+		(Caliente TRUE)
+		(Complejidad Medio)
+		(Estilo Sibarita)
+		(Ingredientes
+			[ontologia_Class110022]
+			[ontologia_Class110021]
+			[ontologia_Class90010]
+			[ontologia_Class30032]
+			[ontologia_Class60001]
+			[ontologia_Class50018]
+			[ontologia_Class31]
+			[ontologia_Class33]
+			[ontologia_Class20]
+			[ontologia_Class10010])
+		(Nombre "Sopa de aleta de tiburon")
+		(Origen China)
+		(PVP 3.0)
+		(Racion Normal))
+
+	([ontologia_Class110024] of  Pescado
+
+		(Mes_Final_Temporada 1)
+		(Mes_Inicio_Temporada 1))
+
+	([ontologia_Class120000] of  Primero
+
+		(AptoCena TRUE)
+		(AptoNinos TRUE)
+		(Bebida_Menu [ontologia_Class57])
+		(Caliente TRUE)
+		(Complejidad Alto)
+		(Estilo Tradicional)
+		(Ingredientes
+			[ontologia_Class100036]
+			[ontologia_Class35]
+			[ontologia_Class20]
+			[ontologia_Class100008]
+			[ontologia_Class10027]
+			[ontologia_Class90010]
+			[ontologia_Class30]
+			[ontologia_Class10020]
+			[ontologia_Class22]
+			[ontologia_Class100035]
+			[ontologia_Class100021])
+		(Nombre "Paella de marisco")
+		(Origen Espa%C3%B1a)
+		(PVP 6.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class120001] of  Condimento
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Hierbas provenzales")
+		(PVP 1.2))
+
+	([ontologia_Class120002] of  Verdura
+
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Patata Bonnotte")
+		(PVP 13.0))
+
+	([ontologia_Class120003] of  Primero
+
+		(AptoCena TRUE)
+		(AptoNinos TRUE)
+		(Bebida_Menu [ontologia_Class57])
+		(Caliente TRUE)
+		(Complejidad Medio)
+		(Estilo Moderno)
+		(Ingredientes
+			[ontologia_Class100000]
+			[ontologia_Class30008]
+			[ontologia_Class90007]
+			[ontologia_Class120004]
+			[ontologia_Class10020]
+			[ontologia_Class70024]
+			[ontologia_Class20]
+			[ontologia_Class10010]
+			[ontologia_Class120001]
+			[ontologia_Class120002]
+			[ontologia_Class15])
+		(Nombre "Quiche vegetariana con patata bonnotte")
+		(PVP 2.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class120004] of  Derivado
+
+		(Lactosa TRUE)
+		(Mes_Final_Temporada 12)
+		(Mes_Inicio_Temporada 1)
+		(Nombre "Leche de soja")
+		(PVP 2.0))
+
+	([ontologia_Class130001] of  Postre
+
+		(AptoNinos TRUE)
+		(Bebida_Menu [ontologia_Class57])
+		(Complejidad Alto)
+		(Estilo Clasico)
+		(Ingredientes
+			[ontologia_Class10016]
+			[ontologia_Class20003]
+			[ontologia_Class30011]
+			[ontologia_Class30018]
+			[ontologia_Class15]
+			[ontologia_Class52]
+			[ontologia_Class44])
+		(Nombre "Tarta de fresa y frambuesa")
+		(PVP 5.0)
+		(Racion Normal)
+		(Vegetariano TRUE))
+
+	([ontologia_Class130002] of  Primero
+
+		(AptoCena TRUE)
+		(AptoNinos TRUE)
+		(Bebida_Menu [ontologia_Class57])
+		(Caliente TRUE)
+		(Complejidad Bajo)
+		(Estilo Sibarita)
+		(Ingredientes
+			[ontologia_Class110017]
+			[ontologia_Class30028])
+		(Nombre "Solomillo de atun rojo con patatas")
+		(PVP 2.0)
+		(Racion Normal))
+
+	([ontologia_Class130003] of  Primero
+
+		(AptoCena TRUE)
+		(AptoNinos TRUE)
+		(Bebida_Menu [ontologia_Class57])
+		(Caliente TRUE)
+		(Complejidad Bajo)
+		(Estilo Clasico)
+		(Ingredientes
+			[ontologia_Class110001]
+			[ontologia_Class90020]
+			[ontologia_Class100045]
+			[ontologia_Class40012]
+			[ontologia_Class100044]
+			[ontologia_Class90030]
+			[ontologia_Class15]
+			[ontologia_Class35])
+		(Nombre "Parrillada de carne")
+		(PVP 5.0)
+		(Racion Normal))
+
+	([ontologia_Class130004] of  Primero
+
+		(AptoCena TRUE)
+		(AptoNinos TRUE)
+		(Caliente TRUE)
+		(Complejidad Medio)
+		(Estilo Tradicional)
+		(Ingredientes
+			[ontologia_Class10018]
+			[ontologia_Class80003]
+			[ontologia_Class110015]
+			[ontologia_Class30028]
+			[ontologia_Class26]
+			[ontologia_Class100004]
+			[ontologia_Class30])
+		(Nombre "Cochinillo acompañado de verduras")
+		(Origen Espa%C3%B1a)
+		(PVP 5.0)
+		(Racion Normal))
+
 	([ontologia_Class15] of  Grasas
 
 		(Mes_Final_Temporada 12)
@@ -1217,7 +1692,6 @@
 			[ontologia_Class3]
 			[ontologia_Class4])
 		(Nombre "Ensalada de queso de cabra y nueces")
-		(Origen Ninguna)
 		(Platos_Incompatibles [ontologia_Class40018])
 		(PVP 2.0)
 		(Racion Normal)
@@ -1258,7 +1732,7 @@
 			[ontologia_Class50]
 			[ontologia_Class35])
 		(Nombre "Canelones caseros")
-		(Origen Italiana)
+		(Origen Espa%C3%B1a)
 		(Platos_Incompatibles
 			[ontologia_Class17]
 			[ontologia_Class30025]
@@ -1304,7 +1778,6 @@
 			[ontologia_Class35]
 			[ontologia_Class15])
 		(Nombre "Gazpacho de fresas")
-		(Origen Espana)
 		(Platos_Incompatibles
 			[ontologia_Class20013]
 			[ontologia_Class28]
@@ -1333,7 +1806,6 @@
 			[ontologia_Class10019]
 			[ontologia_Class10020])
 		(Nombre "Cochinillo con puré de boniato ahumado y pimiento verde frito")
-		(Origen Espana)
 		(Platos_Incompatibles
 			[ontologia_Class17]
 			[ontologia_Class28])
@@ -1372,7 +1844,6 @@
 			[ontologia_Class26]
 			[ontologia_Class10025])
 		(Nombre "Pudding de cabracho con salsa de erizos de mar")
-		(Origen Ninguna)
 		(Platos_Incompatibles
 			[ontologia_Class20006]
 			[ontologia_Class0])
@@ -1403,7 +1874,7 @@
 			[ontologia_Class20011]
 			[ontologia_Class70001])
 		(Nombre "Asadura de cordero")
-		(Origen Espana)
+		(Origen Espa%C3%B1a)
 		(Platos_Incompatibles
 			[ontologia_Class10004]
 			[ontologia_Class17]
@@ -1450,7 +1921,6 @@
 			[ontologia_Class20015]
 			[ontologia_Class35])
 		(Nombre "Arroz al cava")
-		(Origen Ninguna)
 		(Platos_Incompatibles
 			[ontologia_Class80026]
 			[ontologia_Class70051]
@@ -1494,7 +1964,6 @@
 			[ontologia_Class20011]
 			[ontologia_Class10026])
 		(Nombre "Ensalada con gambas cítricos y comino")
-		(Origen Ninguna)
 		(Platos_Incompatibles
 			[ontologia_Class80026]
 			[ontologia_Class40018]
@@ -1554,7 +2023,7 @@
 			[ontologia_Class20]
 			[ontologia_Class22])
 		(Nombre "Carne guisada")
-		(Origen Italiana)
+		(Origen Espa%C3%B1a)
 		(PVP 1.2)
 		(Racion Normal))
 
@@ -1601,7 +2070,6 @@
 			[ontologia_Class70078]
 			[ontologia_Class70074])
 		(Nombre "Crepes de Nutella")
-		(Origen Ninguna)
 		(PVP 0.3)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -1615,7 +2083,6 @@
 		(Estilo Clasico)
 		(Ingredientes [ontologia_Class10001])
 		(Nombre "Bol de Sandia")
-		(Origen Ninguna)
 		(PVP 0.5)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -1642,7 +2109,7 @@
 			[ontologia_Class20008]
 			[ontologia_Class40006])
 		(Nombre "Macarrones gratinados con chorizo")
-		(Origen Espana)
+		(Origen Espa%C3%B1a)
 		(Platos_Incompatibles
 			[ontologia_Class20000]
 			[ontologia_Class37]
@@ -1671,7 +2138,7 @@
 			[ontologia_Class10009]
 			[ontologia_Class30007])
 		(Nombre "Torrijas")
-		(Origen Espana)
+		(Origen Espa%C3%B1a)
 		(Platos_Incompatibles
 			[ontologia_Class20013]
 			[ontologia_Class28]
@@ -1728,7 +2195,6 @@
 			[ontologia_Class35]
 			[ontologia_Class70078])
 		(Nombre "Muffins salados de pavo con queso Cheedar")
-		(Origen Ninguna)
 		(Platos_Incompatibles
 			[ontologia_Class20016]
 			[ontologia_Class20006]
@@ -1791,7 +2257,6 @@
 			[ontologia_Class32]
 			[ontologia_Class30015])
 		(Nombre "Crema fría de kiwi")
-		(Origen Ninguna)
 		(Platos_Incompatibles
 			[ontologia_Class20013]
 			[ontologia_Class20016]
@@ -1866,7 +2331,6 @@
 			[ontologia_Class30022]
 			[ontologia_Class70074])
 		(Nombre "Tarta de tres chocolates")
-		(Origen Ninguna)
 		(Platos_Incompatibles
 			[ontologia_Class20013]
 			[ontologia_Class28]
@@ -1901,7 +2365,7 @@
 			[ontologia_Class35]
 			[ontologia_Class30024])
 		(Nombre "Salmorejo cordoves")
-		(Origen Japonesa)
+		(Origen Espa%C3%B1a)
 		(PVP 17.0)
 		(Racion Normal))
 
@@ -1945,7 +2409,6 @@
 			[ontologia_Class30029]
 			[ontologia_Class35])
 		(Nombre "Vichyssoise de aguacate y langostinos")
-		(Origen Ninguna)
 		(PVP 5.0)
 		(Racion Normal))
 
@@ -1980,7 +2443,6 @@
 			[ontologia_Class35]
 			[ontologia_Class80011])
 		(Nombre "Gazpacho de setas")
-		(Origen Ninguna)
 		(Platos_Incompatibles
 			[ontologia_Class20013]
 			[ontologia_Class28]
@@ -2061,7 +2523,6 @@
 			[ontologia_Class31]
 			[ontologia_Class35])
 		(Nombre "Salmon al horno")
-		(Origen Ninguna)
 		(Platos_Incompatibles
 			[ontologia_Class20013]
 			[ontologia_Class20016]
@@ -2086,7 +2547,7 @@
 			[ontologia_Class40]
 			[ontologia_Class35])
 		(Nombre "Pollo al ajillo")
-		(Origen Italiana)
+		(Origen Espa%C3%B1a)
 		(Platos_Incompatibles
 			[ontologia_Class20013]
 			[ontologia_Class20016])
@@ -2136,7 +2597,6 @@
 		(Estilo Clasico)
 		(Ingredientes [ontologia_Class30017])
 		(Nombre "Bol de Kiwis")
-		(Origen Ninguna)
 		(PVP 0.5)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -2177,7 +2637,6 @@
 			[ontologia_Class22]
 			[ontologia_Class1])
 		(Nombre "Coctel de gambas")
-		(Origen Ninguna)
 		(Platos_Incompatibles
 			[ontologia_Class40018]
 			[ontologia_Class70050]
@@ -2206,7 +2665,7 @@
 			[ontologia_Class40011]
 			[ontologia_Class35])
 		(Nombre "Judias con chorizo y panceta")
-		(Origen Espana)
+		(Origen Espa%C3%B1a)
 		(Platos_Incompatibles
 			[ontologia_Class20013]
 			[ontologia_Class40008]
@@ -2249,7 +2708,6 @@
 			[ontologia_Class52]
 			[ontologia_Class70078])
 		(Nombre "Natillas caseras")
-		(Origen Espana)
 		(Platos_Incompatibles
 			[ontologia_Class28]
 			[ontologia_Class40008]
@@ -2279,7 +2737,7 @@
 			[ontologia_Class70054]
 			[ontologia_Class70074])
 		(Nombre "Arroz con leche casero")
-		(Origen Espana)
+		(Origen Espa%C3%B1a)
 		(Platos_Incompatibles
 			[ontologia_Class28]
 			[ontologia_Class40008]
@@ -2330,7 +2788,6 @@
 			[ontologia_Class26]
 			[ontologia_Class40019])
 		(Nombre "Ensaladilla rusa")
-		(Origen Ninguna)
 		(Platos_Incompatibles
 			[ontologia_Class28]
 			[ontologia_Class40008]
@@ -2397,7 +2854,6 @@
 			[ontologia_Class54]
 			[ontologia_Class56])
 		(Nombre "Flan de Huevo")
-		(Origen Espana)
 		(Platos_Incompatibles
 			[ontologia_Class20013]
 			[ontologia_Class20009]
@@ -2430,7 +2886,6 @@
 			[ontologia_Class10026]
 			[ontologia_Class30032])
 		(Nombre "Crema de hongos y setas al tomillo")
-		(Origen Ninguna)
 		(PVP 2.3)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -2464,7 +2919,6 @@
 		(Estilo Clasico)
 		(Ingredientes [ontologia_Class10002])
 		(Nombre "Bol de Melon")
-		(Origen Ninguna)
 		(PVP 0.5)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -2498,7 +2952,6 @@
 		(Estilo Clasico)
 		(Ingredientes [ontologia_Class10032])
 		(Nombre "Bol de Naranjas")
-		(Origen Ninguna)
 		(PVP 0.5)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -2512,7 +2965,6 @@
 		(Estilo Clasico)
 		(Ingredientes [ontologia_Class10033])
 		(Nombre "Bol de Pomelos")
-		(Origen Ninguna)
 		(PVP 0.5)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -2529,7 +2981,7 @@
 			[ontologia_Class3]
 			[ontologia_Class70074])
 		(Nombre "Tarta de Santiago")
-		(Origen Espana)
+		(Origen Espa%C3%B1a)
 		(PVP 1.8)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -2548,7 +3000,7 @@
 			[ontologia_Class10009]
 			[ontologia_Class54])
 		(Nombre "Crema catalana")
-		(Origen Espana)
+		(Origen Espa%C3%B1a)
 		(PVP 2.95)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -2567,7 +3019,6 @@
 			[ontologia_Class20002]
 			[ontologia_Class20014])
 		(Nombre "Mini Hamburguesa rellena de queso Cabrales")
-		(Origen Ninguna)
 		(PVP 1.0)
 		(Racion Normal))
 
@@ -2583,7 +3034,6 @@
 			[ontologia_Class20014]
 			[ontologia_Class30006])
 		(Nombre "Hamburguesa")
-		(Origen Ninguna)
 		(PVP 1.0)
 		(Racion Normal))
 
@@ -2603,7 +3053,6 @@
 			[ontologia_Class22]
 			[ontologia_Class50014])
 		(Nombre "Pato a la naranja")
-		(Origen Espana)
 		(PVP 14.0)
 		(Racion Normal))
 
@@ -2632,7 +3081,6 @@
 			[ontologia_Class20014]
 			[ontologia_Class30006])
 		(Nombre "Hamburgesa")
-		(Origen Ninguna)
 		(Platos_Incompatibles
 			[ontologia_Class20000]
 			[ontologia_Class50012]
@@ -2659,7 +3107,7 @@
 			[ontologia_Class2]
 			[ontologia_Class54])
 		(Nombre "Leon come gambas")
-		(Origen Japonesa)
+		(Origen Espa%C3%B1a)
 		(PVP 80.0)
 		(Racion Normal))
 
@@ -2679,7 +3127,7 @@
 			[ontologia_Class38]
 			[ontologia_Class70078])
 		(Nombre "Pizza de Carne")
-		(Origen Espana)
+		(Origen Espa%C3%B1a)
 		(Platos_Incompatibles
 			[ontologia_Class20009]
 			[ontologia_Class20000]
@@ -2744,7 +3192,6 @@
 			[ontologia_Class54]
 			[ontologia_Class70074])
 		(Nombre "Tarta de queso")
-		(Origen Ninguna)
 		(Platos_Incompatibles
 			[ontologia_Class20013]
 			[ontologia_Class20009]
@@ -2789,7 +3236,6 @@
 			[ontologia_Class35]
 			[ontologia_Class15])
 		(Nombre "Cascarrollas del rio")
-		(Origen Ninguna)
 		(Platos_Incompatibles
 			[ontologia_Class50012]
 			[ontologia_Class50011])
@@ -2819,7 +3265,6 @@
 			[ontologia_Class70006]
 			[ontologia_Class70007])
 		(Nombre "Crema de coliflor con gambones y piñones al aroma de trufa")
-		(Origen Ninguna)
 		(Platos_Incompatibles
 			[ontologia_Class70050]
 			[ontologia_Class80033])
@@ -3008,7 +3453,6 @@
 			[ontologia_Class15]
 			[ontologia_Class70013])
 		(Nombre "Humus de garbanzos")
-		(Origen Ninguna)
 		(PVP 13.0)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -3047,7 +3491,6 @@
 			[ontologia_Class70016]
 			[ontologia_Class70015])
 		(Nombre "Crema de pepino y yogur")
-		(Origen Ninguna)
 		(PVP 1.0)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -3079,7 +3522,6 @@
 			[ontologia_Class70020]
 			[ontologia_Class43])
 		(Nombre "Crema fria de remolacha")
-		(Origen Espana)
 		(PVP 1.2)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -3125,7 +3567,6 @@
 			[ontologia_Class34]
 			[ontologia_Class1])
 		(Nombre "Ensalada de bogavante")
-		(Origen Espana)
 		(Platos_Incompatibles
 			[ontologia_Class40018]
 			[ontologia_Class70050])
@@ -3171,7 +3612,6 @@
 			[ontologia_Class35]
 			[ontologia_Class10026])
 		(Nombre "Garbanzos con setas variadas")
-		(Origen Ninguna)
 		(PVP 6.75)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -3194,7 +3634,6 @@
 			[ontologia_Class30028]
 			[ontologia_Class20])
 		(Nombre "Cocido Montanes")
-		(Origen Espana)
 		(Platos_Incompatibles
 			[ontologia_Class20009]
 			[ontologia_Class10004]
@@ -3299,7 +3738,7 @@
 			[ontologia_Class10026]
 			[ontologia_Class70038])
 		(Nombre "Carrilleras de cerdo guisadas")
-		(Origen Italiana)
+		(Origen Espa%C3%B1a)
 		(PVP 2.85)
 		(Racion Normal))
 
@@ -3376,7 +3815,7 @@
 			[ontologia_Class56]
 			[ontologia_Class15])
 		(Nombre "Navajas a la plancha")
-		(Origen Espana)
+		(Origen Espa%C3%B1a)
 		(PVP 5.0)
 		(Racion Normal))
 
@@ -3494,7 +3933,6 @@
 			[ontologia_Class38]
 			[ontologia_Class70063])
 		(Nombre "Pollo en pepitoria")
-		(Origen Ninguna)
 		(PVP 2.7)
 		(Racion Normal))
 
@@ -3519,7 +3957,6 @@
 			[ontologia_Class70068]
 			[ontologia_Class70066])
 		(Nombre "Macedonia de frutas con zumo de mango")
-		(Origen Ninguna)
 		(PVP 0.9)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -3565,7 +4002,6 @@
 			[ontologia_Class70066]
 			[ontologia_Class60])
 		(Nombre "Mousse de chocolate con Platano y mermelada de frutos rojos")
-		(Origen Ninguna)
 		(PVP 1.2)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -3591,7 +4027,6 @@
 			[ontologia_Class50]
 			[ontologia_Class52])
 		(Nombre "Flan de queso mascarpone")
-		(Origen Espana)
 		(PVP 2.3)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -3625,7 +4060,6 @@
 			[ontologia_Class35]
 			[ontologia_Class3])
 		(Nombre "Pastel Gales")
-		(Origen Ninguna)
 		(PVP 4.75)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -3702,7 +4136,7 @@
 			[ontologia_Class70086]
 			[ontologia_Class70085])
 		(Nombre "Tarta Mont Blanc")
-		(Origen Espana)
+		(Origen Espa%C3%B1a)
 		(PVP 3.5)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -3739,7 +4173,6 @@
 			[ontologia_Class10009]
 			[ontologia_Class70074])
 		(Nombre "Sablee de Cardamomo, Crema Limon e interior de Yogur y Chocolate Blanco")
-		(Origen Ninguna)
 		(PVP 2.5)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -3784,7 +4217,6 @@
 			[ontologia_Class70096]
 			[ontologia_Class20003])
 		(Nombre "Stilt Fisherman Indulgence")
-		(Origen Ninguna)
 		(PVP 5.6)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -3856,7 +4288,6 @@
 			[ontologia_Class30012]
 			[ontologia_Class43])
 		(Nombre "Panecillos de nata")
-		(Origen Ninguna)
 		(PVP 2.0)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -3907,7 +4338,6 @@
 			[ontologia_Class80005]
 			[ontologia_Class30009])
 		(Nombre "Cerezas rostisadas")
-		(Origen Ninguna)
 		(PVP 12.0)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -3930,7 +4360,6 @@
 			[ontologia_Class70066]
 			[ontologia_Class80007])
 		(Nombre "Helado de platano")
-		(Origen Ninguna)
 		(PVP 3.0)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -3959,7 +4388,6 @@
 			[ontologia_Class50018]
 			[ontologia_Class50])
 		(Nombre "Pastel de coco con guayaba")
-		(Origen Ninguna)
 		(PVP 1.0)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -4042,7 +4470,7 @@
 			[ontologia_Class10011]
 			[ontologia_Class44])
 		(Nombre "Patatas campesinas")
-		(Origen Espana)
+		(Origen Espa%C3%B1a)
 		(Platos_Incompatibles
 			[ontologia_Class80027]
 			[ontologia_Class20005]
@@ -4069,7 +4497,6 @@
 			[ontologia_Class52]
 			[ontologia_Class30008])
 		(Nombre "Copa de melon y melocoton")
-		(Origen Ninguna)
 		(PVP 1.0)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -4087,7 +4514,6 @@
 			[ontologia_Class52]
 			[ontologia_Class41])
 		(Nombre "Martin di-frazcco")
-		(Origen Italiana)
 		(PVP 7.0)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -4102,7 +4528,6 @@
 			[ontologia_Class80019]
 			[ontologia_Class80020])
 		(Nombre "Caviar vegetal y kaki")
-		(Origen Ninguna)
 		(Racion Normal)
 		(Vegetariano TRUE))
 
@@ -4132,7 +4557,6 @@
 			[ontologia_Class80023]
 			[ontologia_Class80022])
 		(Nombre "Huevo a 65º, maiz y trufa negra")
-		(Origen Espana)
 		(PVP 16.0)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -4167,7 +4591,6 @@
 			[ontologia_Class52]
 			[ontologia_Class55])
 		(Nombre "Tarta de calabaza")
-		(Origen Espana)
 		(PVP 6.0)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -4211,7 +4634,6 @@
 			[ontologia_Class30029]
 			[ontologia_Class30015])
 		(Nombre "Boniato con lentejas al curry")
-		(Origen Ninguna)
 		(PVP 2.0)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -4231,7 +4653,6 @@
 			[ontologia_Class40006]
 			[ontologia_Class70070])
 		(Nombre "Horneado de patatas a los cuatro quesos")
-		(Origen Ninguna)
 		(PVP 3.0)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -4257,7 +4678,6 @@
 			[ontologia_Class40]
 			[ontologia_Class3])
 		(Nombre "Gratinado de verduras")
-		(Origen Ninguna)
 		(PVP 5.0)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -4275,7 +4695,6 @@
 			[ontologia_Class2]
 			[ontologia_Class80031])
 		(Nombre "Tallarines de calabacin con cubierta de tomate funghi")
-		(Origen Ninguna)
 		(PVP 13.0)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -4324,7 +4743,6 @@
 			[ontologia_Class80034]
 			[ontologia_Class10011])
 		(Nombre "Tabule de coliflor")
-		(Origen Ninguna)
 		(PVP 20.0)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -4353,7 +4771,6 @@
 			[ontologia_Class15]
 			[ontologia_Class35])
 		(Nombre "La menestra en la patata")
-		(Origen Ninguna)
 		(PVP 21.0)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -4373,7 +4790,6 @@
 			[ontologia_Class24]
 			[ontologia_Class35])
 		(Nombre "Curry de piña con raita de remolacha")
-		(Origen Ninguna)
 		(PVP 25.0)
 		(Racion Normal)
 		(Vegetariano TRUE))
@@ -4399,6 +4815,26 @@
 		(Mes_Inicio_Temporada 1)
 		(Nombre "Raita")
 		(PVP 3.0))
+
+	([ontologia_Class90000] of  Segundo
+
+		(AptoCena TRUE)
+		(AptoNinos TRUE)
+		(Bebida_Menu [ontologia_Class57])
+		(Caliente TRUE)
+		(Complejidad Bajo)
+		(Estilo Clasico)
+		(Ingredientes
+			[ontologia_Class10027]
+			[ontologia_Class50018]
+			[ontologia_Class10031]
+			[ontologia_Class90045]
+			[ontologia_Class35]
+			[ontologia_Class34])
+		(Nombre "Arroz frito con carne de cerdo y gambas")
+		(Origen China)
+		(PVP 1.0)
+		(Racion Normal))
 
 	([ontologia_Class90001] of  Condimento
 
@@ -4457,7 +4893,7 @@
 		(Nombre "Setas shimeji")
 		(PVP 1.0))
 
-	([ontologia_Class90009] of  Primero
+	([ontologia_Class90009] of  Segundo
 
 		(AptoCena TRUE)
 		(AptoNinos FALSE)
@@ -4488,7 +4924,7 @@
 		(Nombre "Pollo")
 		(PVP 0.25))
 
-	([ontologia_Class90011] of  Primero
+	([ontologia_Class90011] of  Segundo
 
 		(AptoCena TRUE)
 		(Bebida_Menu [ontologia_Class57])
@@ -4523,7 +4959,7 @@
 		(Nombre "Aguacate")
 		(PVP 0.5))
 
-	([ontologia_Class90014] of  Primero
+	([ontologia_Class90014] of  Segundo
 
 		(AptoCena TRUE)
 		(Bebida_Menu [ontologia_Class57])
@@ -4539,7 +4975,7 @@
 		(PVP 1.0)
 		(Racion Normal))
 
-	([ontologia_Class90015] of  Primero
+	([ontologia_Class90015] of  Segundo
 
 		(AptoCena TRUE)
 		(AptoNinos TRUE)
@@ -4609,7 +5045,7 @@
 		(Nombre "Mayonesa japonesa")
 		(PVP 1.0))
 
-	([ontologia_Class90023] of  Primero
+	([ontologia_Class90023] of  Segundo
 
 		(AptoCena TRUE)
 		(Bebida_Menu [ontologia_Class57])
@@ -4784,7 +5220,7 @@
 		(Nombre "Sake")
 		(PVP 1.0))
 
-	([ontologia_Class90044] of  Primero
+	([ontologia_Class90044] of  Segundo
 
 		(AptoCena TRUE)
 		(Bebida_Menu [ontologia_Class57])
@@ -4860,7 +5296,7 @@
 		(Origen Japonesa)
 		(Racion Normal))
 
-	([ontologia_Class90050] of  Primero
+	([ontologia_Class90050] of  Segundo
 
 		(AptoCena TRUE)
 		(Bebida_Menu [ontologia_Class57])
@@ -4880,6 +5316,7 @@
 		(Origen Japonesa)
 		(PVP 6.0)
 		(Racion Normal))
+
 )
 
 ;                   ======================================================================
