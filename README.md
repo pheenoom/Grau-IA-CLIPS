@@ -26,8 +26,8 @@ Su funcionamiento solo esta comprobado bajo plataforma Linux.
 
 ## Autores
 
-Marta Barroso Isidoro
-Gerard del Castillo Lite
+Marta Barroso Isidoro\
+Gerard del Castillo Lite\
 Ruben Bagan Benavides
 
 ## License
